@@ -6,11 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		4F4C7BC83004E88200645894 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F555A843004C4710065B91C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F555A8B3004C4710065B91C;
+			remoteInfo = "should-i-really";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4F4C7BC43004E88200645894 /* should-i-reallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "should-i-reallyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F555A8C3004C4710065B91C /* should-i-really.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "should-i-really.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		4F4C7BC53004E88200645894 /* should-i-reallyTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "should-i-reallyTests";
+			sourceTree = "<group>";
+		};
 		4F555A8E3004C4710065B91C /* should-i-really */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "should-i-really";
@@ -19,6 +35,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4F4C7BC13004E88200645894 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F555A893004C4710065B91C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				4F555A8E3004C4710065B91C /* should-i-really */,
+				4F4C7BC53004E88200645894 /* should-i-reallyTests */,
 				4F555A8D3004C4710065B91C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				4F555A8C3004C4710065B91C /* should-i-really.app */,
+				4F4C7BC43004E88200645894 /* should-i-reallyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +73,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4F4C7BC33004E88200645894 /* should-i-reallyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F4C7BCA3004E88200645894 /* Build configuration list for PBXNativeTarget "should-i-reallyTests" */;
+			buildPhases = (
+				4F4C7BC03004E88200645894 /* Sources */,
+				4F4C7BC13004E88200645894 /* Frameworks */,
+				4F4C7BC23004E88200645894 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F4C7BC93004E88200645894 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4F4C7BC53004E88200645894 /* should-i-reallyTests */,
+			);
+			name = "should-i-reallyTests";
+			packageProductDependencies = (
+			);
+			productName = "should-i-reallyTests";
+			productReference = 4F4C7BC43004E88200645894 /* should-i-reallyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4F555A8B3004C4710065B91C /* should-i-really */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F555A973004C4720065B91C /* Build configuration list for PBXNativeTarget "should-i-really" */;
@@ -80,6 +128,10 @@
 				LastSwiftUpdateCheck = 2660;
 				LastUpgradeCheck = 2660;
 				TargetAttributes = {
+					4F4C7BC33004E88200645894 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 4F555A8B3004C4710065B91C;
+					};
 					4F555A8B3004C4710065B91C = {
 						CreatedOnToolsVersion = 26.6;
 					};
@@ -100,11 +152,19 @@
 			projectRoot = "";
 			targets = (
 				4F555A8B3004C4710065B91C /* should-i-really */,
+				4F4C7BC33004E88200645894 /* should-i-reallyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4F4C7BC23004E88200645894 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F555A8A3004C4710065B91C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +175,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4F4C7BC03004E88200645894 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F555A883004C4710065B91C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +191,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4F4C7BC93004E88200645894 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F555A8B3004C4710065B91C /* should-i-really */;
+			targetProxy = 4F4C7BC83004E88200645894 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4F4C7BCB3004E88200645894 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Amadeus.should-i-reallyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/should-i-really.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/should-i-really";
+			};
+			name = Debug;
+		};
+		4F4C7BCC3004E88200645894 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Amadeus.should-i-reallyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/should-i-really.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/should-i-really";
+			};
+			name = Release;
+		};
 		4F555A953004C4720065B91C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -309,6 +424,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4F4C7BCA3004E88200645894 /* Build configuration list for PBXNativeTarget "should-i-reallyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F4C7BCB3004E88200645894 /* Debug */,
+				4F4C7BCC3004E88200645894 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4F555A873004C4710065B91C /* Build configuration list for PBXProject "should-i-really" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
