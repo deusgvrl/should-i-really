@@ -16,7 +16,6 @@
 <!-- Detail your implementation approach. Explain how your code resolves the problem. -->
 
 ## Verification & Testing (Required by GEMINI_1.md)
-<!-- Section 4 of GEMINI_1.md: Prove it works. Run tests, check logs, demonstrate correctness. -->
 - [ ] Checked logs for unexpected errors or warnings
 - [ ] Verified behavior against requirements
 - [ ] Run automated tests (if applicable)
