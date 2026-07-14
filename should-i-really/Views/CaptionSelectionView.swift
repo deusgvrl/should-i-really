@@ -19,13 +19,19 @@ struct CaptionSelectionView: View {
     
     // MARK: - Body
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 0) {
+            //MARK: Photo
             selectedImageArea
-            captionChoicesContainer
+                .padding(.top, 40)
+            
+            ScrollView {
+                captionChoicesContainer
+            }
             
             Spacer()
         }
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .ignoresSafeArea(edges: .horizontal)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         
@@ -68,80 +74,77 @@ struct CaptionSelectionView: View {
                 .disabled(viewModel.selectedCaptionIndex == nil)
             }
         }
+//        NavigationStack {
+//        }
     }
     
-    // MARK: - UI Subviews
+    // MARK: - Subviews
     
+//    /// Displays the 1:1 scaled-up version of the user's selected quadrant
     private var selectedImageArea: some View {
-        VStack {
-            if let selected = viewModel.selectedQuadrant {
+        ZStack {
+            if let selectedQuadrant = viewModel.selectedQuadrant {
                 GeometryReader { geo in
                     QuadrantImageView(
                         imageName: viewModel.currentImageName,
-                        quadrant: selected,
+                        quadrant: selectedQuadrant,
                         size: geo.size.width
                     )
                 }
-                .aspectRatio(1, contentMode: .fit)
-                .cornerRadius(12)
-                .shadow(color: Color.black.opacity(0.12), radius: 8, x: 0, y: 4)
+                .aspectRatio(1.0, contentMode: .fit)
             } else {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(red: 0.95, green: 0.95, blue: 0.97))
-                    VStack {
-                        Image(systemName: "photo")
-                            .font(.largeTitle)
-                            .foregroundColor(.gray)
-                        Text("Photo Placeholder")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
-                }
-                .aspectRatio(1, contentMode: .fit)
+                // Fallback UI if no quadrant is active
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(Color(red: 0.95, green: 0.95, blue: 0.97))
+                    .overlay(
+                        VStack(spacing: 8) {
+                            Image(systemName: "photo")
+                                .font(.largeTitle)
+                                .foregroundColor(.gray)
+                            Text("No Photo Selected")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                    )
             }
         }
-        .padding(.horizontal)
-        .padding(.top, 10)
+        .aspectRatio(1.0, contentMode: .fill)
     }
     
     private var captionChoicesContainer: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(spacing: 16) {
             ForEach(0..<viewModel.availableCaptions.count, id: \.self) { index in
                 let captionText = viewModel.availableCaptions[index]
                 let isSelected = viewModel.selectedCaptionIndex == index
                 
-                HStack(spacing: 16) {
-                    Text(captionText)
-                        .font(.body)
-                        .foregroundColor(.primary)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
-                    Spacer()
-                    
-                    Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                        .font(.title3)
-                        .foregroundColor(isSelected ? activeColor : inactiveColor.opacity(0.6))
-                }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(.secondarySystemGroupedBackground))
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(isSelected ? activeColor : Color.gray.opacity(0.2), lineWidth: 2)
-                )
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation(.easeOut(duration: 0.2)) {
+                Button(action: {
+                    withAnimation(.easeInOut(duration: 0.2)) {
                         viewModel.selectedCaptionIndex = index
                     }
+                }) {
+                    Text(captionText)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(isSelected ? .white : .black)
+                        .padding(.vertical, 18)
+                        .padding(.horizontal, 24)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            RoundedRectangle(cornerRadius: 28)
+                                .fill(isSelected ? activeColor : Color(red: 0.95, green: 0.95, blue: 0.97))
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 28)
+                                .stroke(isSelected ? Color.clear : Color.gray.opacity(0.2), lineWidth: 1)
+                        )
                 }
-                .padding(.horizontal)
+                .buttonStyle(PlainButtonStyle())
             }
         }
+        .padding(.top, 32)
+        .padding(.horizontal, 24)
+        .animation(.easeInOut(duration: 0.2), value: viewModel.selectedCaptionIndex)
     }
 }
 
