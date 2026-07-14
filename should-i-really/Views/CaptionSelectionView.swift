@@ -20,55 +20,53 @@ struct CaptionSelectionView: View {
     
     // MARK: - Body
     var body: some View {
-            NavigationStack {
-                VStack(spacing: 0) {
-                    selectedImageArea
-                    captionChoicesContainer
-                    
-                    Spacer()
-                }
-                .background(Color.white.ignoresSafeArea())
-                .navigationBarTitleDisplayMode(.inline)
+        NavigationStack {
+            VStack(spacing: 0) {
+                selectedImageArea
+                captionChoicesContainer
                 
-                // toolbar
-                .toolbar {
-
-                    ToolbarItem(placement: .principal) {
-                        Text("Choose Your Caption")
-                            .font(.headline)
-                            .fontWeight(.bold)
+                Spacer()
+            }
+            .background(Color.white.ignoresSafeArea())
+            .navigationBarTitleDisplayMode(.inline)
+            
+            // toolbar
+            .toolbar {
+                
+                ToolbarItem(placement: .principal) {
+                    Text("Choose Your Caption")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismissAction()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.title3)
+                            .fontWeight(.medium)
                             .foregroundColor(.black)
+                            .frame(width: 30, height: 44, alignment: .center)
                     }
-                    
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {
-                            dismissAction()
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .font(.title3)
-                                .fontWeight(.medium)
-                                .foregroundColor(.black)
-                                .frame(width: 30, height: 44, alignment: .center)
-                        }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        viewModel.proceedToNextStep()
+                    }) {
+                        Image(systemName: "arrow.up")
+                            .fontWeight(.semibold)
                     }
-                    
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            viewModel.proceedToNextStep()
-                        }) {
-                            Image(systemName: "arrow.up")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .padding(8.5)
-                                .background(viewModel.isCaptionSelected ? activeColor : inactiveColor)
-                                .clipShape(Circle())
-                        }
-                        .disabled(!viewModel.isCaptionSelected)
-                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.circle)
+                    .tint(viewModel.isCaptionSelected ? activeColor : inactiveColor)
+                    .disabled(!viewModel.isCaptionSelected)
                 }
             }
         }
+    }
     
     private var selectedImageArea: some View {
         ZStack {
