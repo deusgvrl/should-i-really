@@ -11,7 +11,7 @@ import SwiftUI
 struct should_i_reallyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ProfilePageView()
         }
     }
 }
