@@ -6,70 +6,68 @@
 //
 
 import SwiftUI
-import Combine
+import Observation
 
-final class PostCreationViewModel: ObservableObject {
+@Observable
+class PostCreationViewModel {
+    // MARK: - Core Properties (No @Published wrappers needed!)
+    var currentImageName: String
+    var activeQuadrants: Set<Quadrant>
     
-    // MARK: - Properties
-    @Published var captionChoices: [Caption] = []
-    @Published var selectedCaption: Caption?
+    var availableCaptions: [String] = []
     
-    // MARK: - Placeholder Photo
-    @Published var selectedPhotoName: String {
-        
+    var selectedQuadrant: Quadrant? = nil {
         didSet {
-            // Caption ganti kalau foto nya udah ganti
-            updateCaptionsForSelectedPhoto()
+            updateAvailableCaptions()
         }
     }
     
-    // MARK: - Init
-    init(initialPhoto: String = "placeholder_1") {
-        self.selectedPhotoName = initialPhoto
-        updateCaptionsForSelectedPhoto()
+    var selectedCaptionIndex: Int? = nil
+    
+    var navigateToCaptionPage: Bool = false
+    
+    // MARK: - Private Dependencies
+    private var gameViewModel: GameViewModel
+    
+    // MARK: - Initializer
+    init(gameViewModel: GameViewModel) {
+        self.gameViewModel = gameViewModel
+        
+        let node = gameViewModel.currentNode
+        self.currentImageName = node.imageName
+        self.activeQuadrants = node.activeQuadrants
+        
+        updateAvailableCaptions()
     }
     
-    // MARK: - Dinamic Caption
-    private func updateCaptionsForSelectedPhoto() {
-            // Reset pilihan klo foto berubah
-            self.selectedCaption = nil
-            
-            switch selectedPhotoName {
-            case "placeholder_1":
-                self.captionChoices = [
-                    Caption(text: "caption jelek"),
-                    Caption(text: "The original layout is way too crowded")
-                ]
-            case "placeholder_2":
-                self.captionChoices = [
-                    Caption(text: "bagus captionnya"),
-                    Caption(text: "The layout is beautiful")
-                ]
-            default:
-                self.captionChoices = [
-                    Caption(text: "1"),
-                    Caption(text: "2")
-                ]
-            }
+    // MARK: - Internal Helper Logic
+    private func updateAvailableCaptions() {
+        if let quadrant = selectedQuadrant {
+            self.availableCaptions = gameViewModel.currentNode.quadrantCaptions[quadrant] ?? []
+        } else {
+            self.availableCaptions = []
         }
-    
-    func selectCaption(_ caption: Caption) {
-        selectedCaption = caption
     }
     
-    // MARK: - Boolean
-    var isCaptionSelected: Bool {
-        selectedCaption != nil
+    // MARK: - View Actions
+    
+    func confirmPhotoSelection() {
+        guard selectedQuadrant != nil else { return }
+        navigateToCaptionPage = true
     }
     
-    func isCurrentSelection(_ caption: Caption) -> Bool {
-        selectedCaption?.id == caption.id
-    }
-    
-    // MARK: - Placeholder Action
-    func proceedToNextStep() {
-        guard isCaptionSelected else { return }
-        // TODO: [CA7-11] lanjut share post
-        print("Caption: \(selectedCaption?.text ?? "")")
+    func finalizeAndPost() {
+        guard let quadrant = selectedQuadrant,
+              let captionIndex = selectedCaptionIndex else { return }
+        
+        gameViewModel.advanceStory(chosenQuadrant: quadrant, chosenCaptionIndex: captionIndex)
+        
+        let nextNode = gameViewModel.currentNode
+        self.currentImageName = nextNode.imageName
+        self.activeQuadrants = nextNode.activeQuadrants
+        
+        self.selectedQuadrant = nil
+        self.selectedCaptionIndex = nil
+        self.availableCaptions = []
     }
 }
