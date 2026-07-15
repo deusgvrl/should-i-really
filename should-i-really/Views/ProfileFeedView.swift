@@ -50,10 +50,6 @@ struct ProfileFeedView: View {
                 }
             }
         }
-        .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-            
-            
     }
 }
 
