@@ -18,7 +18,7 @@ struct ProfilePageView: View {
         NavigationStack {
             ZStack {
                 VStack() {
-                    // MARK: Top Bar (Username + Home Button)
+                    // MARK: - Top Bar (Username + Home Button)
                     ZStack {
                         HStack {
                             Image(systemName: "house")
@@ -38,7 +38,7 @@ struct ProfilePageView: View {
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
                     
-                    // MARK: Profile Picture + Timeline
+                    // MARK: - Profile Picture + Timeline
                     ScrollView {
                         HStack {
                             Image("pp")
@@ -55,7 +55,7 @@ struct ProfilePageView: View {
                         .padding(.horizontal, 16)
                         .padding(.top, 16)
                         
-                        //MARK: Bio
+                        //MARK: - Bio
                         Text(
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         )
@@ -65,7 +65,7 @@ struct ProfilePageView: View {
                         .padding(.horizontal, 12)
                         .padding(.vertical, 4)
                         
-                        //MARK: Grid Icon
+                        //MARK: - Grid Icon
                         Image(systemName: "square.grid.3x3.fill")
                             .resizable()
                             .frame(width: 24, height: 24)
@@ -73,7 +73,7 @@ struct ProfilePageView: View {
                             .padding(.bottom, 4)
                         
                         
-                        //MARK: Posts Feed Preview
+                        //MARK: - Posts Feed Preview
                         LazyVGrid(columns: gridColumns, spacing: 1) {
                             ForEach(imageBank, id: \.self) { item in
                                 NavigationLink(value: item) {
@@ -92,19 +92,19 @@ struct ProfilePageView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                //MARK: Add Post Button
+                //MARK: - Add Post Button
                 VStack {
                     Spacer()
                     
                     Button {
                         
                     } label: {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle.fill")
                             .resizable()
-                            .frame(width: 28, height: 28)
+                            .frame(width: 48, height: 48)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .clipShape(.circle)
+//                    .buttonStyle(.borderedProminent)
+//                    .clipShape(.circle)
                 }
                     
         
