@@ -1,0 +1,251 @@
+[
+    //MARK: - 3A
+    {
+        "id": "3A",
+        "round": 3,
+        "big_picture_id": "big_pic_1",
+        "crops": {
+            "positive_crop": {
+                "quadrant": 1,
+                "captions": [
+                    {
+                        "id": "3A_Pos_C_Pos",
+                        "type": "positive",
+                        "text": "Caption Positif.",
+                        "nextNodeId": "4A",
+                        "comments": [
+                            {
+                                "id": "com_3A_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3A_Pos_C_Neg",
+                        "type": "negative",
+                        "text": "Caption Negatif.",
+                        "nextNodeId": "4B",
+                        "comments": [
+                            {
+                                "id": "com_3A_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "negative_crop": {
+                "quadrant": 3,
+                "captions": [
+                    {
+                        "id": "3A_Neg_C_Pos",
+                        "type": "positive",
+                        "text": "Caption positif.",
+                        "nextNodeId": "4C",
+                        "comments": [
+                            {
+                                "id": "com_3A_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3A_Neg_C_Pos",
+                        "type": "negative",
+                        "text": "Caption negatif.",
+                        "nextNodeId": "4D",
+                        "comments": [
+                            {
+                                "id": "com_3A_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    // MARK: - 3B
+    {
+        "id": "3B",
+        "round": 3,
+        "big_picture_id": "big_pic_1",
+        "crops": {
+            "positive_crop": {
+                "quadrant": 1,
+                "captions": [
+                    {
+                        "id": "3B_Pos_C_Pos",
+                        "type": "positive",
+                        "text": "Caption Positif.",
+                        "nextNodeId": "4B",
+                        "comments": [
+                            {
+                                "id": "com_3B_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3B_Pos_C_Neg",
+                        "type": "negative",
+                        "text": "Caption Negatif.",
+                        "nextNodeId": "4C",
+                        "comments": [
+                            {
+                                "id": "com_3B_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "negative_crop": {
+                "quadrant": 3,
+                "captions": [
+                    {
+                        "id": "3B_Neg_C_Pos",
+                        "type": "positive",
+                        "text": "Caption positif.",
+                        "nextNodeId": "4D",
+                        "comments": [
+                            {
+                                "id": "com_3B_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3B_Neg_C_Neg",
+                        "type": "negative",
+                        "text": "Caption negatif.",
+                        "nextNodeId": "4E",
+                        "comments": [
+                            {
+                                "id": "com_3B_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    //MARK: - 3C
+    {
+        "id": "3C",
+        "round": 3,
+        "big_picture_id": "big_pic_1",
+        "crops": {
+            "positive_crop": {
+                "quadrant": 1,
+                "captions": [
+                    {
+                        "id": "3C_Pos_C_Pos",
+                        "type": "positive",
+                        "text": "Caption Positif.",
+                        "nextNodeId": "4D",
+                        "comments": [
+                            {
+                                "id": "com_3C_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3C_Pos_C_Neg",
+                        "type": "negative",
+                        "text": "Caption Negatif.",
+                        "nextNodeId": "4E",
+                        "comments": [
+                            {
+                                "id": "com_3C_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "negative_crop": {
+                "quadrant": 3,
+                "captions": [
+                    {
+                        "id": "3C_Neg_C_Pos",
+                        "type": "positive",
+                        "text": "Caption positif.",
+                        "nextNodeId": "4F",
+                        "comments": [
+                            {
+                                "id": "com_3C_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3C_Neg_C_Pos",
+                        "type": "negative",
+                        "text": "Caption negatif.",
+                        "nextNodeId": "4G",
+                        "comments": [
+                            {
+                                "id": "com_3C_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    // MARK: - 3D
+    {
+        "id": "3D",
+        "round": 3,
+        "big_picture_id": "big_pic_1",
+        "crops": {
+            "positive_crop": {
+                "quadrant": 1,
+                "captions": [
+                    {
+                        "id": "3D_Pos_C_Pos",
+                        "type": "positive",
+                        "text": "Caption Positif.",
+                        "nextNodeId": "4E",
+                        "comments": [
+                            {
+                                "id": "com_3D_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3D_Pos_C_Neg",
+                        "type": "negative",
+                        "text": "Caption Negatif.",
+                        "nextNodeId": "4F",
+                        "comments": [
+                            {
+                                "id": "com_3D_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "negative_crop": {
+                "quadrant": 3,
+                "captions": [
+                    {
+                        "id": "3D_Neg_C_Pos",
+                        "type": "positive",
+                        "text": "Caption positif.",
+                        "nextNodeId": "4G",
+                        "comments": [
+                            {
+                                "id": "com_3D_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3D_Neg_C_Neg",
+                        "type": "negative",
+                        "text": "Caption negatif.",
+                        "nextNodeId": "4H",
+                        "comments": [
+                            {
+                                "id": "com_3D_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+]
+
