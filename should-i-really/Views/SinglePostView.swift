@@ -15,7 +15,15 @@ struct SinglePostView: View {
     let comment: String
     let date: String
     
+    var photoGuardScore: Int = 1
+    var vibeCheckScore: Int = 0
+    
+    @State private var showInsights = false
+    
     var body: some View {
+        
+        // MARK: - Design System Constants
+        let activeColor = Color(red: 173/255, green: 127/255, blue: 94/255) // Brown
         
         VStack(alignment: .leading,spacing: 8) {
             //MARK: Profile Pict + Username
@@ -35,16 +43,21 @@ struct SinglePostView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .aspectRatio(1, contentMode: .fit)
             
-            //MARK: View Insights
-            HStack(spacing: 4) {
-                Image(systemName: "aqi.medium.gauge.open")
-                    .font(.subheadline)
-                    .foregroundStyle(.blue)
+            //MARK: View Insights Button
+            
+            Button (action: {
+                showInsights = true}) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "aqi.medium.gauge.open")
+                            .font(.subheadline)
+                            .foregroundStyle(activeColor)
+                        Text("View insights")
+                            .font(.subheadline)
+                            .foregroundStyle(activeColor)
+                    }
                     .padding(.leading, 8)
-                Text("View insights")
-                    .font(.subheadline)
-                    .foregroundStyle(.blue)
-            }
+                    .padding(.vertical, 4)
+                }
             
             Divider()
             //MARK: Share Deck Icons
@@ -55,21 +68,30 @@ struct SinglePostView: View {
             
             //MARK: Caption
             Text("**\(username)** \(caption)")
-                            .font(.body)
-                            .multilineTextAlignment(.leading)
-                            .padding(.leading, 8)
-                            .padding(.trailing, 4)
+                .font(.body)
+                .multilineTextAlignment(.leading)
+                .padding(.leading, 8)
+                .padding(.trailing, 4)
             
             //MARK: Comment
             Text("**\(commentUsername)** \(comment)")
-                            .font(.body)
-                            .multilineTextAlignment(.leading)
-                            .padding(.leading, 8)
-                            .padding(.trailing, 4)
+                .font(.body)
+                .multilineTextAlignment(.leading)
+                .padding(.leading, 8)
+                .padding(.trailing, 4)
             Text(date)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .padding(.leading, 8)
+        }
+        // MARK: - Sheet Integration
+        .sheet (isPresented: $showInsights) {
+            InsightsOverlayView(
+                framingScore: photoGuardScore,
+                captionScore: vibeCheckScore
+            )
+            .presentationDetents([.fraction(0.45)])
+            .presentationDragIndicator(.visible)
         }
     }
 }
