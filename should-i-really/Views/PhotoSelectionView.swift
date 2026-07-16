@@ -48,7 +48,10 @@ struct PhotoSelectionView: View {
                             
                             if isSelected {
                                 Color.clear
-                                    .border(Color.blue, width: 4)
+                                    .border(Color.brown, width: 4)
+                                Image("Crop")
+                                    .resizable()
+                                    .scaledToFit()
                             }
                         }
                         .frame(width: tileSize, height: tileSize)
@@ -69,13 +72,9 @@ struct PhotoSelectionView: View {
             .padding(.horizontal)
             
             Spacer()
-            
-            NavigationLink(
-                destination: CaptionSelectionView(viewModel: viewModel),
-                isActive: $viewModel.navigateToCaptionPage
-            ) {
-                EmptyView()
-            }
+        }
+        .navigationDestination(isPresented: $viewModel.navigateToCaptionPage) {
+            CaptionSelectionView(viewModel: viewModel)
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -137,7 +136,7 @@ struct PhotoSelectionView_Previews: PreviewProvider {
         let gameViewModel = GameViewModel()
         let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
         
-        return NavigationView {
+        return NavigationStack {
             PhotoSelectionView(viewModel: productionPostViewModel)
         }
     }
