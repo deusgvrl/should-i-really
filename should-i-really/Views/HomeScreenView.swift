@@ -17,42 +17,46 @@ struct HomeScreenView: View {
     
     // MARK: - Body
     var body: some View {
-        VStack() {
-            Text("Should I")
-                .font(.system(size: 70, weight: .bold))
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
-                .lineSpacing(-50)
-                .padding(.top, 250)
-            Text("Really?")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
-                .offset(x: 52, y: -8)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom, 24)
-            switch viewModel.currentRoute {
-            case .landing:
+        NavigationStack(path: $viewModel.navigationPath){
+            VStack() {
+                Text("Should I")
+                    .font(.system(size: 70, weight: .bold))
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .lineSpacing(-50)
+                    .padding(.top, 250)
+                Text("Really?")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .offset(x: 52, y: -8)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 24)
                 LandingMenuView(viewModel: viewModel)
                     .offset(y: -8)
-            case .usernameInput:
-//                UsernameInputView(viewModel: viewModel)
-                Text("Username Input Screen")
-            case .timeline:
-                ProfilePageView()
-            case .archive:
-                Text("Archive screen")
-            case .ending:
-                Text("Ending Screen")
-                //            default:
-                //                EmptyView()
+                
+                Spacer()
             }
-            Spacer()
+            .padding(.horizontal, 24)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            // MARK: - Nav Destination
+            .navigationDestination(for: GameViewModel.GameRoute.self) { route in
+                switch route {
+                case .usernameInput:
+                    UsernameInputView(viewModel: viewModel)
+                case .archive:
+                    ArchiveView()
+                case .timeline:
+                    ProfilePageView()
+                default:
+                    EmptyView()
+                }
+            }
         }
-        .padding(.horizontal, 24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
+
 
 #Preview {
     HomeScreenView()
