@@ -22,6 +22,14 @@ final class PostCreationViewModel {
         
     var availableCaptions: [CaptionOption] = []
     var selectedCaption: CaptionOption? = nil
+    
+    var currentImageName: String {
+        return gameViewModel.currentNode?.imageName ?? ""
+    }
+    
+    var activeQuadrants: Set<QuadrantPosition> {
+        return gameViewModel.currentNode?.activeQuadrants ?? []
+    }
         
     // MARK: - Navigation Triggers
     var navigateToCaptionScreen: Bool = false

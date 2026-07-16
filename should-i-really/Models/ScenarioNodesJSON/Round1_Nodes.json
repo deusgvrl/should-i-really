@@ -2,7 +2,7 @@
   {
     "id": "1A",
     "round": 1,
-    "big_picture_id": "big_pic_1",
+    "big_picture_id": "SampleImage1",
     "crops": {
       "positive_crop": {
         "quadrant": 1,

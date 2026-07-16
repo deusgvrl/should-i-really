@@ -24,7 +24,7 @@ public final class GameViewModel {
     public private(set) var currentRoute: GameRoute = .landing
     public private(set) var gameState: GameState?
     
-    public private(set) var currentNode: StoryNode?
+    private(set) var currentNode: StoryNode?
     public private(set) var currentRound: Int = 1
     
     private var currentRoundDatabase: [String: StoryNode] = [:]

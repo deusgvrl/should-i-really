@@ -25,7 +25,7 @@ struct PhotoSelectionView: View {
                 let tileSize = totalSize / 2
                 
                 LazyVGrid(columns: columns, spacing: 0) {
-                    ForEach(Quadrant.allCases, id: \.self) { quadrant in
+                    ForEach(QuadrantPosition.allCases, id: \.self) { quadrant in
                         let isActive = viewModel.activeQuadrants.contains(quadrant)
                         let isSelected = viewModel.selectedQuadrant == quadrant
                         
@@ -73,7 +73,7 @@ struct PhotoSelectionView: View {
             
             Spacer()
         }
-        .navigationDestination(isPresented: $viewModel.navigateToCaptionPage) {
+        .navigationDestination(isPresented: $viewModel.navigateToCaptionScreen) {
             CaptionSelectionView(viewModel: viewModel)
         }
         .navigationBarBackButtonHidden(true)
@@ -112,7 +112,7 @@ struct PhotoSelectionView: View {
 
 struct QuadrantImageView: View {
     let imageName: String
-    let quadrant: Quadrant
+    let quadrant: QuadrantPosition
     let size: CGFloat
     
     var body: some View {
