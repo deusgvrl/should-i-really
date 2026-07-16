@@ -24,6 +24,7 @@ struct ProfilePageView: View {
                             Image(systemName: "house")
                                 .resizable()
                                 .frame(width: 28, height: 28)
+                                .accessibilityLabel("Home Button")
                             Spacer()
                         }
                         HStack() {
@@ -45,6 +46,7 @@ struct ProfilePageView: View {
                                 .resizable()
                                 .frame(width: 80, height: 80)
                                 .clipShape(Circle())
+                                .accessibilityLabel("My Profile Picture")
                             Spacer()
                             Text("Year 1 Semester 1 Month 1")
                                 .font(.callout)
