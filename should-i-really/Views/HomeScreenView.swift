@@ -35,8 +35,8 @@ struct HomeScreenView: View {
             case .landing:
                 LandingMenuView(viewModel: viewModel)
                     .offset(y: -8)
-            case .usernameInput:
-                UsernameInputView(viewModel: viewModel)
+//            case .usernameInput:
+//                UsernameInputView(viewModel: viewModel)
             default:
                 EmptyView()
             }
