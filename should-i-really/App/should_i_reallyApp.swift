@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct should_i_reallyApp: App {
@@ -15,6 +16,7 @@ struct should_i_reallyApp: App {
         WindowGroup {
             HomeScreenView()
                 .environment(gameViewModel)
+                .modelContainer(for: UnlockedEndings.self)
         }
     }
 }
