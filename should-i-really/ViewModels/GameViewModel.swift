@@ -17,110 +17,91 @@ public final class GameViewModel {
         case usernameInput
         case timeline
         case archive
+        case ending
     }
     
     // MARK: - Core Properties
     public private(set) var currentRoute: GameRoute = .landing
     public private(set) var gameState: GameState?
     
-    private(set) var currentNode: StoryNode
+    public private(set) var currentNode: StoryNode?
+    public private(set) var currentRound: Int = 1
+    
+    private var currentRoundDatabase: [String: StoryNode] = [:]
     
     private let storageController: StorageController
-    
-    // MARK: - Storyline Database Graph
-    private let storylineDatabase: [String: StoryNode] = [
-        "Scene_1": StoryNode(
-            id: "Scene_1",
-            imageName: "SampleImage1",
-            activeQuadrants: [.topLeft, .bottomRight],
-            
-            quadrantCaptions: [
-                .topLeft: [
-                    "Caption 1",
-                    "Caption 2"
-                ],
-                .bottomRight: [
-                    "Caption 1",
-                    "Caption 2"
-                ]
-            ],
-            
-            nextNodePaths: [
-                PlayerChoice(quadrant: .topLeft, captionIndex: 0): "Scene_2",
-                PlayerChoice(quadrant: .topLeft, captionIndex: 1): "Scene_3",
-                PlayerChoice(quadrant: .bottomRight, captionIndex: 0): "Scene_2",
-                PlayerChoice(quadrant: .bottomRight, captionIndex: 1): "Scene_3"
-            ]
-        ),
-        "Scene_2": StoryNode(
-            id: "Scene_2",
-            imageName: "SampleImage2",
-            activeQuadrants: [.topLeft, .topRight],
-            
-            quadrantCaptions: [
-                .topLeft: [
-                    "Caption 1",
-                    "Caption 2"
-                ],
-                .topRight: [
-                    "Caption 1",
-                    "Caption 2"
-                ]
-            ],
-            
-            nextNodePaths: [
-                PlayerChoice(quadrant: .topLeft, captionIndex: 0): "Scene_1",
-                PlayerChoice(quadrant: .topLeft, captionIndex: 1): "Scene_3",
-                PlayerChoice(quadrant: .topRight, captionIndex: 0): "Scene_1",
-                PlayerChoice(quadrant: .topRight, captionIndex: 1): "Scene_3"
-            ]
-        ),
-        "Scene_3": StoryNode(
-            id: "Scene_3",
-            imageName: "SampleImage3",
-            activeQuadrants: [.topRight, .bottomRight],
-            
-            quadrantCaptions: [
-                .topRight: [
-                    "Caption 1",
-                    "Caption 2"
-                ],
-                .bottomRight: [
-                    "Caption 1",
-                    "Caption 2"
-                ]
-            ],
-            
-            nextNodePaths: [
-                PlayerChoice(quadrant: .topRight, captionIndex: 0): "Scene_2",
-                PlayerChoice(quadrant: .topRight, captionIndex: 1): "Scene_1",
-                PlayerChoice(quadrant: .bottomRight, captionIndex: 0): "Scene_2",
-                PlayerChoice(quadrant: .bottomRight, captionIndex: 1): "Scene_1"
-            ]
-        )
-    ]
     
     // MARK: - Initializer
     public init(storageController: StorageController = StorageController()) {
         self.storageController = storageController
-        
-        self.currentNode = storylineDatabase["Scene_1"]!
-        
+                
         if storageController.hasSave {
             self.gameState = storageController.loadGame()
         }
     }
     
-    // MARK: - Story Engine Execution Logic
-    
-    public func advanceStory(chosenQuadrant: Quadrant, chosenCaptionIndex: Int) {
-        let choice = PlayerChoice(quadrant: chosenQuadrant, captionIndex: chosenCaptionIndex)
+    // MARK: - Story Engine & JSON Loader
         
-        if let nextNodeID = currentNode.nextNodePaths[choice],
-           let nextNode = storylineDatabase[nextNodeID] {
-            self.currentNode = nextNode
+    public func startGame(fromRound round: Int, startNodeId: String) {
+        currentRoute = .timeline
+        loadStoryFromJSON(round: round, startNodeId: startNodeId)
+    }
+        
+    private func loadStoryFromJSON(round: Int, startNodeId: String) {
+        let fileName = "Round\(round)_Nodes"
+            
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+            print("ERROR: File \(fileName).json tidak ditemukan!")
+            return
+        }
+            
+        do {
+            let data = try Data(contentsOf: url)
+            let nodes = try JSONDecoder().decode([StoryNode].self, from: data)
+                
+            // Simpan ke memori dan change state saat ini
+            self.currentRoundDatabase = Dictionary(
+                uniqueKeysWithValues: nodes.map { ($0.id, $0)
+                })
+            self.currentNode = currentRoundDatabase[startNodeId]
+            self.currentRound = round
+                
+            print("Berhasil memuat JSON Ronde \(round)")
+        } catch {
+            print("Gagal decode JSON Ronde \(round): \(error)")
         }
     }
+        
+    // MARK: - Execution Logic
+        
+    public func advanceStory(nextNodeId: String) {
+        if nextNodeId.hasPrefix("ENDING_") {
+            self.currentRoute = .ending
+            print("Game selesai, ending: \(nextNodeId)")
+        } else {
+            if let nextNode = currentRoundDatabase[nextNodeId] {
+                self.currentNode = nextNode
+                autoSaveProgress(round: self.currentRound, nodeId: nextNodeId)
+            } else {
+                self.currentRound += 1
+                loadStoryFromJSON(
+                    round: self.currentRound,
+                    startNodeId: nextNodeId
+                )
+                autoSaveProgress(round: self.currentRound, nodeId: nextNodeId)
+            }
+        }
+    }
+    
+    private func autoSaveProgress(round: Int, nodeId: String) {
+        guard var state = self.gameState else { return }
+        state.currentRound = round
+        state.currentNodeId = nodeId
+        
+        self.gameState = state
+        storageController.saveGame(state)
+    }
+    
     
     // MARK: - Navigation Control Flow
     
@@ -134,17 +115,22 @@ public final class GameViewModel {
             return
         }
         self.gameState = saveState
-        currentRoute = .timeline
+        startGame(
+            fromRound: saveState.currentRound,
+            startNodeId: saveState.currentNodeId
+        )
     }
     
     public func enterUsername(_ username: String) {
-        let trimmedName = username.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedName = username.trimmingCharacters(
+            in: .whitespacesAndNewlines
+        )
         guard !trimmedName.isEmpty else { return }
         
         let newState = GameState(username: trimmedName)
         storageController.saveGame(newState)
         self.gameState = newState
-        currentRoute = .timeline
+        startGame(fromRound: 1, startNodeId: "1A")
     }
     
     public func openArchive() {
@@ -158,7 +144,8 @@ public final class GameViewModel {
     public func deleteActiveSave() {
         storageController.deleteGame()
         self.gameState = nil
-        self.currentNode = storylineDatabase["Scene_1"]!
+        self.currentNode = nil
+        currentRoundDatabase.removeAll()
         currentRoute = .landing
     }
 }

@@ -9,65 +9,64 @@ import SwiftUI
 import Observation
 
 @Observable
-class PostCreationViewModel {
-    // MARK: - Core Properties (No @Published wrappers needed!)
-    var currentImageName: String
-    var activeQuadrants: Set<Quadrant>
-    
-    var availableCaptions: [String] = []
-    
-    var selectedQuadrant: Quadrant? = nil {
+final class PostCreationViewModel {
+    // MARK: - Private Dependencies
+    private var gameViewModel: GameViewModel
+        
+    // MARK: - UI State Properties (Child)
+    var selectedQuadrant: QuadrantPosition? = nil {
         didSet {
             updateAvailableCaptions()
         }
     }
-    
-    var selectedCaptionIndex: Int? = nil
-    
-    var navigateToCaptionPage: Bool = false
-    
-    // MARK: - Private Dependencies
-    private var gameViewModel: GameViewModel
-    
+        
+    var availableCaptions: [CaptionOption] = []
+    var selectedCaption: CaptionOption? = nil
+        
+    // MARK: - Navigation Triggers
+    var navigateToCaptionScreen: Bool = false
+        
     // MARK: - Initializer
     init(gameViewModel: GameViewModel) {
         self.gameViewModel = gameViewModel
-        
-        let node = gameViewModel.currentNode
-        self.currentImageName = node.imageName
-        self.activeQuadrants = node.activeQuadrants
-        
-        updateAvailableCaptions()
     }
-    
+        
     // MARK: - Internal Helper Logic
     private func updateAvailableCaptions() {
-        if let quadrant = selectedQuadrant {
-            self.availableCaptions = gameViewModel.currentNode.quadrantCaptions[quadrant] ?? []
+        if let quadrant = selectedQuadrant,
+           let node = gameViewModel.currentNode {
+            self.availableCaptions = node.options[quadrant] ?? []
         } else {
             self.availableCaptions = []
         }
     }
-    
+        
     // MARK: - View Actions
-    
+        
+    // tombol "Next" di choose photo
     func confirmPhotoSelection() {
         guard selectedQuadrant != nil else { return }
-        navigateToCaptionPage = true
+        self.navigateToCaptionScreen = true
+    }
+        
+    // choose 1 of 2 captions
+    func selectCaption(_ caption: CaptionOption) {
+        self.selectedCaption = caption
+    }
+        
+    // tombol post di choose caption
+    func finalizeAndPost() {
+        guard let selected = selectedCaption else { return }
+            
+        // Laporkan pilihan ke Induk (GameViewModel) untuk diproses
+        // GameViewModel yang akan mengurus muat JSON baru atau masuk ke Ending
+        gameViewModel.advanceStory(nextNodeId: selected.nextNodeId)
+            
+        // Reset state antarmuka untuk ronde berikutnya
+        self.selectedQuadrant = nil
+        self.selectedCaption = nil
+        self.availableCaptions = []
+        self.navigateToCaptionScreen = false
     }
     
-    func finalizeAndPost() {
-        guard let quadrant = selectedQuadrant,
-              let captionIndex = selectedCaptionIndex else { return }
-        
-        gameViewModel.advanceStory(chosenQuadrant: quadrant, chosenCaptionIndex: captionIndex)
-        
-        let nextNode = gameViewModel.currentNode
-        self.currentImageName = nextNode.imageName
-        self.activeQuadrants = nextNode.activeQuadrants
-        
-        self.selectedQuadrant = nil
-        self.selectedCaptionIndex = nil
-        self.availableCaptions = []
-    }
 }
