@@ -19,7 +19,6 @@ struct ProfilePageView: View {
     )
     
     var body: some View {
-        NavigationStack {
             ZStack {
                 VStack() {
                     // MARK: - Top Bar (Username + Home Button)
@@ -118,9 +117,9 @@ struct ProfilePageView: View {
             .navigationDestination(for: String.self) { selectedPostID in
                 ProfileFeedView(initialPostID: selectedPostID)
             }
+            .navigationBarBackButtonHidden(true)
         }
         //        .border(.black)
-    }
 }
 
 #Preview {

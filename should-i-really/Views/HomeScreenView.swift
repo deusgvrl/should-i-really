@@ -46,7 +46,9 @@ struct HomeScreenView: View {
             .navigationDestination(for: GameViewModel.GameRoute.self) { route in
                 switch route {
                 case .usernameInput:
-                    UsernameInputView(viewModel: viewModel)
+                    UsernameInputView()
+                case .prologue:
+                    PrologView()
                 case .archive:
                     ArchiveView()
                 case .timeline:

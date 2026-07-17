@@ -15,6 +15,7 @@ public final class GameViewModel {
     public enum GameRoute: Equatable {
         case landing
         case usernameInput
+        case prologue
         case timeline
         case archive
         case ending
@@ -23,14 +24,14 @@ public final class GameViewModel {
     // MARK: - Core Properties
     public private(set) var currentRoute: GameRoute = .landing
     public private(set) var gameState: GameState?
-        
+    
     var navigationPath: [GameRoute] = []
     
     public private(set) var currentNode: StoryNode?
     public private(set) var currentRound: Int = 1
     
     private var currentRoundDatabase: [String: StoryNode] = [:]
-
+    
     
     public var availableStoryNodes: [StoryNode] {
         let sortedNodes = currentRoundDatabase.values.sorted { $0.id < $1.id }
@@ -46,46 +47,46 @@ public final class GameViewModel {
     // MARK: - Initializer
     public init(storageController: StorageController = StorageController()) {
         self.storageController = storageController
-                
+        
         if storageController.hasSave {
             self.gameState = storageController.loadGame()
         }
     }
     
     // MARK: - Story Engine & JSON Loader
-        
+    
     public func startGame(fromRound round: Int, startNodeId: String) {
         currentRoute = .timeline
         loadStoryFromJSON(round: round, startNodeId: startNodeId)
     }
-        
+    
     private func loadStoryFromJSON(round: Int, startNodeId: String) {
         let fileName = "Round\(round)_Nodes"
-            
+        
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
             print("ERROR: File \(fileName).json tidak ditemukan!")
             return
         }
-            
+        
         do {
             let data = try Data(contentsOf: url)
             let nodes = try JSONDecoder().decode([StoryNode].self, from: data)
-                
+            
             // Simpan ke memori dan change state saat ini
             self.currentRoundDatabase = Dictionary(
                 uniqueKeysWithValues: nodes.map { ($0.id, $0)
                 })
             self.currentNode = currentRoundDatabase[startNodeId]
             self.currentRound = round
-                
+            
             print("Berhasil memuat JSON Ronde \(round)")
         } catch {
             print("Gagal decode JSON Ronde \(round): \(error)")
         }
     }
-        
+    
     // MARK: - Execution Logic
-        
+    
     public func advanceStory(nextNodeId: String, chosenQuadrant: QuadrantPosition, chosenCaption: CaptionOption) {
         if let node = currentNode {
             let newPost = UserPost(nodeId: node.id, imageName: node.imageName, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comments: chosenCaption.comments)
@@ -159,9 +160,18 @@ public final class GameViewModel {
         let newState = GameState(username: trimmedName)
         storageController.saveGame(newState)
         self.gameState = newState
-        startGame(fromRound: 1, startNodeId: "1A")
+        
+        loadStoryFromJSON(round: 1, startNodeId: "1A")
+        
+        navigationPath = [.prologue]
+        currentRoute = .prologue
+    }
+    
+    public func continueFromProlog() {
+        print("current nav path = \(navigationPath)")
         navigationPath = [.timeline]
         currentRoute = .timeline
+        print("nav path after continue from prolog = \(navigationPath)")
     }
     
     public func openArchive() {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UsernameInputView: View {
-    var viewModel = GameViewModel()
+    @Environment(GameViewModel.self) private var viewModel
     @State var usernameText: String = ""
     
     private let themeBrown = Color(red: 0.65, green: 0.49, blue: 0.32)
@@ -59,5 +59,6 @@ struct UsernameInputView: View {
 }
 
 #Preview {
-    UsernameInputView(viewModel: GameViewModel())
+    UsernameInputView()
+        .environment(GameViewModel())
 }
