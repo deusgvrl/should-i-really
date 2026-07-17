@@ -24,10 +24,13 @@ public final class GameViewModel {
     public private(set) var currentRoute: GameRoute = .landing
     public private(set) var gameState: GameState?
         
-    private(set) var currentNode: StoryNode?
+    var navigationPath: [GameRoute] = []
+    
+    public private(set) var currentNode: StoryNode?
     public private(set) var currentRound: Int = 1
     
     private var currentRoundDatabase: [String: StoryNode] = [:]
+
     
     public var availableStoryNodes: [StoryNode] {
         let sortedNodes = currentRoundDatabase.values.sorted { $0.id < $1.id }
@@ -128,11 +131,13 @@ public final class GameViewModel {
     // MARK: - Navigation Control Flow
     
     public func startNewGame() {
+        navigationPath = [.usernameInput]
         currentRoute = .usernameInput
     }
     
     public func continueGame() {
         guard let saveState = storageController.loadGame() else {
+            navigationPath = []
             currentRoute = .landing
             return
         }
@@ -141,6 +146,8 @@ public final class GameViewModel {
             fromRound: saveState.currentRound,
             startNodeId: saveState.currentNodeId
         )
+        navigationPath = [.timeline]
+        currentRoute = .timeline
     }
     
     public func enterUsername(_ username: String) {
@@ -153,13 +160,17 @@ public final class GameViewModel {
         storageController.saveGame(newState)
         self.gameState = newState
         startGame(fromRound: 1, startNodeId: "1A")
+        navigationPath = [.timeline]
+        currentRoute = .timeline
     }
     
     public func openArchive() {
+        navigationPath = [.archive]
         currentRoute = .archive
     }
     
     public func returnToLanding() {
+        navigationPath.removeAll()
         currentRoute = .landing
     }
     
@@ -168,6 +179,7 @@ public final class GameViewModel {
         self.gameState = nil
         self.currentNode = nil
         currentRoundDatabase.removeAll()
+        navigationPath.removeAll()
         currentRoute = .landing
     }
 }

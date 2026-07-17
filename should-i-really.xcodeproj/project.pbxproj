@@ -21,16 +21,6 @@
 		4F555A8C3004C4710065B91C /* should-i-really.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "should-i-really.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		4F4C7C043004E9EC00645894 /* Exceptions for "should-i-really" folder in "should-i-really" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Views/HomeScreenView.swift,
-			);
-			target = 4F555A8B3004C4710065B91C /* should-i-really */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4F4C7BC53004E88200645894 /* should-i-reallyTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -39,9 +29,6 @@
 		};
 		4F555A8E3004C4710065B91C /* should-i-really */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				4F4C7C043004E9EC00645894 /* Exceptions for "should-i-really" folder in "should-i-really" target */,
-			);
 			path = "should-i-really";
 			sourceTree = "<group>";
 		};
@@ -379,6 +366,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SB586Q784K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -410,6 +398,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SB586Q784K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
