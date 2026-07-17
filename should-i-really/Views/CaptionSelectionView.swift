@@ -10,7 +10,7 @@ import SwiftUI
 struct CaptionSelectionView: View {
     
     // MARK: - Dependencies (Using Modern @Observable Pattern)
-    var viewModel: PostCreationViewModel
+    @Environment(PostCreationViewModel.self) var viewModel
     @Environment(\.dismiss) private var dismissAction
     
     // MARK: - Design System Constants
@@ -141,16 +141,16 @@ struct CaptionSelectionView: View {
     }
 }
 
-// MARK: - Preview Generator
-struct CaptionSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        let gameViewModel = GameViewModel()
-        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
-        
-        productionPostViewModel.selectedQuadrant = .topLeft
-        
-        return NavigationView {
-            CaptionSelectionView(viewModel: productionPostViewModel)
-        }
-    }
-}
+//// MARK: - Preview Generator
+//struct CaptionSelectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let gameViewModel = GameViewModel()
+//        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
+//        
+//        productionPostViewModel.selectedQuadrant = .topLeft
+//        
+//        return NavigationView {
+//            CaptionSelectionView()
+//        }
+//    }
+//}

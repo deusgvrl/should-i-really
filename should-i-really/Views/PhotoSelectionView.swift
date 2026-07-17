@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhotoSelectionView: View {
-    var viewModel: PostCreationViewModel
+    @Environment(PostCreationViewModel.self) private var viewModel
     @Environment(\.dismiss) private var dismiss
     
     private let columns = [
@@ -74,7 +74,7 @@ struct PhotoSelectionView: View {
             Spacer()
         }
         .navigationDestination(isPresented: $viewModel.navigateToCaptionScreen) {
-            CaptionSelectionView(viewModel: viewModel)
+            CaptionSelectionView()
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -131,14 +131,14 @@ struct QuadrantImageView: View {
     }
 }
 
-struct PhotoSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        let gameViewModel = GameViewModel()
-        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
-        
-        return NavigationStack {
-            PhotoSelectionView(viewModel: productionPostViewModel)
-        }
-    }
-}
+//struct PhotoSelectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let gameViewModel = GameViewModel()
+//        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
+//        
+//        return NavigationStack {
+//            PhotoSelectionView()
+//        }
+//    }
+//}
 

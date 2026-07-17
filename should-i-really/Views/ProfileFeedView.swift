@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ProfileFeedView: View {
-    let posts: [String]
+    @Environment(GameViewModel.self) private var viewModel
     
+    var posts = ["7", "6", "5", "4", "3", "2", "1"]
     @State private var scrollPosition: String?
     
-    init(posts: [String], initialPostID: String? = nil) {
-        self.posts = posts
+    init(initialPostID: String? = nil) {
         self._scrollPosition = State(initialValue: initialPostID)
     }
     
@@ -23,6 +23,15 @@ struct ProfileFeedView: View {
             LazyVStack(spacing: 24) {
                 ForEach(posts, id: \.self) { post in
                     buildPostView(for: post)
+                    //                ForEach(viewModel.feedPosts) { post in
+                    //                    SinglePostView(
+                    //                        imageName: post.imageName,
+                    //                        username: viewModel.gameState?.username ?? "johndoe",
+                    //                        caption: post.selectedCaptionText,
+                    //                        commentUsername: post.comments.username,
+                    //                        comment: post.comments.text,
+                    //                        date: "Year 3 Semester 1 Month 1")
+                    
                 }
             }
             .scrollTargetLayout()
@@ -72,5 +81,6 @@ struct ProfileFeedView: View {
 }
 
 #Preview {
-    ProfileFeedView(posts: ["7", "6", "5", "4", "3", "2", "1"], initialPostID: "5")
+    ProfileFeedView(initialPostID: "5")
+        .environment(GameViewModel())
 }

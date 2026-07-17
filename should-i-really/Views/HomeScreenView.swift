@@ -12,7 +12,7 @@ struct HomeScreenView: View {
     //        @Bindable var viewModel: GameViewModel
     
     // Local state var
-    @State var viewModel = GameViewModel()
+    @Environment(GameViewModel.self) private var viewModel
     
     
     // MARK: - Body
@@ -35,10 +35,17 @@ struct HomeScreenView: View {
             case .landing:
                 LandingMenuView(viewModel: viewModel)
                     .offset(y: -8)
-//            case .usernameInput:
+            case .usernameInput:
 //                UsernameInputView(viewModel: viewModel)
-            default:
-                EmptyView()
+                Text("Username Input Screen")
+            case .timeline:
+                ProfilePageView()
+            case .archive:
+                Text("Archive screen")
+            case .ending:
+                Text("Ending Screen")
+//            default:
+//                EmptyView()
             }
             Spacer()
         }
@@ -49,4 +56,5 @@ struct HomeScreenView: View {
 
 #Preview {
     HomeScreenView()
+        .environment(GameViewModel())
 }

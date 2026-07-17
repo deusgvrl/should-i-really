@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ProfilePageView: View {
     var imageBank: [String] = ["7", "6", "5", "4", "3", "2", "1"]
+    @Environment(GameViewModel.self) private var gameViewModel
+    
+    @State private var isShowingPostFlow = false
+
     private let gridColumns = Array(
         repeating: GridItem(.flexible(), spacing: 1),
         count: 3
@@ -29,7 +33,7 @@ struct ProfilePageView: View {
                         }
                         HStack() {
                             Spacer()
-                            Text("johndoe")
+                            Text(gameViewModel.currentUsername ?? "johndoe")
                                 .fontWeight(.bold)
                                 .font(.headline)
                             Spacer()
@@ -77,16 +81,12 @@ struct ProfilePageView: View {
                         
                         //MARK: - Posts Feed Preview
                         LazyVGrid(columns: gridColumns, spacing: 1) {
-                            ForEach(imageBank, id: \.self) { item in
-                                NavigationLink(value: item) {
-                                    Image(item)
-                                        .resizable()
-                                        .frame(
-                                            maxWidth: .infinity,
-                                            maxHeight: .infinity,
-                                        )
-                                        .aspectRatio(1, contentMode: .fill)
-                                        .clipped()
+                            ForEach(gameViewModel.feedPosts) { node in
+                                NavigationLink(value: node) {
+                                    GeometryReader { geo in
+                                        QuadrantImageView(imageName: node.imageName, quadrant: node.selectedQuadrant, size: geo.size.width)
+                                    }
+                                    .aspectRatio(1, contentMode: .fill)
                                 }
                             }
                         }
@@ -99,7 +99,7 @@ struct ProfilePageView: View {
                     Spacer()
                     
                     Button {
-                        
+                        isShowingPostFlow = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
@@ -112,8 +112,11 @@ struct ProfilePageView: View {
         
                 
             }
+            .fullScreenCover(isPresented: $isShowingPostFlow) {
+                PostCreationFlowView()
+            }
             .navigationDestination(for: String.self) { selectedPostID in
-                ProfileFeedView(posts: imageBank, initialPostID: selectedPostID)
+                ProfileFeedView(initialPostID: selectedPostID)
             }
         }
         //        .border(.black)
@@ -121,6 +124,10 @@ struct ProfilePageView: View {
 }
 
 #Preview {
-    ProfilePageView()
+    let dummyVM = GameViewModel()
+    dummyVM.startGame(fromRound: 1, startNodeId: "1A")
+    
+    return ProfilePageView()
+        .environment(GameViewModel())
 }
 
