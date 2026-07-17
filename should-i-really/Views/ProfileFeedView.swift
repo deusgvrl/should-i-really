@@ -12,6 +12,7 @@ struct ProfileFeedView: View {
     
     var posts = ["7", "6", "5", "4", "3", "2", "1"]
     @State private var scrollPosition: String?
+    @State private var commentsVisible: Bool = false
     
     init(initialPostID: String? = nil) {
         self._scrollPosition = State(initialValue: initialPostID)
@@ -31,7 +32,6 @@ struct ProfileFeedView: View {
                     //                        commentUsername: post.comments.username,
                     //                        comment: post.comments.text,
                     //                        date: "Year 3 Semester 1 Month 1")
-                    
                 }
             }
             .scrollTargetLayout()
@@ -47,12 +47,22 @@ struct ProfileFeedView: View {
                 }
             }
         }
+        .onAppear {
+            NotificationManager.shared.requestPermissionAndSchedule()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
+                    commentsVisible = true
+                }
+            }
+        }
     }
     
     // MARK: - Subview Builder
     @ViewBuilder
     private func buildPostView(for post: String) -> some View {
         let metrics = getDummyMetrics(for: post)
+        let isNewestPost = (post == posts.first)
         
         SinglePostView(
             imageName: post,
@@ -62,7 +72,8 @@ struct ProfileFeedView: View {
             comment: "I'm so proud of you, you're going to do great things!",
             date: "Year 3 Semester 1 Month 1",
             photoGuardScore: metrics.framingScore,
-            vibeCheckScore: metrics.captionScore
+            vibeCheckScore: metrics.captionScore,
+            showComment: !isNewestPost ? true : commentsVisible
         )
     }
     
