@@ -24,7 +24,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 2,
         "captions": [
           {
             "id": "1A_Neg_C_Pos",

@@ -19,6 +19,9 @@ struct ProfilePageView: View {
     )
     
     var body: some View {
+        @Bindable var bindableVM = gameViewModel
+        
+        NavigationStack(path: $bindableVM.profileNavPath) {
             ZStack {
                 VStack() {
                     // MARK: - Top Bar (Username + Home Button)
@@ -81,12 +84,15 @@ struct ProfilePageView: View {
                         //MARK: - Posts Feed Preview
                         LazyVGrid(columns: gridColumns, spacing: 1) {
                             ForEach(gameViewModel.feedPosts) { node in
-                                NavigationLink(value: node) {
+                                NavigationLink(value: node.id) {
                                     GeometryReader { geo in
                                         QuadrantImageView(imageName: node.imageName, quadrant: node.selectedQuadrant, size: geo.size.width)
                                     }
                                     .aspectRatio(1, contentMode: .fill)
+                                    .contentShape(Rectangle())
+                                    .clipped()
                                 }
+                                .buttonStyle(.plain)
                             }
                         }
                         Spacer()
@@ -104,21 +110,29 @@ struct ProfilePageView: View {
                             .resizable()
                             .frame(width: 48, height: 48)
                     }
-//                    .buttonStyle(.borderedProminent)
-//                    .clipShape(.circle)
+                    //                    .buttonStyle(.borderedProminent)
+                    //                    .clipShape(.circle)
                 }
-                    
-        
-                
             }
             .fullScreenCover(isPresented: $isShowingPostFlow) {
-                PostCreationFlowView()
+                PostCreationFlowView { newPostID in
+                    isShowingPostFlow = false
+                    
+                    DispatchQueue.main.asyncAfter(deadline:.now() + 0.5) {
+                        gameViewModel.profileNavPath.append(newPostID)
+                    }
+                }
             }
             .navigationDestination(for: String.self) { selectedPostID in
+                let _ = print("🎯 [DEBUG 7] Layar ProfileFeedView dibangun untuk ID: \(selectedPostID)")
                 ProfileFeedView(initialPostID: selectedPostID)
             }
             .navigationBarBackButtonHidden(true)
+            .onChange(of: gameViewModel.profileNavPath) { oldPath, newPath in
+                print("🎯 [DEBUG 6] navPath berubah! Perintah navigasi dikirim ke SwiftUI.")
+            }
         }
+    }
         //        .border(.black)
 }
 
@@ -127,6 +141,6 @@ struct ProfilePageView: View {
     dummyVM.startGame(fromRound: 1, startNodeId: "1A")
     
     return ProfilePageView()
-        .environment(GameViewModel())
+        .environment(dummyVM)
 }
 

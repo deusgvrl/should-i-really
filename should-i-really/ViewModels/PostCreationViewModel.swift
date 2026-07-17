@@ -20,7 +20,7 @@ final class PostCreationViewModel {
         }
     }
     
-    var onPostFinished: (() -> Void)?
+    var onPostFinished: ((String) -> Void)?
     
     var availableCaptions: [CaptionOption] = []
     var selectedCaption: CaptionOption? = nil
@@ -67,18 +67,21 @@ final class PostCreationViewModel {
     // tombol post di choose caption
     func finalizeAndPost() {
         guard let selected = selectedCaption, let quadrant = selectedQuadrant else { return }
-            
+        print("🎯 [DEBUG 1] finalizeAndPost dipanggil. Memasukkan data ke GameViewModel...")
         // Laporkan pilihan ke Induk (GameViewModel) untuk diproses
         // GameViewModel yang akan mengurus muat JSON baru atau masuk ke Ending
         gameViewModel.advanceStory(nextNodeId: selected.nextNodeId, chosenQuadrant: quadrant, chosenCaption: selected)
-            
-        // Reset state untuk ronde berikutnya
-        self.selectedQuadrant = nil
-        self.selectedCaption = nil
-        self.availableCaptions = []
-        self.navigateToCaptionScreen = false
         
-        onPostFinished?()
+        let newPostID = gameViewModel.feedPosts.first?.id ?? ""
+        print("🎯 [DEBUG 2] Data berhasil disimpan. ID Post baru: '\(newPostID)'")
+        
+//        // Reset state untuk ronde berikutnya
+//        self.selectedQuadrant = nil
+//        self.selectedCaption = nil
+//        self.availableCaptions = []
+//        self.navigateToCaptionScreen = false
+        
+        onPostFinished?(newPostID)
     }
     
 }

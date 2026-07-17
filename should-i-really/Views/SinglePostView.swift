@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SinglePostView: View {
-    var imageName: String
+    let imageName: String
+    let quadrant: QuadrantPosition
     let username: String
     let caption: String
     let commentUsername: String
@@ -32,6 +33,7 @@ struct SinglePostView: View {
                 Image("pp")
                     .resizable()
                     .frame(width: 48, height: 48)
+                    .clipShape(Circle())
                     .padding(.leading, 8)
                 Text(username)
                     .font(.title3)
@@ -39,10 +41,18 @@ struct SinglePostView: View {
             }
             
             //MARK: Post Image
-            Image(imageName)
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Color.clear
                 .aspectRatio(1, contentMode: .fit)
+                .overlay {
+                    GeometryReader { geo in
+                        QuadrantImageView(imageName: imageName, quadrant: quadrant, size: geo.size.width)
+                    }
+                }
+            .clipped()
+//            Image(imageName)
+//                .resizable()
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .aspectRatio(1, contentMode: .fit)
             
             //MARK: View Insights Button
             
@@ -109,6 +119,7 @@ struct SinglePostView: View {
 #Preview {
     SinglePostView(
         imageName: "1",
+        quadrant: .bottomLeft,
         username: "johndoe",
         caption: "Seeing this disappointment hurts, but your incredible worth and intelligence are so much bigger than a letter in your hands! 🌟💪",
         commentUsername: "doejane",

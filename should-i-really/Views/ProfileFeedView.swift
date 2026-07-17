@@ -10,7 +10,6 @@ import SwiftUI
 struct ProfileFeedView: View {
     @Environment(GameViewModel.self) private var viewModel
     
-    var posts = ["7", "6", "5", "4", "3", "2", "1"]
     @State private var scrollPosition: String?
     @State private var commentsVisible: Bool = false
     
@@ -22,21 +21,14 @@ struct ProfileFeedView: View {
         //MARK: Timeline Feed View
         ScrollView {
             LazyVStack(spacing: 24) {
-                ForEach(posts, id: \.self) { post in
+                ForEach(viewModel.feedPosts) { post in
                     buildPostView(for: post)
-                    //                ForEach(viewModel.feedPosts) { post in
-                    //                    SinglePostView(
-                    //                        imageName: post.imageName,
-                    //                        username: viewModel.gameState?.username ?? "johndoe",
-                    //                        caption: post.selectedCaptionText,
-                    //                        commentUsername: post.comments.username,
-                    //                        comment: post.comments.text,
-                    //                        date: "Year 3 Semester 1 Month 1")
+                        .id(post.id)
                 }
             }
             .scrollTargetLayout()
         }
-        .scrollPosition(id: $scrollPosition)
+        .scrollPosition(id: $scrollPosition, anchor: .top)
         .ignoresSafeArea(edges: .bottom)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -60,16 +52,17 @@ struct ProfileFeedView: View {
     
     // MARK: - Subview Builder
     @ViewBuilder
-    private func buildPostView(for post: String) -> some View {
-        let metrics = getDummyMetrics(for: post)
-        let isNewestPost = (post == posts.first)
+    private func buildPostView(for post: UserPost) -> some View {
+        let metrics = getDummyMetrics(for: post.imageName)
+        let isNewestPost = (post.id == viewModel.feedPosts.first?.id)
         
         SinglePostView(
-            imageName: post,
-            username: "johndoe",
-            caption: "Seeing this disappointment hurts, but your incredible worth and intelligence are so much bigger than a letter in your hands! 🌟💪",
-            commentUsername: "doejane",
-            comment: "I'm so proud of you, you're going to do great things!",
+            imageName: post.imageName,
+            quadrant: post.selectedQuadrant,
+            username: viewModel.gameState?.username ?? "johndoe",
+            caption: post.selectedCaptionText,
+            commentUsername: post.comments.first?.username ?? "",
+            comment: post.comments.first?.text ?? "",
             date: "Year 3 Semester 1 Month 1",
             photoGuardScore: metrics.framingScore,
             vibeCheckScore: metrics.captionScore,

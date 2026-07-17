@@ -14,7 +14,7 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
     public let imageName: String
     public let selectedQuadrant: QuadrantPosition
     public let selectedCaptionText: String
-    public let comments: Comment
+    public let comments: [Comment]
 }
 
 // MARK: - Game State Model

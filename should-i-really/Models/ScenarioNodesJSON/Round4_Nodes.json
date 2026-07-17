@@ -47,7 +47,7 @@
                         ]
                     },
                     {
-                        "id": "4A_Neg_C_Pos",
+                        "id": "4A_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "5D",
@@ -171,7 +171,7 @@
                         ]
                     },
                     {
-                        "id": "4C_Neg_C_Pos",
+                        "id": "4C_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "5H",
@@ -295,7 +295,7 @@
                         ]
                     },
                     {
-                        "id": "4E_Neg_C_Pos",
+                        "id": "4E_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "5L",
@@ -419,7 +419,7 @@
                         ]
                     },
                     {
-                        "id": "4G_Neg_C_Pos",
+                        "id": "4G_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "5O",

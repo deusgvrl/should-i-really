@@ -47,7 +47,7 @@
                         ]
                     },
                     {
-                        "id": "5A_Neg_C_Pos",
+                        "id": "5A_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "ENDING_2",
@@ -171,7 +171,7 @@
                         ]
                     },
                     {
-                        "id": "5C_Neg_C_Pos",
+                        "id": "5C_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "ENDING_4",
@@ -295,7 +295,7 @@
                         ]
                     },
                     {
-                        "id": "5E_Neg_C_Pos",
+                        "id": "5E_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "ENDING_6",
@@ -419,7 +419,7 @@
                         ]
                     },
                     {
-                        "id": "5G_Neg_C_Pos",
+                        "id": "5G_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "ENDING_8",
@@ -543,7 +543,7 @@
                         ]
                     },
                     {
-                        "id": "5I_Neg_C_Pos",
+                        "id": "5I_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "ENDING_10",
@@ -667,7 +667,7 @@
                         ]
                     },
                     {
-                        "id": "5K_Neg_C_Pos",
+                        "id": "5K_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "ENDING_12",
@@ -791,7 +791,7 @@
                         ]
                     },
                     {
-                        "id": "5M_Neg_C_Pos",
+                        "id": "5M_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "ENDING_14",
@@ -915,7 +915,7 @@
                         ]
                     },
                     {
-                        "id": "5O_Neg_C_Pos",
+                        "id": "5O_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "ENDING_16",

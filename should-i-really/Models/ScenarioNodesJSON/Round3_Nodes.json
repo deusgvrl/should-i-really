@@ -47,7 +47,7 @@
                         ]
                     },
                     {
-                        "id": "3A_Neg_C_Pos",
+                        "id": "3A_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "4D",
@@ -171,7 +171,7 @@
                         ]
                     },
                     {
-                        "id": "3C_Neg_C_Pos",
+                        "id": "3C_Neg_C_Neg",
                         "type": "negative",
                         "text": "Caption negatif.",
                         "nextNodeId": "4G",

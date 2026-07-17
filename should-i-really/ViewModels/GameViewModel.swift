@@ -7,10 +7,11 @@
 
 import Foundation
 import Observation
+import SwiftUI
 
 @Observable
 public final class GameViewModel {
-    
+    var profileNavPath = NavigationPath()
     // MARK: - Route States
     public enum GameRoute: Equatable {
         case landing
@@ -70,8 +71,10 @@ public final class GameViewModel {
         
         do {
             let data = try Data(contentsOf: url)
-            let nodes = try JSONDecoder().decode([StoryNode].self, from: data)
-            
+            let decoder = JSONDecoder()
+            decoder.allowsJSON5 = true
+            let nodes = try decoder.decode([StoryNode].self, from: data)
+                
             // Simpan ke memori dan change state saat ini
             self.currentRoundDatabase = Dictionary(
                 uniqueKeysWithValues: nodes.map { ($0.id, $0)

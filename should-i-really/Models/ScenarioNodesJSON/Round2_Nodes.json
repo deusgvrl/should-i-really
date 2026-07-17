@@ -41,7 +41,7 @@
             ]
           },
           {
-            "id": "2A_Neg_C_Pos",
+            "id": "2A_Neg_C_Neg",
             "type": "negative",
             "text": "Caption negatif.",
             "nextNodeId": "3D",
