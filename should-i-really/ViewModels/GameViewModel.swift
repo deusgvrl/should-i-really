@@ -23,11 +23,20 @@ public final class GameViewModel {
     // MARK: - Core Properties
     public private(set) var currentRoute: GameRoute = .landing
     public private(set) var gameState: GameState?
-    
-    public private(set) var currentNode: StoryNode?
+        
+    private(set) var currentNode: StoryNode?
     public private(set) var currentRound: Int = 1
     
     private var currentRoundDatabase: [String: StoryNode] = [:]
+    
+    public var availableStoryNodes: [StoryNode] {
+        let sortedNodes = currentRoundDatabase.values.sorted { $0.id < $1.id }
+        return Array(sortedNodes.reversed())
+    }
+    
+    public var currentUsername: String? {
+        gameState?.username
+    }
     
     private let storageController: StorageController
     
@@ -74,7 +83,16 @@ public final class GameViewModel {
         
     // MARK: - Execution Logic
         
-    public func advanceStory(nextNodeId: String) {
+    public func advanceStory(nextNodeId: String, chosenQuadrant: QuadrantPosition, chosenCaption: CaptionOption) {
+        if let node = currentNode {
+            let newPost = UserPost(nodeId: node.id, imageName: node.imageName, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comments: chosenCaption.comments)
+            
+            if var state = self.gameState {
+                state.publishedPosts.append(newPost)
+                self.gameState = state
+            }
+        }
+        
         if nextNodeId.hasPrefix("ENDING_") {
             self.currentRoute = .ending
             print("Game selesai, ending: \(nextNodeId)")
@@ -91,6 +109,10 @@ public final class GameViewModel {
                 autoSaveProgress(round: self.currentRound, nodeId: nextNodeId)
             }
         }
+    }
+    
+    public var feedPosts: [UserPost] {
+        return Array((gameState?.publishedPosts ?? []).reversed())
     }
     
     private func autoSaveProgress(round: Int, nodeId: String) {

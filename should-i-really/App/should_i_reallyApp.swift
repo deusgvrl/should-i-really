@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct should_i_reallyApp: App {
+    @State private var gameViewModel = GameViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ProfilePageView()
+            HomeScreenView()
+                .environment(gameViewModel)
         }
     }
 }

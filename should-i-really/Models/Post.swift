@@ -13,33 +13,33 @@ enum CropType: String, Codable, Hashable {
     case negative = "negative"
 }
 
-enum QuadrantPosition: Int, Codable, CaseIterable, Hashable {
+public enum QuadrantPosition: Int, Codable, CaseIterable, Hashable {
     case topLeft = 1
     case topRight = 2
     case bottomLeft = 3
     case bottomRight = 4
 }
 
-struct Comment: Identifiable, Codable, Equatable, Hashable {
-    let id: String
+public struct Comment: Identifiable, Codable, Equatable, Hashable {
+    public let id: String
     let username: String
     let text: String
 }
 
-struct CaptionOption: Identifiable, Codable, Equatable, Hashable {
-    let id: String
+public struct CaptionOption: Identifiable, Codable, Equatable, Hashable {
+    public let id: String
     let type: CropType
     let text: String
     let nextNodeId: String
-    let comments: [Comment]
+    let comments: Comment
 }
 
-struct CropDetails: Codable {
+struct CropDetails: Codable, Equatable, Hashable {
     let quadrant: QuadrantPosition
     let captions: [CaptionOption]
 }
 
-struct CropsContainer: Codable {
+struct CropsContainer: Codable, Equatable, Hashable {
     let positiveCrop: CropDetails
     let negativeCrop: CropDetails
     
@@ -50,8 +50,8 @@ struct CropsContainer: Codable {
     }
 }
 
-struct StoryNode: Identifiable, Codable {
-    let id: String
+public struct StoryNode: Identifiable, Codable, Hashable {
+    public let id: String
     let round: Int
     let bigPictureId: String
     let crops: CropsContainer

@@ -10,7 +10,7 @@ import SwiftUI
 struct CaptionSelectionView: View {
     
     // MARK: - Dependencies (Using Modern @Observable Pattern)
-    var viewModel: PostCreationViewModel
+    @Environment(PostCreationViewModel.self) var viewModel
     @Environment(\.dismiss) private var dismissAction
     
     // MARK: - Design System Constants
@@ -46,6 +46,7 @@ struct CaptionSelectionView: View {
             
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
+                    viewModel.navigateToCaptionScreen = false
                     dismissAction()
                 }) {
                     Image(systemName: "chevron.left")
@@ -59,11 +60,6 @@ struct CaptionSelectionView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     viewModel.finalizeAndPost()
-                    
-                    withAnimation(.easeInOut) {
-                        viewModel.navigateToCaptionPage = false
-                    }
-                    dismissAction()
                 }) {
                     Image(systemName: "arrow.up")
                         .font(.headline)
@@ -71,11 +67,9 @@ struct CaptionSelectionView: View {
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.circle)
                 .tint(viewModel.selectedQuadrant != nil ? activeColor : inactiveColor)
-                .disabled(viewModel.selectedCaptionIndex == nil)
+                .disabled(viewModel.selectedCaption == nil)
             }
         }
-//        NavigationStack {
-//        }
     }
     
     // MARK: - Subviews
@@ -113,16 +107,15 @@ struct CaptionSelectionView: View {
     
     private var captionChoicesContainer: some View {
         VStack(spacing: 16) {
-            ForEach(0..<viewModel.availableCaptions.count, id: \.self) { index in
-                let captionText = viewModel.availableCaptions[index]
-                let isSelected = viewModel.selectedCaptionIndex == index
+            ForEach(viewModel.availableCaptions) { caption in
+                let isSelected = viewModel.selectedCaption?.id == caption.id
                 
                 Button(action: {
                     withAnimation(.easeInOut(duration: 0.2)) {
-                        viewModel.selectedCaptionIndex = index
+                        viewModel.selectCaption(caption)
                     }
                 }) {
-                    Text(captionText)
+                    Text(caption.text)
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .multilineTextAlignment(.center)
@@ -144,20 +137,20 @@ struct CaptionSelectionView: View {
         }
         .padding(.top, 32)
         .padding(.horizontal, 24)
-        .animation(.easeInOut(duration: 0.2), value: viewModel.selectedCaptionIndex)
+        .animation(.easeInOut(duration: 0.2), value: viewModel.selectedCaption)
     }
 }
 
-// MARK: - Preview Generator
-struct CaptionSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        let gameViewModel = GameViewModel()
-        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
-        
-        productionPostViewModel.selectedQuadrant = .topLeft
-        
-        return NavigationView {
-            CaptionSelectionView(viewModel: productionPostViewModel)
-        }
-    }
-}
+//// MARK: - Preview Generator
+//struct CaptionSelectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let gameViewModel = GameViewModel()
+//        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
+//        
+//        productionPostViewModel.selectedQuadrant = .topLeft
+//        
+//        return NavigationView {
+//            CaptionSelectionView()
+//        }
+//    }
+//}

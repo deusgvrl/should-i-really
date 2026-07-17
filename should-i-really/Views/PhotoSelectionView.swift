@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhotoSelectionView: View {
-    var viewModel: PostCreationViewModel
+    @Environment(PostCreationViewModel.self) private var viewModel
     @Environment(\.dismiss) private var dismiss
     
     private let columns = [
@@ -25,7 +25,7 @@ struct PhotoSelectionView: View {
                 let tileSize = totalSize / 2
                 
                 LazyVGrid(columns: columns, spacing: 0) {
-                    ForEach(Quadrant.allCases, id: \.self) { quadrant in
+                    ForEach(QuadrantPosition.allCases, id: \.self) { quadrant in
                         let isActive = viewModel.activeQuadrants.contains(quadrant)
                         let isSelected = viewModel.selectedQuadrant == quadrant
                         
@@ -73,8 +73,8 @@ struct PhotoSelectionView: View {
             
             Spacer()
         }
-        .navigationDestination(isPresented: $viewModel.navigateToCaptionPage) {
-            CaptionSelectionView(viewModel: viewModel)
+        .navigationDestination(isPresented: $viewModel.navigateToCaptionScreen) {
+            CaptionSelectionView()
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -112,7 +112,7 @@ struct PhotoSelectionView: View {
 
 struct QuadrantImageView: View {
     let imageName: String
-    let quadrant: Quadrant
+    let quadrant: QuadrantPosition
     let size: CGFloat
     
     var body: some View {
@@ -131,14 +131,14 @@ struct QuadrantImageView: View {
     }
 }
 
-struct PhotoSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        let gameViewModel = GameViewModel()
-        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
-        
-        return NavigationStack {
-            PhotoSelectionView(viewModel: productionPostViewModel)
-        }
-    }
-}
+//struct PhotoSelectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let gameViewModel = GameViewModel()
+//        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
+//        
+//        return NavigationStack {
+//            PhotoSelectionView()
+//        }
+//    }
+//}
 

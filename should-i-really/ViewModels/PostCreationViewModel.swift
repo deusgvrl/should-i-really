@@ -19,9 +19,19 @@ final class PostCreationViewModel {
             updateAvailableCaptions()
         }
     }
-        
+    
+    var onPostFinished: (() -> Void)?
+    
     var availableCaptions: [CaptionOption] = []
     var selectedCaption: CaptionOption? = nil
+    
+    var currentImageName: String {
+        return gameViewModel.currentNode?.imageName ?? ""
+    }
+    
+    var activeQuadrants: Set<QuadrantPosition> {
+        return gameViewModel.currentNode?.activeQuadrants ?? []
+    }
         
     // MARK: - Navigation Triggers
     var navigateToCaptionScreen: Bool = false
@@ -56,17 +66,19 @@ final class PostCreationViewModel {
         
     // tombol post di choose caption
     func finalizeAndPost() {
-        guard let selected = selectedCaption else { return }
+        guard let selected = selectedCaption, let quadrant = selectedQuadrant else { return }
             
         // Laporkan pilihan ke Induk (GameViewModel) untuk diproses
         // GameViewModel yang akan mengurus muat JSON baru atau masuk ke Ending
-        gameViewModel.advanceStory(nextNodeId: selected.nextNodeId)
+        gameViewModel.advanceStory(nextNodeId: selected.nextNodeId, chosenQuadrant: quadrant, chosenCaption: selected)
             
-        // Reset state antarmuka untuk ronde berikutnya
+        // Reset state untuk ronde berikutnya
         self.selectedQuadrant = nil
         self.selectedCaption = nil
         self.availableCaptions = []
         self.navigateToCaptionScreen = false
+        
+        onPostFinished?()
     }
     
 }
