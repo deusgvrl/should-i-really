@@ -30,7 +30,6 @@ public final class GameViewModel {
     public private(set) var currentRound: Int = 1
     
     private var currentRoundDatabase: [String: StoryNode] = [:]
-    var gameState: GameState?
 
     
     public var availableStoryNodes: [StoryNode] {

@@ -17,6 +17,8 @@ struct HomeScreenView: View {
     
     // MARK: - Body
     var body: some View {
+        @Bindable var viewModel = viewModel
+        
         NavigationStack(path: $viewModel.navigationPath){
             VStack() {
                 Text("Should I")
