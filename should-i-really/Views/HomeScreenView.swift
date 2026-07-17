@@ -44,8 +44,8 @@ struct HomeScreenView: View {
                 Text("Archive screen")
             case .ending:
                 Text("Ending Screen")
-//            default:
-//                EmptyView()
+                //            default:
+                //                EmptyView()
             }
             Spacer()
         }

@@ -13,7 +13,7 @@ struct should_i_reallyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ProfilePageView()
+            HomeScreenView()
                 .environment(gameViewModel)
         }
     }
