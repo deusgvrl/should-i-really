@@ -17,7 +17,8 @@ struct SinglePostView: View {
     
     var photoGuardScore: Int = 1
     var vibeCheckScore: Int = 0
-    
+    var showComment: Bool
+
     @State private var showInsights = false
     
     var body: some View {
@@ -74,11 +75,20 @@ struct SinglePostView: View {
                 .padding(.trailing, 4)
             
             //MARK: Comment
-            Text("**\(commentUsername)** \(comment)")
-                .font(.body)
-                .multilineTextAlignment(.leading)
-                .padding(.leading, 8)
-                .padding(.trailing, 4)
+            if showComment {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("**\(commentUsername)** \(comment)")
+                        .font(.body)
+                        .multilineTextAlignment(.leading)
+                        .padding(.leading, 8)
+                        .padding(.trailing, 4)
+                }
+                .transition(.opacity.combined(with: .move(edge: .top)))
+                
+                .allowsHitTesting(false)
+                .disabled(true)
+            }
+            
             Text(date)
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -103,6 +113,7 @@ struct SinglePostView: View {
         caption: "Seeing this disappointment hurts, but your incredible worth and intelligence are so much bigger than a letter in your hands! 🌟💪",
         commentUsername: "doejane",
         comment: "I'm so proud of you, you're going to do great things!",
-        date: "Year 3 Semester 1 Month 1"
+        date: "Year 3 Semester 1 Month 1",
+        showComment: true
     )
 }
