@@ -11,13 +11,13 @@ import SwiftUI
 
 @Observable
 public final class GameViewModel {
-    var profileNavPath = NavigationPath()
     // MARK: - Route States
-    public enum GameRoute: Equatable {
+    public enum GameRoute: Equatable, Hashable {
         case landing
         case usernameInput
         case prologue
         case timeline
+        case feedView (postID: String)
         case archive
         case ending
     }
@@ -92,7 +92,7 @@ public final class GameViewModel {
     
     public func advanceStory(nextNodeId: String, chosenQuadrant: QuadrantPosition, chosenCaption: CaptionOption) {
         if let node = currentNode {
-            let newPost = UserPost(nodeId: node.id, imageName: node.imageName, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comments: chosenCaption.comments)
+            let newPost = UserPost(nodeId: node.id, imageName: node.imageName, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comment: chosenCaption.comments)
             
             if var state = self.gameState {
                 state.publishedPosts.append(newPost)

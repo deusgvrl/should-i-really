@@ -31,7 +31,7 @@ public struct CaptionOption: Identifiable, Codable, Equatable, Hashable {
     let type: CropType
     let text: String
     let nextNodeId: String
-    let comments: [Comment]
+    let comments: Comment?
 }
 
 struct CropDetails: Codable, Equatable, Hashable {
@@ -48,6 +48,16 @@ struct CropsContainer: Codable, Equatable, Hashable {
         case positiveCrop = "positive_crop"
         case negativeCrop = "negative_crop"
     }
+}
+
+// MARK: - User Post
+public struct UserPost: Codable, Identifiable, Equatable, Hashable {
+    public var id: String { nodeId }
+    public let nodeId: String
+    public let imageName: String
+    public let selectedQuadrant: QuadrantPosition
+    public let selectedCaptionText: String
+    public let comment: Comment?
 }
 
 public struct StoryNode: Identifiable, Codable, Hashable {

@@ -10,11 +10,13 @@ import SwiftUI
 struct ProfileFeedView: View {
     @Environment(GameViewModel.self) private var viewModel
     
-    @State private var scrollPosition: String?
+    let initialPostID: String?
+    
+    @State private var scrollPosition: String? = nil
     @State private var commentsVisible: Bool = false
     
     init(initialPostID: String? = nil) {
-        self._scrollPosition = State(initialValue: initialPostID)
+        self.initialPostID = initialPostID
     }
     
     var body: some View {
@@ -35,16 +37,27 @@ struct ProfileFeedView: View {
             ToolbarItem(placement: .principal) {
                 VStack(spacing: 0) {
                     Text("Posts").font(.subheadline).bold()
-                    Text("johndoe").font(.caption).foregroundStyle(.secondary).bold()
+                    Text("johndoe")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .bold()
                 }
             }
         }
         .onAppear {
             NotificationManager.shared.requestPermissionAndSchedule()
-            
+                    
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
                     commentsVisible = true
+                }
+            }
+                    
+            if let targetID = initialPostID {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        scrollPosition = targetID
+                    }
                 }
             }
         }
@@ -61,8 +74,8 @@ struct ProfileFeedView: View {
             quadrant: post.selectedQuadrant,
             username: viewModel.gameState?.username ?? "johndoe",
             caption: post.selectedCaptionText,
-            commentUsername: post.comments.first?.username ?? "",
-            comment: post.comments.first?.text ?? "",
+            commentUsername: post.comment?.username ?? "",
+            comment: post.comment?.text ?? "",
             date: "Year 3 Semester 1 Month 1",
             photoGuardScore: metrics.framingScore,
             vibeCheckScore: metrics.captionScore,
@@ -71,7 +84,10 @@ struct ProfileFeedView: View {
     }
     
     // MARK: - Dummy Metrics
-    private func getDummyMetrics(for postImageName: String) -> (framingScore: Int, captionScore: Int) {
+    private func getDummyMetrics(for postImageName: String) -> (
+        framingScore: Int,
+        captionScore: Int
+    ) {
         switch postImageName {
         case "7": return (framingScore: 1, captionScore: 1)
         case "6": return (framingScore: 0, captionScore: 1)
