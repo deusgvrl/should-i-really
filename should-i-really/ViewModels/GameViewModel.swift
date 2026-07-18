@@ -7,16 +7,17 @@
 
 import Foundation
 import Observation
+import SwiftUI
 
 @Observable
 public final class GameViewModel {
-    
     // MARK: - Route States
-    public enum GameRoute: Equatable {
+    public enum GameRoute: Equatable, Hashable {
         case landing
         case usernameInput
         case prologue
         case timeline
+        case feedView (postID: String)
         case archive
         case ending
     }
@@ -70,8 +71,10 @@ public final class GameViewModel {
         
         do {
             let data = try Data(contentsOf: url)
-            let nodes = try JSONDecoder().decode([StoryNode].self, from: data)
-            
+            let decoder = JSONDecoder()
+            decoder.allowsJSON5 = true
+            let nodes = try decoder.decode([StoryNode].self, from: data)
+                
             // Simpan ke memori dan change state saat ini
             self.currentRoundDatabase = Dictionary(
                 uniqueKeysWithValues: nodes.map { ($0.id, $0)
@@ -89,7 +92,7 @@ public final class GameViewModel {
     
     public func advanceStory(nextNodeId: String, chosenQuadrant: QuadrantPosition, chosenCaption: CaptionOption) {
         if let node = currentNode {
-            let newPost = UserPost(nodeId: node.id, imageName: node.imageName, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comments: chosenCaption.comments)
+            let newPost = UserPost(nodeId: node.id, imageName: node.imageName, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comment: chosenCaption.comments)
             
             if var state = self.gameState {
                 state.publishedPosts.append(newPost)

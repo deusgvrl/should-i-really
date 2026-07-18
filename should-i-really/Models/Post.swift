@@ -31,7 +31,7 @@ public struct CaptionOption: Identifiable, Codable, Equatable, Hashable {
     let type: CropType
     let text: String
     let nextNodeId: String
-    let comments: Comment
+    let comments: Comment?
 }
 
 struct CropDetails: Codable, Equatable, Hashable {
@@ -50,6 +50,16 @@ struct CropsContainer: Codable, Equatable, Hashable {
     }
 }
 
+// MARK: - User Post
+public struct UserPost: Codable, Identifiable, Equatable, Hashable {
+    public var id: String { nodeId }
+    public let nodeId: String
+    public let imageName: String
+    public let selectedQuadrant: QuadrantPosition
+    public let selectedCaptionText: String
+    public let comment: Comment?
+}
+
 public struct StoryNode: Identifiable, Codable, Hashable {
     public let id: String
     let round: Int
@@ -63,8 +73,21 @@ public struct StoryNode: Identifiable, Codable, Hashable {
         case crops
     }
     
+    // MARK: - TEMPORARY BYPASS: Dummy Images
+    
     var imageName: String {
-        return bigPictureId
+        return getDummyImage(for: round)
+    }
+    
+    private func getDummyImage(for roundNumber: Int) -> String {
+        switch roundNumber {
+        case 1: return "SampleImage1"
+        case 2: return "SampleImage2"
+        case 3: return "SampleImage3"
+        case 4: return "SampleImage4"
+        case 5: return "SampleImage5"
+        default: return "SampleImage1"
+        }
     }
         
     var activeQuadrants: Set<QuadrantPosition> {

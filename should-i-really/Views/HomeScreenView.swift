@@ -53,6 +53,8 @@ struct HomeScreenView: View {
                     ArchiveView()
                 case .timeline:
                     ProfilePageView()
+                case .feedView(let postID):
+                    ProfileFeedView(initialPostID: postID)
                 default:
                     EmptyView()
                 }
