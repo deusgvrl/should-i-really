@@ -92,7 +92,7 @@ public final class GameViewModel {
     
     public func advanceStory(nextNodeId: String, chosenQuadrant: QuadrantPosition, chosenCaption: CaptionOption) {
         if let node = currentNode {
-            let newPost = UserPost(nodeId: node.id, imageName: node.imageName, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comment: chosenCaption.comments)
+            let newPost = UserPost(nodeId: node.id, imageName: node.bigPictureId, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comment: chosenCaption.comments)
             
             if var state = self.gameState {
                 state.publishedPosts.append(newPost)

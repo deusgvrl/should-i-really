@@ -26,7 +26,7 @@ final class PostCreationViewModel {
     var selectedCaption: CaptionOption? = nil
     
     var currentImageName: String {
-        return gameViewModel.currentNode?.imageName ?? ""
+        return gameViewModel.currentNode?.bigPictureId ?? ""
     }
     
     var activeQuadrants: Set<QuadrantPosition> {

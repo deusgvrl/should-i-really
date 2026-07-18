@@ -3,7 +3,7 @@
     {
         "id": "3A",
         "round": 3,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage3",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -61,7 +61,7 @@
     {
         "id": "3B",
         "round": 3,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage3",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -119,7 +119,7 @@
     {
         "id": "3C",
         "round": 3,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage3",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -177,7 +177,7 @@
     {
         "id": "3D",
         "round": 3,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage3",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,

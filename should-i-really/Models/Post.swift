@@ -73,22 +73,6 @@ public struct StoryNode: Identifiable, Codable, Hashable {
         case crops
     }
     
-    // MARK: - TEMPORARY BYPASS: Dummy Images
-    
-    var imageName: String {
-        return getDummyImage(for: round)
-    }
-    
-    private func getDummyImage(for roundNumber: Int) -> String {
-        switch roundNumber {
-        case 1: return "SampleImage1"
-        case 2: return "SampleImage2"
-        case 3: return "SampleImage3"
-        case 4: return "SampleImage4"
-        case 5: return "SampleImage5"
-        default: return "SampleImage1"
-        }
-    }
         
     var activeQuadrants: Set<QuadrantPosition> {
         return [crops.positiveCrop.quadrant, crops.negativeCrop.quadrant]
