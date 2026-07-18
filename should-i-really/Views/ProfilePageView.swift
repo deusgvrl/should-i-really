@@ -124,10 +124,10 @@ struct ProfilePageView: View {
         }
         .fullScreenCover(isPresented: $isShowingPostFlow) {
             PostCreationFlowView { newPostID in
-                isShowingPostFlow = false
+                gameViewModel.navigationPath.append(.feedView(postID: newPostID))
                     
-                DispatchQueue.main.asyncAfter(deadline:.now() + 0.2) {
-                    gameViewModel.navigationPath.append(.feedView(postID: newPostID))
+                DispatchQueue.main.asyncAfter(deadline:.now() + 0.4) {
+                    isShowingPostFlow = false
                 }
             }
         }

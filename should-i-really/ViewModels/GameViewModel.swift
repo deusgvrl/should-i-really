@@ -109,11 +109,13 @@ public final class GameViewModel {
                 autoSaveProgress(round: self.currentRound, nodeId: nextNodeId)
             } else {
                 self.currentRound += 1
-                loadStoryFromJSON(
-                    round: self.currentRound,
-                    startNodeId: nextNodeId
-                )
-                autoSaveProgress(round: self.currentRound, nodeId: nextNodeId)
+                DispatchQueue.main.asyncAfter(deadline:.now() + 0.6) {
+                    self.loadStoryFromJSON(
+                        round: self.currentRound,
+                        startNodeId: nextNodeId
+                    )
+                    self.autoSaveProgress(round: self.currentRound, nodeId: nextNodeId)
+                }
             }
         }
     }
