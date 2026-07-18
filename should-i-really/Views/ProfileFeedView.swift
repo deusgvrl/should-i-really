@@ -66,7 +66,6 @@ struct ProfileFeedView: View {
     // MARK: - Subview Builder
     @ViewBuilder
     private func buildPostView(for post: UserPost) -> some View {
-//        let metrics = getDummyMetrics(for: post.imageName)
         let isNewestPost = (post.id == viewModel.feedPosts.first?.id)
         
         SinglePostView(
@@ -81,22 +80,6 @@ struct ProfileFeedView: View {
             vibeCheckType: post.vibeCheckResult,
             showComment: !isNewestPost ? true : commentsVisible
         )
-    }
-    
-    // MARK: - Dummy Metrics
-    private func getDummyMetrics(for postImageName: String) -> (
-        framingScore: Int,
-        captionScore: Int
-    ) {
-        switch postImageName {
-        case "7": return (framingScore: 1, captionScore: 1)
-        case "6": return (framingScore: 0, captionScore: 1)
-        case "5": return (framingScore: 1, captionScore: 0)
-        case "4": return (framingScore: 0, captionScore: 0)
-        case "3": return (framingScore: 1, captionScore: 1)
-        case "2": return (framingScore: 0, captionScore: 1)
-        default:  return (framingScore: 1, captionScore: 0)
-        }
     }
 }
 
