@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Jose (Model yang dipakai json)
-enum CropType: String, Codable, Hashable {
+public enum CropType: String, Codable, Hashable {
     case positive = "positive"
     case negative = "negative"
 }
@@ -58,6 +58,8 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
     public let selectedQuadrant: QuadrantPosition
     public let selectedCaptionText: String
     public let comment: Comment?
+    public let photoGuardResult: CropType
+    public let vibeCheckResult: CropType
 }
 
 public struct StoryNode: Identifiable, Codable, Hashable {

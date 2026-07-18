@@ -8,8 +8,8 @@ import SwiftUI
 
 struct InsightsOverlayView: View {
     
-    let framingScore: Int
-    let captionScore: Int
+    let framingType : CropType
+    let captionType : CropType
     
     // MARK: - Sheet
     var body: some View {
@@ -23,8 +23,8 @@ struct InsightsOverlayView: View {
                 .padding(.bottom, 24)
             
             HStack(spacing: 16) {
-                metricCard(title: "Photo Guard", value: framingScore)
-                metricCard(title: "Vibe Check", value: captionScore)
+                metricCard(title: "Photo Guard", type: framingType)
+                metricCard(title: "Vibe Check", type: captionType)
             }
             .padding(.horizontal, 24)
             
@@ -36,9 +36,9 @@ struct InsightsOverlayView: View {
     
     // MARK: - Builder untuk Card Metric
     @ViewBuilder
-    private func metricCard(title: String, value: Int) -> some View {
+    private func metricCard(title: String, type: CropType) -> some View {
         
-        let isGood = value == 1
+        let isGood: Bool = type == .positive
         
         VStack(alignment: .leading, spacing: 12) {
             Text(title)

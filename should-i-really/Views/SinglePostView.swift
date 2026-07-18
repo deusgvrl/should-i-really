@@ -16,8 +16,8 @@ struct SinglePostView: View {
     let comment: String
     let date: String
     
-    var photoGuardScore: Int = 1
-    var vibeCheckScore: Int = 0
+    let photoGuardType: CropType
+    let vibeCheckType: CropType
     var showComment: Bool
 
     @State private var showInsights = false
@@ -106,10 +106,7 @@ struct SinglePostView: View {
         }
         // MARK: - Sheet Integration
         .sheet (isPresented: $showInsights) {
-            InsightsOverlayView(
-                framingScore: photoGuardScore,
-                captionScore: vibeCheckScore
-            )
+            InsightsOverlayView(framingType: photoGuardType, captionType: vibeCheckType)
             .presentationDetents([.fraction(0.45)])
             .presentationDragIndicator(.visible)
         }
@@ -125,6 +122,8 @@ struct SinglePostView: View {
         commentUsername: "doejane",
         comment: "I'm so proud of you, you're going to do great things!",
         date: "Year 3 Semester 1 Month 1",
+        photoGuardType: .negative,
+        vibeCheckType: .positive,
         showComment: true
     )
 }
