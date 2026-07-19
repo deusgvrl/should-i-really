@@ -60,6 +60,12 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
     public let comment: Comment?
     public let photoGuardResult: CropType
     public let vibeCheckResult: CropType
+    static var openingPost: UserPost {
+        UserPost(nodeId: "first_post", imageName: "SampleImage5", selectedQuadrant: .bottomLeft, selectedCaptionText: "Hari Pertama di sekolah", comment: nil, photoGuardResult: .positive, vibeCheckResult: .positive)
+    }
+    static var endingPost: UserPost {
+        UserPost(nodeId: "last_post", imageName: "SampleImage5", selectedQuadrant: .bottomLeft, selectedCaptionText: "Hari Terakhir di sekolah", comment: nil, photoGuardResult: .positive, vibeCheckResult: .positive)
+    }
 }
 
 public struct StoryNode: Identifiable, Codable, Hashable {

@@ -166,7 +166,8 @@ public final class GameViewModel {
         )
         guard !trimmedName.isEmpty else { return }
         
-        let newState = GameState(username: trimmedName)
+        var newState = GameState(username: trimmedName)
+        newState.publishedPosts.append(UserPost.openingPost)
         storageController.saveGame(newState)
         self.gameState = newState
         
