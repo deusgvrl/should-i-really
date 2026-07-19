@@ -87,6 +87,7 @@ struct ProfileFeedView: View {
             commentUsername: post.comment?.username ?? "",
             comment: post.comment?.text ?? "",
             date: "Year 3 Semester 1 Month 1",
+            nodeId: post.nodeId,
             photoGuardType: post.photoGuardResult,
             vibeCheckType: post.vibeCheckResult,
             showComment: !isNewestPost ? true : commentsVisible,

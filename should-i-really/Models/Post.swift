@@ -61,10 +61,10 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
     public let photoGuardResult: CropType
     public let vibeCheckResult: CropType
     static var openingPost: UserPost {
-        UserPost(nodeId: "first_post", imageName: "SampleImage5", selectedQuadrant: .bottomLeft, selectedCaptionText: "Hari Pertama di sekolah", comment: nil, photoGuardResult: .positive, vibeCheckResult: .positive)
+        UserPost(nodeId: "first_post", imageName: "SampleImage5", selectedQuadrant: .bottomLeft, selectedCaptionText: "Hari Pertama di sekolah", comment: Comment(id: "com_first_post", username: "doejane", text: "Congrats on your first day!"), photoGuardResult: .positive, vibeCheckResult: .positive)
     }
     static var endingPost: UserPost {
-        UserPost(nodeId: "last_post", imageName: "SampleImage5", selectedQuadrant: .bottomLeft, selectedCaptionText: "Hari Terakhir di sekolah", comment: nil, photoGuardResult: .positive, vibeCheckResult: .positive)
+        UserPost(nodeId: "last_post", imageName: "SampleImage5", selectedQuadrant: .bottomLeft, selectedCaptionText: "Hari Terakhir di sekolah", comment: Comment(id: "com_last_post", username: "doejane", text: "Congrats on your graduation!"), photoGuardResult: .positive, vibeCheckResult: .positive)
     }
 }
 

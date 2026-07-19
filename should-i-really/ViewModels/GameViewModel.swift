@@ -56,6 +56,10 @@ public final class GameViewModel {
     
     // MARK: - Story Engine & JSON Loader
     
+    public func injectEndingPost() {
+        gameState?.publishedPosts.append(UserPost.endingPost)
+    }
+    
     public func startGame(fromRound round: Int, startNodeId: String) {
         currentRoute = .timeline
         loadStoryFromJSON(round: round, startNodeId: startNodeId)

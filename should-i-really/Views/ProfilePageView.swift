@@ -17,7 +17,7 @@ struct ProfilePageView: View {
         repeating: GridItem(.flexible(), spacing: 1),
         count: 3
     )
-    
+        
     var body: some View {
         
         ZStack {
@@ -108,15 +108,36 @@ struct ProfilePageView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             //MARK: - Add Post Button
+            let isGameFinished = gameViewModel.currentRoute == .ending
+            let hasInjectedGameEnding = gameViewModel.feedPosts.contains(where: {$0.nodeId == "last_post"})
             VStack {
                 Spacer()
-                    
-                Button {
-                    isShowingPostFlow = true
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .frame(width: 48, height: 48)
+                
+                if (isGameFinished && hasInjectedGameEnding) {
+                    Button {
+                        gameViewModel.navigationPath.append(.ending)
+                    } label: {
+                        Image(systemName: "chevron.right.circle.fill")
+                            .resizable()
+                            .frame(width: 48, height: 48)
+                    }
+                } else if (isGameFinished && !hasInjectedGameEnding) {
+                    Button {
+                        gameViewModel.injectEndingPost()
+                        gameViewModel.navigationPath.append(.feedView(postID: "last_post"))
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 48, height: 48)
+                    }
+                } else {
+                    Button {
+                        isShowingPostFlow = true
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 48, height: 48)
+                    }
                 }
             }
         }

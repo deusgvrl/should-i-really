@@ -15,6 +15,7 @@ struct SinglePostView: View {
     let commentUsername: String
     let comment: String
     let date: String
+    let nodeId: String
     
     let photoGuardType: CropType
     let vibeCheckType: CropType
@@ -56,25 +57,26 @@ struct SinglePostView: View {
 
             
             //MARK: View Insights Button
-            
-            Button (action: {
-                onInsightsTapped()
-            }) {
-                HStack(spacing: 4) {
-                    Image(systemName: "aqi.medium.gauge.open")
-                        .font(.subheadline)
-                        .foregroundStyle(activeColor)
-                    Text("View insights")
-                        .font(.subheadline)
-                        .foregroundStyle(activeColor)
+            if nodeId != "first_post" && nodeId != "last_post" {
+                Button (action: {
+                    onInsightsTapped()
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "aqi.medium.gauge.open")
+                            .font(.subheadline)
+                            .foregroundStyle(activeColor)
+                        Text("View insights")
+                            .font(.subheadline)
+                            .foregroundStyle(activeColor)
+                    }
+                    .padding(.leading, 8)
+                    .padding(.vertical, 4)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(Rectangle())
                 }
-                .padding(.leading, 8)
-                .padding(.vertical, 4)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .contentShape(Rectangle())
+                .buttonStyle(.borderless)
+                .zIndex(100)
             }
-            .buttonStyle(.borderless)
-            .zIndex(100)
             
             Divider()
             //MARK: Share Deck Icons
@@ -122,6 +124,7 @@ struct SinglePostView: View {
         commentUsername: "doejane",
         comment: "I'm so proud of you, you're going to do great things!",
         date: "Year 3 Semester 1 Month 1",
+        nodeId: "",
         photoGuardType: .negative,
         vibeCheckType: .positive,
         showComment: true,
