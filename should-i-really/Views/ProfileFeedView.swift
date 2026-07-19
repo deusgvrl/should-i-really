@@ -10,6 +10,9 @@ import SwiftUI
 struct ProfileFeedView: View {
     @Environment(GameViewModel.self) private var viewModel
     
+    @State private var selectedPostForInsights: UserPost? = nil
+    @State private var forceRedraw = false
+    
     let initialPostID: String?
     
     @State private var scrollPosition: String? = nil
@@ -22,7 +25,7 @@ struct ProfileFeedView: View {
     var body: some View {
         //MARK: Timeline Feed View
         ScrollView {
-            LazyVStack(spacing: 24) {
+            VStack(spacing: 24) {
                 ForEach(viewModel.feedPosts) { post in
                     buildPostView(for: post)
                         .id(post.id)
@@ -31,7 +34,8 @@ struct ProfileFeedView: View {
             .scrollTargetLayout()
         }
         .scrollPosition(id: $scrollPosition, anchor: .top)
-        .ignoresSafeArea(edges: .bottom)
+//        .ignoresSafeArea(edges: .bottom)
+        .opacity(forceRedraw ? 1.0 : 0.99)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -45,6 +49,10 @@ struct ProfileFeedView: View {
             }
         }
         .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                forceRedraw = true
+            }
+            
             NotificationManager.shared.requestPermissionAndSchedule()
                     
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
@@ -54,12 +62,15 @@ struct ProfileFeedView: View {
             }
                     
             if let targetID = initialPostID {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) {
-                    withAnimation(.easeInOut(duration: 0.3)) {
-                        scrollPosition = targetID
-                    }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                    scrollPosition = targetID
                 }
             }
+        }
+        .sheet(item: $selectedPostForInsights) { post in
+            InsightsOverlayView(framingType: post.photoGuardResult, captionType: post.vibeCheckResult)
+                .presentationDetents([.fraction(0.45)])
+                .presentationDragIndicator(.visible)
         }
     }
     
@@ -78,7 +89,11 @@ struct ProfileFeedView: View {
             date: "Year 3 Semester 1 Month 1",
             photoGuardType: post.photoGuardResult,
             vibeCheckType: post.vibeCheckResult,
-            showComment: !isNewestPost ? true : commentsVisible
+            showComment: !isNewestPost ? true : commentsVisible,
+            onInsightsTapped: {
+                print("🎯 DEBUG: Button tapped for node: \(post.nodeId)")
+                self.selectedPostForInsights = post
+            }
         )
     }
 }

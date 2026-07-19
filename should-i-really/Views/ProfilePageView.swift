@@ -118,15 +118,13 @@ struct ProfilePageView: View {
                         .resizable()
                         .frame(width: 48, height: 48)
                 }
-                //                    .buttonStyle(.borderedProminent)
-                //                    .clipShape(.circle)
             }
         }
         .fullScreenCover(isPresented: $isShowingPostFlow) {
             PostCreationFlowView { newPostID in
                 gameViewModel.navigationPath.append(.feedView(postID: newPostID))
                     
-                DispatchQueue.main.asyncAfter(deadline:.now() + 0.4) {
+                DispatchQueue.main.asyncAfter(deadline:.now() + 0.3) {
                     isShowingPostFlow = false
                 }
             }
@@ -139,7 +137,6 @@ struct ProfilePageView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
-    //        .border(.black)
 }
 
 #Preview {
