@@ -16,16 +16,20 @@ struct SinglePostView: View {
     let comment: String
     let date: String
     
-    var photoGuardScore: Int = 1
-    var vibeCheckScore: Int = 0
+    let photoGuardType: CropType
+    let vibeCheckType: CropType
     var showComment: Bool
 
-    @State private var showInsights = false
+    var onInsightsTapped: (() -> Void)
     
     var body: some View {
         
         // MARK: - Design System Constants
-        let activeColor = Color(red: 173/255, green: 127/255, blue: 94/255) // Brown
+        let activeColor = Color(
+            red: 173/255,
+            green: 127/255,
+            blue: 94/255
+        ) // Brown
         
         VStack(alignment: .leading,spacing: 8) {
             //MARK: Profile Pict + Username
@@ -49,26 +53,28 @@ struct SinglePostView: View {
                     }
                 }
             .clipped()
-//            Image(imageName)
-//                .resizable()
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .aspectRatio(1, contentMode: .fit)
+
             
             //MARK: View Insights Button
             
             Button (action: {
-                showInsights = true}) {
-                    HStack(spacing: 4) {
-                        Image(systemName: "aqi.medium.gauge.open")
-                            .font(.subheadline)
-                            .foregroundStyle(activeColor)
-                        Text("View insights")
-                            .font(.subheadline)
-                            .foregroundStyle(activeColor)
-                    }
-                    .padding(.leading, 8)
-                    .padding(.vertical, 4)
+                onInsightsTapped()
+            }) {
+                HStack(spacing: 4) {
+                    Image(systemName: "aqi.medium.gauge.open")
+                        .font(.subheadline)
+                        .foregroundStyle(activeColor)
+                    Text("View insights")
+                        .font(.subheadline)
+                        .foregroundStyle(activeColor)
                 }
+                .padding(.leading, 8)
+                .padding(.vertical, 4)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.borderless)
+            .zIndex(100)
             
             Divider()
             //MARK: Share Deck Icons
@@ -104,15 +110,6 @@ struct SinglePostView: View {
                 .foregroundStyle(.secondary)
                 .padding(.leading, 8)
         }
-        // MARK: - Sheet Integration
-        .sheet (isPresented: $showInsights) {
-            InsightsOverlayView(
-                framingScore: photoGuardScore,
-                captionScore: vibeCheckScore
-            )
-            .presentationDetents([.fraction(0.45)])
-            .presentationDragIndicator(.visible)
-        }
     }
 }
 
@@ -125,6 +122,11 @@ struct SinglePostView: View {
         commentUsername: "doejane",
         comment: "I'm so proud of you, you're going to do great things!",
         date: "Year 3 Semester 1 Month 1",
-        showComment: true
+        photoGuardType: .negative,
+        vibeCheckType: .positive,
+        showComment: true,
+        onInsightsTapped: {
+            
+        }
     )
 }

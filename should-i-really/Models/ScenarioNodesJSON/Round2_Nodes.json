@@ -3,7 +3,7 @@
   {
     "id": "2A",
     "round": 2,
-    "big_picture_id": "big_pic_1",
+    "big_picture_id": "SampleImage2",
     "crops": {
       "positive_crop": {
         "quadrant": 1,
@@ -53,7 +53,7 @@
   {
     "id": "2B",
     "round": 2,
-    "big_picture_id": "big_pic_1",
+    "big_picture_id": "SampleImage2",
     "crops": {
       "positive_crop": {
         "quadrant": 1,

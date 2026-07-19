@@ -116,18 +116,17 @@ struct QuadrantImageView: View {
     let size: CGFloat
     
     var body: some View {
-        GeometryReader { _ in
-            Image(imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(width: size * 2, height: size * 2)
-                .offset(
-                    x: (quadrant == .topLeft || quadrant == .bottomLeft) ? 0 : -size,
-                    y: (quadrant == .topLeft || quadrant == .topRight) ? 0 : -size
-                )
-        }
-        .frame(width: size, height: size)
-        .clipped()
+        Image(imageName)
+            .resizable()
+            .scaledToFill()
+            .frame(width: size * 2, height: size * 2)
+            .offset(
+                x: (quadrant == .topLeft || quadrant == .bottomLeft) ? 0 : -size,
+                y: (quadrant == .topLeft || quadrant == .topRight) ? 0 : -size
+            )
+            .frame(width: size, height: size, alignment: .topLeading)
+            .clipped()
+            .allowsHitTesting(false)
     }
 }
 

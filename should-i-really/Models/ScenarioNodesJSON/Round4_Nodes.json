@@ -3,7 +3,7 @@
     {
         "id": "4A",
         "round": 4,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage4",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -61,7 +61,7 @@
     {
         "id": "4B",
         "round": 4,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage4",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -119,7 +119,7 @@
     {
         "id": "4C",
         "round": 4,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage4",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -177,7 +177,7 @@
     {
         "id": "4D",
         "round": 4,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage4",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -235,7 +235,7 @@
     {
         "id": "4E",
         "round": 4,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage4",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -293,7 +293,7 @@
     {
         "id": "4F",
         "round": 4,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage4",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -351,7 +351,7 @@
     {
         "id": "4G",
         "round": 4,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage4",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
@@ -409,7 +409,7 @@
     {
         "id": "4H",
         "round": 4,
-        "big_picture_id": "big_pic_1",
+        "big_picture_id": "SampleImage4",
         "crops": {
             "positive_crop": {
                 "quadrant": 1,
