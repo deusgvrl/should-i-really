@@ -42,9 +42,11 @@ struct CompletePostFlowTests {
         #expect(updatedFeed.count == initialFeedCount + 1)
         
         let newlyPublishedPost = try #require(updatedFeed.first)
+        let publishedComment = try #require(newlyPublishedPost.comment, "Published post has no comment")
+        let captionComment = try #require(chosenCaption.comments, "Chosen caption has no comment")
         
-        #expect(newlyPublishedPost.comments.id == chosenCaption.comments.id)
-        #expect(!newlyPublishedPost.comments.text.isEmpty)
+        #expect(publishedComment.id == captionComment.id)
+        #expect(!publishedComment.text.isEmpty)
         
         #expect(gameViewModel.currentNode?.id == chosenCaption.nextNodeId)
     }
