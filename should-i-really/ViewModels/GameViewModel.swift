@@ -56,6 +56,10 @@ public final class GameViewModel {
     
     // MARK: - Story Engine & JSON Loader
     
+    public func injectEndingPost() {
+        gameState?.publishedPosts.append(UserPost.endingPost)
+    }
+    
     public func startGame(fromRound round: Int, startNodeId: String) {
         currentRoute = .timeline
         loadStoryFromJSON(round: round, startNodeId: startNodeId)
@@ -166,7 +170,8 @@ public final class GameViewModel {
         )
         guard !trimmedName.isEmpty else { return }
         
-        let newState = GameState(username: trimmedName)
+        var newState = GameState(username: trimmedName)
+        newState.publishedPosts.append(UserPost.openingPost)
         storageController.saveGame(newState)
         self.gameState = newState
         
