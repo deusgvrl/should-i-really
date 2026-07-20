@@ -45,7 +45,7 @@ final class PostCreationViewModel {
     private func updateAvailableCaptions() {
         if let quadrant = selectedQuadrant,
            let node = gameViewModel.currentNode {
-            self.availableCaptions = node.options[quadrant] ?? []
+            self.availableCaptions = (node.options[quadrant] ?? []).shuffled()
         } else {
             self.availableCaptions = []
         }
