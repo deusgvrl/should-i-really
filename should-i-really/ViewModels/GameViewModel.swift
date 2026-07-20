@@ -25,6 +25,7 @@ public final class GameViewModel {
     // MARK: - Core Properties
     public private(set) var currentRoute: GameRoute = .landing
     public private(set) var gameState: GameState?
+    public private(set) var lastEndingId: String?
     
     var navigationPath: [GameRoute] = []
     
@@ -109,7 +110,7 @@ public final class GameViewModel {
         }
         
         if nextNodeId.hasPrefix("ENDING_") {
-            self.currentRoute = .ending
+            self.lastEndingId = nextNodeId
             print("Game selesai, ending: \(nextNodeId)")
         } else {
             if let nextNode = currentRoundDatabase[nextNodeId] {

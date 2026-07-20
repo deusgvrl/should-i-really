@@ -108,7 +108,7 @@ struct ProfilePageView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             //MARK: - Add Post Button
-            let isGameFinished = gameViewModel.currentRoute == .ending
+            let isGameFinished = gameViewModel.lastEndingId != nil
             let hasInjectedGameEnding = gameViewModel.feedPosts.contains(where: {$0.nodeId == "last_post"})
             VStack {
                 Spacer()
