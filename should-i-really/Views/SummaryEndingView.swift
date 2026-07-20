@@ -30,13 +30,11 @@ struct EndingSummaryView: View {
                 ScrollView {
                     VStack(spacing: 24) {
                         
-                        // 1. Header Title
                         Text("Ending")
                             .font(.headline)
                             .foregroundStyle(themeText)
                             .padding(.top, 16)
                         
-                        // 2. Dynamic Image
                         Image(ending.imageName)
                             .resizable()
                             .scaledToFill()
@@ -48,29 +46,26 @@ struct EndingSummaryView: View {
                             )
                             .padding(.top, 8)
                         
-                        // 3. Archetype Title
-                        Text(ending.title)
-                            .font(.system(size: 32, weight: .bold))
-                            .foregroundStyle(themeText)
-                            .multilineTextAlignment(.center)
-                        
-                        // 4. Main Description
-                        Text(ending.mainDescription)
-                            .font(.body)
-                            .foregroundStyle(themeText)
-                            .lineSpacing(4)
-                            .multilineTextAlignment(.leading)
-                            .padding(.bottom, 8)
-                        
-                        // 5. Traits Breakdown
-                        VStack(alignment: .leading, spacing: 20) {
+                        VStack(spacing: 8) {
+                            Text(ending.title)
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundStyle(themeText)
+                                .multilineTextAlignment(.center)
                             
-                            // Photo Trait
+                            Text(ending.mainDescription)
+                                .font(.subheadline)
+                                .foregroundStyle(themeText)
+                                .lineSpacing(4)
+                                .multilineTextAlignment(.leading)
+                        }
+                        
+                        VStack(alignment: .leading, spacing: 16) {
+                            
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack {
                                     Text("📷")
                                     Text(ending.photoTraitTitle)
-                                        .font(.headline)
+                                        .font(.subheadline)
                                         .fontWeight(.bold)
                                         .foregroundStyle(themeText)
                                 }
@@ -81,12 +76,11 @@ struct EndingSummaryView: View {
                                     .lineSpacing(4)
                             }
                             
-                            // Caption Trait
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack {
                                     Text("✍️")
                                     Text(ending.captionTraitTitle)
-                                        .font(.headline)
+                                        .font(.subheadline)
                                         .fontWeight(.bold)
                                         .foregroundStyle(themeText)
                                 }
@@ -101,7 +95,6 @@ struct EndingSummaryView: View {
                         
                         Spacer(minLength: 32)
                         
-                        // 6. Return Button
                         Button(action: {
                             gameVM.deleteActiveSave()
                         }) {
@@ -119,7 +112,7 @@ struct EndingSummaryView: View {
                     .padding(.horizontal, 24)
                 }
             } else {
-                // Fallback jika data ID tidak ditemukan di JSON
+                // Fallback 
                 VStack(spacing: 16) {
                     Text("Ending data not found.")
                         .font(.headline)
