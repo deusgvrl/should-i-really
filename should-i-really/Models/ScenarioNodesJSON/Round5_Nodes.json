@@ -11,11 +11,11 @@
                     {
                         "id": "5A_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Rainy days 🌧️✨",
                         "nextNodeId": "ENDING_1",
                         "comments": 
                             {
-                                "id": "com_5A_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5A_Pos_C_Pos", "username": "doejane", "text": "Rainy days can be beautiful. ✨"
                             }
                     },
                     {
@@ -25,7 +25,7 @@
                         "nextNodeId": "ENDING_1",
                         "comments": 
                             {
-                                "id": "com_5A_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5A_Pos_C_Neg", "username": "doejane", "text": "Short, but it matches the photo"
                             }
                     }
                 ]
@@ -36,21 +36,21 @@
                     {
                         "id": "5A_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Rainy days make the best memories",
                         "nextNodeId": "ENDING_2",
                         "comments": 
                             {
-                                "id": "com_5A_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5A_Neg_C_Pos", "username": "doejane", "text": "Focus on the moment, not the accident"
                             }
                     },
                     {
-                        "id": "5A_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Caption negatif.",
+                        "id": "5A_Neg_C_Pos2",
+                        "type": "positive",
+                        "text": "The funniest moment of the day 😂",
                         "nextNodeId": "ENDING_2",
                         "comments": 
                             {
-                                "id": "com_5A_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5A_Neg_C_Pos2", "username": "doejane", "text": "Their safety matters more than the post"
                             }
                     }
                 ]
@@ -69,21 +69,21 @@
                     {
                         "id": "5B_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "A big moment today 💙",
                         "nextNodeId": "ENDING_2",
                         "comments": 
                             {
-                                "id": "com_5B_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5B_Pos_C_Pos", "username": "doejane", "text": "Congratulations on this amazing achievement!"
                             }
                     },
                     {
-                        "id": "5B_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5B_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "An unforgettable day ✨",
                         "nextNodeId": "ENDING_2",
                         "comments": 
                             {
-                                "id": "com_5B_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5B_Pos_C_Pos2", "username": "doejane", "text": "A memory worth celebrating"
                             }
                     }
                 ]
@@ -94,21 +94,21 @@
                     {
                         "id": "5B_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "A big moment today 💙",
                         "nextNodeId": "ENDING_3",
                         "comments": 
                             {
-                                "id": "com_5B_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5B_Neg_C_Pos", "username": "doejane", "text": "Don't focus only on someone's emotions"
                             }
                     },
                     {
                         "id": "5B_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Caption negatif.",
+                        "type": "positive",
+                        "text": "An unforgettable day ✨",
                         "nextNodeId": "ENDING_3",
                         "comments": 
                             {
-                                "id": "com_5B_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5B_Neg_C_Pos2", "username": "doejane", "text": "The story is bigger than one expression"
                             }
                     }
                 ]
@@ -127,21 +127,21 @@
                     {
                         "id": "5C_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Just another day with friends ✨",
                         "nextNodeId": "ENDING_3",
                         "comments": 
                             {
-                                "id": "com_5C_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5C_Pos_C_Pos", "username": "doejane", "text": "Thanks for respecting everyone's comfort"
                             }
                     },
                     {
-                        "id": "5C_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5C_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Making memories together 📸",
                         "nextNodeId": "ENDING_3",
                         "comments": 
                             {
-                                "id": "com_5C_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5C_Pos_C_Pos2", "username": "doejane", "text": "A great photo respects everyone's boundaries"
                             }
                     }
                 ]
@@ -152,21 +152,21 @@
                     {
                         "id": "5C_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Just another day with friends ✨",
                         "nextNodeId": "ENDING_4",
                         "comments": 
                             {
-                                "id": "com_5C_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5C_Neg_C_Pos", "username": "doejane", "text": "Respect when someone doesn't want to be photographed"
                             }
                     },
                     {
-                        "id": "5C_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Caption negatif.",
+                        "id": "5C_Neg_C_Pos2",
+                        "type": "positive",
+                        "text": "Making memories together 📸",
                         "nextNodeId": "ENDING_4",
                         "comments": 
                             {
-                                "id": "com_5C_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5C_Neg_C_Pos2", "username": "doejane", "text": "Not everyone wants to be in the picture"
                             }
                     }
                 ]
@@ -185,21 +185,21 @@
                     {
                         "id": "5D_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Learning with technology 📱",
                         "nextNodeId": "ENDING_4",
                         "comments": 
                             {
-                                "id": "com_5D_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5D_Pos_C_Pos", "username": "doejane", "text": "Now the full story is clear"
                             }
                     },
                     {
-                        "id": "5D_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5D_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Today's lesson 📚",
                         "nextNodeId": "ENDING_4",
                         "comments": 
                             {
-                                "id": "com_5D_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5D_Pos_C_Pos2", "username": "doejane", "text": "The photo gives the right context"
                             }
                     }
                 ]
@@ -210,21 +210,21 @@
                     {
                         "id": "5D_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Learning with technology 📱",
                         "nextNodeId": "ENDING_5",
                         "comments": 
                             {
-                                "id": "com_5D_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5D_Neg_C_Pos", "username": "doejane", "text": "The photo doesn't show the full context"
                             }
                     },
                     {
-                        "id": "5D_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Caption negatif.",
+                        "id": "5D_Neg_C_Pos2",
+                        "type": "positive",
+                        "text": "Today's lesson 📚",
                         "nextNodeId": "ENDING_5",
                         "comments": 
                             {
-                                "id": "com_5D_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5D_Neg_C_Pos2", "username": "doejane", "text": "Without context, people may get the wrong idea"
                             }
                     }
                 ]
@@ -243,21 +243,21 @@
                     {
                         "id": "5E_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Class memories ✨",
                         "nextNodeId": "ENDING_5",
                         "comments": 
                             {
-                                "id": "com_5E_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5E_Pos_C_Pos", "username": "doejane", "text": "Everyone belongs in the memory"
                             }
                     },
                     {
-                        "id": "5E_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5E_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Together after class 📸",
                         "nextNodeId": "ENDING_5",
                         "comments": 
                             {
-                                "id": "com_5E_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5E_Pos_C_Pos2", "username": "doejane", "text": "A great moment shared by everyone"
                             }
                     }
                 ]
@@ -266,23 +266,23 @@
                 "quadrant": 3,
                 "captions": [
                     {
-                        "id": "5E_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Caption positif.",
+                        "id": "5E_Neg_C_Neg2",
+                        "type": "negative",
+                        "text": "everybody looks good, except one 📸",
                         "nextNodeId": "ENDING_6",
                         "comments": 
                             {
-                                "id": "com_5E_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5E_Neg_C_Pos", "username": "doejane", "text": "Shut up!"
                             }
                     },
                     {
                         "id": "5E_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Look at his face HAHA",
                         "nextNodeId": "ENDING_6",
                         "comments": 
                             {
-                                "id": "com_5E_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5E_Neg_C_Neg", "username": "doejane", "text": "Mind your own business!"
                             }
                     }
                 ]
@@ -301,21 +301,21 @@
                     {
                         "id": "5F_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "End of today's activities ✨",
                         "nextNodeId": "ENDING_6",
                         "comments": 
                             {
-                                "id": "com_5F_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5F_Pos_C_Pos", "username": "doejane", "text": "A wonderful memory with everyone"
                             }
                     },
                     {
-                        "id": "5F_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5F_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "A great day at school 📸",
                         "nextNodeId": "ENDING_6",
                         "comments": 
                             {
-                                "id": "com_5F_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5F_Pos_C_Pos2", "username": "doejane", "text": "The whole class is the highlight"
                             }
                     }
                 ]
@@ -324,23 +324,23 @@
                 "quadrant": 3,
                 "captions": [
                     {
-                        "id": "5F_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Caption positif.",
+                        "id": "5F_Neg_C_Neg2",
+                        "type": "negative",
+                        "text": "With our favorite baldie!",
                         "nextNodeId": "ENDING_7",
                         "comments": 
                             {
-                                "id": "com_5F_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5F_Neg_C_Neg2", "username": "doejane", "text": "Be respectful to your teacher"
                             }
                     },
                     {
                         "id": "5F_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Beautiful hair, mr! 📸",
                         "nextNodeId": "ENDING_7",
                         "comments": 
                             {
-                                "id": "com_5F_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5F_Neg_C_Neg", "username": "doejane", "text": "Remove this post now!"
                             }
                     }
                 ]
@@ -359,21 +359,21 @@
                     {
                         "id": "5G_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "My favorite books",
                         "nextNodeId": "ENDING_7",
                         "comments": 
                             {
-                                "id": "com_5G_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5G_Pos_C_Pos", "username": "doejane", "text": "I love that book too"
                             }
                     },
                     {
-                        "id": "5G_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5G_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Cozy desk",
                         "nextNodeId": "ENDING_7",
                         "comments": 
                             {
-                                "id": "com_5G_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5G_Pos_C_Pos2", "username": "doejane", "text": "Desk inspo 👀"
                             }
                     }
                 ]
@@ -384,21 +384,21 @@
                     {
                         "id": "5G_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Seize the day",
                         "nextNodeId": "ENDING_8",
                         "comments": 
                             {
-                                "id": "com_5G_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5G_Neg_C_Pos", "username": "doejane", "text": "You should not post this kind of information"
                             }
                     },
                     {
-                        "id": "5G_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Caption negatif.",
+                        "id": "5G_Neg_C_Pos2",
+                        "type": "positive",
+                        "text": "My wall✨",
                         "nextNodeId": "ENDING_8",
                         "comments": 
                             {
-                                "id": "com_5G_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5G_Neg_C_Pos2", "username": "doejane", "text": "Be careful with the content you post"
                             }
                     }
                 ]
@@ -417,21 +417,21 @@
                     {
                         "id": "5H_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Competition day 🏆",
                         "nextNodeId": "ENDING_8",
                         "comments": 
                             {
-                                "id": "com_5H_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5H_Pos_C_Pos", "username": "doejane", "text": "Congratulations to everyone!"
                             }
                     },
                     {
-                        "id": "5H_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5H_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Prize ceremony ✨",
                         "nextNodeId": "ENDING_8",
                         "comments": 
                             {
-                                "id": "com_5H_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5H_Pos_C_Pos2", "username": "doejane", "text": "Sportsmanship makes every victory meaningful"
                             }
                     }
                 ]
@@ -440,23 +440,23 @@
                 "quadrant": 3,
                 "captions": [
                     {
-                        "id": "5H_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Caption positif.",
+                        "id": "5H_Neg_C_Neg2",
+                        "type": "negative",
+                        "text": "Second place is the first loser",
                         "nextNodeId": "ENDING_9",
                         "comments": 
                             {
-                                "id": "com_5H_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5H_Neg_C_Neg2", "username": "doejane", "text": "You don't know his effort!"
                             }
                     },
                     {
                         "id": "5H_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Second winner is crying rn",
                         "nextNodeId": "ENDING_9",
                         "comments": 
                             {
-                                "id": "com_5H_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5H_Neg_C_Neg", "username": "doejane", "text": "Don't miss the bigger picture."
                             }
                     }
                 ]
@@ -475,21 +475,21 @@
                     {
                         "id": "5I_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Basketball game day 🏀",
                         "nextNodeId": "ENDING_9",
                         "comments": 
                             {
-                                "id": "com_5I_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5I_Pos_C_Pos", "username": "doejane", "text": "Great game and great school spirit!"
                             }
                     },
                     {
-                        "id": "5I_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5I_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "School tournament ✨",
                         "nextNodeId": "ENDING_9",
                         "comments": 
                             {
-                                "id": "com_5I_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5I_Pos_C_Pos2", "username": "doejane", "text": "I love today game!"
                             }
                     }
                 ]
@@ -498,23 +498,23 @@
                 "quadrant": 3,
                 "captions": [
                     {
-                        "id": "5I_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Caption positif.",
+                        "id": "5I_Neg_C_Neg2",
+                        "type": "negative",
+                        "text": "the worst crowd ever",
                         "nextNodeId": "ENDING_10",
                         "comments": 
                             {
-                                "id": "com_5I_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5I_Neg_C_Neg2", "username": "doejane", "text": "A small conflict isn't the whole event"
                             }
                     },
                     {
                         "id": "5I_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "School tournament as usual",
                         "nextNodeId": "ENDING_10",
                         "comments": 
                             {
-                                "id": "com_5I_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5I_Neg_C_Neg", "username": "doejane", "text": "There's more to the story than one moment"
                             }
                     }
                 ]
@@ -533,21 +533,21 @@
                     {
                         "id": "5J_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Students expressing creativity through art 🎨✨",
                         "nextNodeId": "ENDING_10",
                         "comments": 
                             {
-                                "id": "com_5J_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5J_Pos_C_Pos", "username": "doejane", "text": "The mural deserves the spotlight"
                             }
                     },
                     {
-                        "id": "5J_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5J_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Adding color to our school ✨",
                         "nextNodeId": "ENDING_10",
                         "comments": 
                             {
-                                "id": "com_5J_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5J_Pos_C_Pos2", "username": "doejane", "text": "I love mural art!"
                             }
                     }
                 ]
@@ -558,21 +558,21 @@
                     {
                         "id": "5J_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Someone left their mark. ✍️",
                         "nextNodeId": "ENDING_11",
                         "comments": 
                             {
-                                "id": "com_5J_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5J_Neg_C_Pos", "username": "doejane", "text": "Don't give vandalism the spotlight"
                             }
                     },
                     {
-                        "id": "5J_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Caption negatif.",
+                        "id": "5J_Neg_C_Pos2",
+                        "type": "positive",
+                        "text": "Someone ruined the school wall again 😕",
                         "nextNodeId": "ENDING_11",
                         "comments": 
                             {
-                                "id": "com_5J_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5J_Neg_C_Pos2", "username": "doejane", "text": "The artwork tells a better story"
                             }
                     }
                 ]
@@ -591,21 +591,21 @@
                     {
                         "id": "5K_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "School bazaar day 🎪",
                         "nextNodeId": "ENDING_11",
                         "comments": 
                             {
-                                "id": "com_5K_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5K_Pos_C_Pos", "username": "doejane", "text": "The event is the real highlight"
                             }
                     },
                     {
-                        "id": "5K_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5K_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Busy booth, happy memories ✨",
                         "nextNodeId": "ENDING_11",
                         "comments": 
                             {
-                                "id": "com_5K_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5K_Pos_C_Pos2", "username": "doejane", "text": "Great job!"
                             }
                     }
                 ]
@@ -616,21 +616,21 @@
                     {
                         "id": "5K_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Busy day at the school bazaar 🎪",
                         "nextNodeId": "ENDING_12",
                         "comments": 
                             {
-                                "id": "com_5K_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5K_Neg_C_Pos", "username": "doejane", "text": "Be careful not to reveal personal information"
                             }
                     },
                     {
-                        "id": "5K_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Caption negatif.",
+                        "id": "5K_Neg_C_Pos2",
+                        "type": "positive",
+                        "text": "Lots happening today! ✨",
                         "nextNodeId": "ENDING_12",
                         "comments": 
                             {
-                                "id": "com_5K_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5K_Neg_C_Pos2", "username": "doejane", "text": "Check the background before you post"
                             }
                     }
                 ]
@@ -649,21 +649,21 @@
                     {
                         "id": "5L_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "The place where we grew up together 🌟",
                         "nextNodeId": "ENDING_12",
                         "comments": 
                             {
-                                "id": "com_5L_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5L_Pos_C_Pos", "username": "doejane", "text": "A bit nostalgic <3"
                             }
                     },
                     {
-                        "id": "5L_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5L_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Second home.",
                         "nextNodeId": "ENDING_12",
                         "comments": 
                             {
-                                "id": "com_5L_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5L_Pos_C_Pos2", "username": "doejane", "text": "Nice group photo!"
                             }
                     }
                 ]
@@ -674,21 +674,21 @@
                     {
                         "id": "5L_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "My favorite place",
                         "nextNodeId": "ENDING_13",
                         "comments": 
                             {
-                                "id": "com_5L_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5L_Neg_C_Pos", "username": "doejane", "text": "Delete this!"
                             }
                     },
                     {
-                        "id": "5L_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Caption negatif.",
+                        "id": "5L_Neg_C_Pos2",
+                        "type": "positive",
+                        "text": "Best place to hang out 😬",
                         "nextNodeId": "ENDING_13",
                         "comments": 
                             {
-                                "id": "com_5L_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5L_Neg_C_Pos2", "username": "doejane", "text": "Protect your friend's privacy"
                             }
                     }
                 ]
@@ -707,21 +707,21 @@
                     {
                         "id": "5M_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Working together and getting things done ☕📚",
                         "nextNodeId": "ENDING_13",
                         "comments": 
                             {
-                                "id": "com_5M_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5M_Pos_C_Pos", "username": "doejane", "text": "The moment is about everyone. ☕"
                             }
                     },
                     {
-                        "id": "5M_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5M_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "With my favorite team",
                         "nextNodeId": "ENDING_13",
                         "comments": 
                             {
-                                "id": "com_5M_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5M_Pos_C_Pos2", "username": "doejane", "text": "Ily too!"
                             }
                     }
                 ]
@@ -730,23 +730,23 @@
                 "quadrant": 3,
                 "captions": [
                     {
-                        "id": "5M_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Caption positif.",
+                        "id": "5M_Neg_C_Neg2",
+                        "type": "negative",
+                        "text": "🚬🚬🚬",
                         "nextNodeId": "ENDING_14",
                         "comments": 
                             {
-                                "id": "com_5M_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5M_Neg_C_Neg2", "username": "doejane", "text": "Hey, don't post me!"
                             }
                     },
                     {
                         "id": "5M_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Just hanging out 🚬😮‍💨",
                         "nextNodeId": "ENDING_14",
                         "comments": 
                             {
-                                "id": "com_5M_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5M_Neg_C_Neg", "username": "doejane", "text": "Focus on the whole picture"
                             }
                     }
                 ]
@@ -765,21 +765,21 @@
                     {
                         "id": "5N_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Good food with friends 🍱✨",
                         "nextNodeId": "ENDING_14",
                         "comments": 
                             {
-                                "id": "com_5N_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5N_Pos_C_Pos", "username": "doejane", "text": "Looks like a fun lunch!"
                             }
                     },
                     {
-                        "id": "5N_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5N_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "Looks like a fun lunch!",
                         "nextNodeId": "ENDING_14",
                         "comments": 
                             {
-                                "id": "com_5N_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5N_Pos_C_Pos2", "username": "doejane", "text": "Love the pic!"
                             }
                     }
                 ]
@@ -788,23 +788,23 @@
                 "quadrant": 3,
                 "captions": [
                     {
-                        "id": "5N_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Caption positif.",
+                        "id": "5N_Neg_C_Neg2",
+                        "type": "negative",
+                        "text": "Someone eat like a baby 😂",
                         "nextNodeId": "ENDING_15",
                         "comments": 
                             {
-                                "id": "com_5N_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5N_Neg_C_Neg2", "username": "doejane", "text": "Don't make someone the joke"
                             }
                     },
                     {
                         "id": "5N_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Keep eating, my friend😂",
                         "nextNodeId": "ENDING_15",
                         "comments": 
                             {
-                                "id": "com_5N_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5N_Neg_C_Neg", "username": "doejane", "text": "Why are you doing this to me?"
                             }
                     }
                 ]
@@ -823,21 +823,21 @@
                     {
                         "id": "5O_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Creating something special for our class event 🎨✨",
                         "nextNodeId": "ENDING_15",
                         "comments": 
                             {
-                                "id": "com_5O_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5O_Pos_C_Pos", "username": "doejane", "text": "Love the creativity!"
                             }
                     },
                     {
-                        "id": "5O_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5O_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "The most beautiful class in made",
                         "nextNodeId": "ENDING_15",
                         "comments": 
                             {
-                                "id": "com_5G_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5G_Pos_C_Pos2", "username": "doejane", "text": "t feels like looking at the Mona Lisa"
                             }
                     }
                 ]
@@ -846,23 +846,23 @@
                 "quadrant": 3,
                 "captions": [
                     {
-                        "id": "5O_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Caption positif.",
+                        "id": "5O_Neg_C_Neg2",
+                        "type": "negative",
+                        "text": "The most dangerous kid in town 😂",
                         "nextNodeId": "ENDING_16",
                         "comments": 
                             {
-                                "id": "com_5O_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5O_Neg_C_Neg2", "username": "doejane", "text": "I use that to open the paint bucket!"
                             }
                     },
                     {
                         "id": "5O_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "I hate Monday.",
                         "nextNodeId": "ENDING_16",
                         "comments": 
                             {
-                                "id": "com_5O_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5O_Neg_C_Neg", "username": "doejane", "text": "What does Monday have to do with this?"
                             }
                     }
                 ]
@@ -881,21 +881,21 @@
                     {
                         "id": "5P_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Capturing moments for our school project 📸✨",
                         "nextNodeId": "ENDING_15",
                         "comments": 
                             {
-                                "id": "com_5P_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_5P_Pos_C_Pos", "username": "doejane", "text": "Good luck with the project!"
                             }
                     },
                     {
-                        "id": "5P_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Caption Negatif.",
+                        "id": "5P_Pos_C_Pos2",
+                        "type": "positive",
+                        "text": "the best project so far",
                         "nextNodeId": "ENDING_15",
                         "comments": 
                             {
-                                "id": "com_5P_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_5P_Pos_C_Pos2", "username": "doejane", "text": "Love your photograph"
                             }
                     }
                 ]
@@ -904,23 +904,23 @@
                 "quadrant": 3,
                 "captions": [
                     {
-                        "id": "5P_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Caption positif.",
+                        "id": "5P_Neg_C_Neg2",
+                        "type": "negative",
+                        "text": "Your stalker, everybody!😬",
                         "nextNodeId": "ENDING_16",
                         "comments": 
                             {
-                                "id": "com_5P_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_5P_Neg_C_Neg2", "username": "doejane", "text": "That's a serious assumption"
                             }
                     },
                     {
                         "id": "5P_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "stalker reveal 📸",
                         "nextNodeId": "ENDING_16",
                         "comments": 
                             {
-                                "id": "com_5P_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_5P_Neg_C_Neg", "username": "doejane", "text": "I'm taking a group photo, you idiot"
                             }
                     }
                 ]
