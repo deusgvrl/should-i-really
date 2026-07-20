@@ -16,7 +16,6 @@ struct ProfileFeedView: View {
     let initialPostID: String?
     
     @State private var scrollPosition: String? = nil
-    @State private var commentsVisible: Bool = false
     
     init(initialPostID: String? = nil) {
         self.initialPostID = initialPostID
@@ -53,11 +52,14 @@ struct ProfileFeedView: View {
                 forceRedraw = true
             }
             
-            NotificationManager.shared.requestPermissionAndSchedule()
-                    
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
-                    commentsVisible = true
+            if let newestPost = viewModel.feedPosts.first, !newestPost.isCommentRevealed {
+                
+                NotificationManager.shared.requestPermissionAndSchedule()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                    withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
+                        viewModel.markCommentAsRevealed(for: newestPost.id)
+                    }
                 }
             }
                     
@@ -90,7 +92,7 @@ struct ProfileFeedView: View {
             nodeId: post.nodeId,
             photoGuardType: post.photoGuardResult,
             vibeCheckType: post.vibeCheckResult,
-            showComment: !isNewestPost ? true : commentsVisible,
+            showComment: !isNewestPost ? true : post.isCommentRevealed,
             onInsightsTapped: {
                 print("🎯 DEBUG: Button tapped for node: \(post.nodeId)")
                 self.selectedPostForInsights = post

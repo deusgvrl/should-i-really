@@ -206,4 +206,13 @@ public final class GameViewModel {
         navigationPath.removeAll()
         currentRoute = .landing
     }
+    
+    public func markCommentAsRevealed(for postID: String) {
+        guard var state = self.gameState else { return }
+        
+        if let index = state.publishedPosts.firstIndex(where: { $0.id == postID }) {
+            state.publishedPosts[index].isCommentRevealed = true
+            self.gameState = state
+        }
+    }
 }
