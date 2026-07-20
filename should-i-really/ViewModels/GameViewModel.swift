@@ -213,6 +213,7 @@ public final class GameViewModel {
         if let index = state.publishedPosts.firstIndex(where: { $0.id == postID }) {
             state.publishedPosts[index].isCommentRevealed = true
             self.gameState = state
+            storageController.saveGame(state)
         }
     }
 }
