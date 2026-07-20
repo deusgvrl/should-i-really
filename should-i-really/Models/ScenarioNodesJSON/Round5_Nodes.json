@@ -351,10 +351,10 @@
     {
         "id": "5G",
         "round": 5,
-        "big_picture_id": "SampleImage5",
+        "big_picture_id": "node_5G",
         "crops": {
             "positive_crop": {
-                "quadrant": 1,
+                "quadrant": 3,
                 "captions": [
                     {
                         "id": "5G_Pos_C_Pos",
@@ -379,7 +379,7 @@
                 ]
             },
             "negative_crop": {
-                "quadrant": 3,
+                "quadrant": 2,
                 "captions": [
                     {
                         "id": "5G_Neg_C_Pos",

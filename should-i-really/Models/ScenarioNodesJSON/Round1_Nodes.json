@@ -2,10 +2,10 @@
   {
     "id": "1A",
     "round": 1,
-    "big_picture_id": "SampleImage1",
+    "big_picture_id": "node_1",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 3,
         "captions": [
           {
             "id": "1A_Pos_C_Pos",
@@ -24,7 +24,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 2,
+        "quadrant": 4,
         "captions": [
           {
             "id": "1A_Neg_C_Neg",
