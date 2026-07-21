@@ -9,6 +9,7 @@ import Foundation
 
 
 // MARK: - Storage Controller
+@MainActor
 public final class StorageController {
     
     // MARK: - Save State Key
@@ -42,6 +43,7 @@ public final class StorageController {
         } catch {
             // TODO: Route errors to central debugging dashboard
             print("Failed to load game state: \(error)")
+            deleteGame()
             return nil
         }
     }
