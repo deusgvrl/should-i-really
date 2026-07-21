@@ -30,11 +30,31 @@ extension GameViewModel {
         currentRoute = .timeline
     }
     
+    public func isValidUsername(_ username: String) -> Bool {
+        // Min 1, Max 16 karakter
+        guard username.count >= 1 && username.count <= 16 else { return false }
+        
+        // tidak boleh 0
+        guard username != "0" else { return false }
+        
+        // cuma huruf, angka, underscore (_), dan titik (.)
+        let allowedCharacterSet = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "_."))
+        guard username.unicodeScalars.allSatisfy({ allowedCharacterSet.contains($0) }) else { return false }
+        
+        // karakter spesial (_ dan .) tidak boleh bersebalahan
+        let invalidConsecutivePatterns = ["..", "__", "._", "_."]
+        for pattern in invalidConsecutivePatterns {
+            if username.contains(pattern) { return false }
+        }
+        
+        return true
+    }
+    
     // Acceps and validates username input, and saves the game into disk
     // Then load Round 1 from JSON
     public func enterUsername(_ username: String) {
         let trimmedName = username.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmedName.isEmpty else { return }
+        guard isValidUsername(trimmedName) else { return }
         
         var newState = GameState(username: trimmedName)
         newState.publishedPosts.append(UserPost.openingPost)
