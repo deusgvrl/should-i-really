@@ -50,7 +50,16 @@ struct SinglePostView: View {
                 .aspectRatio(1, contentMode: .fit)
                 .overlay {
                     GeometryReader { geo in
-                        QuadrantImageView(imageName: imageName, quadrant: quadrant, size: geo.size.width)
+                        if nodeId == "first_post" || nodeId == "last_post" {
+                            Image(imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: geo.size.width, height: geo.size.height)
+                                .clipped()
+                        } else {
+                            QuadrantImageView(imageName: imageName, quadrant: quadrant, size: geo.size.width)
+                            
+                        }
                     }
                 }
             .clipped()
@@ -117,14 +126,14 @@ struct SinglePostView: View {
 
 #Preview {
     SinglePostView(
-        imageName: "1",
+        imageName: "node_firstPost",
         quadrant: .bottomLeft,
         username: "johndoe",
         caption: "Seeing this disappointment hurts, but your incredible worth and intelligence are so much bigger than a letter in your hands! 🌟💪",
         commentUsername: "doejane",
         comment: "I'm so proud of you, you're going to do great things!",
         date: "Year 3 Semester 1 Month 1",
-        nodeId: "",
+        nodeId: "first_post",
         photoGuardType: .negative,
         vibeCheckType: .positive,
         showComment: true,

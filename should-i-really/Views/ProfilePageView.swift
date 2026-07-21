@@ -90,11 +90,20 @@ struct ProfilePageView: View {
                         ForEach(gameViewModel.feedPosts) { node in
                             NavigationLink(value: GameViewModel.GameRoute.feedView(postID: node.id)) {
                                 GeometryReader { geo in
-                                    QuadrantImageView(
-                                        imageName: node.imageName,
-                                        quadrant: node.selectedQuadrant,
-                                        size: geo.size.width
-                                    )
+                                    if node.nodeId == "first_post" || node.nodeId == "last_post" {
+                                        Image(node.imageName)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: geo.size.width, height: geo.size.width)
+                                            .clipped()
+                                    } else {
+                                        QuadrantImageView(
+                                            imageName: node.imageName,
+                                            quadrant: node.selectedQuadrant,
+                                            size: geo.size.width
+                                        )
+                                        
+                                    }
                                 }
                                 .aspectRatio(1, contentMode: .fill)
                                 .contentShape(Rectangle())

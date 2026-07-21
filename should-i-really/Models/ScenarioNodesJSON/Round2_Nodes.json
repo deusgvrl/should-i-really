@@ -3,47 +3,47 @@
   {
     "id": "2A",
     "round": 2,
-    "big_picture_id": "SampleImage2",
+    "big_picture_id": "node_2A",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 3,
         "captions": [
           {
             "id": "2A_Pos_C_Pos",
             "type": "positive",
-            "text": "Caption Positif.",
+            "text": "Good food, good friends, good memories ✨",
             "nextNodeId": "3A",
             "comments": 
-              { "id": "com_2A_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus." }
+              { "id": "com_2A_Pos_C_Pos", "username": "doejane", "text": "Those are the best things" }
           },
           {
             "id": "2A_Pos_C_Neg",
             "type": "negative",
-            "text": "Caption Negatif.",
+            "text": "Just wasting time instead of studying 🙄",
             "nextNodeId": "3B",
             "comments": 
-                { "id": "com_2A_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek." }
+                { "id": "com_2A_Pos_C_Neg", "username": "doejane", "text": "Don't judge the whole moment from one photo" }
           }
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 4,
         "captions": [
           {
             "id": "2A_Neg_C_Pos",
             "type": "positive",
-            "text": "Caption positif.",
+            "text": "Lunch break with the best people 🍱",
             "nextNodeId": "3C",
             "comments": 
-                { "id": "com_2A_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus" }
+                { "id": "com_2A_Neg_C_Pos", "username": "doejane", "text": "Looks like a fun lunch!" }
           },
           {
             "id": "2A_Neg_C_Neg",
             "type": "negative",
-            "text": "Caption negatif.",
+            "text": "Someone forgot how to eat 😂",
             "nextNodeId": "3D",
             "comments": 
-                { "id": "com_2A_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek" }
+                { "id": "com_2A_Neg_C_Neg", "username": "doejane", "text": "Don't turn someone into the joke." }
           }
         ]
       }
@@ -61,18 +61,18 @@
           {
             "id": "2B_Pos_C_Pos",
             "type": "positive",
-            "text": "Caption Positif.",
+            "text": "New school, new friends, new memories ✨",
             "nextNodeId": "3A",
             "comments": 
-              { "id": "com_2B_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus." }
+              { "id": "com_2B_Pos_C_Pos", "username": "doejane", "text": "A great way to start a new chapter!" }
           },
           {
             "id": "2B_Pos_C_Neg",
             "type": "negative",
-            "text": "Caption Negatif.",
+            "text": "I hate my new school 🙄",
             "nextNodeId": "3B",
             "comments": 
-                { "id": "com_2B_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek." }
+                { "id": "com_2B_Pos_C_Neg", "username": "doejane", "text": "Day 1 doesn't reflect your whole experience" }
           }
         ]
       },
@@ -82,18 +82,18 @@
           {
             "id": "2B_Neg_C_Pos",
             "type": "positive",
-            "text": "Caption positif.",
+            "text": "First day at school! Ready for a new journey 🎒",
             "nextNodeId": "3C",
             "comments": 
-                { "id": "com_2B_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus" }
+                { "id": "com_2B_Neg_C_Pos", "username": "doejane", "text": "Be careful!" }
           },
           {
             "id": "2B_Neg_C_Neg",
             "type": "negative",
-            "text": "Caption negatif.",
+            "text": "My school ID is finally here! Check it out 😎",
             "nextNodeId": "3D",
             "comments": 
-                { "id": "com_2B_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek" }
+                { "id": "com_2B_Neg_C_Neg", "username": "doejane", "text": "Your personal info is exposed" }
           }
         ]
       }

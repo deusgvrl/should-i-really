@@ -2,43 +2,43 @@
   {
     "id": "1A",
     "round": 1,
-    "big_picture_id": "SampleImage1",
+    "big_picture_id": "node_1",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 3,
         "captions": [
           {
             "id": "1A_Pos_C_Pos",
             "type": "positive",
-            "text": "Caption Positif.",
+            "text": "Studying together today 📚",
             "nextNodeId": "2A",
-            "comments": { "id": "com_1A_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus." }
+            "comments": { "id": "com_1A_Pos_C_Pos", "username": "doejane", "text": "Proof that we opened a book." }
           },
           {
-            "id": "1A_Pos_C_Neg",
-            "type": "negative",
-            "text": "Caption Negatif.",
+            "id": "1A_Pos_C_Pos2",
+            "type": "positive",
+            "text": "A normal day in the classroom.",
             "nextNodeId": "2A",
-            "comments": { "id": "com_1A_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek." }
+            "comments": { "id": "com_1A_Pos_C_Pos2", "username": "doejane", "text": "Wish I was there" }
           }
         ]
       },
       "negative_crop": {
-        "quadrant": 2,
+        "quadrant": 4,
         "captions": [
           {
-            "id": "1A_Neg_C_Pos",
+            "id": "1A_Neg_C_Neg",
             "type": "positive",
-            "text": "Caption positif.",
+            "text": "Another productive day in the classroom 📚✨😂",
             "nextNodeId": "2B",
-            "comments": { "id": "com_1A_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus" }
+            "comments": { "id": "com_1A_Neg_C_Neg", "username": "doejane", "text": "Don't give vandalism the spotlight." }
           },
           {
-            "id": "1A_Neg_C_Neg",
+            "id": "1A_Neg_C_Neg2",
             "type": "negative",
-            "text": "Caption negatif.",
+            "text": "Whoever wrote this deserves a medal 😂",
             "nextNodeId": "2B",
-            "comments": { "id": "com_1A_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek" }
+            "comments": { "id": "com_1A_Neg_C_Neg2", "username": "doejane", "text": "Don't encourage vandalism." }
           }
         ]
       }

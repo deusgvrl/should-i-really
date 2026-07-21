@@ -11,21 +11,21 @@
                     {
                         "id": "4A_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "What a cute pose!✨",
                         "nextNodeId": "5A",
                         "comments": 
                             {
-                                "id": "com_4A_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_4A_Pos_C_Pos", "username": "doejane", "text": "Looking great!"
                             }
                     },
                     {
                         "id": "4A_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "Trying too hard to get attention 😒",
                         "nextNodeId": "5B",
                         "comments": 
                             {
-                                "id": "com_4A_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_4A_Pos_C_Neg", "username": "doejane", "text": "What's wrong with posing?"
                             }
                     }
                 ]
@@ -36,21 +36,21 @@
                     {
                         "id": "4A_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Just a normal school day with friends📱",
                         "nextNodeId": "5C",
                         "comments": 
                             {
-                                "id": "com_4A_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_4A_Neg_C_Pos", "username": "doejane", "text": "Not everything needs to be posted."
                             }
                     },
                     {
                         "id": "4A_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Hey! Somebody's mom is mad HAHAHA",
                         "nextNodeId": "5D",
                         "comments": 
                             {
-                                "id": "com_4A_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_4A_Neg_C_Neg", "username": "doejane", "text": "That's not your story to share"
                             }
                     }
                 ]
@@ -69,21 +69,21 @@
                     {
                         "id": "4B_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Ready to study and learn ✨",
                         "nextNodeId": "5C",
                         "comments": 
                             {
-                                "id": "com_4B_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_4B_Pos_C_Pos", "username": "doejane", "text": "Love the study setup!"
                             }
                     },
                     {
                         "id": "4B_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "I can't do this stupid homework",
                         "nextNodeId": "5D",
                         "comments": 
                             {
-                                "id": "com_4B_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_4B_Pos_C_Neg", "username": "doejane", "text": "Everyone struggles sometimes"
                             }
                     }
                 ]
@@ -94,21 +94,21 @@
                     {
                         "id": "4B_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "My study setup for today 📚",
                         "nextNodeId": "5E",
                         "comments": 
                             {
-                                "id": "com_4B_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_4B_Neg_C_Pos", "username": "doejane", "text": "Crop out your personal information"
                             }
                     },
                     {
                         "id": "4B_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Here’s everything you need to know about me 👀",
                         "nextNodeId": "5F",
                         "comments": 
                             {
-                                "id": "com_4B_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_4B_Neg_C_Neg", "username": "doejane", "text": "Never share sensitive information online"
                             }
                     }
                 ]
@@ -127,21 +127,21 @@
                     {
                         "id": "4C_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "A quiet place full of stories ✨",
                         "nextNodeId": "5E",
                         "comments": 
                             {
-                                "id": "com_4C_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_4C_Pos_C_Pos", "username": "doejane", "text": "Our school's library is the best!"
                             }
                     },
                     {
                         "id": "4C_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "The only place to sleep without getting caught 😴",
                         "nextNodeId": "5F",
                         "comments": 
                             {
-                                "id": "com_4C_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_4C_Pos_C_Neg", "username": "doejane", "text": "Don't misrepresent the moment"
                             }
                     }
                 ]
@@ -152,21 +152,21 @@
                     {
                         "id": "4C_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Finding my next favorite book 📚",
                         "nextNodeId": "5G",
                         "comments": 
                             {
-                                "id": "com_4C_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_4C_Neg_C_Pos", "username": "doejane", "text": "Crop out the borrower list"
                             }
                     },
                     {
                         "id": "4C_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Let’s see who’s been reading what 👀",
                         "nextNodeId": "5H",
                         "comments": 
                             {
-                                "id": "com_4C_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_4C_Neg_C_Neg", "username": "doejane", "text": "Respect other people's privacy"
                             }
                     }
                 ]
@@ -177,54 +177,54 @@
     {
         "id": "4D",
         "round": 4,
-        "big_picture_id": "SampleImage4",
+        "big_picture_id": "node_4D",
         "crops": {
             "positive_crop": {
-                "quadrant": 1,
+                "quadrant": 3,
                 "captions": [
                     {
                         "id": "4D_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Adding a little personality to our school space ✨",
                         "nextNodeId": "5G",
                         "comments": 
                             {
-                                "id": "com_4D_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_4D_Pos_C_Pos", "username": "doejane", "text": "Everyone has their own style. ✨"
                             }
                     },
                     {
                         "id": "4D_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "Remove those ugly stickers now!",
                         "nextNodeId": "5H",
                         "comments": 
                             {
-                                "id": "com_4D_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_4D_Pos_C_Neg", "username": "doejane", "text": "Be respectful of others."
                             }
                     }
                 ]
             },
             "negative_crop": {
-                "quadrant": 3,
+                "quadrant": 2,
                 "captions": [
                     {
                         "id": "4D_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Getting ready for another school day 🎒",
                         "nextNodeId": "5I",
                         "comments": 
                             {
-                                "id": "com_4D_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_4D_Neg_C_Pos", "username": "doejane", "text": "Respect other people's privacy"
                             }
                     },
                     {
                         "id": "4D_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Let’s see what everyone keeps in their locker 👀",
                         "nextNodeId": "5J",
                         "comments": 
                             {
-                                "id": "com_4D_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_4D_Neg_C_Neg", "username": "doejane", "text": "Private belongings should stay private"
                             }
                     }
                 ]
@@ -243,21 +243,21 @@
                     {
                         "id": "4E_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Future leaders sharing their ideas!",
                         "nextNodeId": "5I",
                         "comments": 
                             {
-                                "id": "com_4E_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_4E_Pos_C_Pos", "username": "doejane", "text": "Good luck to all the candidates! 🍀"
                             }
                     },
                     {
                         "id": "4E_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "Just another school popularity contest 🙄",
                         "nextNodeId": "5J",
                         "comments": 
                             {
-                                "id": "com_4E_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_4E_Pos_C_Neg", "username": "doejane", "text": "Focus on their ideas, not assumptions"
                             }
                     }
                 ]
@@ -268,21 +268,21 @@
                     {
                         "id": "4E_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Students sharing their opinions and voices 🗳️",
                         "nextNodeId": "5K",
                         "comments": 
                             {
-                                "id": "com_4E_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_4E_Neg_C_Pos", "username": "doejane", "text": "Respectful discussion is what matters"
                             }
                     },
                     {
                         "id": "4E_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Someone really wanted to ruin the election. LET'S GOOO!",
                         "nextNodeId": "5L",
                         "comments": 
                             {
-                                "id": "com_4E_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_4E_Neg_C_Neg", "username": "doejane", "text": "Don't encourage vandalism"
                             }
                     }
                 ]
@@ -301,21 +301,21 @@
                     {
                         "id": "4F_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Creative minds on display at school ✨",
                         "nextNodeId": "5K",
                         "comments": 
                             {
-                                "id": "com_4F_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_4F_Pos_C_Pos", "username": "doejane", "text": "Future top artist!"
                             }
                     },
                     {
                         "id": "4F_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "Some useless papers and art freak's stupid drawings 😴",
                         "nextNodeId": "5L",
                         "comments": 
                             {
-                                "id": "com_4F_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_4F_Pos_C_Neg", "username": "doejane", "text": "They are more talented than you"
                             }
                     }
                 ]
@@ -326,21 +326,21 @@
                     {
                         "id": "4F_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Whoever wrote this must be held accountable",
                         "nextNodeId": "5M",
                         "comments": 
                             {
-                                "id": "com_4F_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_4F_Neg_C_Pos", "username": "doejane", "text": "You are not supposed to post this"
                             }
                     },
                     {
                         "id": "4F_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "OMG! Someone is being targeted here... 😟",
                         "nextNodeId": "5N",
                         "comments": 
                             {
-                                "id": "com_4F_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_4F_Neg_C_Neg", "username": "doejane", "text": "Next one could be you. Be careful."
                             }
                     }
                 ]
@@ -359,21 +359,21 @@
                     {
                         "id": "4G_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "A lively day around school ✨",
                         "nextNodeId": "5L",
                         "comments": 
                             {
-                                "id": "com_4G_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_4G_Pos_C_Pos", "username": "doejane", "text": "I love days like this"
                             }
                     },
                     {
                         "id": "4G_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "What a crowded place. MOVE! 😐",
                         "nextNodeId": "5M",
                         "comments": 
                             {
-                                "id": "com_4G_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_4G_Pos_C_Neg", "username": "doejane", "text": "Make your own school"
                             }
                     }
                 ]
@@ -384,21 +384,21 @@
                     {
                         "id": "4G_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Get well soon, my friend",
                         "nextNodeId": "5N",
                         "comments": 
                             {
-                                "id": "com_4G_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_4G_Neg_C_Pos", "username": "doejane", "text": "Thanks, but delete my photo"
                             }
                     },
                     {
                         "id": "4G_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Someone weak had a bad day at school",
                         "nextNodeId": "5O",
                         "comments": 
                             {
-                                "id": "com_4G_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_4G_Neg_C_Neg", "username": "doejane", "text": "None of your business!"
                             }
                     }
                 ]
@@ -417,21 +417,21 @@
                     {
                         "id": "4H_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Celebrating a well earned achievement 🏆",
                         "nextNodeId": "5M",
                         "comments": 
                             {
-                                "id": "com_4H_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_4H_Pos_C_Pos", "username": "doejane", "text": "Congratulations!"
                             }
                     },
                     {
                         "id": "4H_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "Just be done now and get out of my sight!",
                         "nextNodeId": "5N",
                         "comments": 
                             {
-                                "id": "com_4H_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_4H_Pos_C_Neg", "username": "doejane", "text": "Oh, what a pity person"
                             }
                     }
                 ]
@@ -442,21 +442,21 @@
                     {
                         "id": "4H_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Our teacher giving guidance and support 📚",
                         "nextNodeId": "5O",
                         "comments": 
                             {
-                                "id": "com_4H_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_4H_Neg_C_Pos", "username": "doejane", "text": "Stop sharing private moment!"
                             }
                     },
                     {
                         "id": "4H_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Getting called out in front of everyone 😬",
                         "nextNodeId": "5P",
                         "comments": 
                             {
-                                "id": "com_4H_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_4H_Neg_C_Neg", "username": "doejane", "text": "None of your business, dumbass!"
                             }
                     }
                 ]

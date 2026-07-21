@@ -11,21 +11,21 @@
                     {
                         "id": "3A_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "A peaceful view during a school day ✨",
                         "nextNodeId": "4A",
                         "comments": 
                             {
-                                "id": "com_3A_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_3A_Pos_C_Pos", "username": "doejane", "text": "What a beautiful view!"
                             }
                     },
                     {
                         "id": "3A_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "School is only fun when you escape the classroom 😅",
                         "nextNodeId": "4B",
                         "comments": 
                             {
-                                "id": "com_3A_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_3A_Pos_C_Neg", "username": "doejane", "text": "Lazy students will face the consequences later."
                             }
                     }
                 ]
@@ -36,21 +36,21 @@
                     {
                         "id": "3A_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Teachers always guide us to do better 📚",
                         "nextNodeId": "4C",
                         "comments": 
                             {
-                                "id": "com_3A_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_3A_Neg_C_Pos", "username": "doejane", "text": "You are not allowed to post our teacher's face here."
                             }
                     },
                     {
                         "id": "3A_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Getting yelled at in front of the whole class 😬",
                         "nextNodeId": "4D",
                         "comments": 
                             {
-                                "id": "com_3A_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_3A_Neg_C_Neg", "username": "doejane", "text": "No one cares about you, Loser!"
                             }
                     }
                 ]
@@ -61,29 +61,29 @@
     {
         "id": "3B",
         "round": 3,
-        "big_picture_id": "SampleImage3",
+        "big_picture_id": "node_3B",
         "crops": {
             "positive_crop": {
-                "quadrant": 1,
+                "quadrant": 4,
                 "captions": [
                     {
                         "id": "3B_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Finding peaceful moments at school ✨",
                         "nextNodeId": "4B",
                         "comments": 
                             {
-                                "id": "com_3B_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_3B_Pos_C_Pos", "username": "doejane", "text": "I love spring!"
                             }
                     },
                     {
                         "id": "3B_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "Everyone is just doing their own thing, no connection here",
                         "nextNodeId": "4C",
                         "comments": 
                             {
-                                "id": "com_3B_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_3B_Pos_C_Neg", "username": "doejane", "text": "Don't be too gloomy"
                             }
                     }
                 ]
@@ -94,21 +94,21 @@
                     {
                         "id": "3B_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Enjoying a quiet moment alone 📖",
                         "nextNodeId": "4D",
                         "comments": 
                             {
-                                "id": "com_3B_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_3B_Neg_C_Pos", "username": "doejane", "text": "Don’t post my face!"
                             }
                     },
                     {
                         "id": "3B_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "No one wants to sit with you, huh? 😕",
                         "nextNodeId": "4E",
                         "comments": 
                             {
-                                "id": "com_3B_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_3B_Neg_C_Neg", "username": "doejane", "text": "I have friends, and they are smarter than you!"
                             }
                     }
                 ]
@@ -127,21 +127,21 @@
                     {
                         "id": "3C_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "True friends stay together through everything ✨",
                         "nextNodeId": "4D",
                         "comments": 
                             {
-                                "id": "com_3C_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_3C_Pos_C_Pos", "username": "doejane", "text": "So true. We will always support you!"
                             }
                     },
                     {
                         "id": "3C_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "Everyone is making a big deal out of a small problem 🙄",
                         "nextNodeId": "4E",
                         "comments": 
                             {
-                                "id": "com_3C_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_3C_Pos_C_Neg", "username": "doejane", "text": "Hey, don't be rude!"
                             }
                     }
                 ]
@@ -152,21 +152,21 @@
                     {
                         "id": "3C_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Friends are always there for each other 🤍",
                         "nextNodeId": "4F",
                         "comments": 
                             {
-                                "id": "com_3C_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_3C_Neg_C_Pos", "username": "doejane", "text": "Don't zoom on my friend's crying face"
                             }
                     },
                     {
                         "id": "3C_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Someone needs to be picked up by his mommy 😢",
                         "nextNodeId": "4G",
                         "comments": 
                             {
-                                "id": "com_3C_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_3C_Neg_C_Neg", "username": "doejane", "text": "None of your business!"
                             }
                     }
                 ]
@@ -185,21 +185,21 @@
                     {
                         "id": "3D_Pos_C_Pos",
                         "type": "positive",
-                        "text": "Caption Positif.",
+                        "text": "Teamwork makes the dream work ✨",
                         "nextNodeId": "4E",
                         "comments": 
                             {
-                                "id": "com_3D_Pos_C_Pos", "username": "doejane", "text": "Gambar bagus, caption bagus."
+                                "id": "com_3D_Pos_C_Pos", "username": "doejane", "text": "My favorite team fr"
                             }
                     },
                     {
                         "id": "3D_Pos_C_Neg",
                         "type": "negative",
-                        "text": "Caption Negatif.",
+                        "text": "BORINGGGG 😴",
                         "nextNodeId": "4F",
                         "comments": 
                             {
-                                "id": "com_3D_Pos_C_Neg", "username": "doejane", "text": "Gambar bagus, caption jelek."
+                                "id": "com_3D_Pos_C_Neg", "username": "doejane", "text": "Be respectful to your peers!"
                             }
                     }
                 ]
@@ -210,21 +210,21 @@
                     {
                         "id": "3D_Neg_C_Pos",
                         "type": "positive",
-                        "text": "Caption positif.",
+                        "text": "Everyone makes mistakes, but we keep learning 📚",
                         "nextNodeId": "4G",
                         "comments": 
                             {
-                                "id": "com_3D_Neg_C_Pos", "username": "doejane", "text": "Gambar jelek, caption bagus"
+                                "id": "com_3D_Neg_C_Pos", "username": "doejane", "text": "Mistakes don't define a person"
                             }
                     },
                     {
                         "id": "3D_Neg_C_Neg",
                         "type": "negative",
-                        "text": "Caption negatif.",
+                        "text": "Not even dressed properly for the presentation 😬",
                         "nextNodeId": "4H",
                         "comments": 
                             {
-                                "id": "com_3D_Neg_C_Neg", "username": "doejane", "text": "Gambar jelek, caption jelek"
+                                "id": "com_3D_Neg_C_Neg", "username": "doejane", "text": "Don't embarrass someone over a small mistake."
                             }
                     }
                 ]

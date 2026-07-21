@@ -40,7 +40,7 @@ struct ProfileFeedView: View {
             ToolbarItem(placement: .principal) {
                 VStack(spacing: 0) {
                     Text("Posts").font(.subheadline).bold()
-                    Text("johndoe")
+                    Text(viewModel.gameState?.username ?? "johndoe")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .bold()
