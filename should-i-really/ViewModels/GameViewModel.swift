@@ -10,8 +10,8 @@ import Observation
 import SwiftUI
 
 // MARK: - Game View Model Main Target
-@Observable
-public final class GameViewModel {
+@MainActor
+@Observable public final class GameViewModel {
     
     // MARK: - Game Routes
     
@@ -58,11 +58,15 @@ public final class GameViewModel {
     /// Initializes the GameViewModel, loading any active save state from storage.
     ///
     /// - Parameter storageController: Storage manager reference.
-    init(storageController: StorageController = StorageController()) {
+    public init(storageController: StorageController) {
         self.storageController = storageController
         
         if storageController.hasSave {
             self.gameState = storageController.loadGame()
         }
+    }
+    
+    public convenience init() {
+        self.init(storageController: StorageController())
     }
 }

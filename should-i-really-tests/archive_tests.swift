@@ -11,6 +11,7 @@ import Foundation
 @testable import should_i_really
 
 @Suite("Archive & Endings Unit Tests")
+@MainActor
 struct ArchiveTests {
     
     // Helper In-Memory SwiftData Container
