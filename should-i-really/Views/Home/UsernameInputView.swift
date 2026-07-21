@@ -76,6 +76,8 @@ struct UsernameInputView: View {
                     .background(isInputValid ? themeBrown : themeDisabledGray)
                     .clipShape(Capsule())
             }
+            .accessibilityLabel("Start")
+            .accessibilityInputLabels(["Start"])
             .disabled(!isInputValid)
         }
         .padding(.horizontal, 8)

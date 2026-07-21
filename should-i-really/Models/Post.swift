@@ -64,9 +64,10 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
     static var openingPost: UserPost {
         UserPost(nodeId: "first_post", imageName: "node_firstPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "Hari Pertama di sekolah", comment: Comment(id: "com_first_post", username: "doejane", text: "Congrats on your first day!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true)
     }
-    static var endingPost: UserPost {
+    static var endingPost : UserPost {
         UserPost(nodeId: "last_post", imageName: "node_lastPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "Hari Terakhir di sekolah", comment: Comment(id: "com_last_post", username: "doejane", text: "Congrats on your graduation!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true)
     }
+    
 }
 
 public struct StoryNode: Identifiable, Codable, Hashable {

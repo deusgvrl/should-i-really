@@ -23,7 +23,7 @@ struct ProfileFeedView: View {
     var body: some View {
         //MARK: Timeline Feed View
         ScrollView {
-            VStack(spacing: 24) {
+            LazyVStack(spacing: 24) {
                 ForEach(viewModel.feedPosts) { post in
                     buildPostView(for: post)
                         .id(post.id)

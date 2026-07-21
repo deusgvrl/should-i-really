@@ -29,11 +29,14 @@ struct PhotoSelectionView: View {
                 GeometryReader { geometry in
                     let totalSize = geometry.size.width
                     let tileSize = totalSize / 2
+                    let activeOrdered = QuadrantPosition.allCases.filter { viewModel.activeQuadrants.contains($0) }
                     
                     LazyVGrid(columns: columns, spacing: 0) {
                         ForEach(QuadrantPosition.allCases, id: \.self) { quadrant in
                             let isActive = viewModel.activeQuadrants.contains(quadrant)
                             let isSelected = viewModel.selectedQuadrant == quadrant
+                            let activeIndex = activeOrdered.firstIndex(of: quadrant) ?? 0
+                            let labelNumber = activeIndex + 1
                             
                             ZStack {
                                 QuadrantImageView(
@@ -46,6 +49,7 @@ struct PhotoSelectionView: View {
                                     Color.black.opacity(0.75)
                                         .border(Color.gray, width: 1)
                                 }
+                                    
                                 
                                 if isActive {
                                     Color.white.opacity(0)
@@ -66,6 +70,9 @@ struct PhotoSelectionView: View {
                                     }
                                 }
                             }
+                            .accessibilityHidden(!isActive)
+                            .accessibilityLabel("Picture \(labelNumber)")
+                            .accessibilityInputLabels(["Picture \(labelNumber)"])
                         }
                     }
                     .frame(width: totalSize, height: totalSize)

@@ -77,6 +77,8 @@ struct PrologView: View {
                     .background(themeBrown)
                     .clipShape(Capsule())
             }
+            .accessibilityLabel("Continue")
+            .accessibilityInputLabels(["Continue"])
             .padding(.bottom, 24)
         }
         .padding(.horizontal, 24)

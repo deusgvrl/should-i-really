@@ -68,6 +68,9 @@ struct CaptionSelectionView: View {
                 .buttonBorderShape(.circle)
                 .tint(viewModel.selectedQuadrant != nil ? activeColor : inactiveColor)
                 .disabled(viewModel.selectedCaption == nil)
+                .accessibilityLabel("Post")
+                .accessibilityInputLabels(["Post"])
+
             }
         }
     }
@@ -107,8 +110,9 @@ struct CaptionSelectionView: View {
     
     private var captionChoicesContainer: some View {
         VStack(spacing: 16) {
-            ForEach(viewModel.availableCaptions) { caption in
+            ForEach(Array(viewModel.availableCaptions.enumerated()), id: \.element.id) { index, caption in
                 let isSelected = viewModel.selectedCaption?.id == caption.id
+                let captionNumber = index + 1
                 
                 Button(action: {
                     withAnimation(.easeInOut(duration: 0.2)) {
@@ -133,6 +137,8 @@ struct CaptionSelectionView: View {
                         )
                 }
                 .buttonStyle(PlainButtonStyle())
+                .accessibilityLabel("Caption \(captionNumber)")
+                .accessibilityInputLabels(["Caption \(captionNumber)"])
             }
         }
         .padding(.top, 32)
