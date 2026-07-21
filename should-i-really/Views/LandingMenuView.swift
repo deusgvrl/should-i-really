@@ -22,7 +22,7 @@ struct LandingMenuView: View {
                 }) {
                     Text("Continue")
                         .font(.body)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical,16)
                         .background(themeBrown)
@@ -40,7 +40,7 @@ struct LandingMenuView: View {
             }) {
                 Text("New Game")
                     .font(.body)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(themeBrown)
@@ -53,7 +53,7 @@ struct LandingMenuView: View {
             }) {
                 Text("Archive")
                     .font(.body)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical,16)
                     .background(themeBrown)

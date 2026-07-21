@@ -32,7 +32,7 @@ struct EndingCardView: View {
                         Text("E\(index)")
                             .font(.caption2)
                             .bold()
-                            .foregroundColor(Color(red: 0.65, green: 0.49, blue: 0.32))
+                            .foregroundStyle(Color(red: 0.65, green: 0.49, blue: 0.32))
                     }
                 }
                 

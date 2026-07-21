@@ -41,7 +41,7 @@ struct CaptionSelectionView: View {
                 Text("Choose Your Caption")
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
+                    .foregroundStyle(.black)
             }
             
             ToolbarItem(placement: .navigationBarLeading) {
@@ -52,7 +52,7 @@ struct CaptionSelectionView: View {
                     Image(systemName: "chevron.left")
                         .font(.title3)
                         .fontWeight(.medium)
-                        .foregroundColor(.black)
+                        .foregroundStyle(.black)
                         .frame(width: 30, height: 44, alignment: .center)
                 }
             }
@@ -94,10 +94,10 @@ struct CaptionSelectionView: View {
                         VStack(spacing: 8) {
                             Image(systemName: "photo")
                                 .font(.largeTitle)
-                                .foregroundColor(.gray)
+                                .foregroundStyle(.gray)
                             Text("No Photo Selected")
                                 .font(.caption)
-                                .foregroundColor(.gray)
+                                .foregroundStyle(.gray)
                         }
                     )
             }
@@ -119,7 +119,7 @@ struct CaptionSelectionView: View {
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(isSelected ? .white : .black)
+                        .foregroundStyle(isSelected ? .white : .black)
                         .padding(.vertical, 18)
                         .padding(.horizontal, 24)
                         .frame(maxWidth: .infinity)

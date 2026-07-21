@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F07470B300A356A00D1D2D3 /* should-i-really-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "should-i-really-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F4C7BC43004E88200645894 /* should-i-reallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "should-i-reallyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F555A8C3004C4710065B91C /* should-i-really.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "should-i-really.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F07470B300A356A00D1D2D3 /* should-i-really-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "should-i-really-tests.xctest"; path = "/Users/itsdeus/Documents/Apple Developer Acaedemy/Challenge 3/should-i-really/build/Debug-iphoneos/should-i-really.app/PlugIns/should-i-really-tests.xctest"; sourceTree = "<absolute>"; };
+		4F4C7BC43004E88200645894 /* should-i-reallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "should-i-reallyTests.xctest"; path = "/Users/itsdeus/Documents/Apple Developer Acaedemy/Challenge 3/should-i-really/build/Debug-iphoneos/should-i-really.app/PlugIns/should-i-reallyTests.xctest"; sourceTree = "<absolute>"; };
+		4FDBA99D300F5ED0005B4FA1 /* should-i-really.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "should-i-really.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -72,18 +72,8 @@
 			children = (
 				4F555A8E3004C4710065B91C /* should-i-really */,
 				1F07470C300A356A00D1D2D3 /* should-i-really-tests */,
-				4F555A8D3004C4710065B91C /* Products */,
+				4FDBA99D300F5ED0005B4FA1 /* should-i-really.app */,
 			);
-			sourceTree = "<group>";
-		};
-		4F555A8D3004C4710065B91C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4F555A8C3004C4710065B91C /* should-i-really.app */,
-				4F4C7BC43004E88200645894 /* should-i-reallyTests.xctest */,
-				1F07470B300A356A00D1D2D3 /* should-i-really-tests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +141,7 @@
 			packageProductDependencies = (
 			);
 			productName = "should-i-really";
-			productReference = 4F555A8C3004C4710065B91C /* should-i-really.app */;
+			productReference = 4FDBA99D300F5ED0005B4FA1 /* should-i-really.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -187,7 +177,7 @@
 			mainGroup = 4F555A833004C4710065B91C;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 4F555A8D3004C4710065B91C /* Products */;
+			productRefGroup = 4F555A833004C4710065B91C;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -468,7 +458,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RSDAD8JL6H;
+				DEVELOPMENT_TEAM = SB586Q784K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
@@ -501,7 +491,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RSDAD8JL6H;
+				DEVELOPMENT_TEAM = SB586Q784K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
