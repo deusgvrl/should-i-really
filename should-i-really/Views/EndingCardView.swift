@@ -1,5 +1,5 @@
 //
-//  EndingCardview.swift
+//  EndingCardView.swift
 //  should-i-really
 //
 //  Created by Amadeus Gavriel on 16/07/26.
@@ -9,8 +9,10 @@ import SwiftUI
 
 struct EndingCardView: View {
     // MARK: - Properties
-    let index: Int // Index of the ending
+    let index: Int
     let isUnlocked: Bool
+    let ending: EndingNode?
+    let themeBrown = Color(red: 0.65, green: 0.49, blue: 0.32)
     
     var body: some View {
         VStack(spacing: 8) {
@@ -23,20 +25,29 @@ struct EndingCardView: View {
                         .aspectRatio(1, contentMode: .fit)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke((Color(red: 0.65, green: 0.49, blue: 0.32)), lineWidth: 2))
+                                .stroke(Color(red: 0.65, green: 0.49, blue: 0.32), lineWidth: 2)
+                        )
                     
                     VStack {
-                        Image(systemName: "graduationcap.fill")
-                            .font(.title2)
-                            .foregroundStyle(Color(red: 0.65, green: 0.49, blue: 0.32))
-                        Text("E\(index)")
-                            .font(.caption2)
-                            .bold()
-                            .foregroundColor(Color(red: 0.65, green: 0.49, blue: 0.32))
+                        if let imageName = ending?.imageName {
+                            Image(imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(themeBrown, lineWidth: 2)
+                                )
+                        } else {
+                            Image(systemName: "photo")
+                                .font(.largeTitle)
+                                .foregroundStyle(themeBrown)
+                        }
                     }
                 }
                 
-                Text("Ending \(index)")
+                Text(ending?.title ?? "Ending \(index)")
                     .font(.caption)
                     .fontWeight(.semibold)
                     .foregroundStyle(.primary)
@@ -63,5 +74,5 @@ struct EndingCardView: View {
 }
 
 #Preview {
-    EndingCardView(index: 0, isUnlocked: true)
+    EndingCardView(index: 1, isUnlocked: true, ending: nil)
 }

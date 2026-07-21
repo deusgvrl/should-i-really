@@ -9,9 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct ArchiveView: View {
-    let viewModel = GameViewModel()
     // Queries the unlocked ending that will return the id and the date
     @Query var unlockedEndings: [UnlockedEndings]
+    @State private var endingVM = EndingViewModel()
     // TODO: - Need to specify the brown colour globally.
     let themeBrown = Color(red: 0.65, green: 0.49, blue: 0.32)
     // Uses 2 columns
@@ -35,10 +35,16 @@ struct ArchiveView: View {
             
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(1...16, id: \.self) { index in
-                    let endingKey = "Ending \(index)"
+                    let endingKey = "ENDING_\(index)"
                     let isUnlocked = unlockedEndings.contains { $0.endingId == endingKey }
+
+                    let endingDetail = endingVM.getEnding(by: endingKey)
                     
-                    EndingCardView(index: index, isUnlocked: isUnlocked)
+                    EndingCardView(
+                        index: index,
+                        isUnlocked: isUnlocked,
+                        ending: endingDetail
+                    )
                 }
             }
             .padding(24)

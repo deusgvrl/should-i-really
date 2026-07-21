@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EndingSummaryView: View {
     @Environment(GameViewModel.self) private var gameVM
+    @Environment(\.modelContext) private var modelContext
+    
     @State private var endingVM: EndingViewModel
+    let endingId: String
     
     // MARK: - Color Palette Definitions
     
@@ -18,6 +22,7 @@ struct EndingSummaryView: View {
     private let themeButton = Color(red: 172/255, green: 127/255, blue: 94/255)
     
     init(endingId: String) {
+        self.endingId = endingId
         _endingVM = State(initialValue: EndingViewModel(endingId: endingId))
     }
     
@@ -112,7 +117,7 @@ struct EndingSummaryView: View {
                     .padding(.horizontal, 24)
                 }
             } else {
-                // Fallback 
+                // Fallback
                 VStack(spacing: 16) {
                     Text("Ending data not found.")
                         .font(.headline)
@@ -125,6 +130,22 @@ struct EndingSummaryView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            
+            unlockEnding()
+        }
+    }
+    
+    private func unlockEnding() {
+        let newUnlocked = UnlockedEndings(endingId: endingId, unlockedAt: Date())
+        modelContext.insert(newUnlocked)
+        
+        do {
+            try modelContext.save()
+            print("Ending '\(endingId)' Saved")
+        } catch {
+            print("❌: \(error)")
+        }
     }
 }
 
