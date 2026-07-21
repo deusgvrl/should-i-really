@@ -33,6 +33,7 @@ struct CompletePostFlowTests {
         postCreationViewModel.confirmPhotoSelection()
         
         let availableCaptions = postCreationViewModel.availableCaptions
+        print("Available Captions: ", availableCaptions)
         let chosenCaption = try #require(availableCaptions.first)
         
         postCreationViewModel.selectCaption(chosenCaption)
