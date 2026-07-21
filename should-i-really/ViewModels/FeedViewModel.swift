@@ -21,7 +21,7 @@ extension GameViewModel {
             state.publishedPosts[index].isCommentRevealed = true
             self.gameState = state
             
-            // TODO: - Add Autosave state if comment reveal should persist across sessions
+            storageController.saveGame(state)
         }
     }
 }
