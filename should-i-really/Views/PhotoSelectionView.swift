@@ -16,95 +16,98 @@ struct PhotoSelectionView: View {
         GridItem(.flexible(), spacing: 0)
     ]
     
+    @State private var isAnimated = false
+    
     var body: some View {
-        @Bindable var viewModel = viewModel
-        
-        VStack(spacing: 20) {
-            GeometryReader { geometry in
-                let totalSize = geometry.size.width
-                let tileSize = totalSize / 2
-                
-                LazyVGrid(columns: columns, spacing: 0) {
-                    ForEach(QuadrantPosition.allCases, id: \.self) { quadrant in
-                        let isActive = viewModel.activeQuadrants.contains(quadrant)
-                        let isSelected = viewModel.selectedQuadrant == quadrant
-                        
-                        ZStack {
-                            QuadrantImageView(
-                                imageName: viewModel.currentImageName,
-                                quadrant: quadrant,
-                                size: tileSize
-                            )
+        ZStack() {
+            Color.background
+                .ignoresSafeArea()
+            
+            @Bindable var viewModel = viewModel
+            
+            VStack(spacing: 20) {
+                GeometryReader { geometry in
+                    let totalSize = geometry.size.width
+                    let tileSize = totalSize / 2
+                    
+                    LazyVGrid(columns: columns, spacing: 0) {
+                        ForEach(QuadrantPosition.allCases, id: \.self) { quadrant in
+                            let isActive = viewModel.activeQuadrants.contains(quadrant)
+                            let isSelected = viewModel.selectedQuadrant == quadrant
                             
-                            if !isActive {
-                                Color.black.opacity(0.75)
-                                    .border(Color.gray, width: 1)
+                            ZStack {
+                                QuadrantImageView(
+                                    imageName: viewModel.currentImageName,
+                                    quadrant: quadrant,
+                                    size: tileSize
+                                )
+                                
+                                if !isActive {
+                                    Color.black.opacity(0.75)
+                                        .border(Color.gray, width: 1)
+                                }
+                                
+                                if isActive {
+                                    Color.white.opacity(0)
+                                        .border(Color.gray, width: 1)
+                                }
+                                
+                                if isSelected {
+                                    AnimatedCropOverlayView()
+                                }
                             }
-                            
-                            if isActive {
-                                Color.white.opacity(0)
-                                    .border(Color.gray, width: 1)
-                            }
-                            
-                            if isSelected {
-                                Color.clear
-                                    .border(Color.brown, width: 4)
-                                Image("Crop")
-                                    .resizable()
-                                    .scaledToFit()
-                            }
-                        }
-                        .frame(width: tileSize, height: tileSize)
-                        .clipped()
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            if isActive {
-                                withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
-                                    viewModel.selectedQuadrant = quadrant
+                            .frame(width: tileSize, height: tileSize)
+                            .clipped()
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                if isActive {
+                                    withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+                                        viewModel.selectedQuadrant = quadrant
+                                    }
                                 }
                             }
                         }
                     }
+                    .frame(width: totalSize, height: totalSize)
                 }
-                .frame(width: totalSize, height: totalSize)
+                .aspectRatio(1, contentMode: .fit)
+                .padding(.horizontal)
+                
+                Spacer()
             }
-            .aspectRatio(1, contentMode: .fit)
-            .padding(.horizontal)
-            
-            Spacer()
-        }
-        .navigationDestination(isPresented: $viewModel.navigateToCaptionScreen) {
-            CaptionSelectionView()
-        }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "xmark")
-                        .font(.body.weight(.medium))
-                        .foregroundColor(.primary)
+            .navigationDestination(isPresented: $viewModel.navigateToCaptionScreen) {
+                CaptionSelectionView()
+            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "xmark")
+                            .font(.body.weight(.medium))
+                            .foregroundColor(.primary)
+                    }
                 }
-            }
-            
-            ToolbarItem(placement: .principal) {
-                Text("Choose Your Photo")
-                    .font(.headline)
-                    .foregroundColor(.primary)
-            }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    viewModel.confirmPhotoSelection()
-                }) {
-                    Image(systemName: "chevron.right")
-                        .font(.body.weight(.medium))
+                
+                ToolbarItem(placement: .principal) {
+                    Text("Choose Your Photo")
+                        .font(.headline)
+                        .foregroundColor(.textBrown)
                 }
-                .buttonStyle(.borderedProminent)
-                .buttonBorderShape(.circle)
-                .tint(viewModel.selectedQuadrant != nil ? .brown : .gray)
-                .disabled(viewModel.selectedQuadrant == nil)
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        viewModel.confirmPhotoSelection()
+                    }) {
+                        Image(systemName: "chevron.right")
+                            .font(.body.weight(.medium))
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.circle)
+                    .tint(viewModel.selectedQuadrant != nil ? .buttonBrown : .gray)
+                    .disabled(viewModel.selectedQuadrant == nil)
+                }
             }
         }
     }
@@ -127,6 +130,25 @@ struct QuadrantImageView: View {
             .frame(width: size, height: size, alignment: .topLeading)
             .clipped()
             .allowsHitTesting(false)
+    }
+}
+
+struct AnimatedCropOverlayView: View {
+    @State private var isAnimated = false
+    
+    var body: some View {
+        Image("Crop")
+            .resizable()
+            .scaledToFit()
+            .scaleEffect(isAnimated ? 0.95 : 1.0)
+            .animation(
+                .linear(duration: 0.9)
+                .repeatForever(autoreverses: true),
+                value: isAnimated
+            )
+            .onAppear {
+                isAnimated = true
+            }
     }
 }
 
