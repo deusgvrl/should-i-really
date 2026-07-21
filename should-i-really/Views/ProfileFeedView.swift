@@ -52,7 +52,7 @@ struct ProfileFeedView: View {
                 forceRedraw = true
             }
             
-            if let newestPost = viewModel.feedPosts.first, !newestPost.isCommentRevealed {
+            if let newestPost = viewModel.feedPosts.first, !(newestPost.isCommentRevealed ?? false) {
                 
                 NotificationManager.shared.requestPermissionAndSchedule()
                 
@@ -92,7 +92,7 @@ struct ProfileFeedView: View {
             nodeId: post.nodeId,
             photoGuardType: post.photoGuardResult,
             vibeCheckType: post.vibeCheckResult,
-            showComment: !isNewestPost ? true : post.isCommentRevealed,
+            showComment: !isNewestPost ? true : (post.isCommentRevealed ?? false),
             onInsightsTapped: {
                 print("🎯 DEBUG: Button tapped for node: \(post.nodeId)")
                 self.selectedPostForInsights = post

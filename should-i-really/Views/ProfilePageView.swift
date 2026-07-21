@@ -159,12 +159,6 @@ struct ProfilePageView: View {
                 }
             }
         }
-        .navigationDestination(for: String.self) { selectedPostID in
-            let _ = print(
-                "🎯 [DEBUG 7] Layar ProfileFeedView dibangun untuk ID: \(selectedPostID)"
-            )
-            ProfileFeedView(initialPostID: selectedPostID)
-        }
         .navigationBarBackButtonHidden(true)
     }
 }
