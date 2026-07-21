@@ -112,6 +112,8 @@ struct EndingSummaryView: View {
                                 .clipShape(Capsule())
                         }
                         .padding(.bottom, 24)
+                        .accessibilityLabel("Menu")
+                        .accessibilityInputLabels(["Menu"])
                         
                     }
                     .padding(.horizontal, 24)
@@ -126,6 +128,8 @@ struct EndingSummaryView: View {
                     Button("Return to Menu") {
                         gameVM.returnToLanding()
                     }
+                    .accessibilityLabel("Menu")
+                    .accessibilityInputLabels(["Menu"])
                 }
             }
         }

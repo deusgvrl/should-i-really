@@ -85,6 +85,9 @@ struct SinglePostView: View {
                 }
                 .buttonStyle(.borderless)
                 .zIndex(100)
+                .accessibilityLabel("View Insights")
+                .accessibilityInputLabels(["Insights"])
+
             }
             
             Divider()

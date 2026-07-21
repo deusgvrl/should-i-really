@@ -32,7 +32,7 @@ struct ProfilePageView: View {
                                 .resizable()
                                 .frame(width: 28, height: 28)
                                 .foregroundStyle(.black)
-                                .accessibilityLabel("Home Button")
+                                .accessibilityLabel("Home")
                         }
 
                         Spacer()
@@ -87,8 +87,17 @@ struct ProfilePageView: View {
                         
                     //MARK: - Posts Feed Preview
                     LazyVGrid(columns: gridColumns, spacing: 1) {
-                        ForEach(gameViewModel.feedPosts) { node in
-                            NavigationLink(value: GameViewModel.GameRoute.feedView(postID: node.id)) {
+                        ForEach(
+                            Array(gameViewModel.feedPosts.enumerated()),
+                            id: \.element.id
+                        ) {
+ index,
+ node in
+                            let postNumber = index + 1
+                            NavigationLink(
+                                value: GameViewModel.GameRoute
+                                    .feedView(postID: node.id)
+                            ) {
                                 Color.clear
                                     .aspectRatio(1.0, contentMode: .fill)
                                     .overlay {
@@ -109,11 +118,13 @@ struct ProfilePageView: View {
                                             }
                                             
                                         }
-                                }
-                                .contentShape(Rectangle())
-                                .clipped()
+                                    }
+                                    .contentShape(Rectangle())
+                                    .clipped()
                             }
                             .buttonStyle(.plain)
+                            .accessibilityLabel("\(postNumber)")
+                            .accessibilityInputLabels(["Post \(postNumber)"])
                         }
                     }
                     Spacer()
@@ -122,7 +133,9 @@ struct ProfilePageView: View {
             }
             //MARK: - Add Post Button
             let isGameFinished = gameViewModel.lastEndingId != nil
-            let hasInjectedGameEnding = gameViewModel.feedPosts.contains(where: {$0.nodeId == "last_post"})
+            let hasInjectedGameEnding = gameViewModel.feedPosts.contains(
+                where: {$0.nodeId == "last_post"
+                })
             VStack {
                 Spacer()
                 
@@ -134,15 +147,20 @@ struct ProfilePageView: View {
                             .resizable()
                             .frame(width: 48, height: 48)
                     }
+                    .accessibilityLabel("Next")
+                    .accessibilityInputLabels(["Next"])
                 } else if (isGameFinished && !hasInjectedGameEnding) {
                     Button {
                         gameViewModel.injectEndingPost()
-                        gameViewModel.navigationPath.append(.feedView(postID: "last_post"))
+                        gameViewModel.navigationPath
+                            .append(.feedView(postID: "last_post"))
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
                             .frame(width: 48, height: 48)
                     }
+                    .accessibilityLabel("CeAmel")
+                    .accessibilityInputLabels(["CeAmel"])
                 } else {
                     Button {
                         isShowingPostFlow = true
@@ -151,6 +169,8 @@ struct ProfilePageView: View {
                             .resizable()
                             .frame(width: 48, height: 48)
                     }
+                    .accessibilityLabel("Add")
+                    .accessibilityInputLabels(["Add Post"])
                 }
             }
         }
@@ -159,7 +179,8 @@ struct ProfilePageView: View {
                 isShowingPostFlow = false
                 
                 DispatchQueue.main.asyncAfter(deadline:.now() + 0.3) {
-                    gameViewModel.navigationPath.append(.feedView(postID: newPostID))
+                    gameViewModel.navigationPath
+                        .append(.feedView(postID: newPostID))
                 }
             }
         }

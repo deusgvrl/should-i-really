@@ -27,6 +27,8 @@ struct LandingMenuView: View {
                         .padding(.vertical,16)
                         .background(themeBrown)
                         .clipShape(Capsule())
+                        .accessibilityLabel("Continue")
+                        .accessibilityInputLabels(["Continue"])
                 }
             }
             // New Game Button
@@ -46,6 +48,8 @@ struct LandingMenuView: View {
                     .background(themeBrown)
                     .clipShape(Capsule())
             }
+            .accessibilityLabel("New Game")
+            .accessibilityInputLabels(["New Game"])
             
             // Archive Button
             Button(action: {
@@ -59,6 +63,8 @@ struct LandingMenuView: View {
                     .background(themeBrown)
                     .clipShape(Capsule())
             }
+            .accessibilityLabel("Archive")
+            .accessibilityInputLabels(["Archive"])
             
             // Alert Pop-up
         }
@@ -66,10 +72,12 @@ struct LandingMenuView: View {
             Button("No", role: .cancel) {
                 
             }
+            .accessibilityInputLabels(["No"])
             Button("Yes", role: .destructive) {
                 viewModel.deleteActiveSave()
                 viewModel.startNewGame()
             }
+            .accessibilityInputLabels(["Yes"])
         } message: {
             Text("Starting a new game will overwrite your current progress")
         }
