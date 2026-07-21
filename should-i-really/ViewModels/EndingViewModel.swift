@@ -50,4 +50,8 @@ public final class EndingViewModel {
             print("WARNING: Ending dengan ID '\(id)' tidak ditemukan di database JSON.")
         }
     }
+    
+    public func getEnding(by id: String) -> EndingNode? {
+        return endingsDatabase[id]
+    }
 }

@@ -2,7 +2,7 @@
   {
     "id": "ENDING_1",
     "title": "The Mindful Creator",
-    "image_name": "Ending1_Image",
+    "image_name": "SampleImage1",
     "main_description": "You take your time to evaluate photo crops and captions carefully, prioritizing context and truth over instant popularity.",
     "photo_trait_title": "The Context Guardian",
     "photo_trait_desc": "You consistently select photo crops that preserve the true context and story behind the image.",
@@ -12,7 +12,7 @@
   {
     "id": "ENDING_2",
     "title": "The Truth Seeker",
-    "image_name": "Ending2_Image",
+    "image_name": "SampleImage2",
     "main_description": "You place full truth and transparency at the core of your digital footprint, making sure your audience always gets the whole picture.",
     "photo_trait_title": "The Uncompromised Lens",
     "photo_trait_desc": "You consistently choose crop angles that reveal full context, avoiding misleading framing at all costs.",
@@ -22,7 +22,7 @@
   {
     "id": "ENDING_3",
     "title": "The Aesthetic Curator",
-    "image_name": "Ending3_Image",
+    "image_name": "SampleImage3",
     "main_description": "You prioritize visual appeal and artistic composition, crafting a clean feed while keeping your overall message respectful.",
     "photo_trait_title": "The Visionary Framer",
     "photo_trait_desc": "You focus on cropping for symmetry, light, and visual balance to make your posts look effortless.",
@@ -32,7 +32,7 @@
   {
     "id": "ENDING_4",
     "title": "The Empathetic Storyteller",
-    "image_name": "Ending4_Image",
+    "image_name": "SampleImage4",
     "main_description": "You use social media to build bridges and spread empathy, carefully considering how your posts affect others' feelings.",
     "photo_trait_title": "The Compassionate Eye",
     "photo_trait_desc": "You crop photos to highlight human connections and warmth while respecting people's privacy.",
@@ -42,7 +42,7 @@
   {
     "id": "ENDING_5",
     "title": "The Engagement Strategist",
-    "image_name": "Ending5_Image",
+    "image_name": "SampleImage5",
     "main_description": "You know how to play the social algorithm, creating content that generates discussion without crossing ethical lines.",
     "photo_trait_title": "The Highlight Snapper",
     "photo_trait_desc": "You crop photos to emphasize the most interesting focal point to maximize curiosity.",
@@ -52,7 +52,7 @@
   {
     "id": "ENDING_6",
     "title": "The Selective Narrator",
-    "image_name": "Ending6_Image",
+    "image_name": "SampleImage1",
     "main_description": "You tend to crop photos in ways that tell a specific story, sometimes leaving out crucial details to control the narrative.",
     "photo_trait_title": "The Partial Framer",
     "photo_trait_desc": "You selectively crop images to show only what supports your viewpoint, omitting surrounding context.",
@@ -62,7 +62,7 @@
   {
     "id": "ENDING_7",
     "title": "The Hype Artisan",
-    "image_name": "Ending7_Image",
+    "image_name": "SampleImage2",
     "main_description": "You thrive on excitement and enthusiasm, constantly turning everyday moments into major events for your feed.",
     "photo_trait_title": "The Action Framer",
     "photo_trait_desc": "You zoom in on high-energy subjects to make every photo look dynamic and action-packed.",
@@ -72,7 +72,7 @@
   {
     "id": "ENDING_8",
     "title": "The Clickbait Maestro",
-    "image_name": "Ending8_Image",
+    "image_name": "SampleImage3",
     "main_description": "You master the art of curiosity gaps, prioritizing maximum views and instant clicks over complete accuracy.",
     "photo_trait_title": "The Suspense Cropper",
     "photo_trait_desc": "You intentionally crop out key context to leave viewers guessing and forced to check your caption.",
@@ -82,7 +82,7 @@
   {
     "id": "ENDING_9",
     "title": "The Trend Chaser",
-    "image_name": "Ending9_Image",
+    "image_name": "SampleImage4",
     "main_description": "You love following what's popular and keeping your content up to date, but sometimes you get caught up in trends without thinking about the impact of your posts.",
     "photo_trait_title": "The Frame Follower",
     "photo_trait_desc": "You consistently choose the most eye-catching parts of a photo to stay relevant, but sometimes you overlook the context behind what you share.",
@@ -92,7 +92,7 @@
   {
     "id": "ENDING_10",
     "title": "The Impulse Poster",
-    "image_name": "Ending10_Image",
+    "image_name": "SampleImage5",
     "main_description": "You post on emotion and quick instincts, sharing content in the heat of the moment without fully weighing the consequences.",
     "photo_trait_title": "The Rapid Cropper",
     "photo_trait_desc": "You pick crop frames spontaneously based on your immediate emotion rather than careful review.",
@@ -102,7 +102,7 @@
   {
     "id": "ENDING_11",
     "title": "The Cynical Critic",
-    "image_name": "Ending11_Image",
+    "image_name": "SampleImage1",
     "main_description": "You view the digital world through a skeptical lens, often using humor and sharp commentary to critique posts around you.",
     "photo_trait_title": "The Flaw Finder",
     "photo_trait_desc": "You zoom in on embarrassing or awkward details in photos to make a point or joke.",
@@ -112,7 +112,7 @@
   {
     "id": "ENDING_12",
     "title": "The Misleading Storyteller",
-    "image_name": "Ending12_Image",
+    "image_name": "SampleImage2",
     "main_description": "You lean into sensational framing, pairing cropped photos with misleading narratives to spark dramatic reactions.",
     "photo_trait_title": "The Distortion Cropper",
     "photo_trait_desc": "You crop away reassuring context to make innocent photos look questionable or shocking.",
@@ -122,7 +122,7 @@
   {
     "id": "ENDING_13",
     "title": "The Validation Seeker",
-    "image_name": "Ending13_Image",
+    "image_name": "SampleImage3",
     "main_description": "You shape your content around what pleases your audience, heavily relying on public reaction to feel accomplished.",
     "photo_trait_title": "The Crowd-Pleaser Lens",
     "photo_trait_desc": "You crop photos based strictly on what has previously received the most likes and approval.",
@@ -132,7 +132,7 @@
   {
     "id": "ENDING_14",
     "title": "The Controversy Seeker",
-    "image_name": "Ending14_Image",
+    "image_name": "SampleImage4",
     "main_description": "You aren't afraid to stir the pot, intentionally posting polarizing images and captions to incite heated debate.",
     "photo_trait_title": "The Polarization Cropper",
     "photo_trait_desc": "You crop photos to highlight conflict, tension, or sensitive subjects to provoke reactions.",
@@ -142,7 +142,7 @@
   {
     "id": "ENDING_15",
     "title": "The Casual Sharer",
-    "image_name": "Ending15_Image",
+    "image_name": "SampleImage5",
     "main_description": "You treat social media casually and without pressure, sharing low-stakes moments without overthinking their reach.",
     "photo_trait_title": "The Easygoing Framer",
     "photo_trait_desc": "You crop images quickly without worrying about perfectionism, aesthetics, or hidden meanings.",
@@ -152,7 +152,7 @@
   {
     "id": "ENDING_16",
     "title": "The Digital Wildcard",
-    "image_name": "Ending16_Image",
+    "image_name": "SampleImage1",
     "main_description": "You keep your audience guessing with unpredictable content, mixing chaotic framing with surprising, edgy captions.",
     "photo_trait_title": "The Unconventional Framer",
     "photo_trait_desc": "You choose odd or unexpected crop angles that completely change how a photo is perceived.",
