@@ -18,7 +18,7 @@ struct InsightsOverlayView: View {
             Text("Post Insights")
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(.black)
+                .foregroundStyle(.black)
                 .padding(.top, 24)
                 .padding(.bottom, 24)
             
@@ -43,14 +43,14 @@ struct InsightsOverlayView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
                 .font(.headline)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
             
             HStack {
                 Spacer()
                 
                 Image(systemName: isGood ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
                     .font(.system(size: 78, weight: .semibold))
-                    .foregroundColor(isGood ? .green : .red)
+                    .foregroundStyle(isGood ? .green : .red)
                 Spacer()
             }
             .padding(.vertical, 45)

@@ -26,7 +26,7 @@ struct ProfilePageView: View {
                 ZStack {
                     HStack {
                         Button {
-                            gameViewModel.navigationPath.removeLast(gameViewModel.navigationPath.count)
+                            gameViewModel.navigationPath.removeAll()
                         } label: {
                             Image(systemName: "house")
                                 .resizable()
@@ -89,23 +89,27 @@ struct ProfilePageView: View {
                     LazyVGrid(columns: gridColumns, spacing: 1) {
                         ForEach(gameViewModel.feedPosts) { node in
                             NavigationLink(value: GameViewModel.GameRoute.feedView(postID: node.id)) {
-                                GeometryReader { geo in
-                                    if node.nodeId == "first_post" || node.nodeId == "last_post" {
-                                        Image(node.imageName)
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: geo.size.width, height: geo.size.width)
-                                            .clipped()
-                                    } else {
-                                        QuadrantImageView(
-                                            imageName: node.imageName,
-                                            quadrant: node.selectedQuadrant,
-                                            size: geo.size.width
-                                        )
-                                        
-                                    }
+                                Color.clear
+                                    .aspectRatio(1.0, contentMode: .fill)
+                                    .overlay {
+                                        GeometryReader { geo in
+                                            if node.nodeId == "first_post" || node.nodeId == "last_post" {
+                                                Image(node.imageName)
+                                                    .resizable()
+                                                    .scaledToFill()
+                                                    .frame(width: geo.size.width, height: geo.size.height)    
+                                                    .clipped()
+                                            } else {
+                                                QuadrantImageView(
+                                                    imageName: node.imageName,
+                                                    quadrant: node.selectedQuadrant,
+                                                    size: geo.size.width
+                                                )
+    
+                                            }
+                                            
+                                        }
                                 }
-                                .aspectRatio(1, contentMode: .fill)
                                 .contentShape(Rectangle())
                                 .clipped()
                             }
@@ -152,10 +156,10 @@ struct ProfilePageView: View {
         }
         .fullScreenCover(isPresented: $isShowingPostFlow) {
             PostCreationFlowView { newPostID in
-                gameViewModel.navigationPath.append(.feedView(postID: newPostID))
-                    
+                isShowingPostFlow = false
+                
                 DispatchQueue.main.asyncAfter(deadline:.now() + 0.3) {
-                    isShowingPostFlow = false
+                    gameViewModel.navigationPath.append(.feedView(postID: newPostID))
                 }
             }
         }

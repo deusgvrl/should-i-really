@@ -11,7 +11,6 @@ struct ProfileFeedView: View {
     @Environment(GameViewModel.self) private var viewModel
     
     @State private var selectedPostForInsights: UserPost? = nil
-    @State private var forceRedraw = false
     
     let initialPostID: String?
     
@@ -33,8 +32,6 @@ struct ProfileFeedView: View {
             .scrollTargetLayout()
         }
         .scrollPosition(id: $scrollPosition, anchor: .top)
-//        .ignoresSafeArea(edges: .bottom)
-        .opacity(forceRedraw ? 1.0 : 0.99)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -47,25 +44,19 @@ struct ProfileFeedView: View {
                 }
             }
         }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                forceRedraw = true
+        .task {
+            if let targetID = initialPostID {
+                scrollPosition = targetID
             }
             
             if let newestPost = viewModel.feedPosts.first, !(newestPost.isCommentRevealed ?? false) {
                 
                 NotificationManager.shared.requestPermissionAndSchedule()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                    withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
-                        viewModel.markCommentAsRevealed(for: newestPost.id)
-                    }
-                }
-            }
-                    
-            if let targetID = initialPostID {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                    scrollPosition = targetID
+                try? await Task.sleep(for: .seconds(5))
+                
+                withAnimation(.spring(response:0.45 , dampingFraction: 0.75)) {
+                    viewModel.markCommentAsRevealed(for: newestPost.id)
                 }
             }
         }
@@ -74,6 +65,7 @@ struct ProfileFeedView: View {
                 .presentationDetents([.fraction(0.45)])
                 .presentationDragIndicator(.visible)
         }
+            
     }
     
     // MARK: - Subview Builder
