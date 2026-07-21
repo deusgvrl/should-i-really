@@ -74,6 +74,7 @@ extension GameViewModel {
         }
         
         if nextNodeId.hasPrefix("ENDING_") {
+            self.lastEndingId = nextNodeId
             self.currentRoute = .ending
             print("Scenario complete, ending is: ending \(nextNodeId)")
         } else {
