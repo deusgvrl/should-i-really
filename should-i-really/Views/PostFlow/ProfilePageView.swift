@@ -159,8 +159,8 @@ struct ProfilePageView: View {
                             .resizable()
                             .frame(width: 48, height: 48)
                     }
-                    .accessibilityLabel("CeAmel")
-                    .accessibilityInputLabels(["CeAmel"])
+                    .accessibilityLabel("Next")
+                    .accessibilityInputLabels(["Next"])
                 } else {
                     Button {
                         isShowingPostFlow = true

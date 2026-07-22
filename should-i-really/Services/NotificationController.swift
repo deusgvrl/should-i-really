@@ -16,15 +16,19 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().delegate = self
     }
     
-    func requestPermissionAndSchedule() {
+    func requestPermissionAndSchedule() async {
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        
+        do {
+            let granted = try await center.requestAuthorization(options: [.alert, .sound, .badge])
             guard granted else { return }
+            self.scheduleLocalNotification()
             
-            Task {
-                await self.scheduleLocalNotification()
-            }
+        } catch {
+            print("Failed to authorize notifications: \(error.localizedDescription)")
         }
+        
+        
     }
     
     private func scheduleLocalNotification() {
