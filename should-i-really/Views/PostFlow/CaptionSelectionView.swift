@@ -33,6 +33,7 @@ struct CaptionSelectionView: View {
                 
                 Spacer()
             }
+            
             if isUploading {
                 UploadingView(uploadDuration: 2.0) {
                     viewModel.finalizeAndPost()

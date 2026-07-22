@@ -19,11 +19,11 @@ struct PhotoSelectionView: View {
     @State private var isAnimated = false
     
     var body: some View {
+        @Bindable var viewModel = viewModel
+        
         ZStack() {
             Color.background
                 .ignoresSafeArea()
-            
-            @Bindable var viewModel = viewModel
             
             VStack(spacing: 20) {
                 GeometryReader { geometry in
@@ -112,7 +112,7 @@ struct PhotoSelectionView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.circle)
-                    .tint(viewModel.selectedQuadrant != nil ? Color.buttonBrown : Color.unselectedGray)
+                    .tint(viewModel.selectedQuadrant != nil ? .buttonBrown : .unselectedGray)
                     .disabled(viewModel.selectedQuadrant == nil)
                 }
             }
