@@ -136,7 +136,7 @@ struct QuadrantImageView: View {
             )
             .frame(width: size, height: size, alignment: .topLeading)
             .clipped()
-            .allowsHitTesting(false)
+//            .allowsHitTesting(false)
     }
 }
 

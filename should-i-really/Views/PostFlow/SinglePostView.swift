@@ -56,6 +56,7 @@ struct SinglePostView: View {
                         }
                     }
                 }
+                .contentShape(Rectangle())
             .clipped()
 
             

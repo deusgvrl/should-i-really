@@ -56,7 +56,9 @@ extension GameViewModel {
         let trimmedName = username.trimmingCharacters(in: .whitespacesAndNewlines)
         guard isValidUsername(trimmedName) else { return }
         
-        var newState = GameState(username: trimmedName)
+        let shuffledOrnaments = ["icon_star", "icon_pin", "icon_pushPin"].shuffled()
+        
+        var newState = GameState(username: trimmedName, ornamentsOrder: shuffledOrnaments)
         newState.publishedPosts.append(UserPost.openingPost)
         storageController.saveGame(newState)
         self.gameState = newState

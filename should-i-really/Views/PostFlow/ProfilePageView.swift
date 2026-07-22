@@ -79,17 +79,25 @@ struct ProfilePageView: View {
                         .padding(.horizontal, 16)
                         .padding(.vertical, 16)
                         
-                        
+                    
                     //MARK: - Posts Feed Preview
+                    let totalPosts = gameViewModel.feedPosts.count
                     LazyVGrid(columns: gridColumns, spacing: 16) {
-                        ForEach(
-                            Array(gameViewModel.feedPosts.enumerated()),
-                            id: \.element.id
-                        ) {
-                            index,
-                            node in
-                            let postNumber = index + 1
-                            NavigationLink(
+                        ForEach(Array(gameViewModel.feedPosts.enumerated()), id: \.element.id) { index,node in
+                            let postNumber = totalPosts - index
+                            var currentOrnament: String? = nil
+                            
+                            if let order = gameViewModel.gameState?.ornamentsOrder, !order.isEmpty {
+                                switch postNumber {
+                                case 2: currentOrnament = order[0]
+                                case 3: currentOrnament = order[1]
+                                case 6: currentOrnament = order[2]
+                                case 7: currentOrnament = order[0]
+                                default: currentOrnament = nil
+                                }
+                            }
+                            
+                            return NavigationLink(
                                 value: GameViewModel.GameRoute
                                     .feedView(postID: node.id)
                             ) {
@@ -97,11 +105,10 @@ struct ProfilePageView: View {
                                     .aspectRatio(0.83, contentMode: .fill)
                                     .overlay {
                                         GeometryReader { geo in
-                                            SinglePreviewView(node: node, size: geo.size.width)
+                                            SinglePreviewView(node: node, size: geo.size, ornament: currentOrnament)
                                         }
+                                        .contentShape(RoundedRectangle(cornerRadius: 12))
                                     }
-//                                    .contentShape(Rectangle())
-//                                    .clipped()
                             }
                             .buttonStyle(.plain)
                             .accessibilityLabel("\(postNumber)")
@@ -146,9 +153,13 @@ struct ProfilePageView: View {
                     Button {
                         isShowingPostFlow = true
                     } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: 48, height: 48)
+                        Image(systemName: "plus")
+                            .fontDesign(.default)
+                            .font(.system(size: 32, weight: .regular))
+                            .foregroundStyle(.white)
+                            .frame(width: 56, height: 56)
+                            .background(Color.buttonBrown)
+                            .clipShape(Circle())
                     }
                     .accessibilityLabel("Add")
                     .accessibilityInputLabels(["Add Post"])

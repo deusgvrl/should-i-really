@@ -14,14 +14,15 @@ public struct GameState: Codable, Equatable {
     public var username: String
     public var currentRound: Int
     public var currentNodeId: String
-    
     public var publishedPosts: [UserPost]
+    public var ornamentsOrder: [String]?
     
     // MARK: - Initializer
-    public init(username: String, currentRound: Int = 1, currentNodeId: String = "1A", publishedPosts: [UserPost] = []){
+    public init(username: String, currentRound: Int = 1, currentNodeId: String = "1A", publishedPosts: [UserPost] = [], ornamentsOrder: [String]?){
         self.username = username
         self.currentRound = currentRound
         self.currentNodeId = currentNodeId
         self.publishedPosts = publishedPosts
+        self.ornamentsOrder = ornamentsOrder
     }
 }
