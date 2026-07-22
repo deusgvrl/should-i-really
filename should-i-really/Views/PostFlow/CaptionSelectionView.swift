@@ -13,60 +13,57 @@ struct CaptionSelectionView: View {
     @Environment(PostCreationViewModel.self) var viewModel
     @Environment(\.dismiss) private var dismissAction
     
-    // MARK: - Design System Constants
-    private let activeColor = Color(red: 173/255, green: 127/255, blue: 94/255) // Brown
-    private let inactiveColor = Color(red: 182/255, green: 182/255, blue: 182/255) // Grey
-    
     // MARK: - Body
     var body: some View {
-        VStack(spacing: 0) {
-            //MARK: Photo
-            selectedImageArea
-                .padding(.top, 40)
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
             
-            ScrollView {
-                captionChoicesContainer
+            VStack(spacing: 20) {
+                // MARK: Selected Photo Display
+                selectedImageArea
+                
+                // MARK: Captions List
+                ScrollView(showsIndicators: false) {
+                    captionChoicesContainer
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
         }
-        .ignoresSafeArea(edges: .horizontal)
-        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .navigationBarTitleDisplayMode(.inline)
-        
         // MARK: - Toolbar Setup
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("Choose Your Caption")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.black)
-            }
-            
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
                     viewModel.navigateToCaptionScreen = false
                     dismissAction()
                 }) {
                     Image(systemName: "chevron.left")
-                        .font(.title3)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.black)
-                        .frame(width: 30, height: 44, alignment: .center)
+                        .font(.body.weight(.medium))
+                        .foregroundColor(.primary)
+                        .frame(width: 36, height: 36)
+                        .background(Color.white)
+                        .clipShape(Circle())
                 }
             }
             
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .principal) {
+                Text("Choose Your Caption")
+                    .font(.headline)
+                    .foregroundColor(.textBrown)
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
                     viewModel.finalizeAndPost()
                 }) {
                     Image(systemName: "arrow.up")
-                        .font(.headline)
+                        .font(.body.weight(.bold))
                 }
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.circle)
-                .tint(viewModel.selectedQuadrant != nil ? activeColor : inactiveColor)
+                .tint(viewModel.selectedCaption != nil ? .buttonBrown : .gray)
                 .disabled(viewModel.selectedCaption == nil)
                 .accessibilityLabel("Post")
                 .accessibilityInputLabels(["Post"])
@@ -77,7 +74,7 @@ struct CaptionSelectionView: View {
     
     // MARK: - Subviews
     
-//    /// Displays the 1:1 scaled-up version of the user's selected quadrant
+    //    /// Displays the 1:1 scaled-up version of the user's selected quadrant
     private var selectedImageArea: some View {
         ZStack {
             if let selectedQuadrant = viewModel.selectedQuadrant {
@@ -123,17 +120,17 @@ struct CaptionSelectionView: View {
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .multilineTextAlignment(.center)
-                        .foregroundStyle(isSelected ? .white : .black)
+                        .foregroundStyle(.white)
                         .padding(.vertical, 18)
                         .padding(.horizontal, 24)
                         .frame(maxWidth: .infinity)
                         .background(
-                            RoundedRectangle(cornerRadius: 28)
-                                .fill(isSelected ? activeColor : Color(red: 0.95, green: 0.95, blue: 0.97))
+                            Capsule()
+                                .fill(isSelected ? Color.buttonBrown : Color(red: 137/255, green: 137/255, blue: 142/255))
                         )
                         .overlay(
-                            RoundedRectangle(cornerRadius: 28)
-                                .stroke(isSelected ? Color.clear : Color.gray.opacity(0.2), lineWidth: 1)
+                            Capsule()
+                                .stroke(Color(red: 118/255, green: 84/255, blue: 70/255), lineWidth: 3)
                         )
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -141,22 +138,21 @@ struct CaptionSelectionView: View {
                 .accessibilityInputLabels(["Caption \(captionNumber)"])
             }
         }
-        .padding(.top, 32)
+        .padding(.top, 12)
         .padding(.horizontal, 24)
         .animation(.easeInOut(duration: 0.2), value: viewModel.selectedCaption)
     }
 }
 
 //// MARK: - Preview Generator
-//struct CaptionSelectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let gameViewModel = GameViewModel()
-//        let productionPostViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
-//        
-//        productionPostViewModel.selectedQuadrant = .topLeft
-//        
-//        return NavigationView {
-//            CaptionSelectionView()
-//        }
-//    }
-//}
+#Preview {
+    let gameViewModel = GameViewModel()
+    let postViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
+    
+    postViewModel.selectedQuadrant = .topLeft
+    
+    return NavigationStack {
+        CaptionSelectionView()
+            .environment(postViewModel)
+    }
+}
