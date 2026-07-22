@@ -75,7 +75,7 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
         return "Year 1 Semester 1 Month 1"
     }
     static var openingPost: UserPost {
-        UserPost(nodeId: "first_post", imageName: "node_firstPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "First day at as a highschool student.", comment: Comment(id: "com_first_post", username: "doejane", text: "Congrats on your first day!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true, timeline: TimelineData(year: 1, semester: 1, month: 1))
+        UserPost(nodeId: "first_post", imageName: "node_firstPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "First day at as a high school student.", comment: Comment(id: "com_first_post", username: "doejane", text: "Congrats on your first day!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true, timeline: TimelineData(year: 1, semester: 1, month: 1))
     }
     static var endingPost : UserPost {
         UserPost(nodeId: "last_post", imageName: "node_lastPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "End of one journey, beginning of another 🌟💪", comment: Comment(id: "com_last_post", username: "doejane", text: "Congrats on your graduation!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true, timeline: TimelineData(year: 3, semester: 2, month: 6))
