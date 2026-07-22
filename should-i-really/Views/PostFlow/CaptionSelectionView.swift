@@ -53,9 +53,11 @@ struct CaptionSelectionView: View {
                     .font(.headline)
                     .foregroundColor(.textBrown)
             }
-            
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
+
+                    guard viewModel.selectedCaption != nil else { return }
+                    
                     viewModel.finalizeAndPost()
                 }) {
                     Image(systemName: "arrow.up")
@@ -63,11 +65,10 @@ struct CaptionSelectionView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.circle)
-                .tint(viewModel.selectedCaption != nil ? .buttonBrown : .gray)
-                .disabled(viewModel.selectedCaption == nil)
+                .tint(viewModel.selectedCaption != nil ? .buttonBrown : .unselectedGray)
+                .id(viewModel.selectedCaption != nil)
                 .accessibilityLabel("Post")
                 .accessibilityInputLabels(["Post"])
-
             }
         }
     }
@@ -126,11 +127,11 @@ struct CaptionSelectionView: View {
                         .frame(maxWidth: .infinity)
                         .background(
                             Capsule()
-                                .fill(isSelected ? Color.buttonBrown : Color(red: 137/255, green: 137/255, blue: 142/255))
+                                .fill(isSelected ? Color.buttonBrown : Color.unselectedGray)
                         )
                         .overlay(
                             Capsule()
-                                .stroke(Color(red: 118/255, green: 84/255, blue: 70/255), lineWidth: 3)
+                                .stroke(Color.borderBrown, lineWidth: 3)
                         )
                 }
                 .buttonStyle(PlainButtonStyle())
