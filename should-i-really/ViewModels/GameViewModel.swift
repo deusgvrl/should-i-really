@@ -69,4 +69,15 @@ import SwiftUI
     public convenience init() {
         self.init(storageController: StorageController())
     }
+        
+    // MARK: - Uploading
+    public var isPresentingPostCreation: Bool = false
+    
+    public func navigateToFeed(postID: String? = nil) {
+        if let postID = postID {
+            currentRoute = .feedView(postID: postID)
+        } else {
+            currentRoute = .timeline
+        }
+    }
 }
