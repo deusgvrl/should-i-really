@@ -36,11 +36,12 @@ struct ProfileFeedView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack(spacing: 0) {
-                    Text("Posts").font(.subheadline).bold()
+                    Text("Posts")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
                     Text(viewModel.gameState?.username ?? "johndoe")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .bold()
+                        .fontWeight(.medium)
                 }
             }
         }

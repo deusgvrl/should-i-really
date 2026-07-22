@@ -25,24 +25,18 @@ struct SinglePostView: View {
     
     var body: some View {
         
-        // MARK: - Design System Constants
-        let activeColor = Color(
-            red: 173/255,
-            green: 127/255,
-            blue: 94/255
-        ) // Brown
-        
         VStack(alignment: .leading,spacing: 8) {
             //MARK: Profile Pict + Username
             HStack(spacing: 16) {
-                Image("pp")
+                Image("icon_miniProfilePicture")
                     .resizable()
                     .frame(width: 48, height: 48)
                     .clipShape(Circle())
                     .padding(.leading, 8)
                 Text(username)
                     .font(.title3)
-                    .fontWeight(.medium)
+                    .fontWeight(.semibold)
+                    .tracking(-1)
             }
             
             //MARK: Post Image
@@ -73,10 +67,9 @@ struct SinglePostView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "aqi.medium.gauge.open")
                             .font(.subheadline)
-                            .foregroundStyle(activeColor)
                         Text("View insights")
                             .font(.subheadline)
-                            .foregroundStyle(activeColor)
+                            .fontWeight(.semibold)
                     }
                     .padding(.leading, 8)
                     .padding(.vertical, 4)
@@ -92,13 +85,20 @@ struct SinglePostView: View {
             
             Divider()
             //MARK: Share Deck Icons
-            Image("Share Deck")
+            Image("icon_likeAndShare")
                 .resizable()
-                .frame(width: 115, height: 27)
+                .frame(width: 67, height: 28)
                 .padding(.leading, 4)
             
+            
             //MARK: Caption
-            Text("**\(username)** \(caption)")
+            let usernameText = Text("\(username)")
+                .fontWeight(.bold)
+            
+            let captionText = Text("\(caption)")
+                .fontWeight(.regular)
+            
+            Text("**\(usernameText)** \(captionText)")
                 .font(.body)
                 .multilineTextAlignment(.leading)
                 .padding(.leading, 8)
@@ -106,8 +106,12 @@ struct SinglePostView: View {
             
             //MARK: Comment
             if showComment {
+                let commentUsernameText = Text("\(commentUsername)")
+                    .fontWeight(.bold)
+                let commentText = Text("\(comment)")
+                    .fontWeight(.regular)
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("**\(commentUsername)** \(comment)")
+                    Text("**\(commentUsernameText)** \(commentText)")
                         .font(.body)
                         .multilineTextAlignment(.leading)
                         .padding(.leading, 8)
@@ -121,6 +125,7 @@ struct SinglePostView: View {
             
             Text(date)
                 .font(.caption)
+                .fontWeight(.medium)
                 .foregroundStyle(.secondary)
                 .padding(.leading, 8)
         }
@@ -129,14 +134,14 @@ struct SinglePostView: View {
 
 #Preview {
     SinglePostView(
-        imageName: "node_firstPost",
+        imageName: "node_1",
         quadrant: .bottomLeft,
         username: "johndoe",
         caption: "Seeing this disappointment hurts, but your incredible worth and intelligence are so much bigger than a letter in your hands! 🌟💪",
         commentUsername: "doejane",
         comment: "I'm so proud of you, you're going to do great things!",
         date: "Year 3 Semester 1 Month 1",
-        nodeId: "first_post",
+        nodeId: "1A",
         photoGuardType: .negative,
         vibeCheckType: .positive,
         showComment: true,
