@@ -4,60 +4,68 @@
 //
 //  Created by Amadeus Gavriel on 13/07/26.
 //
+
 import SwiftUI
 
 struct InsightsOverlayView: View {
     
-    let framingType : CropType
-    let captionType : CropType
+    let framingType: CropType
+    let captionType: CropType
     
-    // MARK: - Sheet
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 24) {
             
+            // MARK: Header Title
             Text("Post Insights")
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundStyle(.black)
-                .padding(.top, 24)
-                .padding(.bottom, 24)
+                .font(.system(.title2, design: .rounded))
+                .fontWeight(.semibold)
+                .foregroundStyle(.textBrown)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
             
+            // MARK: Metric Cards
             HStack(spacing: 16) {
-                metricCard(title: "Photo Guard", type: framingType)
-                metricCard(title: "Vibe Check", type: captionType)
+                metricCard(title: "Framing", type: framingType)
+                metricCard(title: "Caption", type: captionType)
             }
-            .padding(.horizontal, 24)
-            
-            Spacer()
+            .padding(.horizontal, 20)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemBackground))
+        .background(Color.background.ignoresSafeArea())
     }
     
-    // MARK: - Builder untuk Card Metric
+    // MARK: - Metric Card Builder
     @ViewBuilder
     private func metricCard(title: String, type: CropType) -> some View {
+        let isGood: Bool = (type == .positive)
         
-        let isGood: Bool = type == .positive
-        
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(spacing: 30) {
             Text(title)
-                .font(.headline)
-                .foregroundStyle(.secondary)
+                .font(.system(.title2, design: .rounded))
+                .fontWeight(.bold)
+                .foregroundStyle(.textBrown)
             
-            HStack {
-                Spacer()
-                
-                Image(systemName: isGood ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
-                    .font(.system(size: 78, weight: .semibold))
-                    .foregroundStyle(isGood ? .green : .red)
-                Spacer()
-            }
-            .padding(.vertical, 45)
+            Image(isGood ? "arrow_up" : "arrow_down")
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 120)
         }
-        .padding(16)
+        .padding(.vertical, 28)
+        .padding(.horizontal, 16)
         .frame(maxWidth: .infinity)
-        .background(Color(.systemGray6))
-        .cornerRadius(16)
+        .background(Color.black.opacity(0.06))
+        .cornerRadius(20)
+    }
+}
+
+// MARK: - Canvas Preview
+#Preview {
+    ZStack {
+        Color.background.ignoresSafeArea()
+        
+        InsightsOverlayView(
+            framingType: .positive,
+            captionType: .positive
+        )
     }
 }
