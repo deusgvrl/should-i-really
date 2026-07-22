@@ -11,8 +11,11 @@ struct CaptionSelectionView: View {
     
     // MARK: - Dependencies (Using Modern @Observable Pattern)
     @Environment(PostCreationViewModel.self) var viewModel
+    @Environment(GameViewModel.self) private var gameViewModel
     @Environment(\.dismiss) private var dismissAction
     
+    @State private var isUploading = false
+
     // MARK: - Body
     var body: some View {
         ZStack {
@@ -29,6 +32,20 @@ struct CaptionSelectionView: View {
                 }
                 
                 Spacer()
+            }
+            if isUploading {
+                UploadingView(uploadDuration: 2.0) {
+                    viewModel.finalizeAndPost()
+                    var transaction = Transaction()
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) {
+                        gameViewModel.currentRoute = .timeline
+                        gameViewModel.isPresentingPostCreation = false
+                        viewModel.navigateToCaptionScreen = false
+                    }
+                }
+                .ignoresSafeArea()
+                .zIndex(1)
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -55,10 +72,10 @@ struct CaptionSelectionView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-
                     guard viewModel.selectedCaption != nil else { return }
-                    
-                    viewModel.finalizeAndPost()
+                    withAnimation {
+                        isUploading = true
+                    }
                 }) {
                     Image(systemName: "arrow.up")
                         .font(.body.weight(.bold))

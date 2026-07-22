@@ -85,4 +85,10 @@ final class PostCreationViewModel {
         onPostFinished?(newPostID)
     }
     
+    // MARK: - Uploading
+    var isUploading: Bool = false
+    
+    func startUploadingProcess() {
+        isUploading = true
+    }
 }
