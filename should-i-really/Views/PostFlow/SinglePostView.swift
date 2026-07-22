@@ -81,9 +81,9 @@ struct SinglePostView: View {
                 .accessibilityLabel("View Insights")
                 .accessibilityInputLabels(["Insights"])
 
+                Divider()
             }
             
-            Divider()
             //MARK: Share Deck Icons
             Image("icon_likeAndShare")
                 .resizable()

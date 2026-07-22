@@ -14,8 +14,8 @@ struct ProfilePageView: View {
     @State private var isShowingPostFlow = false
 
     private let gridColumns = Array(
-        repeating: GridItem(.flexible(), spacing: 1),
-        count: 3
+        repeating: GridItem(.flexible(), spacing: 12),
+        count: 2
     )
         
     var body: some View {
@@ -30,8 +30,8 @@ struct ProfilePageView: View {
                         } label: {
                             Image(systemName: "house")
                                 .resizable()
-                                .frame(width: 28, height: 28)
-                                .foregroundStyle(.black)
+                                .frame(width: 28, height: 24)
+                                .foregroundStyle(.textBrown)
                                 .accessibilityLabel("Home")
                         }
 
@@ -41,7 +41,7 @@ struct ProfilePageView: View {
                         Spacer()
                         Text(gameViewModel.currentUsername ?? "johndoe")
                             .fontWeight(.bold)
-                            .font(.headline)
+                            .font(.body)
                         Spacer()
                     }
                 }
@@ -51,83 +51,64 @@ struct ProfilePageView: View {
                     
                 // MARK: - Profile Picture + Timeline
                 ScrollView {
-                    HStack {
-                        Image("pp")
+                    HStack(alignment:.center) {
+                        Image("icon_profilePicture")
                             .resizable()
                             .frame(width: 80, height: 80)
                             .clipShape(Circle())
                             .accessibilityLabel("My Profile Picture")
                         Spacer()
-                        Text("Year 1 Semester 1 Month 1")
-                            .font(.callout)
-                        Spacer()
+                        VStack(alignment: .leading) {
+                            Text("Year 1 Semester 1 Month 1")
+                                .font(.title3)
+                                .fontWeight(.semibold)
+                            Spacer()
+                            Text("I think therefore i am")
+                                .font(.body)
+                                .fontWeight(.regular)
+                        }
+                        .padding(.vertical, 12)
                     }
                     .frame(maxWidth: .infinity)
-                    //            .border(.blue)
-                    .padding(.horizontal, 16)
-                    .padding(.top, 16)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 32)
                         
-                    //MARK: - Bio
-                    Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    )
-                    .font(.footnote)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    //            .border(.brown)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 4)
+
                         
-                    //MARK: - Grid Icon
-                    Image(systemName: "square.grid.3x3.fill")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .padding(.top, 8)
-                        .padding(.bottom, 4)
+                    Divider()
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 16)
                         
                         
                     //MARK: - Posts Feed Preview
-                    LazyVGrid(columns: gridColumns, spacing: 1) {
+                    LazyVGrid(columns: gridColumns, spacing: 16) {
                         ForEach(
                             Array(gameViewModel.feedPosts.enumerated()),
                             id: \.element.id
                         ) {
- index,
- node in
+                            index,
+                            node in
                             let postNumber = index + 1
                             NavigationLink(
                                 value: GameViewModel.GameRoute
                                     .feedView(postID: node.id)
                             ) {
                                 Color.clear
-                                    .aspectRatio(1.0, contentMode: .fill)
+                                    .aspectRatio(0.83, contentMode: .fill)
                                     .overlay {
                                         GeometryReader { geo in
-                                            if node.nodeId == "first_post" || node.nodeId == "last_post" {
-                                                Image(node.imageName)
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .frame(width: geo.size.width, height: geo.size.height)    
-                                                    .clipped()
-                                            } else {
-                                                QuadrantImageView(
-                                                    imageName: node.imageName,
-                                                    quadrant: node.selectedQuadrant,
-                                                    size: geo.size.width
-                                                )
-    
-                                            }
-                                            
+                                            SinglePreviewView(node: node, size: geo.size.width)
                                         }
                                     }
-                                    .contentShape(Rectangle())
-                                    .clipped()
+//                                    .contentShape(Rectangle())
+//                                    .clipped()
                             }
                             .buttonStyle(.plain)
                             .accessibilityLabel("\(postNumber)")
                             .accessibilityInputLabels(["Post \(postNumber)"])
                         }
                     }
-                    Spacer()
+                    .padding(.horizontal, 16)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -159,8 +140,8 @@ struct ProfilePageView: View {
                             .resizable()
                             .frame(width: 48, height: 48)
                     }
-                    .accessibilityLabel("Next")
-                    .accessibilityInputLabels(["Next"])
+                    .accessibilityLabel("Add")
+                    .accessibilityInputLabels(["Add Post"])
                 } else {
                     Button {
                         isShowingPostFlow = true
@@ -190,8 +171,35 @@ struct ProfilePageView: View {
 
 #Preview {
     let dummyVM = GameViewModel()
-    dummyVM.startGame(fromRound: 1, startNodeId: "1A")
-    
+            
+    dummyVM.enterUsername("PreviewPlayer")
+            
+    if var state = dummyVM.gameState {
+        for i in 1...5 {
+            let dummyPost = UserPost(
+                nodeId: "\(i)A",
+                imageName: "SampleImage5",
+                selectedQuadrant: .topLeft,
+                selectedCaptionText: "This is a fake caption for round \(i)!",
+                comment: Comment(
+                    id: "\(i)",
+                    username: "bestie",
+                    text: "Omg so cool!"
+                ),
+                photoGuardResult: .positive,
+                vibeCheckResult: .positive
+            )
+            state.publishedPosts.append(dummyPost)
+        }
+        dummyVM.gameState = state
+    }
+            
+    // 3. Inject the final Ending Post and set the game to "Finished"
+//    dummyVM.injectEndingPost()
+//    dummyVM.currentRoute = .ending
+//    dummyVM.lastEndingId = "ENDING_1"
+            
+    // 4. Return the View!
     return ProfilePageView()
         .environment(dummyVM)
 }

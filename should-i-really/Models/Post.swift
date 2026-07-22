@@ -61,6 +61,7 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
     public let photoGuardResult: CropType
     public let vibeCheckResult: CropType
     public var isCommentRevealed: Bool? = false
+<<<<<<< HEAD
     static let openingPost = UserPost(
         nodeId: "first_post",
         imageName: "node_firstPost",
@@ -87,6 +88,14 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
         vibeCheckResult: .positive,
         isCommentRevealed: true
     )
+=======
+    static var openingPost: UserPost {
+        UserPost(nodeId: "first_post", imageName: "node_firstPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "First day at as a highschool student.", comment: Comment(id: "com_first_post", username: "doejane", text: "Congrats on your first day!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true)
+    }
+    static var endingPost : UserPost {
+        UserPost(nodeId: "last_post", imageName: "node_lastPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "End of one journey, beginning of another 🌟💪", comment: Comment(id: "com_last_post", username: "doejane", text: "Congrats on your graduation!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true)
+    }
+>>>>>>> 8035bdd (refactor: profile page UI 50%)
     
 }
 
