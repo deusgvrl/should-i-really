@@ -9,10 +9,7 @@ import SwiftUI
 
 struct UsernameInputView: View {
     @Environment(GameViewModel.self) private var viewModel
-    @State var usernameText: String = ""
-    
-    private let themeBrown = Color(red: 0.65, green: 0.49, blue: 0.32)
-    private let themeDisabledGray = Color(red: 0.85, green: 0.85, blue: 0.85)
+    @State private var usernameText: String = ""
     
     private var trimmedUsername: String {
         usernameText.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -27,60 +24,77 @@ struct UsernameInputView: View {
     }
     
     var body: some View {
-        VStack(spacing: 24) {
-            VStack(spacing: 8){
-                Text("Create a username")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.primary)
+        ZStack {
+            // MARK: - Layer Background Asset
+            Image("background")
+                .resizable()
+                .ignoresSafeArea()
+            VStack(spacing: 0) {
+                Spacer()
+                    .frame(maxHeight: 150)
                 
-                Text("Choose how you want to be known in this timeline")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            
-            VStack(alignment: .leading, spacing: 8) {
-                TextField("Username", text: $usernameText)
-                    .font(.body)
-                    .foregroundStyle(isInvalidInput ? .red : .primary)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 14)
-                    .background(Color(.systemGray6))
-                    .clipShape(Capsule())
-                    .overlay(
-                        Capsule()
-                            .stroke(isInvalidInput ? Color.red : Color.clear, lineWidth: 2)
-                    )
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
+                // MARK: - Logo Should I Really
+                Image("HomeIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 130)
+                    .padding(.bottom, 24)
                 
-                if isInvalidInput {
-                    Text("Exceeds 16 characters or contains unsupported symbols.")
-                        .font(.footnote)
-                        .foregroundStyle(.red)
-                        .padding(.horizontal, 12)
-                        .transition(.opacity.combined(with: .move(edge: .top)))
+                // MARK: - Input Section
+                VStack(alignment: .leading, spacing: 14) {
+                    Text("Create a username")
+                        .font(.system(.title, design: .rounded))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.borderBrown)
+                        .padding(.leading, 4)
+                    
+                    TextField("johndoe", text: $usernameText)
+                        .font(.body)
+                        .foregroundStyle(isInvalidInput ? .red : .primary)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 14)
+                        .background(Color(red: 250/255, green: 250/255, blue: 250/255))
+                        .clipShape(Capsule())
+                        .overlay(
+                            Capsule()
+                                .stroke(isInvalidInput ? Color.red : Color.clear, lineWidth: 2)
+                        )
+                        .shadow(color: Color.black.opacity(0.08), radius: 7, x: 0, y: 3)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                    
+                    if isInvalidInput {
+                        Text("Exceeds 16 characters or contains unsupported symbols.")
+                            .font(.footnote)
+                            .foregroundStyle(.red)
+                            .padding(.horizontal, 12)
+                            .transition(.opacity.combined(with: .move(edge: .top)))
+                    }
                 }
+                .animation(.easeInOut(duration: 0.2), value: isInvalidInput)
+                
+                Spacer()
+                
+                // MARK: - Start Button
+                Button(action: {
+                    viewModel.enterUsername(trimmedUsername)
+                }) {
+                    Text("Start")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(isInputValid ? Color.buttonBrown : Color.unselectedGray)
+                        .clipShape(Capsule())
+                }
+                .disabled(!isInputValid)
+                .accessibilityLabel("Start")
+                .accessibilityInputLabels(["Start"])
+                .padding(.bottom, 24)
             }
-            .animation(.easeInOut(duration: 0.2), value: isInvalidInput)
-            
-            Button(action: {
-                viewModel.enterUsername(usernameText.trimmingCharacters(in: .whitespacesAndNewlines))
-            }) {
-                Text("Start")
-                    .font(.headline)
-                    .foregroundStyle(isInputValid ? .white : .secondary)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(isInputValid ? themeBrown : themeDisabledGray)
-                    .clipShape(Capsule())
-            }
-            .accessibilityLabel("Start")
-            .accessibilityInputLabels(["Start"])
-            .disabled(!isInputValid)
+            .padding(.horizontal, 28)
         }
-        .padding(.horizontal, 8)
     }
 }
 
