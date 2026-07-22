@@ -47,13 +47,13 @@ struct PhotoSelectionView: View {
                                 
                                 if !isActive {
                                     Color.black.opacity(0.75)
-                                        .border(Color.gray, width: 1)
+                                        .border(Color.unselectedGray, width: 1)
                                 }
                                     
                                 
                                 if isActive {
                                     Color.white.opacity(0)
-                                        .border(Color.gray, width: 1)
+                                        .border(Color.unselectedGray, width: 1)
                                 }
                                 
                                 if isSelected {
@@ -93,14 +93,14 @@ struct PhotoSelectionView: View {
                     }) {
                         Image(systemName: "xmark")
                             .font(.body.weight(.medium))
-                            .foregroundColor(.primary)
+                            .foregroundColor(Color.unselectedGray)
                     }
                 }
                 
                 ToolbarItem(placement: .principal) {
                     Text("Choose Your Photo")
                         .font(.headline)
-                        .foregroundColor(.textBrown)
+                        .foregroundColor(Color.textBrown)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -112,7 +112,7 @@ struct PhotoSelectionView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.circle)
-                    .tint(viewModel.selectedQuadrant != nil ? .buttonBrown : .gray)
+                    .tint(viewModel.selectedQuadrant != nil ? Color.buttonBrown : Color.unselectedGray)
                     .disabled(viewModel.selectedQuadrant == nil)
                 }
             }
