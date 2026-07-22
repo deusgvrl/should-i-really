@@ -86,9 +86,9 @@ struct SinglePreviewView: View {
 
 #Preview("Polaroid Tweaker") {
     let dummyNode = UserPost(nodeId: "2A", imageName: "SampleImage5", selectedQuadrant: .topLeft,
-                             selectedCaptionText: "", comment: nil, photoGuardResult: .positive, vibeCheckResult: .positive)
+                             selectedCaptionText: "", comment: nil, photoGuardResult: .positive, vibeCheckResult: .positive, timeline: TimelineData(year: 2, semester: 2, month: 2))
         
-    return GeometryReader { geo in
+    GeometryReader { geo in
         SinglePreviewView(node: dummyNode, size: geo.size, ornament: "icon_star")
     }
     .frame(width: 160)

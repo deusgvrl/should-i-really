@@ -1,5 +1,4 @@
 [
-    //MARK: - 2A
   {
     "id": "2A",
     "round": 2,
@@ -13,16 +12,22 @@
             "type": "positive",
             "text": "Good food, good friends, good memories ✨",
             "nextNodeId": "3A",
-            "comments": 
-              { "id": "com_2A_Pos_C_Pos", "username": "doejane", "text": "Those are the best things" }
+            "comments": {
+              "id": "com_2A_Pos_C_Pos",
+              "username": "doejane",
+              "text": "Those are the best things"
+            }
           },
           {
             "id": "2A_Pos_C_Neg",
             "type": "negative",
             "text": "Just wasting time instead of studying 🙄",
             "nextNodeId": "3B",
-            "comments": 
-                { "id": "com_2A_Pos_C_Neg", "username": "doejane", "text": "Don't judge the whole moment from one photo" }
+            "comments": {
+              "id": "com_2A_Pos_C_Neg",
+              "username": "doejane",
+              "text": "Don't judge the whole moment from one photo"
+            }
           }
         ]
       },
@@ -34,22 +39,32 @@
             "type": "positive",
             "text": "Lunch break with the best people 🍱",
             "nextNodeId": "3C",
-            "comments": 
-                { "id": "com_2A_Neg_C_Pos", "username": "doejane", "text": "Looks like a fun lunch!" }
+            "comments": {
+              "id": "com_2A_Neg_C_Pos",
+              "username": "doejane",
+              "text": "Looks like a fun lunch!"
+            }
           },
           {
             "id": "2A_Neg_C_Neg",
             "type": "negative",
             "text": "Someone forgot how to eat 😂",
             "nextNodeId": "3D",
-            "comments": 
-                { "id": "com_2A_Neg_C_Neg", "username": "doejane", "text": "Don't turn someone into the joke." }
+            "comments": {
+              "id": "com_2A_Neg_C_Neg",
+              "username": "doejane",
+              "text": "Don't turn someone into the joke."
+            }
           }
         ]
       }
+    },
+    "timeline": {
+      "year": 1,
+      "semester": 2,
+      "month": 2
     }
   },
-  // MARK: - 2B
   {
     "id": "2B",
     "round": 2,
@@ -63,16 +78,22 @@
             "type": "positive",
             "text": "New school, new friends, new memories ✨",
             "nextNodeId": "3A",
-            "comments": 
-              { "id": "com_2B_Pos_C_Pos", "username": "doejane", "text": "A great way to start a new chapter!" }
+            "comments": {
+              "id": "com_2B_Pos_C_Pos",
+              "username": "doejane",
+              "text": "A great way to start a new chapter!"
+            }
           },
           {
             "id": "2B_Pos_C_Neg",
             "type": "negative",
             "text": "I hate my new school 🙄",
             "nextNodeId": "3B",
-            "comments": 
-                { "id": "com_2B_Pos_C_Neg", "username": "doejane", "text": "Day 1 doesn't reflect your whole experience" }
+            "comments": {
+              "id": "com_2B_Pos_C_Neg",
+              "username": "doejane",
+              "text": "Day 1 doesn't reflect your whole experience"
+            }
           }
         ]
       },
@@ -84,19 +105,30 @@
             "type": "positive",
             "text": "First day at school! Ready for a new journey 🎒",
             "nextNodeId": "3C",
-            "comments": 
-                { "id": "com_2B_Neg_C_Pos", "username": "doejane", "text": "Be careful!" }
+            "comments": {
+              "id": "com_2B_Neg_C_Pos",
+              "username": "doejane",
+              "text": "Be careful!"
+            }
           },
           {
             "id": "2B_Neg_C_Neg",
             "type": "negative",
             "text": "My school ID is finally here! Check it out 😎",
             "nextNodeId": "3D",
-            "comments": 
-                { "id": "com_2B_Neg_C_Neg", "username": "doejane", "text": "Your personal info is exposed" }
+            "comments": {
+              "id": "com_2B_Neg_C_Neg",
+              "username": "doejane",
+              "text": "Your personal info is exposed"
+            }
           }
         ]
       }
+    },
+    "timeline": {
+      "year": 1,
+      "semester": 2,
+      "month": 2
     }
   }
 ]

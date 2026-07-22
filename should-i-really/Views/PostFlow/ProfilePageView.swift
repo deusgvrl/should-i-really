@@ -59,7 +59,7 @@ struct ProfilePageView: View {
                             .accessibilityLabel("My Profile Picture")
                         Spacer()
                         VStack(alignment: .leading) {
-                            Text("Year 1 Semester 1 Month 1")
+                            Text(gameViewModel.feedPosts.first?.displayDate ?? "Year 1 Semester 1 Month 1")
                                 .font(.title3)
                                 .fontWeight(.semibold)
                             Spacer()
@@ -181,37 +181,32 @@ struct ProfilePageView: View {
 }
 
 #Preview {
-    let dummyVM = GameViewModel()
+    let dummyVM: GameViewModel = {
+                let vm = GameViewModel()
+                vm.enterUsername("PreviewPlayer")
+                
+                if var state = vm.gameState {
+                    for i in 1...5 {
+                        let dummyPost = UserPost(
+                    nodeId: "\(i)A",
+                    imageName: "SampleImage5",
+                    selectedQuadrant: .topLeft,
+                    selectedCaptionText: "This is a fake caption for round \(i)!",
+                    comment: Comment(id: "\(i)", username: "bestie", text: "Omg so cool!"),
+                    photoGuardResult: .positive,
+                    vibeCheckResult: .positive,
+                    timeline: TimelineData(year: 2, semester: 2, month: 2)
+                        )
+                        state.publishedPosts.append(dummyPost)
+                    }
+                    vm.gameState = state
+                }
+                
+                return vm 
+            }()
             
-    dummyVM.enterUsername("PreviewPlayer")
-            
-    if var state = dummyVM.gameState {
-        for i in 1...5 {
-            let dummyPost = UserPost(
-                nodeId: "\(i)A",
-                imageName: "SampleImage5",
-                selectedQuadrant: .topLeft,
-                selectedCaptionText: "This is a fake caption for round \(i)!",
-                comment: Comment(
-                    id: "\(i)",
-                    username: "bestie",
-                    text: "Omg so cool!"
-                ),
-                photoGuardResult: .positive,
-                vibeCheckResult: .positive
-            )
-            state.publishedPosts.append(dummyPost)
-        }
-        dummyVM.gameState = state
-    }
-            
-    // 3. Inject the final Ending Post and set the game to "Finished"
-//    dummyVM.injectEndingPost()
-//    dummyVM.currentRoute = .ending
-//    dummyVM.lastEndingId = "ENDING_1"
-            
-    // 4. Return the View!
-    return ProfilePageView()
-        .environment(dummyVM)
+
+            ProfilePageView()
+                .environment(dummyVM)
 }
 

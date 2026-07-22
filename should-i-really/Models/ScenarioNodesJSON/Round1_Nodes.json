@@ -12,14 +12,22 @@
             "type": "positive",
             "text": "Studying together today 📚",
             "nextNodeId": "2A",
-            "comments": { "id": "com_1A_Pos_C_Pos", "username": "doejane", "text": "Proof that we opened a book." }
+            "comments": {
+              "id": "com_1A_Pos_C_Pos",
+              "username": "doejane",
+              "text": "Proof that we opened a book."
+            }
           },
           {
             "id": "1A_Pos_C_Pos2",
             "type": "positive",
             "text": "A normal day in the classroom.",
             "nextNodeId": "2A",
-            "comments": { "id": "com_1A_Pos_C_Pos2", "username": "doejane", "text": "Wish I was there" }
+            "comments": {
+              "id": "com_1A_Pos_C_Pos2",
+              "username": "doejane",
+              "text": "Wish I was there"
+            }
           }
         ]
       },
@@ -31,17 +39,30 @@
             "type": "positive",
             "text": "Another productive day in the classroom 📚✨😂",
             "nextNodeId": "2B",
-            "comments": { "id": "com_1A_Neg_C_Neg", "username": "doejane", "text": "Don't give vandalism the spotlight." }
+            "comments": {
+              "id": "com_1A_Neg_C_Neg",
+              "username": "doejane",
+              "text": "Don't give vandalism the spotlight."
+            }
           },
           {
             "id": "1A_Neg_C_Neg2",
             "type": "negative",
             "text": "Whoever wrote this deserves a medal 😂",
             "nextNodeId": "2B",
-            "comments": { "id": "com_1A_Neg_C_Neg2", "username": "doejane", "text": "Don't encourage vandalism." }
+            "comments": {
+              "id": "com_1A_Neg_C_Neg2",
+              "username": "doejane",
+              "text": "Don't encourage vandalism."
+            }
           }
         ]
       }
+    },
+    "timeline": {
+      "year": 1,
+      "semester": 1,
+      "month": 3
     }
   }
 ]

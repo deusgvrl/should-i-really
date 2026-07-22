@@ -65,7 +65,7 @@ extension GameViewModel {
             let cropResult: CropType = (chosenQuadrant == node.crops.positiveCrop.quadrant) ? .positive : .negative
             let captionResult: CropType = chosenCaption.type
             
-            let newPost = UserPost(nodeId: node.id, imageName: node.bigPictureId, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comment: chosenCaption.comments, photoGuardResult: cropResult, vibeCheckResult: captionResult)
+            let newPost = UserPost(nodeId: node.id, imageName: node.bigPictureId, selectedQuadrant: chosenQuadrant, selectedCaptionText: chosenCaption.text, comment: chosenCaption.comments, photoGuardResult: cropResult, vibeCheckResult: captionResult, timeline: node.timeline)
             
             if var state = self.gameState {
                 state.publishedPosts.append(newPost)
