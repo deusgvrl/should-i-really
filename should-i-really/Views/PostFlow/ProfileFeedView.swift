@@ -51,7 +51,7 @@ struct ProfileFeedView: View {
             
             if let newestPost = viewModel.feedPosts.first, !(newestPost.isCommentRevealed ?? false) {
                 
-                NotificationManager.shared.requestPermissionAndSchedule()
+                await NotificationManager.shared.requestPermissionAndSchedule()
                 
                 try? await Task.sleep(for: .seconds(5))
                 

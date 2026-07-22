@@ -24,8 +24,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F07470B300A356A00D1D2D3 /* should-i-really-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "should-i-really-tests.xctest"; path = "/Users/itsdeus/Documents/Apple Developer Acaedemy/Challenge 3/should-i-really/build/Debug-iphoneos/should-i-really.app/PlugIns/should-i-really-tests.xctest"; sourceTree = "<absolute>"; };
-		4F4C7BC43004E88200645894 /* should-i-reallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "should-i-reallyTests.xctest"; path = "/Users/itsdeus/Documents/Apple Developer Acaedemy/Challenge 3/should-i-really/build/Debug-iphoneos/should-i-really.app/PlugIns/should-i-reallyTests.xctest"; sourceTree = "<absolute>"; };
+		4F223F743010AA4F0005F8C6 /* should-i-reallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "should-i-reallyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F223F753010AA4F0005F8C6 /* should-i-really-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "should-i-really-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDBA99D300F5ED0005B4FA1 /* should-i-really.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "should-i-really.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,6 +73,8 @@
 				4F555A8E3004C4710065B91C /* should-i-really */,
 				1F07470C300A356A00D1D2D3 /* should-i-really-tests */,
 				4FDBA99D300F5ED0005B4FA1 /* should-i-really.app */,
+				4F223F743010AA4F0005F8C6 /* should-i-reallyTests.xctest */,
+				4F223F753010AA4F0005F8C6 /* should-i-really-tests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,7 +101,7 @@
 			packageProductDependencies = (
 			);
 			productName = "should-i-really-tests";
-			productReference = 1F07470B300A356A00D1D2D3 /* should-i-really-tests.xctest */;
+			productReference = 4F223F753010AA4F0005F8C6 /* should-i-really-tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		4F4C7BC33004E88200645894 /* should-i-reallyTests */ = {
@@ -119,7 +121,7 @@
 			packageProductDependencies = (
 			);
 			productName = "should-i-reallyTests";
-			productReference = 4F4C7BC43004E88200645894 /* should-i-reallyTests.xctest */;
+			productReference = 4F223F743010AA4F0005F8C6 /* should-i-reallyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		4F555A8B3004C4710065B91C /* should-i-really */ = {
