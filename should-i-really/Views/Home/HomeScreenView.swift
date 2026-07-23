@@ -20,49 +20,57 @@ struct HomeScreenView: View {
         @Bindable var viewModel = viewModel
         
         NavigationStack(path: $viewModel.navigationPath){
-            VStack() {
-                Text("Should I")
-                    .font(.system(size: 70, weight: .bold))
-                    .fontWeight(.bold)
-                    .foregroundStyle(.primary)
-                    .lineSpacing(-50)
-                    .padding(.top, 250)
-                Text("Really?")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.primary)
-                    .offset(x: 52, y: -8)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.bottom, 24)
-                LandingMenuView(viewModel: viewModel)
-                    .offset(y: -8)
+            ZStack {
+                Color("backgroundColor").ignoresSafeArea()
                 
-                Spacer()
-            }
-            .padding(.horizontal, 24)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            // MARK: - Nav Destination
-            .navigationDestination(for: GameViewModel.GameRoute.self) { route in
-                switch route {
-                case .usernameInput:
-                    UsernameInputView()
-                case .prologue:
-                    PrologView()
-                case .archive:
-                    ArchiveView()
-                case .timeline:
-                    ProfilePageView()
-                case .feedView(let postID):
-                    ProfileFeedView(initialPostID: postID)
-                case .ending:
-                    if let endingId = viewModel.lastEndingId {
-                        EndingSummaryView(endingId: endingId)
-                    } else {
-                        EndingSummaryView(endingId: "ENDING_1")
+                VStack() {
+                    Text("Should I")
+                        .font(.system(size: 70, weight: .bold))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.primary)
+                        .lineSpacing(-50)
+                        .padding(.top, 250)
+                    Text("Really?")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.primary)
+                        .offset(x: 52, y: -8)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 24)
+                    LandingMenuView(viewModel: viewModel)
+                        .offset(y: -8)
+                    
+                    Spacer()
+                }
+                .padding(.horizontal, 24)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                // MARK: - Nav Destination
+                .navigationDestination(for: GameViewModel.GameRoute.self) { route in
+                    Group {
+                        switch route {
+                        case .usernameInput:
+                            UsernameInputView()
+                        case .prologue:
+                            PrologView()
+                        case .archive:
+                            ArchiveView()
+                        case .timeline:
+                            ProfilePageView()
+                        case .feedView(let postID):
+                            ProfileFeedView(initialPostID: postID)
+                        case .ending:
+                            if let endingId = viewModel.lastEndingId {
+                                EndingSummaryView(endingId: endingId)
+                            } else {
+                                EndingSummaryView(endingId: "ENDING_1")
+                            }
+                        default:
+                            EmptyView()
+                        }
                     }
-                default:
-                    EmptyView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.background)
                 }
             }
         }

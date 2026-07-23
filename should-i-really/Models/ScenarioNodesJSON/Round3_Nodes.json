@@ -1,235 +1,266 @@
 [
-    //MARK: - 3A
-    {
-        "id": "3A",
-        "round": 3,
-        "big_picture_id": "SampleImage3",
-        "crops": {
-            "positive_crop": {
-                "quadrant": 1,
-                "captions": [
-                    {
-                        "id": "3A_Pos_C_Pos",
-                        "type": "positive",
-                        "text": "A peaceful view during a school day ✨",
-                        "nextNodeId": "4A",
-                        "comments": 
-                            {
-                                "id": "com_3A_Pos_C_Pos", "username": "doejane", "text": "What a beautiful view!"
-                            }
-                    },
-                    {
-                        "id": "3A_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "School is only fun when you escape the classroom 😅",
-                        "nextNodeId": "4B",
-                        "comments": 
-                            {
-                                "id": "com_3A_Pos_C_Neg", "username": "doejane", "text": "Lazy students will face the consequences later."
-                            }
-                    }
-                ]
-            },
-            "negative_crop": {
-                "quadrant": 3,
-                "captions": [
-                    {
-                        "id": "3A_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Teachers always guide us to do better 📚",
-                        "nextNodeId": "4C",
-                        "comments": 
-                            {
-                                "id": "com_3A_Neg_C_Pos", "username": "doejane", "text": "You are not allowed to post our teacher's face here."
-                            }
-                    },
-                    {
-                        "id": "3A_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Getting yelled at in front of the whole class 😬",
-                        "nextNodeId": "4D",
-                        "comments": 
-                            {
-                                "id": "com_3A_Neg_C_Neg", "username": "doejane", "text": "No one cares about you, Loser!"
-                            }
-                    }
-                ]
+  {
+    "id": "3A",
+    "round": 3,
+    "big_picture_id": "SampleImage3",
+    "crops": {
+      "positive_crop": {
+        "quadrant": 1,
+        "captions": [
+          {
+            "id": "3A_Pos_C_Pos",
+            "type": "positive",
+            "text": "A peaceful view during a school day ✨",
+            "nextNodeId": "4A",
+            "comments": {
+              "id": "com_3A_Pos_C_Pos",
+              "username": "doejane",
+              "text": "What a beautiful view!"
             }
-        }
+          },
+          {
+            "id": "3A_Pos_C_Neg",
+            "type": "negative",
+            "text": "School is only fun when you escape the classroom 😅",
+            "nextNodeId": "4B",
+            "comments": {
+              "id": "com_3A_Pos_C_Neg",
+              "username": "doejane",
+              "text": "Lazy students will face the consequences later."
+            }
+          }
+        ]
+      },
+      "negative_crop": {
+        "quadrant": 3,
+        "captions": [
+          {
+            "id": "3A_Neg_C_Pos",
+            "type": "positive",
+            "text": "Teachers always guide us to do better 📚",
+            "nextNodeId": "4C",
+            "comments": {
+              "id": "com_3A_Neg_C_Pos",
+              "username": "doejane",
+              "text": "You are not allowed to post our teacher's face here."
+            }
+          },
+          {
+            "id": "3A_Neg_C_Neg",
+            "type": "negative",
+            "text": "Getting yelled at in front of the whole class 😬",
+            "nextNodeId": "4D",
+            "comments": {
+              "id": "com_3A_Neg_C_Neg",
+              "username": "doejane",
+              "text": "No one cares about you, Loser!"
+            }
+          }
+        ]
+      }
     },
-    // MARK: - 3B
-    {
-        "id": "3B",
-        "round": 3,
-        "big_picture_id": "node_3B",
-        "crops": {
-            "positive_crop": {
-                "quadrant": 4,
-                "captions": [
-                    {
-                        "id": "3B_Pos_C_Pos",
-                        "type": "positive",
-                        "text": "Finding peaceful moments at school ✨",
-                        "nextNodeId": "4B",
-                        "comments": 
-                            {
-                                "id": "com_3B_Pos_C_Pos", "username": "doejane", "text": "I love spring!"
-                            }
-                    },
-                    {
-                        "id": "3B_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Everyone is just doing their own thing, no connection here",
-                        "nextNodeId": "4C",
-                        "comments": 
-                            {
-                                "id": "com_3B_Pos_C_Neg", "username": "doejane", "text": "Don't be too gloomy"
-                            }
-                    }
-                ]
-            },
-            "negative_crop": {
-                "quadrant": 3,
-                "captions": [
-                    {
-                        "id": "3B_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Enjoying a quiet moment alone 📖",
-                        "nextNodeId": "4D",
-                        "comments": 
-                            {
-                                "id": "com_3B_Neg_C_Pos", "username": "doejane", "text": "Don’t post my face!"
-                            }
-                    },
-                    {
-                        "id": "3B_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "No one wants to sit with you, huh? 😕",
-                        "nextNodeId": "4E",
-                        "comments": 
-                            {
-                                "id": "com_3B_Neg_C_Neg", "username": "doejane", "text": "I have friends, and they are smarter than you!"
-                            }
-                    }
-                ]
-            }
-        }
-    },
-    //MARK: - 3C
-    {
-        "id": "3C",
-        "round": 3,
-        "big_picture_id": "SampleImage3",
-        "crops": {
-            "positive_crop": {
-                "quadrant": 1,
-                "captions": [
-                    {
-                        "id": "3C_Pos_C_Pos",
-                        "type": "positive",
-                        "text": "True friends stay together through everything ✨",
-                        "nextNodeId": "4D",
-                        "comments": 
-                            {
-                                "id": "com_3C_Pos_C_Pos", "username": "doejane", "text": "So true. We will always support you!"
-                            }
-                    },
-                    {
-                        "id": "3C_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "Everyone is making a big deal out of a small problem 🙄",
-                        "nextNodeId": "4E",
-                        "comments": 
-                            {
-                                "id": "com_3C_Pos_C_Neg", "username": "doejane", "text": "Hey, don't be rude!"
-                            }
-                    }
-                ]
-            },
-            "negative_crop": {
-                "quadrant": 3,
-                "captions": [
-                    {
-                        "id": "3C_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Friends are always there for each other 🤍",
-                        "nextNodeId": "4F",
-                        "comments": 
-                            {
-                                "id": "com_3C_Neg_C_Pos", "username": "doejane", "text": "Don't zoom on my friend's crying face"
-                            }
-                    },
-                    {
-                        "id": "3C_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Someone needs to be picked up by his mommy 😢",
-                        "nextNodeId": "4G",
-                        "comments": 
-                            {
-                                "id": "com_3C_Neg_C_Neg", "username": "doejane", "text": "None of your business!"
-                            }
-                    }
-                ]
-            }
-        }
-    },
-    // MARK: - 3D
-    {
-        "id": "3D",
-        "round": 3,
-        "big_picture_id": "SampleImage3",
-        "crops": {
-            "positive_crop": {
-                "quadrant": 1,
-                "captions": [
-                    {
-                        "id": "3D_Pos_C_Pos",
-                        "type": "positive",
-                        "text": "Teamwork makes the dream work ✨",
-                        "nextNodeId": "4E",
-                        "comments": 
-                            {
-                                "id": "com_3D_Pos_C_Pos", "username": "doejane", "text": "My favorite team fr"
-                            }
-                    },
-                    {
-                        "id": "3D_Pos_C_Neg",
-                        "type": "negative",
-                        "text": "BORINGGGG 😴",
-                        "nextNodeId": "4F",
-                        "comments": 
-                            {
-                                "id": "com_3D_Pos_C_Neg", "username": "doejane", "text": "Be respectful to your peers!"
-                            }
-                    }
-                ]
-            },
-            "negative_crop": {
-                "quadrant": 3,
-                "captions": [
-                    {
-                        "id": "3D_Neg_C_Pos",
-                        "type": "positive",
-                        "text": "Everyone makes mistakes, but we keep learning 📚",
-                        "nextNodeId": "4G",
-                        "comments": 
-                            {
-                                "id": "com_3D_Neg_C_Pos", "username": "doejane", "text": "Mistakes don't define a person"
-                            }
-                    },
-                    {
-                        "id": "3D_Neg_C_Neg",
-                        "type": "negative",
-                        "text": "Not even dressed properly for the presentation 😬",
-                        "nextNodeId": "4H",
-                        "comments": 
-                            {
-                                "id": "com_3D_Neg_C_Neg", "username": "doejane", "text": "Don't embarrass someone over a small mistake."
-                            }
-                    }
-                ]
-            }
-        }
+    "timeline": {
+      "year": 2,
+      "semester": 1,
+      "month": 1
     }
+  },
+  {
+    "id": "3B",
+    "round": 3,
+    "big_picture_id": "node_3B",
+    "crops": {
+      "positive_crop": {
+        "quadrant": 4,
+        "captions": [
+          {
+            "id": "3B_Pos_C_Pos",
+            "type": "positive",
+            "text": "Finding peaceful moments at school ✨",
+            "nextNodeId": "4B",
+            "comments": {
+              "id": "com_3B_Pos_C_Pos",
+              "username": "doejane",
+              "text": "I love spring!"
+            }
+          },
+          {
+            "id": "3B_Pos_C_Neg",
+            "type": "negative",
+            "text": "Everyone is just doing their own thing, no connection here",
+            "nextNodeId": "4C",
+            "comments": {
+              "id": "com_3B_Pos_C_Neg",
+              "username": "doejane",
+              "text": "Don't be too gloomy"
+            }
+          }
+        ]
+      },
+      "negative_crop": {
+        "quadrant": 3,
+        "captions": [
+          {
+            "id": "3B_Neg_C_Pos",
+            "type": "positive",
+            "text": "Enjoying a quiet moment alone 📖",
+            "nextNodeId": "4D",
+            "comments": {
+              "id": "com_3B_Neg_C_Pos",
+              "username": "doejane",
+              "text": "Don’t post my face!"
+            }
+          },
+          {
+            "id": "3B_Neg_C_Neg",
+            "type": "negative",
+            "text": "No one wants to sit with you, huh? 😕",
+            "nextNodeId": "4E",
+            "comments": {
+              "id": "com_3B_Neg_C_Neg",
+              "username": "doejane",
+              "text": "I have friends, and they are smarter than you!"
+            }
+          }
+        ]
+      }
+    },
+    "timeline": {
+      "year": 2,
+      "semester": 1,
+      "month": 1
+    }
+  },
+  {
+    "id": "3C",
+    "round": 3,
+    "big_picture_id": "SampleImage3",
+    "crops": {
+      "positive_crop": {
+        "quadrant": 1,
+        "captions": [
+          {
+            "id": "3C_Pos_C_Pos",
+            "type": "positive",
+            "text": "True friends stay together through everything ✨",
+            "nextNodeId": "4D",
+            "comments": {
+              "id": "com_3C_Pos_C_Pos",
+              "username": "doejane",
+              "text": "So true. We will always support you!"
+            }
+          },
+          {
+            "id": "3C_Pos_C_Neg",
+            "type": "negative",
+            "text": "Everyone is making a big deal out of a small problem 🙄",
+            "nextNodeId": "4E",
+            "comments": {
+              "id": "com_3C_Pos_C_Neg",
+              "username": "doejane",
+              "text": "Hey, don't be rude!"
+            }
+          }
+        ]
+      },
+      "negative_crop": {
+        "quadrant": 3,
+        "captions": [
+          {
+            "id": "3C_Neg_C_Pos",
+            "type": "positive",
+            "text": "Friends are always there for each other 🤍",
+            "nextNodeId": "4F",
+            "comments": {
+              "id": "com_3C_Neg_C_Pos",
+              "username": "doejane",
+              "text": "Don't zoom on my friend's crying face"
+            }
+          },
+          {
+            "id": "3C_Neg_C_Neg",
+            "type": "negative",
+            "text": "Someone needs to be picked up by his mommy 😢",
+            "nextNodeId": "4G",
+            "comments": {
+              "id": "com_3C_Neg_C_Neg",
+              "username": "doejane",
+              "text": "None of your business!"
+            }
+          }
+        ]
+      }
+    },
+    "timeline": {
+      "year": 2,
+      "semester": 1,
+      "month": 1
+    }
+  },
+  {
+    "id": "3D",
+    "round": 3,
+    "big_picture_id": "SampleImage3",
+    "crops": {
+      "positive_crop": {
+        "quadrant": 1,
+        "captions": [
+          {
+            "id": "3D_Pos_C_Pos",
+            "type": "positive",
+            "text": "Teamwork makes the dream work ✨",
+            "nextNodeId": "4E",
+            "comments": {
+              "id": "com_3D_Pos_C_Pos",
+              "username": "doejane",
+              "text": "My favorite team fr"
+            }
+          },
+          {
+            "id": "3D_Pos_C_Neg",
+            "type": "negative",
+            "text": "BORINGGGG 😴",
+            "nextNodeId": "4F",
+            "comments": {
+              "id": "com_3D_Pos_C_Neg",
+              "username": "doejane",
+              "text": "Be respectful to your peers!"
+            }
+          }
+        ]
+      },
+      "negative_crop": {
+        "quadrant": 3,
+        "captions": [
+          {
+            "id": "3D_Neg_C_Pos",
+            "type": "positive",
+            "text": "Everyone makes mistakes, but we keep learning 📚",
+            "nextNodeId": "4G",
+            "comments": {
+              "id": "com_3D_Neg_C_Pos",
+              "username": "doejane",
+              "text": "Mistakes don't define a person"
+            }
+          },
+          {
+            "id": "3D_Neg_C_Neg",
+            "type": "negative",
+            "text": "Not even dressed properly for the presentation 😬",
+            "nextNodeId": "4H",
+            "comments": {
+              "id": "com_3D_Neg_C_Neg",
+              "username": "doejane",
+              "text": "Don't embarrass someone over a small mistake."
+            }
+          }
+        ]
+      }
+    },
+    "timeline": {
+      "year": 2,
+      "semester": 1,
+      "month": 1
+    }
+  }
 ]
-

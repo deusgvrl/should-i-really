@@ -50,6 +50,12 @@ struct CropsContainer: Codable, Equatable, Hashable {
     }
 }
 
+public struct TimelineData: Codable, Equatable, Hashable {
+        public let year: Int
+        public let semester: Int
+        public let month: Int
+}
+
 // MARK: - User Post
 public struct UserPost: Codable, Identifiable, Equatable, Hashable {
     public var id: String { nodeId }
@@ -61,32 +67,19 @@ public struct UserPost: Codable, Identifiable, Equatable, Hashable {
     public let photoGuardResult: CropType
     public let vibeCheckResult: CropType
     public var isCommentRevealed: Bool? = false
-    static let openingPost = UserPost(
-        nodeId: "first_post",
-        imageName: "node_firstPost",
-        selectedQuadrant: .bottomLeft,
-        selectedCaptionText: "Hari Pertama di sekolah",
-        comment: Comment(
-            id: "com_first_post",
-            username: "doejane",
-            text: "Congrats on your first day!"),
-        photoGuardResult: .positive,
-        vibeCheckResult: .positive,
-        isCommentRevealed: true
-    )
-    static let endingPost = UserPost(
-        nodeId: "last_post",
-        imageName: "node_lastPost",
-        selectedQuadrant: .bottomLeft,
-        selectedCaptionText: "Hari Terakhir di sekolah",
-        comment: Comment(
-            id: "com_last_post",
-            username: "doejane",
-            text: "Congrats on your graduation!"),
-        photoGuardResult: .positive,
-        vibeCheckResult: .positive,
-        isCommentRevealed: true
-    )
+    public let timeline: TimelineData?
+    public var displayDate: String {
+        if let t = timeline {
+            return "Year \(t.year) Semester \(t.semester) Month \(t.month)"
+        }
+        return "Year 1 Semester 1 Month 1"
+    }
+    static var openingPost: UserPost {
+        UserPost(nodeId: "first_post", imageName: "node_firstPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "First day at as a high school student.", comment: Comment(id: "com_first_post", username: "doejane", text: "Congrats on your first day!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true, timeline: TimelineData(year: 1, semester: 1, month: 1))
+    }
+    static var endingPost : UserPost {
+        UserPost(nodeId: "last_post", imageName: "node_lastPost", selectedQuadrant: .bottomLeft, selectedCaptionText: "End of one journey, beginning of another 🌟💪", comment: Comment(id: "com_last_post", username: "doejane", text: "Congrats on your graduation!"), photoGuardResult: .positive, vibeCheckResult: .positive, isCommentRevealed: true, timeline: TimelineData(year: 3, semester: 2, month: 6))
+    }
     
 }
 
@@ -96,11 +89,14 @@ public struct StoryNode: Identifiable, Codable, Hashable {
     let bigPictureId: String
     let crops: CropsContainer
     
+    let timeline: TimelineData?
+    
     enum CodingKeys: String, CodingKey {
         case id
         case round
         case bigPictureId = "big_picture_id"
         case crops
+        case timeline
     }
     
         

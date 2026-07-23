@@ -14,9 +14,14 @@ struct should_i_reallyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeScreenView()
-                .environment(gameViewModel)
-                .modelContainer(for: UnlockedEndings.self)
+            ZStack {
+                HomeScreenView()
+                    .environment(gameViewModel)
+                    .modelContainer(for: UnlockedEndings.self)
+                    .preferredColorScheme(.light)
+                    .foregroundStyle(Color.textBrown)
+                    .fontDesign(.rounded)
+            }
         }
     }
 }

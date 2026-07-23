@@ -36,11 +36,12 @@ struct ProfileFeedView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack(spacing: 0) {
-                    Text("Posts").font(.subheadline).bold()
+                    Text("Posts")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
                     Text(viewModel.gameState?.username ?? "johndoe")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .bold()
+                        .fontWeight(.medium)
                 }
             }
         }
@@ -80,7 +81,7 @@ struct ProfileFeedView: View {
             caption: post.selectedCaptionText,
             commentUsername: post.comment?.username ?? "",
             comment: post.comment?.text ?? "",
-            date: "Year 3 Semester 1 Month 1",
+            date: post.displayDate,
             nodeId: post.nodeId,
             photoGuardType: post.photoGuardResult,
             vibeCheckType: post.vibeCheckResult,
