@@ -11,6 +11,7 @@ extension GameViewModel {
     // MARK: - Navigation Flow
     
     public func startNewGame() {
+        self.lastEndingId = nil
         navigationPath = [.usernameInput]
         currentRoute = .usernameInput
     }
@@ -22,6 +23,7 @@ extension GameViewModel {
             return
         }
         self.gameState = saveState
+        self.lastEndingId = saveState.lastEndingId
         startGame(
             fromRound: saveState.currentRound,
             startNodeId: saveState.currentNodeId
@@ -56,9 +58,11 @@ extension GameViewModel {
         let trimmedName = username.trimmingCharacters(in: .whitespacesAndNewlines)
         guard isValidUsername(trimmedName) else { return }
         
+        self.lastEndingId = nil
+        
         let shuffledOrnaments = ["icon_star", "icon_pin", "icon_pushPin"].shuffled()
         
-        var newState = GameState(username: trimmedName, ornamentsOrder: shuffledOrnaments)
+        var newState = GameState(username: trimmedName, ornamentsOrder: shuffledOrnaments, lastEndingId: nil)
         newState.publishedPosts.append(UserPost.openingPost)
         storageController.saveGame(newState)
         self.gameState = newState
@@ -93,6 +97,7 @@ extension GameViewModel {
         storageController.deleteGame()
         self.gameState = nil
         self.currentNode = nil
+        self.lastEndingId = nil
         navigationPath.removeAll()
         currentRoute = .landing
     }

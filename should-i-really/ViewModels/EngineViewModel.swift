@@ -22,7 +22,10 @@ extension GameViewModel {
     // MARK: - Story Control Engine
     
     public func injectEndingPost() {
-        gameState?.publishedPosts.append(UserPost.endingPost)
+        guard var state = gameState else { return }
+        state.publishedPosts.append(UserPost.endingPost)
+        self.gameState = state
+        storageController.saveGame(state)
     }
     
     public func startGame(fromRound round: Int, startNodeId: String) {
@@ -75,6 +78,10 @@ extension GameViewModel {
         
         if nextNodeId.hasPrefix("ENDING_") {
             self.lastEndingId = nextNodeId
+            self.gameState?.lastEndingId = nextNodeId
+            if let state = self.gameState {
+                storageController.saveGame(state)
+            }
             self.currentRoute = .ending
             print("Scenario complete, ending is: ending \(nextNodeId)")
         } else {
