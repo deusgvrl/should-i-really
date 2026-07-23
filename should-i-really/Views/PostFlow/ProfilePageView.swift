@@ -12,6 +12,7 @@ struct ProfilePageView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var isShowingPostFlow = false
+    @State private var isShowingAlert = false
 
     private let gridColumns = Array(
         repeating: GridItem(.flexible(), spacing: 12),
@@ -129,7 +130,7 @@ struct ProfilePageView: View {
                 
                 if (isGameFinished && hasInjectedGameEnding) {
                     Button {
-                        gameViewModel.navigationPath.append(.ending)
+                        isShowingAlert = true
                     } label: {
                         Image(systemName: "chevron.right")
                             .fontDesign(.default)
@@ -173,6 +174,22 @@ struct ProfilePageView: View {
                     .accessibilityInputLabels(["Add Post"])
                 }
             }
+        }
+        .alert("Congratulations, you graduated! ", isPresented: $isShowingAlert) {
+            HStack {
+                Button("Go to Summary", role: .confirm) {
+                    gameViewModel.navigationPath.append(.ending)
+                }
+                .accessibilityLabel("Summary")
+                .accessibilityInputLabels(["Go to Summary"])
+                Button("View Profile", role: .cancel) {
+                    
+                }
+                .accessibilityLabel("Profile")
+                .accessibilityInputLabels(["View Profile"])
+            }
+        } message: {
+            Text("You’ve officially reached the ending.")
         }
         .fullScreenCover(isPresented: $isShowingPostFlow) {
             PostCreationFlowView { newPostID in
