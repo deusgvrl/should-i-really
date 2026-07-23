@@ -131,21 +131,29 @@ struct ProfilePageView: View {
                     Button {
                         gameViewModel.navigationPath.append(.ending)
                     } label: {
-                        Image(systemName: "chevron.right.circle.fill")
-                            .resizable()
-                            .frame(width: 48, height: 48)
+                        Image(systemName: "chevron.right")
+                            .fontDesign(.default)
+                            .font(.system(size: 32, weight: .regular))
+                            .foregroundStyle(.white)
+                            .frame(width: 56, height: 56)
+                            .background(Color.buttonBrown)
+                            .clipShape(Circle())
                     }
                     .accessibilityLabel("Next")
                     .accessibilityInputLabels(["Next"])
                 } else if (isGameFinished && !hasInjectedGameEnding) {
                     Button {
-                        gameViewModel.injectEndingPost()
-                        gameViewModel.navigationPath
-                            .append(.feedView(postID: "last_post"))
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.75)) {
+                            gameViewModel.injectEndingPost()
+                        }
                     } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: 48, height: 48)
+                        Image(systemName: "plus")
+                            .fontDesign(.default)
+                            .font(.system(size: 32, weight: .regular))
+                            .foregroundStyle(.white)
+                            .frame(width: 56, height: 56)
+                            .background(Color.buttonBrown)
+                            .clipShape(Circle())
                     }
                     .accessibilityLabel("Add")
                     .accessibilityInputLabels(["Add Post"])
