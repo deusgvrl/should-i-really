@@ -35,7 +35,7 @@ struct CaptionSelectionView: View {
             }
             
             if isUploading {
-                UploadingView(uploadDuration: 2.0) {
+                UploadingView(uploadDuration: 1.0) {
                     viewModel.finalizeAndPost()
                     var transaction = Transaction()
                     transaction.disablesAnimations = true

@@ -71,13 +71,16 @@ import SwiftUI
     }
         
     // MARK: - Uploading
+
     public var isPresentingPostCreation: Bool = false
-    
+
     public func navigateToFeed(postID: String? = nil) {
         if let postID = postID {
-            currentRoute = .feedView(postID: postID)
+            navigationPath.append(.feedView(postID: postID))
         } else {
             currentRoute = .timeline
         }
+        
+        isPresentingPostCreation = false
     }
 }
