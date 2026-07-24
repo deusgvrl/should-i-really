@@ -10,12 +10,12 @@ import Testing
 
 @MainActor
 struct ChooseCaptionTests {
-    
+    let storage = StorageController(saveKey: "choose_caption_test")
     let gameViewModel: GameViewModel
     let postCreationViewModel: PostCreationViewModel
     
     init() {
-        gameViewModel = GameViewModel()
+        gameViewModel = GameViewModel(storageController: storage)
         gameViewModel.enterUsername("TestPlayer")
         postCreationViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
     }

@@ -10,10 +10,12 @@ import Testing
 
 @MainActor
 struct OnboardingTests {
+    
+    let storage = StorageController(saveKey: "onboarding_test")
     let gameViewModel: GameViewModel
     
     init() {
-        gameViewModel = GameViewModel()
+        gameViewModel = GameViewModel(storageController: storage)
     }
     
     // MARK: - Test 1: Initial Game State
