@@ -175,7 +175,7 @@ struct ProfilePageView: View {
                 }
             }
         }
-        .alert("Congratulations, you graduated! ", isPresented: $isShowingAlert) {
+        .alert("Congratulations, you graduated!", isPresented: $isShowingAlert) {
             HStack {
                 Button("Go to Summary", role: .confirm) {
                     gameViewModel.navigationPath.append(.ending)
