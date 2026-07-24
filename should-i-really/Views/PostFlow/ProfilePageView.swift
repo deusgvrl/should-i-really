@@ -11,7 +11,7 @@ struct ProfilePageView: View {
     @Environment(GameViewModel.self) private var gameViewModel
     @Environment(\.dismiss) private var dismiss
     
-    @State private var isShowingPostFlow = false
+//    @State private var isShowingPostFlow = false
     @State private var isShowingAlert = false
 
     private let gridColumns = Array(
@@ -20,6 +20,7 @@ struct ProfilePageView: View {
     )
         
     var body: some View {
+        @Bindable var gameViewModel = gameViewModel
         
         ZStack {
             VStack() {
@@ -86,19 +87,20 @@ struct ProfilePageView: View {
                     LazyVGrid(columns: gridColumns, spacing: 16) {
                         ForEach(Array(gameViewModel.feedPosts.enumerated()), id: \.element.id) { index,node in
                             let postNumber = totalPosts - index
-                            var currentOrnament: String? = nil
-                            
-                            if let order = gameViewModel.gameState?.ornamentsOrder, !order.isEmpty {
-                                switch postNumber {
-                                case 2: currentOrnament = order[0]
-                                case 3: currentOrnament = order[1]
-                                case 6: currentOrnament = order[2]
-                                case 7: currentOrnament = order[0]
-                                default: currentOrnament = nil
+                            let currentOrnament: String? = {
+                                if let order = gameViewModel.gameState?.ornamentsOrder, !order.isEmpty {
+                                    switch postNumber {
+                                    case 2: return order[0]
+                                    case 3: return order[1]
+                                    case 6: return order[2]
+                                    case 7: return order[0]
+                                    default: return nil
+                                    }
                                 }
-                            }
+                                return nil
+                            }()
                             
-                            return NavigationLink(
+                            NavigationLink(
                                 value: GameViewModel.GameRoute
                                     .feedView(postID: node.id)
                             ) {
@@ -160,7 +162,7 @@ struct ProfilePageView: View {
                     .accessibilityInputLabels(["Add Post"])
                 } else {
                     Button {
-                        isShowingPostFlow = true
+                        gameViewModel.isPresentingPostCreation = true
                     } label: {
                         Image(systemName: "plus")
                             .fontDesign(.default)
@@ -191,14 +193,10 @@ struct ProfilePageView: View {
         } message: {
             Text("You’ve officially reached the ending.")
         }
-        .fullScreenCover(isPresented: $isShowingPostFlow) {
+        .fullScreenCover(isPresented: $gameViewModel.isPresentingPostCreation) {
             PostCreationFlowView { newPostID in
-                isShowingPostFlow = false
-                
-                Task { @MainActor in
-                    try? await Task.sleep(for: .seconds(0.3))
-                    gameViewModel.navigationPath
-                        .append(.feedView(postID: newPostID))
+                Task {
+                    await gameViewModel.navigateToFeed(postID: newPostID)
                 }
             }
         }
@@ -208,12 +206,12 @@ struct ProfilePageView: View {
 
 #Preview {
     let dummyVM: GameViewModel = {
-                let vm = GameViewModel()
-                vm.enterUsername("PreviewPlayer")
-                
-                if var state = vm.gameState {
-                    for i in 1...5 {
-                        let dummyPost = UserPost(
+        let vm = GameViewModel()
+        vm.enterUsername("PreviewPlayer")
+        
+        if var state = vm.gameState {
+            for i in 1...5 {
+                let dummyPost = UserPost(
                     nodeId: "\(i)A",
                     imageName: "SampleImage5",
                     selectedQuadrant: .topLeft,
@@ -222,17 +220,16 @@ struct ProfilePageView: View {
                     photoGuardResult: .positive,
                     vibeCheckResult: .positive,
                     timeline: TimelineData(year: 2, semester: 2, month: 2)
-                        )
-                        state.publishedPosts.append(dummyPost)
-                    }
-                    vm.gameState = state
-                }
-                
-                return vm 
-            }()
-            
-
-            ProfilePageView()
-                .environment(dummyVM)
+                )
+                state.publishedPosts.append(dummyPost)
+            }
+            vm.gameState = state
+        }
+        
+        return vm
+    }()
+    
+    
+    ProfilePageView()
+        .environment(dummyVM)
 }
-

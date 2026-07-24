@@ -52,11 +52,11 @@ struct ProfileFeedView: View {
             
             if let newestPost = viewModel.feedPosts.first, !(newestPost.isCommentRevealed ?? false) {
                 
-                await NotificationManager.shared.requestPermissionAndSchedule()
+                await NotificationManager.shared.requestPermissionAndSchedule(for: newestPost.id)
                 
                 try? await Task.sleep(for: .seconds(5))
                 
-                withAnimation(.spring(response:0.45 , dampingFraction: 0.75)) {
+                withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
                     viewModel.markCommentAsRevealed(for: newestPost.id)
                 }
             }

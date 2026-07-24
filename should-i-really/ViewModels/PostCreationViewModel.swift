@@ -66,8 +66,9 @@ final class PostCreationViewModel {
     }
         
     // tombol post di choose caption
-    func finalizeAndPost() {
-        guard let selected = selectedCaption, let quadrant = selectedQuadrant else { return }
+    @MainActor
+    func finalizeAndPost() async -> String {
+        guard let selected = selectedCaption, let quadrant = selectedQuadrant else { return "" }
         print("🎯 [DEBUG 1] finalizeAndPost dipanggil. Memasukkan data ke GameViewModel...")
         // Laporkan pilihan ke Induk (GameViewModel) untuk diproses
         // GameViewModel yang akan mengurus muat JSON baru atau masuk ke Ending
@@ -82,7 +83,8 @@ final class PostCreationViewModel {
 //        self.availableCaptions = []
 //        self.navigateToCaptionScreen = false
         
-        onPostFinished?(newPostID)
+//        onPostFinished?(newPostID)        
+        return newPostID
     }
     
     // MARK: - Uploading
@@ -90,5 +92,13 @@ final class PostCreationViewModel {
     
     func startUploadingProcess() {
         isUploading = true
+    }
+    
+    @MainActor
+    func reset() {
+        self.selectedQuadrant = nil
+        self.selectedCaption = nil
+        self.availableCaptions = []
+        self.navigateToCaptionScreen = false
     }
 }
