@@ -73,7 +73,7 @@ struct SinglePreviewView: View {
                     Image(ornamentName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 48, height: 48)
+                        .frame(width: 42, height: 42)
                         .offset(x: 0, y: -size.height/2 + 8)
                 
                 default:
