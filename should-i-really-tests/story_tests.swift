@@ -11,10 +11,11 @@ import Testing
 
 @MainActor
 struct Story_tests {
+    let storage = StorageController(saveKey: "story_test")
     let gameViewModel: GameViewModel
     
     init() {
-        gameViewModel = GameViewModel()
+        gameViewModel = GameViewModel(storageController: storage)
         gameViewModel.enterUsername("TestPlayer")
     }
     

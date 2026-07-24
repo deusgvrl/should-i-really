@@ -11,11 +11,12 @@ import Testing
 @MainActor
 struct CommentNotificationTests {
     
+    let storage = StorageController(saveKey: "comment_test")
     let gameViewModel: GameViewModel
     let postCreationViewModel: PostCreationViewModel
     
     init() {
-        gameViewModel = GameViewModel()
+        gameViewModel = GameViewModel(storageController: storage)
         gameViewModel.enterUsername("TestPlayer")
         postCreationViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
     }

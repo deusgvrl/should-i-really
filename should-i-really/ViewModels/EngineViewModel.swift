@@ -92,7 +92,8 @@ extension GameViewModel {
                 self.currentRound += 1
                 
                 // Delay load to allow clean transition
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                Task { @MainActor in
+                    try? await Task.sleep(for: .seconds(0.5))
                     self.loadStoryFromJSON(round: self.currentRound, startNodeId: nextNodeId)
                     self.autoSaveProgress(round: self.currentRound, nodeId: nextNodeId)
                 }

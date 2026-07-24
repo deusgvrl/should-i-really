@@ -11,11 +11,12 @@ import Testing
 @MainActor
 struct PublishPostTests {
     
+    let storage = StorageController(saveKey: "posted_comment_tests")
     let gameViewModel: GameViewModel
     let postCreationViewModel: PostCreationViewModel
     
     init() {
-        gameViewModel = GameViewModel()
+        gameViewModel = GameViewModel(storageController: storage)
         gameViewModel.enterUsername("TestPlayer")
         postCreationViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
     }

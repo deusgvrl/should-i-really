@@ -13,11 +13,11 @@ import Foundation
 public final class StorageController {
     
     // MARK: - Save State Key
-    private let saveKey = "shouldIReally.saveState"
+    private let saveKey: String
     
     // MARK: - Initializer
-    public init () {
-        
+    public init (saveKey: String = "shouldIReally.saveState") {
+        self.saveKey = saveKey
     }
     // MARK: - Save State Check
     public var hasSave: Bool {

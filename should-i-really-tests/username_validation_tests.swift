@@ -10,10 +10,11 @@ import Testing
 
 @MainActor
 struct UsernameValidationTests {
+    let storage = StorageController(saveKey: "username_test")
     let gameViewModel: GameViewModel
     
     init() {
-        gameViewModel = GameViewModel()
+        gameViewModel = GameViewModel(storageController: storage)
     }
     
     // MARK: - 1. Tes Username VALID (Return True)
