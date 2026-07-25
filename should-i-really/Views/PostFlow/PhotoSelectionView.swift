@@ -92,28 +92,29 @@ struct PhotoSelectionView: View {
                         dismiss()
                     }) {
                         Image(systemName: "xmark")
-                            .font(.body.weight(.medium))
-                            .foregroundColor(Color.unselectedGray)
+                            .font(.body.weight(.bold))
+                            .foregroundStyle(Color.unselectedGray)
                     }
                 }
                 
                 ToolbarItem(placement: .principal) {
                     Text("Choose Your Photo")
                         .font(.headline)
-                        .foregroundColor(Color.textBrown)
+                        .foregroundStyle(Color.textBrown)
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
+                        guard viewModel.selectedQuadrant != nil else { return }
                         viewModel.confirmPhotoSelection()
                     }) {
                         Image(systemName: "chevron.right")
-                            .font(.body.weight(.medium))
+                            .font(.body.weight(.bold))
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.circle)
                     .tint(viewModel.selectedQuadrant != nil ? .buttonBrown : .unselectedGray)
-                    .disabled(viewModel.selectedQuadrant == nil)
+                    .id(viewModel.selectedQuadrant != nil)
                 }
             }
         }
@@ -147,7 +148,7 @@ struct AnimatedCropOverlayView: View {
         Image("Crop")
             .resizable()
             .scaledToFit()
-            .scaleEffect(isAnimated ? 0.95 : 1.0)
+            .scaleEffect(isAnimated ? 0.90 : 1.0)
             .animation(
                 .linear(duration: 0.9)
                 .repeatForever(autoreverses: true),
