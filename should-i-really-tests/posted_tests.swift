@@ -35,7 +35,7 @@ struct PublishPostTests {
         let chosenCaption: CaptionOption = try #require(postCreationViewModel.availableCaptions.first)
         postCreationViewModel.selectCaption(chosenCaption)
         
-        postCreationViewModel.finalizeAndPost()
+        _ = await postCreationViewModel.finalizeAndPost()
         
         let updatedFeed = gameViewModel.feedPosts
         #expect(updatedFeed.count == initialFeedCount + 1)

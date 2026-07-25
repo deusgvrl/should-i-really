@@ -22,7 +22,7 @@ struct CommentNotificationTests {
     }
     
     @Test("Verifies published post receives correct comment and notification trigger")
-    func test_CommentAndNotification() throws {
+    func test_CommentAndNotification() async throws {
         defer { gameViewModel.deleteActiveSave() }
         
         let currentNode = try #require(gameViewModel.currentNode)
@@ -34,7 +34,7 @@ struct CommentNotificationTests {
         let chosenCaption: CaptionOption = try #require(postCreationViewModel.availableCaptions.first)
         postCreationViewModel.selectCaption(chosenCaption)
         
-        postCreationViewModel.finalizeAndPost()
+        _ = await postCreationViewModel.finalizeAndPost()
         
         let newlyPublishedPost = try #require(gameViewModel.feedPosts.first)
         
