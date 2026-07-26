@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UploadingView: View {
-    var uploadDuration: Double = 2.0
+    var uploadDuration: Double = 1.0
     var onComplete: () -> Void
     
     @State private var progress: CGFloat = 0.0
@@ -40,6 +40,7 @@ struct UploadingView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden, for: .navigationBar)
         .task {
             await runProgressAnimation()
         }

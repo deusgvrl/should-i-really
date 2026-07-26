@@ -35,14 +35,15 @@ struct CaptionSelectionView: View {
             }
             
             if isUploading {
-                UploadingView(uploadDuration: 2.0) {
-                    viewModel.finalizeAndPost()
-                    var transaction = Transaction()
-                    transaction.disablesAnimations = true
-                    withTransaction(transaction) {
-                        gameViewModel.currentRoute = .timeline
-                        gameViewModel.isPresentingPostCreation = false
-                        viewModel.navigateToCaptionScreen = false
+                UploadingView(uploadDuration: 1.0) {
+                    Task { @MainActor in
+                        let newPostID = await viewModel.finalizeAndPost()
+                        
+                        if !newPostID.isEmpty {
+                            await NotificationManager.shared.requestPermissionAndSchedule(for: newPostID)
+                        }
+                        
+                        await gameViewModel.navigateToFeed(postID: newPostID)
                     }
                 }
                 .ignoresSafeArea()
