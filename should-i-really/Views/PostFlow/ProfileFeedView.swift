@@ -65,6 +65,7 @@ struct ProfileFeedView: View {
             InsightsOverlayView(framingType: post.photoGuardResult, captionType: post.vibeCheckResult)
                 .presentationDetents([.fraction(0.45)])
                 .presentationDragIndicator(.visible)
+                .accessibilityInputLabels(["Close"])
         }
             
     }
