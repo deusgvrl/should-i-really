@@ -19,7 +19,7 @@ struct ChooseImageQuadrantTests {
         gameViewModel.enterUsername("TestPlayer")
         postCreationViewModel = PostCreationViewModel(gameViewModel: gameViewModel)
     }
-    
+
     @Test("User navigates to post creation and selects an image quadrant")
     func test_ChooseImageQuadrant() throws {
         defer { gameViewModel.deleteActiveSave() }
