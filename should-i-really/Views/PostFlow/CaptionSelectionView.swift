@@ -53,17 +53,15 @@ struct CaptionSelectionView: View {
         .navigationBarBackButtonHidden(true)
         // MARK: - Toolbar Setup
         .toolbar {
+            
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
                     viewModel.navigateToCaptionScreen = false
                     dismissAction()
                 }) {
                     Image(systemName: "chevron.left")
-                        .font(.body.weight(.medium))
-                        .foregroundColor(.primary)
-                        .frame(width: 36, height: 36)
-                        .background(Color.white)
-                        .clipShape(Circle())
+                        .font(.body.weight(.bold))
+                        .foregroundStyle(Color.unselectedGray)
                 }
             }
             
@@ -174,5 +172,6 @@ struct CaptionSelectionView: View {
     return NavigationStack {
         CaptionSelectionView()
             .environment(postViewModel)
+            .environment(gameViewModel)
     }
 }
