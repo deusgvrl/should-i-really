@@ -7,6 +7,13 @@
 
 import Foundation
 
+// MARK: - Validation Error Types
+public enum UsernameValidationError {
+    case exceedsLength
+    case containsSpecialSymbols
+    case containsRepeatableSymbols
+}
+
 extension GameViewModel {
     // MARK: - Navigation Flow
     
@@ -32,24 +39,58 @@ extension GameViewModel {
         currentRoute = .timeline
     }
     
-    public func isValidUsername(_ username: String) -> Bool {
-        // Min 1, Max 16 karakter
-        guard username.count >= 1 && username.count <= 16 else { return false }
+    public func validateUsername(_ username: String) -> [UsernameValidationError] {
+        var errors: [UsernameValidationError] = []
         
-        // tidak boleh 0
-        guard username != "0" else { return false }
-        
-        // cuma huruf, angka, underscore (_), dan titik (.)
-        let allowedCharacterSet = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "_."))
-        guard username.unicodeScalars.allSatisfy({ allowedCharacterSet.contains($0) }) else { return false }
-        
-        // karakter spesial (_ dan .) tidak boleh bersebalahan
-        let invalidConsecutivePatterns = ["..", "__", "._", "_."]
-        for pattern in invalidConsecutivePatterns {
-            if username.contains(pattern) { return false }
+        if username.count > 16 {
+            errors.append(.exceedsLength)
         }
         
-        return true
+        let allowedCharacterSet = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "_."))
+        let hasInvalidChars = !username.unicodeScalars.allSatisfy({ allowedCharacterSet.contains($0) })
+        if hasInvalidChars || username == "0" {
+            errors.append(.containsSpecialSymbols)
+        }
+        
+        let invalidConsecutivePatterns = ["..", "__", "._", "_."]
+        if invalidConsecutivePatterns.contains(where: { username.contains($0) }) {
+            errors.append(.containsRepeatableSymbols)
+        }
+        
+        return errors
+    }
+    
+    public func isValidUsername(_ username: String) -> Bool {
+        guard !username.isEmpty else { return false }
+        return validateUsername(username).isEmpty
+    }
+    
+    public func usernameErrorMessage(for username: String) -> String? {
+        let errors = validateUsername(username)
+        guard !errors.isEmpty else { return nil }
+        
+        var clauses: [String] = []
+        for error in errors {
+            switch error {
+            case .exceedsLength:
+                clauses.append("exceed 16 characters")
+            case .containsSpecialSymbols:
+                clauses.append("contain special symbols")
+            case .containsRepeatableSymbols:
+                clauses.append("contain repeatable symbols")
+            }
+        }
+        let formattedText: String
+        if clauses.count == 1 {
+            formattedText = clauses[0]
+        } else if clauses.count == 2 {
+            formattedText = "\(clauses[0]) or \(clauses[1])"
+        } else {
+            let initial = clauses.dropLast().joined(separator: ", ")
+            formattedText = "\(initial), or \(clauses.last!)"
+        }
+        
+        return "Your username should not \(formattedText)."
     }
     
     // Acceps and validates username input, and saves the game into disk

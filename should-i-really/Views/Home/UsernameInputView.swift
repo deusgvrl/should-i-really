@@ -23,6 +23,11 @@ struct UsernameInputView: View {
         !trimmedUsername.isEmpty && !isInputValid
     }
     
+    private var errorMessage: String? {
+        guard !trimmedUsername.isEmpty else { return nil }
+        return viewModel.usernameErrorMessage(for: trimmedUsername)
+    }
+    
     var body: some View {
         ZStack {
             // MARK: - Layer Background Asset
@@ -64,11 +69,11 @@ struct UsernameInputView: View {
                         .textInputAutocapitalization(.never)
                         .accessibilityInputLabels(["Input"])
                     
-                    if isInvalidInput {
-                        Text("Exceeds 16 characters or contains unsupported symbols.")
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
                             .font(.footnote)
                             .foregroundStyle(.red)
-                            .padding(.horizontal, 12)
+                            .padding(.horizontal, 1)
                             .transition(.opacity.combined(with: .move(edge: .top)))
                     }
                 }
