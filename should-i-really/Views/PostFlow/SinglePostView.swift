@@ -66,7 +66,7 @@ struct SinglePostView: View {
                     onInsightsTapped()
                 }) {
                     HStack(spacing: 4) {
-                        Image(systemName: "aqi.medium.gauge.open")
+                        Image(systemName: "chart.line.uptrend.xyaxis")
                             .font(.subheadline)
                         Text("View insights")
                             .font(.subheadline)
@@ -124,11 +124,11 @@ struct SinglePostView: View {
                 .disabled(true)
             }
             
-            Text(date)
-                .font(.caption)
-                .fontWeight(.medium)
-                .foregroundStyle(.secondary)
-                .padding(.leading, 8)
+//            Text(date)
+//                .font(.caption)
+//                .fontWeight(.medium)
+//                .foregroundStyle(.secondary)
+//                .padding(.leading, 8)
         }
     }
 }
