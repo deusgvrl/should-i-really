@@ -9,48 +9,57 @@ import SwiftUI
 import SwiftData
 
 struct ArchiveView: View {
-    // Queries the unlocked ending that will return the id and the date
     @Query var unlockedEndings: [UnlockedEndings]
     @State private var endingVM = EndingViewModel()
-    // TODO: - Need to specify the brown colour globally.
-    let themeBrown = Color(red: 0.65, green: 0.49, blue: 0.32)
-    // Uses 2 columns
-    let columns = Array(repeating: GridItem(.flexible()), count: 2)
+    
+    let columns = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
     
     var body: some View {
-        ScrollView {
-            VStack(spacing :4) {
-                Text("\(unlockedEndings.count) of 16 unlocked")
-                    .font(.title2)
-                    .bold()
-                    .foregroundStyle(themeBrown)
-                
-                Text("Complete scenarios to unlock your graduation endings")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            .padding(.vertical, 24)
-            .frame(maxWidth: .infinity)
-            .background(Color(.systemGray6))
+        ZStack {
+            // MARK: - Background Layer
+            Color.background
+                .ignoresSafeArea()
             
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(1...16, id: \.self) { index in
-                    let endingKey = "ENDING_\(index)"
-                    let isUnlocked = unlockedEndings.contains { $0.endingId == endingKey }
-
-                    let endingDetail = endingVM.getEnding(by: endingKey)
-                    
-                    EndingCardView(
-                        index: index,
-                        isUnlocked: isUnlocked,
-                        ending: endingDetail
-                    )
+            ScrollView {
+                // MARK: - Header
+                VStack(spacing: 4) {
+                    Text("Collect All Endings!")
+                        .font(.system(.title2, design: .rounded))
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.textBrown)
                 }
+                .padding(.vertical, 24)
+                .frame(maxWidth: .infinity)
+                
+                // MARK: - Grid
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(1...16, id: \.self) { index in
+                        let endingKey = "ENDING_\(index)"
+                        let isUnlocked = unlockedEndings.contains { $0.endingId == endingKey }
+                        let endingDetail = endingVM.getEnding(by: endingKey)
+                        
+                        EndingCardView(
+                            index: index,
+                            isUnlocked: isUnlocked,
+                            ending: endingDetail
+                        )
+                    }
+                }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 24)
             }
-            .padding(24)
         }
-        .navigationTitle("Graduation Archive")
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Endings (\(unlockedEndings.count)/16)")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color.textBrown)
+            }
+        }
     }
 }
 
