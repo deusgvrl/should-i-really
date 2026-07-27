@@ -4,91 +4,79 @@
 //
 //  Created by Amadeus Gavriel on 15/07/26.
 //
+
 import SwiftUI
 
 struct LandingMenuView: View {
     
     // MARK: - Properties
-    var viewModel = GameViewModel()
-    @State var showOverwriteAlert: Bool = false
-    private let themeBrown = Color(red: 0.65, green: 0.49, blue: 0.32)
+    var viewModel: GameViewModel
+    @Binding var showOverwriteAlert: Bool
+    @State private var showSettingsSheet: Bool = false
     
     var body: some View {
-        VStack(spacing: 16) {
-            // Continue Button (Save Exists)
+        VStack(spacing: 12) {
+            
+            // MARK: - Conditional Top Buttons
             if viewModel.gameState != nil {
+                
                 Button(action: {
                     viewModel.continueGame()
                 }) {
                     Text("Continue")
-                        .font(.body)
+                        .font(.system(size: 17, design: .rounded))
+                        .fontWeight(.medium)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical,16)
-                        .background(themeBrown)
+                        .frame(height: 48)
+                        .background(Color.buttonBrown)
                         .clipShape(Capsule())
-                        .accessibilityLabel("Continue")
-                        .accessibilityInputLabels(["Continue"])
+                        .shadow(color: Color.black.opacity(0.12), radius: 8, x: 0, y: 4)
                 }
-            }
-            // New Game Button
-            Button(action: {
-                if viewModel.gameState != nil {
-                    // Show warning alert if save data exists and will be overwritten
-                    showOverwriteAlert = true
-                } else {
-                    viewModel.startNewGame()
-                }
-            }) {
-                Text("New Game")
-                    .font(.body)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(themeBrown)
-                    .clipShape(Capsule())
-            }
-            .accessibilityLabel("New Game")
-            .accessibilityInputLabels(["New"])
-            
-            // Archive Button
-            Button(action: {
-                viewModel.openArchive()
-            }) {
-                Text("Archive")
-                    .font(.body)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical,16)
-                    .background(themeBrown)
-                    .clipShape(Capsule())
-            }
-            .accessibilityLabel("Archive")
-            .accessibilityInputLabels(["Archive"])
-            
-            // Alert Pop-up
-        }
-        .alert("Are you sure", isPresented: $showOverwriteAlert) {
-            Button("No", role: .cancel) {
                 
+                Button(action: {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        showOverwriteAlert = true
+                    }
+                }) {
+                    Text("New Game")
+                        .font(.system(size: 17, design: .rounded))
+                        .fontWeight(.medium)
+                        .foregroundStyle(Color.buttonBrown)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 48)
+                        .background(
+                            Capsule()
+                                .fill(Color.background)
+                        )
+                        .overlay(
+                            Capsule()
+                                .stroke(Color.buttonBrown, lineWidth: 2)
+                        )
+                }
+                .accessibilityLabel("New Game")
+                
+            } else {
+                
+                Button(action: {
+                    viewModel.startNewGame()
+                }) {
+                    Text("New Game")
+                        .font(.system(size: 17, design: .rounded))
+                        .fontWeight(.medium)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 48)
+                        .background(Color.buttonBrown)
+                        .clipShape(Capsule())
+                        .shadow(color: Color.black.opacity(0.12), radius: 8, x: 0, y: 4)
+                }
+                .accessibilityLabel("New Game")
             }
-            .accessibilityInputLabels(["No"])
-            Button("Yes", role: .destructive) {
-                viewModel.deleteActiveSave()
-                viewModel.startNewGame()
-            }
-            .accessibilityInputLabels(["Yes"])
-        } message: {
-            Text("Starting a new game will overwrite your current progress")
         }
-    }
-    
-    private var hasCompletedEndings: Bool {
-        
-        false
     }
 }
 
 #Preview {
-    LandingMenuView(viewModel: GameViewModel())
+    LandingMenuView(viewModel: GameViewModel(), showOverwriteAlert: .constant(false))
 }
