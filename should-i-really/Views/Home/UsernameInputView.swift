@@ -23,6 +23,11 @@ struct UsernameInputView: View {
         !trimmedUsername.isEmpty && !isInputValid
     }
     
+    private var errorMessage: String? {
+        guard !trimmedUsername.isEmpty else { return nil }
+        return viewModel.usernameErrorMessage(for: trimmedUsername)
+    }
+    
     var body: some View {
         ZStack {
             // MARK: - Layer Background Asset
@@ -48,27 +53,41 @@ struct UsernameInputView: View {
                         .foregroundStyle(.borderBrown)
                         .padding(.leading, 4)
                     
-                    TextField("johndoe", text: $usernameText)
-                        .font(.body)
-                        .foregroundStyle(isInvalidInput ? .red : .primary)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 14)
-                        .background(Color(red: 250/255, green: 250/255, blue: 250/255))
-                        .clipShape(Capsule())
-                        .overlay(
-                            Capsule()
-                                .stroke(isInvalidInput ? Color.red : Color.clear, lineWidth: 2)
-                        )
-                        .shadow(color: Color.black.opacity(0.08), radius: 7, x: 0, y: 3)
-                        .autocorrectionDisabled()
-                        .textInputAutocapitalization(.never)
-                        .accessibilityInputLabels(["Input"])
+                    HStack(spacing: 8) {
+                        TextField("Ex: john.doe", text: $usernameText)
+                            .font(.body)
+                            .foregroundStyle(isInvalidInput ? .red : .primary)
+                            .autocorrectionDisabled()
+                            .textInputAutocapitalization(.never)
+                            .accessibilityInputLabels(["Input"])
+                        
+                        if !usernameText.isEmpty {
+                            Button(action: {
+                                usernameText = ""
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(Color.unselectedGray)
+                                    .font(.system(size: 18))
+                            }
+                            .accessibilityLabel("Clear text")
+                            .accessibilityInputLabels(["Clear text", "Clear"])
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 14)
+                    .background(Color(red: 250/255, green: 250/255, blue: 250/255))
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule()
+                            .stroke(isInvalidInput ? Color.red : Color.clear, lineWidth: 2)
+                    )
+                    .shadow(color: Color.black.opacity(0.08), radius: 7, x: 0, y: 3)
                     
-                    if isInvalidInput {
-                        Text("Exceeds 16 characters or contains unsupported symbols.")
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
                             .font(.footnote)
                             .foregroundStyle(.red)
-                            .padding(.horizontal, 12)
+                            .padding(.horizontal, 1)
                             .transition(.opacity.combined(with: .move(edge: .top)))
                     }
                 }
@@ -96,6 +115,7 @@ struct UsernameInputView: View {
             }
             .padding(.horizontal, 28)
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
