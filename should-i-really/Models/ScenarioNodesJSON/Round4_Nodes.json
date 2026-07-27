@@ -32,7 +32,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 4,
         "captions": [
           {
             "id": "4A_Neg_C_Pos",
@@ -71,7 +71,7 @@
     "big_picture_id": "SampleImage4",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 4,
         "captions": [
           {
             "id": "4B_Pos_C_Pos",
@@ -296,7 +296,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 4,
         "captions": [
           {
             "id": "4E_Neg_C_Pos",
@@ -467,7 +467,7 @@
     "big_picture_id": "SampleImage4",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 4,
         "captions": [
           {
             "id": "4H_Pos_C_Pos",
@@ -494,7 +494,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 1,
         "captions": [
           {
             "id": "4H_Neg_C_Pos",

@@ -137,7 +137,7 @@
     "big_picture_id": "SampleImage3",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 2,
         "captions": [
           {
             "id": "3C_Pos_C_Pos",
@@ -164,7 +164,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 1,
         "captions": [
           {
             "id": "3C_Neg_C_Pos",
@@ -203,7 +203,7 @@
     "big_picture_id": "SampleImage3",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 2,
         "captions": [
           {
             "id": "3D_Pos_C_Pos",
@@ -230,7 +230,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 1,
         "captions": [
           {
             "id": "3D_Neg_C_Pos",
