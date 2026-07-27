@@ -68,10 +68,10 @@
   {
     "id": "2B",
     "round": 2,
-    "big_picture_id": "SampleImage2",
+    "big_picture_id": "node_2B",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 2,
         "captions": [
           {
             "id": "2B_Pos_C_Pos",

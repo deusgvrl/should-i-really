@@ -2,7 +2,7 @@
   {
     "id": "4A",
     "round": 4,
-    "big_picture_id": "SampleImage4",
+    "big_picture_id": "node_4A",
     "crops": {
       "positive_crop": {
         "quadrant": 1,
@@ -68,7 +68,7 @@
   {
     "id": "4B",
     "round": 4,
-    "big_picture_id": "SampleImage4",
+    "big_picture_id": "node_4B",
     "crops": {
       "positive_crop": {
         "quadrant": 4,
@@ -134,7 +134,7 @@
   {
     "id": "4C",
     "round": 4,
-    "big_picture_id": "SampleImage4",
+    "big_picture_id": "node_4C",
     "crops": {
       "positive_crop": {
         "quadrant": 1,
@@ -164,7 +164,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 4,
         "captions": [
           {
             "id": "4C_Neg_C_Pos",
@@ -203,7 +203,7 @@
     "big_picture_id": "node_4D",
     "crops": {
       "positive_crop": {
-        "quadrant": 3,
+        "quadrant": 1,
         "captions": [
           {
             "id": "4D_Pos_C_Pos",
@@ -266,7 +266,7 @@
   {
     "id": "4E",
     "round": 4,
-    "big_picture_id": "SampleImage4",
+    "big_picture_id": "node_4E",
     "crops": {
       "positive_crop": {
         "quadrant": 1,
@@ -332,7 +332,7 @@
   {
     "id": "4F",
     "round": 4,
-    "big_picture_id": "SampleImage4",
+    "big_picture_id": "node_4F",
     "crops": {
       "positive_crop": {
         "quadrant": 1,
@@ -362,7 +362,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 2,
         "captions": [
           {
             "id": "4F_Neg_C_Pos",
@@ -398,10 +398,10 @@
   {
     "id": "4G",
     "round": 4,
-    "big_picture_id": "SampleImage4",
+    "big_picture_id": "node_4G",
     "crops": {
       "positive_crop": {
-        "quadrant": 1,
+        "quadrant": 4,
         "captions": [
           {
             "id": "4G_Pos_C_Pos",
@@ -464,7 +464,7 @@
   {
     "id": "4H",
     "round": 4,
-    "big_picture_id": "SampleImage4",
+    "big_picture_id": "node_4H",
     "crops": {
       "positive_crop": {
         "quadrant": 4,
