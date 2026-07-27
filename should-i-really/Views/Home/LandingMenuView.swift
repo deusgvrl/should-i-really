@@ -49,7 +49,7 @@ struct LandingMenuView: View {
                     .clipShape(Capsule())
             }
             .accessibilityLabel("New Game")
-            .accessibilityInputLabels(["New Game"])
+            .accessibilityInputLabels(["New"])
             
             // Archive Button
             Button(action: {

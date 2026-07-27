@@ -62,6 +62,7 @@ struct UsernameInputView: View {
                         .shadow(color: Color.black.opacity(0.08), radius: 7, x: 0, y: 3)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
+                        .accessibilityInputLabels(["Input"])
                     
                     if isInvalidInput {
                         Text("Exceeds 16 characters or contains unsupported symbols.")
