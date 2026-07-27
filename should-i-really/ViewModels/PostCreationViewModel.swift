@@ -16,10 +16,13 @@ final class PostCreationViewModel {
         
     // MARK: - UI State Properties (Child)
     var selectedQuadrant: QuadrantPosition? = nil {
-        didSet {
-            updateAvailableCaptions()
+            didSet {
+                if oldValue != selectedQuadrant {
+                    selectedCaption = nil
+                    updateAvailableCaptions()
+                }
+            }
         }
-    }
     
     var onPostFinished: ((String) -> Void)?
     
