@@ -25,7 +25,7 @@ struct PhotoSelectionView: View {
             Color.background
                 .ignoresSafeArea()
             
-            VStack(spacing: 20) {
+            VStack() {
                 GeometryReader { geometry in
                     let totalSize = geometry.size.width
                     let tileSize = totalSize / 2
@@ -78,7 +78,6 @@ struct PhotoSelectionView: View {
                     .frame(width: totalSize, height: totalSize)
                 }
                 .aspectRatio(1, contentMode: .fit)
-                .padding(.horizontal)
                 
                 Spacer()
             }

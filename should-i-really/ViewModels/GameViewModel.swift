@@ -73,18 +73,33 @@ import SwiftUI
     // MARK: - Uploading
     
     public var isPresentingPostCreation: Bool = false
+    public var scrollToPostID: String? = nil
     
     @MainActor
     public func navigateToFeed(postID: String? = nil) async {
-        if let postID = postID {
-            navigationPath.append(.feedView(postID: postID))
-        } else {
+        guard let postID = postID else {
             currentRoute = .timeline
+            isPresentingPostCreation = false
+            return
         }
         
-        await Task.yield()
+        if let index = navigationPath.firstIndex(where: {
+            if case .feedView = $0 { return true }
+            return false
+        }) {
+            navigationPath = Array(navigationPath.prefix(index + 1))
+            self.scrollToPostID = postID
+        } else {
+            navigationPath.append(.feedView(postID: postID))
+        }
         
-        // Slide the modal down to reveal the Feed view
+//        if let postID = postID {
+//            navigationPath.append(.feedView(postID: postID))
+//        } else {
+//            currentRoute = .timeline
+//        }
+        
+        await Task.yield()
         isPresentingPostCreation = false
     }
 }

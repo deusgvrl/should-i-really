@@ -47,7 +47,9 @@ struct ProfileFeedView: View {
         }
         .task {
             if let targetID = initialPostID {
-                scrollPosition = targetID
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    scrollPosition = targetID
+                }
             }
             
             if let newestPost = viewModel.feedPosts.first, !(newestPost.isCommentRevealed ?? false) {
@@ -59,6 +61,15 @@ struct ProfileFeedView: View {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
                     viewModel.markCommentAsRevealed(for: newestPost.id)
                 }
+            }
+        }
+        .onChange(of: viewModel.scrollToPostID) { _, targetID in
+            if let targetID = targetID {
+                selectedPostForInsights = nil
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    scrollPosition = targetID
+                }
+                viewModel.scrollToPostID = nil
             }
         }
         .sheet(item: $selectedPostForInsights) { post in

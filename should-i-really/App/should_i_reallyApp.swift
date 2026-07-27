@@ -22,6 +22,13 @@ struct should_i_reallyApp: App {
                     .foregroundStyle(Color.textBrown)
                     .fontDesign(.rounded)
             }
+            .onAppear {
+                NotificationManager.shared.onNotificationTapped = { postID in
+                    Task { @MainActor in
+                        await gameViewModel.navigateToFeed(postID: postID)
+                    }
+                }
+            }
         }
     }
 }
