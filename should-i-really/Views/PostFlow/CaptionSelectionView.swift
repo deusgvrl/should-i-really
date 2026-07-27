@@ -23,6 +23,13 @@ struct CaptionSelectionView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
+                Text("Choose one available caption")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.textBrown)
+                    .frame(alignment: .center)
+                    .padding(.bottom, 8)
+                
                 // MARK: Selected Photo Display
                 selectedImageArea
                 
@@ -66,7 +73,7 @@ struct CaptionSelectionView: View {
             }
             
             ToolbarItem(placement: .principal) {
-                Text("Choose Your Caption")
+                Text("Select Caption")
                     .font(.headline)
                     .foregroundColor(.textBrown)
             }
