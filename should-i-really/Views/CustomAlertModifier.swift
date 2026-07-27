@@ -28,6 +28,9 @@ struct CustomAlertModifier: ViewModifier {
                             isPresented = false
                         }
                     }
+                    // ♿️ Accessibility untuk Background Dimmer
+                    .accessibilityLabel("Dismiss alert")
+                    .accessibilityHint("Double tap to close the alert")
 
                 // Alert Card Container
                 VStack(alignment: .leading, spacing: 16) {
@@ -57,6 +60,8 @@ struct CustomAlertModifier: ViewModifier {
                                 .background(Color.unselectedGray.opacity(0.4))
                                 .clipShape(Capsule())
                         }
+                        .accessibilityLabel(cancelTitle)
+                        .accessibilityInputLabels([cancelTitle])
 
                         // Confirm Button
                         Button(action: {
@@ -74,6 +79,8 @@ struct CustomAlertModifier: ViewModifier {
                                 .background(Color.buttonBrown)
                                 .clipShape(Capsule())
                         }
+                        .accessibilityLabel(confirmTitle)
+                        .accessibilityInputLabels([confirmTitle])
                     }
                     .padding(.top, 12)
                 }
@@ -86,6 +93,7 @@ struct CustomAlertModifier: ViewModifier {
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 .padding(.horizontal, 28)
                 .transition(.scale(scale: 0.9).combined(with: .opacity))
+                .accessibilityAddTraits(.isModal)
             }
         }
         .animation(.spring(response: 0.3, dampingFraction: 0.8), value: isPresented)

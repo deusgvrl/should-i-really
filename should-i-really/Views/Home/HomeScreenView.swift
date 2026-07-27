@@ -54,6 +54,7 @@ struct HomeScreenView: View {
                     .buttonBorderShape(.circle)
                     .tint(.buttonBrown)
                     .accessibilityLabel("Archive")
+                    .accessibilityInputLabels(["Archive"])
                 }
             }
             
