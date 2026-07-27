@@ -123,12 +123,6 @@ struct SinglePostView: View {
                 .allowsHitTesting(false)
                 .disabled(true)
             }
-            
-//            Text(date)
-//                .font(.caption)
-//                .fontWeight(.medium)
-//                .foregroundStyle(.secondary)
-//                .padding(.leading, 8)
         }
     }
 }
