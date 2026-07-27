@@ -25,7 +25,14 @@ struct PhotoSelectionView: View {
             Color.background
                 .ignoresSafeArea()
             
-            VStack() {
+            VStack(spacing: 0) {
+                Text("Choose one available photo")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.textBrown)
+                    .frame(alignment: .center)
+                    .padding(.bottom, 8)
+                                                        
                 GeometryReader { geometry in
                     let totalSize = geometry.size.width
                     let tileSize = totalSize / 2
@@ -57,6 +64,8 @@ struct PhotoSelectionView: View {
                                 }
                                 
                                 if isSelected {
+                                    Color.white.opacity(0)
+                                        .border(Color.buttonBrown, width: 4)
                                     AnimatedCropOverlayView()
                                 }
                             }
@@ -97,7 +106,7 @@ struct PhotoSelectionView: View {
                 }
                 
                 ToolbarItem(placement: .principal) {
-                    Text("Choose Your Photo")
+                    Text("Select Photo")
                         .font(.headline)
                         .foregroundStyle(Color.textBrown)
                 }
