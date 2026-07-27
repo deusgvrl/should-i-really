@@ -11,7 +11,7 @@ struct LandingMenuView: View {
     
     // MARK: - Properties
     var viewModel: GameViewModel
-    @State private var showOverwriteAlert: Bool = false
+    @Binding var showOverwriteAlert: Bool
     @State private var showSettingsSheet: Bool = false
     
     var body: some View {
@@ -24,27 +24,35 @@ struct LandingMenuView: View {
                     viewModel.continueGame()
                 }) {
                     Text("Continue")
-                        .font(.system(.title3, design: .rounded))
-                        .fontWeight(.bold)
+                        .font(.system(size: 17, design: .rounded))
+                        .fontWeight(.medium)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 20)
+                        .frame(height: 48)
                         .background(Color.buttonBrown)
                         .clipShape(Capsule())
                         .shadow(color: Color.black.opacity(0.12), radius: 8, x: 0, y: 4)
                 }
                 
                 Button(action: {
-                    showOverwriteAlert = true
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        showOverwriteAlert = true
+                    }
                 }) {
                     Text("New Game")
-                        .font(.system(.headline, design: .rounded))
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
+                        .font(.system(size: 17, design: .rounded))
+                        .fontWeight(.medium)
+                        .foregroundStyle(Color.buttonBrown)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(Color.buttonBrown)
-                        .clipShape(Capsule())
+                        .frame(height: 48)
+                        .background(
+                            Capsule()
+                                .fill(Color.background)
+                        )
+                        .overlay(
+                            Capsule()
+                                .stroke(Color.buttonBrown, lineWidth: 2)
+                        )
                 }
                 .accessibilityLabel("New Game")
                 
@@ -54,63 +62,21 @@ struct LandingMenuView: View {
                     viewModel.startNewGame()
                 }) {
                     Text("New Game")
-                        .font(.system(.title3, design: .rounded))
-                        .fontWeight(.bold)
+                        .font(.system(size: 17, design: .rounded))
+                        .fontWeight(.medium)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 20)
+                        .frame(height: 48)
                         .background(Color.buttonBrown)
                         .clipShape(Capsule())
                         .shadow(color: Color.black.opacity(0.12), radius: 8, x: 0, y: 4)
                 }
                 .accessibilityLabel("New Game")
             }
-            
-            // MARK: - Bottom Row: Archive & Setting (Tersier - Lebih Ringkas)
-            HStack(spacing: 10) {
-
-                Button(action: {
-                    viewModel.openArchive()
-                }) {
-                    Text("Archive")
-                        .font(.system(.subheadline, design: .rounded))
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                        .background(Color.buttonBrown)
-                        .clipShape(Capsule())
-                }
-                .accessibilityLabel("Archive")
-
-                Button(action: {
-                    showSettingsSheet = true
-                }) {
-                    Text("Setting")
-                        .font(.system(.subheadline, design: .rounded))
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12) 
-                        .background(Color.buttonBrown)
-                        .clipShape(Capsule())
-                }
-                .accessibilityLabel("Setting")
-            }
-        }
-
-        .alert("Are you sure?", isPresented: $showOverwriteAlert) {
-            Button("No", role: .cancel) { }
-            Button("Yes", role: .destructive) {
-                viewModel.deleteActiveSave()
-                viewModel.startNewGame()
-            }
-        } message: {
-            Text("Starting a new game will overwrite your current progress")
         }
     }
 }
 
 #Preview {
-    LandingMenuView(viewModel: GameViewModel())
+    LandingMenuView(viewModel: GameViewModel(), showOverwriteAlert: .constant(false))
 }

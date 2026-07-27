@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct HomeScreenView: View {
-    // Call viewModel to manage routes
-    //        @Bindable var viewModel: GameViewModel
-    
-    // Local state var
     @Environment(GameViewModel.self) private var viewModel
-    
+    @State private var showOverwriteAlert: Bool = false
     
     // MARK: - Body
     var body: some View {
@@ -28,7 +24,7 @@ struct HomeScreenView: View {
                 
                 VStack(spacing: 0) {
                     Spacer()
-                        .frame(maxHeight: 170)
+                        .frame(maxHeight: 150)
                     
                     // MARK: - Logo Should I Really
                     Image("HomeIcon")
@@ -38,12 +34,40 @@ struct HomeScreenView: View {
                         .padding(.bottom, 32)
                     
                     // MARK: - Landing Menu Buttons Hierarchy
-                    LandingMenuView(viewModel: viewModel)
+                    LandingMenuView(viewModel: viewModel, showOverwriteAlert: $showOverwriteAlert)
                     
                     Spacer()
                 }
                 .padding(.horizontal, 28)
             }
+            
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        viewModel.openArchive()
+                    }) {
+                        Image(systemName: "text.book.closed.fill")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundStyle(.white)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.circle)
+                    .tint(.buttonBrown)
+                    .accessibilityLabel("Archive")
+                }
+            }
+            
+            .customAlert(
+                isPresented: $showOverwriteAlert,
+                title: "Start a New Game?",
+                message: "Starting a new game will\noverwrite your current progress",
+                cancelTitle: "Cancel",
+                confirmTitle: "Overwrite"
+            ) {
+                viewModel.deleteActiveSave()
+                viewModel.startNewGame()
+            }
+            
             // MARK: - Nav Destination
             .navigationDestination(for: GameViewModel.GameRoute.self) { route in
                 Group {
@@ -74,7 +98,6 @@ struct HomeScreenView: View {
         }
     }
 }
-
 
 #Preview {
     HomeScreenView()
