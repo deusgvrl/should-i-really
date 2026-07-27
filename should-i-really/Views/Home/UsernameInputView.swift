@@ -115,6 +115,7 @@ struct UsernameInputView: View {
             }
             .padding(.horizontal, 28)
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
