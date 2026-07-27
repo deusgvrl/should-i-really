@@ -13,6 +13,8 @@ struct EndingSummaryView: View {
     @Environment(\.modelContext) private var modelContext
     
     @State private var endingVM: EndingViewModel
+    @State private var isShowingAlert = false
+
     let endingId: String
     
     // MARK: - Color Palette Definitions
@@ -101,7 +103,7 @@ struct EndingSummaryView: View {
                         Spacer(minLength: 32)
                         
                         Button(action: {
-                            gameVM.deleteActiveSave()
+                            isShowingAlert = true
                         }) {
                             Text("Return to Menu")
                                 .font(.headline)
@@ -133,9 +135,23 @@ struct EndingSummaryView: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
+        .alert("Congratulations, you graduated!", isPresented: $isShowingAlert) {
+            HStack {
+                Button("Return to Main Menu", role: .confirm) {
+                    gameVM.deleteActiveSave()
+                }
+                .accessibilityLabel("Return")
+                .accessibilityInputLabels(["Return"])
+                Button("Stay here", role: .cancel) {
+                    
+                }
+                .accessibilityLabel("Stay")
+                .accessibilityInputLabels(["Stay"])
+            }
+        } message: {
+            Text("You won't be able to view your profile feed after leaving this page, but you can always access this summary later in the Archive menu.")
+        }
         .onAppear {
-            
             unlockEnding()
         }
     }

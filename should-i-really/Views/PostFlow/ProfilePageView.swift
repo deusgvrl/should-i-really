@@ -10,9 +10,6 @@ import SwiftUI
 struct ProfilePageView: View {
     @Environment(GameViewModel.self) private var gameViewModel
     @Environment(\.dismiss) private var dismiss
-    
-//    @State private var isShowingPostFlow = false
-    @State private var isShowingAlert = false
 
     private let gridColumns = Array(
         repeating: GridItem(.flexible(), spacing: 12),
@@ -132,7 +129,7 @@ struct ProfilePageView: View {
                 
                 if (isGameFinished && hasInjectedGameEnding) {
                     Button {
-                        isShowingAlert = true
+                        gameViewModel.navigationPath.append(.ending)
                     } label: {
                         Image(systemName: "chevron.right")
                             .fontDesign(.default)
@@ -176,22 +173,6 @@ struct ProfilePageView: View {
                     .accessibilityInputLabels(["Add Post"])
                 }
             }
-        }
-        .alert("Congratulations, you graduated!", isPresented: $isShowingAlert) {
-            HStack {
-                Button("Go to Summary", role: .confirm) {
-                    gameViewModel.navigationPath.append(.ending)
-                }
-                .accessibilityLabel("Summary")
-                .accessibilityInputLabels(["Go to Summary"])
-                Button("View Profile", role: .cancel) {
-                    
-                }
-                .accessibilityLabel("Profile")
-                .accessibilityInputLabels(["View Profile"])
-            }
-        } message: {
-            Text("You’ve officially reached the ending.")
         }
         .fullScreenCover(isPresented: $gameViewModel.isPresentingPostCreation) {
             PostCreationFlowView { newPostID in
