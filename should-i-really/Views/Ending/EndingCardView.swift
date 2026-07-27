@@ -12,64 +12,76 @@ struct EndingCardView: View {
     let index: Int
     let isUnlocked: Bool
     let ending: EndingNode?
-    let themeBrown = Color(red: 0.65, green: 0.49, blue: 0.32)
-    
+
+    let lockedFrameColor = Color(
+        red: 183 / 255,
+        green: 183 / 255,
+        blue: 183 / 255
+    )  // #B7B7B7
+    let lockedInnerColor = Color(
+        red: 131 / 255,
+        green: 131 / 255,
+        blue: 131 / 255
+    )  // #838383
+
     var body: some View {
-        VStack(spacing: 8) {
-            // Unlocked View
+        VStack(alignment: .leading, spacing: 8) {
             if isUnlocked {
-                // Ending Card
-                ZStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color(red: 0.65, green: 0.49, blue: 0.32).opacity(0.15))
-                        .aspectRatio(1, contentMode: .fit)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color(red: 0.65, green: 0.49, blue: 0.32), lineWidth: 2)
-                        )
-                    
-                    VStack {
-                        if let imageName = ending?.imageName {
-                            Image(imageName)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 140, height: 140)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke(themeBrown, lineWidth: 2)
-                                )
-                        } else {
-                            Image(systemName: "photo")
-                                .font(.largeTitle)
-                                .foregroundStyle(themeBrown)
-                        }
-                    }
-                }
-                
-                Text(ending?.title ?? "Ending \(index)")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.primary)
+                // MARK: - UNLOCKED STATE
+                Image(ending?.imageName ?? "placeholder_image")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 150, height: 150)
+                    .clipShape(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(Color.borderBrown, lineWidth: 1.5)
+                    )
+
+                Text(ending?.title ?? "Unknown Ending")
+                    .font(
+                        .system(size: 17, weight: .semibold, design: .rounded)
+                    )
+                    .foregroundStyle(Color.textBrown)
                     .lineLimit(1)
-                
+                    .minimumScaleFactor(0.6)
+
             } else {
-                // Locked View
+                // MARK: - LOCKED STATE
                 ZStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color(.systemGray5))
-                        .aspectRatio(1, contentMode: .fit)
-                    Image(systemName: "lock.fill")
-                        .font(.caption)
-                        .foregroundStyle(.secondary.opacity(0.6))
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(lockedInnerColor)
+                        .frame(width: 150, height: 150)
+
+                    Text("?")
+                        .font(
+                            .system(size: 80, weight: .bold, design: .rounded)
+                        )
+                        .foregroundStyle(lockedFrameColor)
                 }
-                
-                Text("Locked")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .stroke(Color.borderBrown, lineWidth: 1.5)
+                )
+
+                Text("?")
+                    .font(
+                        .system(size: 17, weight: .semibold, design: .rounded)
+                    )
+                    .foregroundStyle(Color.textBrown)
             }
         }
+        .frame(width: 150) 
+        .frame(maxWidth: .infinity)
+        .frame(height: 208)
+        .background(isUnlocked ? Color.background : lockedFrameColor)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color.borderBrown, lineWidth: 1.5)
+        )
     }
 }
 
