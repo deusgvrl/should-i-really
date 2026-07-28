@@ -11,9 +11,6 @@ struct HomeScreenView: View {
     @Environment(GameViewModel.self) private var viewModel
     @State private var showOverwriteAlert: Bool = false
     
-    @State private var showTutorialSheet: Bool = false
-    @State private var showSettingsSheet: Bool = false
-    
     // MARK: - Body
     var body: some View {
         @Bindable var viewModel = viewModel
@@ -47,8 +44,8 @@ struct HomeScreenView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        showTutorialSheet = true
                         AudioController.shared.playSFX(filename: "tap")
+                        viewModel.openTutorial()
                     }) {
                         Image(systemName: "book.fill")
                             .font(.system(size: 15, weight: .bold))
@@ -63,7 +60,7 @@ struct HomeScreenView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        showSettingsSheet = true
+                        
                     }) {
                         Image(systemName: "gearshape.fill")
                             .font(.system(size: 15, weight: .bold))
@@ -92,6 +89,8 @@ struct HomeScreenView: View {
             .navigationDestination(for: GameViewModel.GameRoute.self) { route in
                 Group {
                     switch route {
+                    case .tutorial:
+                        TutorialScreenView()
                     case .usernameInput:
                         UsernameInputView()
                     case .prologue:

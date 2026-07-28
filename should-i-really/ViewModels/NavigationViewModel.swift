@@ -119,6 +119,11 @@ extension GameViewModel {
         currentRoute = .timeline
     }
     
+    // Opens tutorial menu
+    public func openTutorial() {
+        navigationPath = [.tutorial]
+        currentRoute = .tutorial
+    }
     
     // Opens archive menu
     public func openArchive() {
