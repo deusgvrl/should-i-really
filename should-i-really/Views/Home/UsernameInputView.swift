@@ -35,14 +35,14 @@ struct UsernameInputView: View {
                 .resizable()
                 .ignoresSafeArea()
             VStack(spacing: 0) {
-                Spacer()
-                    .frame(maxHeight: 150)
+                Spacer(minLength: 10)
+                    .frame(maxHeight: 78)
                 
                 // MARK: - Logo Should I Really
                 Image("HomeIcon")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: 130)
+                    .frame(height: 130)
                     .padding(.bottom, 24)
                 
                 // MARK: - Input Section
@@ -93,7 +93,7 @@ struct UsernameInputView: View {
                 }
                 .animation(.easeInOut(duration: 0.2), value: isInvalidInput)
                 
-                Spacer()
+                Spacer(minLength: 16)
                 
                 // MARK: - Start Button
                 Button(action: {
@@ -115,7 +115,6 @@ struct UsernameInputView: View {
             }
             .padding(.horizontal, 28)
         }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
