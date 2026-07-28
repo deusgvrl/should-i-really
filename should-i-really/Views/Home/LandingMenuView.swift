@@ -22,6 +22,7 @@ struct LandingMenuView: View {
                 // MARK: - Continue Button (Filled Brown)
                 Button(action: {
                     viewModel.continueGame()
+                    AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text("Continue")
                         .font(.system(size: 20, design: .rounded))
@@ -40,6 +41,7 @@ struct LandingMenuView: View {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                         showOverwriteAlert = true
                     }
+                    AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text("New Game")
                         .font(.system(size: 17, design: .rounded))
@@ -64,6 +66,7 @@ struct LandingMenuView: View {
                 // MARK: - New Game Button (Filled - When No Save Data)
                 Button(action: {
                     viewModel.startNewGame()
+                    AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text("New Game")
                         .font(.system(size: 20, design: .rounded))

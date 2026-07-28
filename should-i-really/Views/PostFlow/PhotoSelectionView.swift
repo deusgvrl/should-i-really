@@ -78,6 +78,7 @@ struct PhotoSelectionView: View {
                                         viewModel.selectedQuadrant = quadrant
                                     }
                                 }
+                                AudioController.shared.playSFX(filename: "tap")
                             }
                             .accessibilityHidden(!isActive)
                             .accessibilityLabel("Picture \(labelNumber)")

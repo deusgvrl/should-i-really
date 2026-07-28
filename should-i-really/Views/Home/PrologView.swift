@@ -112,6 +112,7 @@ struct PrologView: View {
         .onTapGesture {
             guard isContinuePromptVisible else { return }
             viewModel.continueFromProlog()
+            AudioController.shared.playSFX(filename: "tap")
         }
         
     }

@@ -117,6 +117,9 @@ struct ProfilePageView: View {
                             .buttonStyle(.plain)
                             .accessibilityLabel("\(postNumber)")
                             .accessibilityInputLabels(["Post \(postNumber)"])
+                            .simultaneousGesture(TapGesture().onEnded {
+                                AudioController.shared.playSFX(filename: "tap")
+                            })
                         }
                     }
                     .padding(.horizontal, 16)
@@ -134,6 +137,7 @@ struct ProfilePageView: View {
                 if (isGameFinished && hasInjectedGameEnding) {
                     Button {
                         gameViewModel.navigationPath.append(.ending)
+                        AudioController.shared.playSFX(filename: "tap")
                     } label: {
                         Image(systemName: "chevron.right")
                             .fontDesign(.default)
@@ -150,6 +154,8 @@ struct ProfilePageView: View {
                         withAnimation(.spring(response: 0.5, dampingFraction: 0.75)) {
                             gameViewModel.injectEndingPost()
                         }
+                        AudioController.shared.playSFX(filename: "congrats")
+                        HapticsController.shared.playContinuousHaptic(duration: 1.0)
                     } label: {
                         Image(systemName: "plus")
                             .fontDesign(.default)
@@ -164,6 +170,7 @@ struct ProfilePageView: View {
                 } else {
                     Button {
                         gameViewModel.isPresentingPostCreation = true
+                        AudioController.shared.playSFX(filename: "tap")
                     } label: {
                         Image(systemName: "plus")
                             .fontDesign(.default)

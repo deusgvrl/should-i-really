@@ -22,7 +22,7 @@ struct CaptionSelectionView: View {
             Color.background
                 .ignoresSafeArea()
             
-            VStack(spacing: 20) {
+            VStack(spacing: 0) {
                 Text("Choose one available caption")
                     .font(.title3)
                     .fontWeight(.bold)
@@ -140,6 +140,7 @@ struct CaptionSelectionView: View {
                     withAnimation(.easeInOut(duration: 0.2)) {
                         viewModel.selectCaption(caption)
                     }
+                    AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text(caption.text)
                         .font(.subheadline)

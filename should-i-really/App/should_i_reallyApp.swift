@@ -28,6 +28,7 @@ struct should_i_reallyApp: App {
                         await gameViewModel.navigateToFeed(postID: postID)
                     }
                 }
+                AudioController.shared.playBGM(filename: "bgMusic")
             }
         }
     }
