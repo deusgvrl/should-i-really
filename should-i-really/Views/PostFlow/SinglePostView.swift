@@ -64,6 +64,7 @@ struct SinglePostView: View {
             if nodeId != "first_post" && nodeId != "last_post" {
                 Button (action: {
                     onInsightsTapped()
+                    AudioController.shared.playSFX(filename: "tap")
                 }) {
                     HStack(spacing: 4) {
                         Image(systemName: "chart.line.uptrend.xyaxis")

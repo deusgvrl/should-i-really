@@ -48,6 +48,7 @@ struct HomeScreenView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
                         showTutorialSheet = true
+                        AudioController.shared.playSFX(filename: "tap")
                     }) {
                         Image(systemName: "book.fill")
                             .font(.system(size: 15, weight: .bold))

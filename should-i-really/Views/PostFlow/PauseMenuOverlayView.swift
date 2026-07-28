@@ -11,8 +11,8 @@ struct PauseMenuOverlayView: View {
     @Binding var isPresented: Bool
     @Environment(GameViewModel.self) private var gameViewModel
                                       
-    @State private var isSoundOn: Bool = true
     @State private var isHapticsOn: Bool = true
+    @AppStorage("isSoundOn") private var isSoundOn: Bool = true
     
     var body: some View {
         if isPresented {
@@ -43,6 +43,11 @@ struct PauseMenuOverlayView: View {
                         // MARK: Sound
                         Button {
                             isSoundOn.toggle()
+                            AudioController.shared.setSoundEnabled(isSoundOn)
+                            
+                            if isSoundOn {
+                                AudioController.shared.playSFX(filename: "tap")
+                            }
                         } label: {
                             HStack(spacing: 6) {
                                 Image(
