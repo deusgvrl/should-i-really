@@ -10,6 +10,8 @@ import SwiftUI
 struct ProfilePageView: View {
     @Environment(GameViewModel.self) private var gameViewModel
     @Environment(\.dismiss) private var dismiss
+    
+    @State private var isShowingPauseMenu = false
 
     private let gridColumns = Array(
         repeating: GridItem(.flexible(), spacing: 12),
@@ -25,7 +27,9 @@ struct ProfilePageView: View {
                 ZStack {
                     HStack {
                         Button {
-                            gameViewModel.navigationPath.removeAll()
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                isShowingPauseMenu = true
+                            }
                         } label: {
                             Image(systemName: "house")
                                 .resizable()
@@ -172,6 +176,10 @@ struct ProfilePageView: View {
                     .accessibilityLabel("Add")
                     .accessibilityInputLabels(["Add Post"])
                 }
+            }
+            if isShowingPauseMenu {
+                PauseMenuOverlayView(isPresented: $isShowingPauseMenu)
+                    .zIndex(100)
             }
         }
         .fullScreenCover(isPresented: $gameViewModel.isPresentingPostCreation) {
