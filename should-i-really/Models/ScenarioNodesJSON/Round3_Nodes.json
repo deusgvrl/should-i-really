@@ -2,7 +2,7 @@
   {
     "id": "3A",
     "round": 3,
-    "big_picture_id": "SampleImage3",
+    "big_picture_id": "node_3A",
     "crops": {
       "positive_crop": {
         "quadrant": 1,
@@ -32,7 +32,7 @@
         ]
       },
       "negative_crop": {
-        "quadrant": 3,
+        "quadrant": 4,
         "captions": [
           {
             "id": "3A_Neg_C_Pos",
@@ -134,7 +134,7 @@
   {
     "id": "3C",
     "round": 3,
-    "big_picture_id": "SampleImage3",
+    "big_picture_id": "node_3C",
     "crops": {
       "positive_crop": {
         "quadrant": 2,
@@ -200,7 +200,7 @@
   {
     "id": "3D",
     "round": 3,
-    "big_picture_id": "SampleImage3",
+    "big_picture_id": "node_3D",
     "crops": {
       "positive_crop": {
         "quadrant": 2,

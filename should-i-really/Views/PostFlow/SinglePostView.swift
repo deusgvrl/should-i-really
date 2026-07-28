@@ -117,9 +117,9 @@ struct SinglePostView: View {
                         .multilineTextAlignment(.leading)
                         .padding(.leading, 8)
                         .padding(.trailing, 4)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .transition(.opacity.combined(with: .move(edge: .top)))
-                
                 .allowsHitTesting(false)
                 .disabled(true)
             }
@@ -128,20 +128,5 @@ struct SinglePostView: View {
 }
 
 #Preview {
-    SinglePostView(
-        imageName: "node_1",
-        quadrant: .bottomLeft,
-        username: "johndoe",
-        caption: "Seeing this disappointment hurts, but your incredible worth and intelligence are so much bigger than a letter in your hands! 🌟💪",
-        commentUsername: "doejane",
-        comment: "I'm so proud of you, you're going to do great things!",
-        date: "Year 3 Semester 1 Month 1",
-        nodeId: "1A",
-        photoGuardType: .negative,
-        vibeCheckType: .positive,
-        showComment: true,
-        onInsightsTapped: {
-            
-        }
-    )
+    SinglePostPreviewHelper(nodeId: "5P", cropType: .negative, captionIndex: 2)
 }
