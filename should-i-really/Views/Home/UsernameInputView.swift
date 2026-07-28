@@ -87,6 +87,8 @@ struct UsernameInputView: View {
                         Text(errorMessage)
                             .font(.footnote)
                             .foregroundStyle(.red)
+                            .lineLimit(2)
+                            .fixedSize(horizontal: false, vertical: true)
                             .padding(.horizontal, 1)
                             .transition(.opacity.combined(with: .move(edge: .top)))
                     }
