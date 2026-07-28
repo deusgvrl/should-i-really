@@ -12,6 +12,8 @@ struct ProfilePageView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var isShowingPauseMenu = false
+    
+    @State private var displayedTimeline: TimelineData? = nil
 
     private let gridColumns = Array(
         repeating: GridItem(.flexible(), spacing: 12),
@@ -54,29 +56,20 @@ struct ProfilePageView: View {
                     
                 // MARK: - Profile Picture + Timeline
                 ScrollView {
-                    HStack(alignment:.center) {
+                    HStack(alignment:.center, spacing: 16) {
                         Image("icon_profilePicture")
                             .resizable()
                             .frame(width: 80, height: 80)
                             .clipShape(Circle())
                             .accessibilityLabel("My Profile Picture")
                         Spacer()
-                        VStack(alignment: .leading) {
-                            Text(gameViewModel.feedPosts.first?.displayDate ?? "Year 1 Semester 1 Month 1")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                            Spacer()
-                            Text("I think therefore i am")
-                                .font(.body)
-                                .fontWeight(.regular)
-                        }
-                        .padding(.vertical, 12)
+                        // MARK: - Progress Bar Timeline
+                        SegmentedTimelineView(
+                            timeline: displayedTimeline,
+                        )
                     }
-                    .frame(maxWidth: .infinity)
                     .padding(.horizontal, 24)
                     .padding(.top, 32)
-                        
-
                         
                     Divider()
                         .padding(.horizontal, 16)
@@ -86,10 +79,14 @@ struct ProfilePageView: View {
                     //MARK: - Posts Feed Preview
                     let totalPosts = gameViewModel.feedPosts.count
                     LazyVGrid(columns: gridColumns, spacing: 16) {
-                        ForEach(Array(gameViewModel.feedPosts.enumerated()), id: \.element.id) { index,node in
+                        ForEach(
+                            Array(gameViewModel.feedPosts.enumerated()),
+                            id: \.element.id
+                        ) { index, node in
                             let postNumber = totalPosts - index
                             let currentOrnament: String? = {
-                                if let order = gameViewModel.gameState?.ornamentsOrder, !order.isEmpty {
+                                if let order = gameViewModel.gameState?.ornamentsOrder,
+                                   !order.isEmpty {
                                     switch postNumber {
                                     case 2: return order[0]
                                     case 3: return order[1]
@@ -109,9 +106,15 @@ struct ProfilePageView: View {
                                     .aspectRatio(0.83, contentMode: .fill)
                                     .overlay {
                                         GeometryReader { geo in
-                                            SinglePreviewView(node: node, size: geo.size, ornament: currentOrnament)
+                                            SinglePreviewView(
+                                                node: node,
+                                                size: geo.size,
+                                                ornament: currentOrnament
+                                            )
                                         }
-                                        .contentShape(RoundedRectangle(cornerRadius: 12))
+                                        .contentShape(
+                                            RoundedRectangle(cornerRadius: 12)
+                                        )
                                     }
                             }
                             .buttonStyle(.plain)
@@ -151,7 +154,9 @@ struct ProfilePageView: View {
                     .accessibilityInputLabels(["Next"])
                 } else if (isGameFinished && !hasInjectedGameEnding) {
                     Button {
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.75)) {
+                        withAnimation(
+                            .spring(response: 0.5, dampingFraction: 0.75)
+                        ) {
                             gameViewModel.injectEndingPost()
                         }
                         AudioController.shared.playSFX(filename: "congrats")
@@ -197,6 +202,41 @@ struct ProfilePageView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            if displayedTimeline == nil {
+                displayedTimeline = gameViewModel.feedPosts.first?.timeline
+            }
+        }
+        .onChange(of: gameViewModel.navigationPath) {
+ oldPath,
+ newPath in
+            let latestTimeline = gameViewModel.feedPosts.first?.timeline
+                        
+            let wasOnFeed = oldPath.contains(where: {
+                if case .feedView = $0 { return true }
+                return false
+            })
+            let isNowOnProfile = !newPath.contains(where: {
+                if case .feedView = $0 { return true }
+                return false
+            })
+                        
+            if wasOnFeed && isNowOnProfile && displayedTimeline != latestTimeline {
+                print(
+                    "🎯 [ANIMATION] Popped back from FeedView! Animating timeline..."
+                )
+                Task {
+                    try? await Task.sleep(for: .seconds(0.4))
+                    withAnimation(
+                        .spring(response: 0.8, dampingFraction: 0.7)
+                    ) {
+                        displayedTimeline = latestTimeline
+                    }
+                }
+            } else if displayedTimeline == nil {
+                displayedTimeline = latestTimeline
+            }
+        }
     }
 }
 
@@ -212,7 +252,11 @@ struct ProfilePageView: View {
                     imageName: "SampleImage5",
                     selectedQuadrant: .topLeft,
                     selectedCaptionText: "This is a fake caption for round \(i)!",
-                    comment: Comment(id: "\(i)", username: "bestie", text: "Omg so cool!"),
+                    comment: Comment(
+                        id: "\(i)",
+                        username: "bestie",
+                        text: "Omg so cool!"
+                    ),
                     photoGuardResult: .positive,
                     vibeCheckResult: .positive,
                     timeline: TimelineData(year: 2, semester: 2, month: 2)
