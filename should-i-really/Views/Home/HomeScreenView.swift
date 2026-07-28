@@ -11,6 +11,9 @@ struct HomeScreenView: View {
     @Environment(GameViewModel.self) private var viewModel
     @State private var showOverwriteAlert: Bool = false
     
+    @State private var showTutorialSheet: Bool = false
+    @State private var showSettingsSheet: Bool = false
+    
     // MARK: - Body
     var body: some View {
         @Bindable var viewModel = viewModel
@@ -24,7 +27,7 @@ struct HomeScreenView: View {
                 
                 VStack(spacing: 0) {
                     Spacer()
-                        .frame(maxHeight: 150)
+                        .frame(maxHeight: 120)
                     
                     // MARK: - Logo Should I Really
                     Image("HomeIcon")
@@ -44,17 +47,32 @@ struct HomeScreenView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        viewModel.openArchive()
+                        showTutorialSheet = true
                     }) {
-                        Image(systemName: "text.book.closed.fill")
-                            .font(.system(size: 16, weight: .bold))
+                        Image(systemName: "book.fill")
+                            .font(.system(size: 15, weight: .bold))
                             .foregroundStyle(.white)
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.circle)
                     .tint(.buttonBrown)
-                    .accessibilityLabel("Archive")
-                    .accessibilityInputLabels(["Archive"])
+                    .accessibilityLabel("Tutorial")
+                    .accessibilityInputLabels(["Tutorial", "How to Play"])
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        showSettingsSheet = true
+                    }) {
+                        Image(systemName: "gearshape.fill")
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundStyle(.white)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.circle)
+                    .tint(.buttonBrown)
+                    .accessibilityLabel("Settings")
+                    .accessibilityInputLabels(["Settings"])
                 }
             }
             
