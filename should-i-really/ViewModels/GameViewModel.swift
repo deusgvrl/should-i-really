@@ -18,6 +18,7 @@ import SwiftUI
     /// Navigation routing destinations for homogeneous stack coordination.
     public enum GameRoute: Equatable, Hashable {
         case landing
+        case tutorial
         case usernameInput
         case prologue
         case timeline
