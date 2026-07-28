@@ -31,10 +31,10 @@ struct CaptionSelectionView: View {
                     .padding(.bottom, 8)
                 
                 // MARK: Selected Photo Display
-                selectedImageArea
                 
                 // MARK: Captions List
                 ScrollView(showsIndicators: false) {
+                    selectedImageArea
                     captionChoicesContainer
                 }
                 
