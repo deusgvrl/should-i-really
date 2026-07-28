@@ -35,18 +35,31 @@ struct ArchiveView: View {
                 .frame(maxWidth: .infinity)
                 
                 // MARK: - Grid
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(1...16, id: \.self) { index in
-                        let endingKey = "ENDING_\(index)"
-                        let isUnlocked = unlockedEndings.contains { $0.endingId == endingKey }
-                        let endingDetail = endingVM.getEnding(by: endingKey)
-                        
+                LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(1...16, id: \.self) { index in
+                    let endingKey = "ENDING_\(index)"
+                    let isUnlocked = unlockedEndings.contains { $0.endingId == endingKey }
+
+                    let endingDetail = endingVM.getEnding(by: endingKey)
+                    
+                    if isUnlocked {
+                        NavigationLink (
+                            value: GameViewModel.GameRoute.archivedEnding(endingId: endingKey)
+                        ) {
+                            EndingCardView(
+                                index: index,
+                                isUnlocked: isUnlocked,
+                                ending: endingDetail
+                            )
+                        }
+                    } else {
                         EndingCardView(
                             index: index,
-                            isUnlocked: isUnlocked,
+                            isUnlocked: false,
                             ending: endingDetail
                         )
                     }
+                }
                 }
                 .padding(.horizontal, 16)
                 .padding(.bottom, 24)

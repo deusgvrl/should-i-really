@@ -24,6 +24,7 @@ import SwiftUI
         case feedView(postID: String)
         case archive
         case ending
+        case archivedEnding(endingId: String)
     }
     
     // MARK: - Stored Properties

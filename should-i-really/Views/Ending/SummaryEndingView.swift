@@ -15,7 +15,9 @@ struct EndingSummaryView: View {
     @State private var endingVM: EndingViewModel
     @State private var isShowingAlert = false
 
+    @Environment(\.dismiss) private var dismiss
     let endingId: String
+    let isArchivePreview: Bool
     
     // MARK: - Color Palette Definitions
     
@@ -23,8 +25,9 @@ struct EndingSummaryView: View {
     private let themeText = Color(red: 118/255, green: 84/255, blue: 70/255)
     private let themeButton = Color(red: 172/255, green: 127/255, blue: 94/255)
     
-    init(endingId: String) {
+    init(endingId: String, isArchivePreview: Bool = false) {
         self.endingId = endingId
+        self.isArchivePreview = isArchivePreview
         _endingVM = State(initialValue: EndingViewModel(endingId: endingId))
     }
     
@@ -102,10 +105,14 @@ struct EndingSummaryView: View {
                         
                         Spacer(minLength: 32)
                         
-                        Button(action: {
-                            isShowingAlert = true
-                        }) {
-                            Text("Return to Menu")
+                        Button {
+                            if isArchivePreview {
+                                dismiss()
+                            } else {
+                                isShowingAlert = true
+                            }
+                        } label: {
+                            Text(isArchivePreview ? "Back to Archive" : "Return to Menu")
                                 .font(.headline)
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity)
@@ -135,6 +142,7 @@ struct EndingSummaryView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(isArchivePreview ? true : false)
         .alert("Congratulations, you graduated!", isPresented: $isShowingAlert) {
             HStack {
                 Button("Return to Main Menu", role: .confirm) {
@@ -152,6 +160,7 @@ struct EndingSummaryView: View {
             Text("You won't be able to view your profile feed after leaving this page, but you can always access this summary later in the Archive menu.")
         }
         .onAppear {
+            guard !isArchivePreview else { return }
             unlockEnding()
         }
     }
@@ -170,6 +179,6 @@ struct EndingSummaryView: View {
 }
 
 #Preview {
-    EndingSummaryView(endingId: "ENDING_9")
+    EndingSummaryView(endingId: "ENDING_6")
         .environment(GameViewModel())
 }

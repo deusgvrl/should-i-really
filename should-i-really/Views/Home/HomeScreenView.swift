@@ -89,12 +89,12 @@ struct HomeScreenView: View {
                         } else {
                             EndingSummaryView(endingId: "ENDING_1")
                         }
+                    case .archivedEnding(let endingId):
+                        EndingSummaryView(endingId: endingId, isArchivePreview: true)
                     default:
                         EmptyView()
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.background)
             }
         }
     }
