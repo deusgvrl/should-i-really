@@ -137,57 +137,53 @@ struct ProfilePageView: View {
             VStack {
                 Spacer()
                 
-                if (isGameFinished && hasInjectedGameEnding) {
-                    Button {
+                let isGameFinished = gameViewModel.lastEndingId != nil
+                let hasInjectedGameEnding = gameViewModel.feedPosts.contains(
+                    where: { $0.nodeId == "last_post"
+                    })
+                  
+                Button {
+                    if isGameFinished && hasInjectedGameEnding {
                         gameViewModel.navigationPath.append(.ending)
                         AudioController.shared.playSFX(filename: "tap")
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .fontDesign(.default)
-                            .font(.system(size: 32, weight: .regular))
-                            .foregroundStyle(.white)
-                            .frame(width: 56, height: 56)
-                            .background(Color.buttonBrown)
-                            .clipShape(Circle())
-                    }
-                    .accessibilityLabel("Next")
-                    .accessibilityInputLabels(["Next"])
-                } else if (isGameFinished && !hasInjectedGameEnding) {
-                    Button {
+                    
+                    } else if isGameFinished && !hasInjectedGameEnding {
                         withAnimation(
                             .spring(response: 0.5, dampingFraction: 0.75)
                         ) {
                             gameViewModel.injectEndingPost()
                         }
+                        Task {
+                            try? await Task.sleep(for: .seconds(0.5))
+                            withAnimation(
+                                .spring(response: 0.8, dampingFraction: 0.7)
+                            ) {
+                                displayedTimeline = gameViewModel.feedPosts.first?.timeline
+                            }
+                        }
                         AudioController.shared.playSFX(filename: "congrats")
-                        HapticsController.shared.playContinuousHaptic(duration: 1.0)
-                    } label: {
-                        Image(systemName: "plus")
-                            .fontDesign(.default)
-                            .font(.system(size: 32, weight: .regular))
-                            .foregroundStyle(.white)
-                            .frame(width: 56, height: 56)
-                            .background(Color.buttonBrown)
-                            .clipShape(Circle())
-                    }
-                    .accessibilityLabel("Add")
-                    .accessibilityInputLabels(["Add Post"])
-                } else {
-                    Button {
+                        HapticsController.shared
+                            .playContinuousHaptic(duration: 1.0)
+                    
+                    } else {
                         gameViewModel.isPresentingPostCreation = true
                         AudioController.shared.playSFX(filename: "tap")
-                    } label: {
-                        Image(systemName: "plus")
-                            .fontDesign(.default)
-                            .font(.system(size: 32, weight: .regular))
-                            .foregroundStyle(.white)
-                            .frame(width: 56, height: 56)
-                            .background(Color.buttonBrown)
-                            .clipShape(Circle())
                     }
-                    .accessibilityLabel("Add")
-                    .accessibilityInputLabels(["Add Post"])
+                } label: {
+                    Image(
+                        systemName: isGameFinished && hasInjectedGameEnding ? "chevron.right" : "plus"
+                    )
+                    .fontDesign(.default)
+                    .font(.system(size: 32, weight: .regular))
+                    .foregroundStyle(.white)
+                    .frame(width: 56, height: 56)
+                    .background(Color.buttonBrown)
+                    .clipShape(Circle())
                 }
+                .accessibilityLabel(
+                    isGameFinished && hasInjectedGameEnding ? "Next" : "Add"
+                )
+                .accessibilityInputLabels([isGameFinished && hasInjectedGameEnding ? "Next" : "Add Post"])
             }
             if isShowingPauseMenu {
                 PauseMenuOverlayView(isPresented: $isShowingPauseMenu)
@@ -208,8 +204,8 @@ struct ProfilePageView: View {
             }
         }
         .onChange(of: gameViewModel.navigationPath) {
- oldPath,
- newPath in
+            oldPath,
+            newPath in
             let latestTimeline = gameViewModel.feedPosts.first?.timeline
                         
             let wasOnFeed = oldPath.contains(where: {

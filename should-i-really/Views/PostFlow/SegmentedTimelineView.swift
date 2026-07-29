@@ -40,12 +40,13 @@ struct SingleChevronSegment: View {
     let fillImageName: String = "chevron_fill"
     
     @State private var animatedProgress: CGFloat = 0.0
-                                                                                                                 
+    @State private var isPulsing: Bool = false
+    
     private var targetProgress: CGFloat {
         guard let t = currentTimeline else {
             return yearNumber == 1 ? 0.2 : 0.0
         }
-                                                                                                                 
+        
         if t.year > yearNumber {
             return 1.0
         } else if t.year < yearNumber {
@@ -55,13 +56,19 @@ struct SingleChevronSegment: View {
             return min(max(totalMonthsPassed / 12.0, 0.15), 1.0)
         }
     }
-                                                                                                                 
+    
+    private var isActiveYear: Bool {
+        guard let t = currentTimeline else { return yearNumber == 1 }
+        return t.year == yearNumber
+    }
+    
     var body: some View {
         VStack(spacing: 6) {
             Text(yearTitle)
                 .font(.title3)
                 .fontWeight(.bold)
                 .foregroundStyle(.textBrown)
+                .scaleEffect(isPulsing ? 1.15 : 1.0)
             
             Color.clear
                 .aspectRatio(79/41, contentMode: .fit)
@@ -108,14 +115,30 @@ struct SingleChevronSegment: View {
                         }
                     }
                 }
+                .scaleEffect(isPulsing ? 1.08 : 1.0)
         }
         .frame(maxWidth: .infinity)
         .onAppear {
             animatedProgress = targetProgress
         }
-        // 🚨 2. Interpolate animatedProgress whenever currentTimeline changes!
-        .onChange(of: currentTimeline) { _, _ in
-            withAnimation(.spring(response: 0.8, dampingFraction: 0.7)) {
+        .onChange(of: currentTimeline) { oldValue , _ in
+            if oldValue != nil {
+                withAnimation(.spring(response: 0.8, dampingFraction: 0.7)) {
+                    animatedProgress = targetProgress
+                }
+                
+                if isActiveYear {
+                    withAnimation(.spring(response: 0.25, dampingFraction: 0.5)) {
+                    }
+                    isPulsing = true
+                    Task {
+                        try? await Task.sleep(for: .seconds(0.3))
+                        withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+                            isPulsing = false
+                        }
+                    }
+                }
+            } else {
                 animatedProgress = targetProgress
             }
         }
