@@ -30,58 +30,62 @@ struct PrologView: View {
     // Warna tema sesuai dengan project kamu
     
     var body: some View {
-        VStack(spacing: 0) {
-            // MARK: - Prologue Paragraphs
-            Spacer()
-            VStack(spacing: 24) {
-                ForEach(prologueParagraph.indices, id: \.self) { index in
-                    let paragraph = prologueParagraph[index]
-                    let isFinalParagraph = index == prologueParagraph.count - 1
+        GeometryReader { geo in
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 0) {
+                    // MARK: - Prologue Paragraphs
+                    Spacer()
+                    VStack(spacing: 24) {
+                        ForEach(prologueParagraph.indices, id: \.self) { index in
+                            let paragraph = prologueParagraph[index]
+                            let isFinalParagraph = index == prologueParagraph.count - 1
+                            
+                            ZStack {
+                                Text(paragraph)
+                                    .font(.body)
+                                    .fontWeight(isFinalParagraph ? .medium : .regular)
+                                    .italic()
+                                    .multilineTextAlignment(.center)
+                                    .opacity(0)
+                                    .accessibilityHidden(true)
+                                
+                                Text(String(paragraph.prefix(revealedCharacterCount[index])))
+                                    .font(.body)
+                                    .fontWeight(isFinalParagraph ? .medium : .regular)
+                                    .italic()
+                                    .multilineTextAlignment(.center)
+                                    .foregroundStyle(.primary)
+                                
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                    }
                     
-                    ZStack {
-                        Text(paragraph)
-                            .font(.body)
-                            .fontWeight(isFinalParagraph ? .medium : .regular)
-                            .italic()
-                            .multilineTextAlignment(.center)
-                            .opacity(0)
-                            .accessibilityHidden(true)
-                        
-                        Text(String(paragraph.prefix(revealedCharacterCount[index])))
-                            .font(.body)
-                            .fontWeight(isFinalParagraph ? .medium : .regular)
-                            .italic()
-                            .multilineTextAlignment(.center)
-                            .foregroundStyle(.primary)
-                        
+                    Spacer()
+                    
+                    if isContinuePromptVisible {
+                        Text("Tap to continue")
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(Color.textBrown)
+                            .padding(.top, 8)
+                            .opacity(isContinuePromptPulsing ? 0.1 : 1)
+                        //                    .scaleEffect(isContinuePromptPulsing ? 1.5 : 1)
+                            .animation(
+                                .easeInOut(duration: 1.0).repeatForever(autoreverses: true),
+                                value: isContinuePromptPulsing
+                            )
+                            .onAppear {
+                                isContinuePromptPulsing = true
+                            }
+                            .transition(.opacity)
+                            .accessibilityLabel("Tap to continue")
+                            .accessibilityHint("Double tap anywhere on the screen to continue.")
                     }
-                    .frame(maxWidth: .infinity)
+                    Spacer()
                 }
+                .frame(minHeight: geo.size.height)
             }
-            
-            Spacer()
-            
-            if isContinuePromptVisible {
-                Text("Tap to continue")
-                    .font(.title)
-                    .bold()
-                    .foregroundStyle(Color.textBrown)
-                    .padding(.top, 8)
-                    .opacity(isContinuePromptPulsing ? 0.1 : 1)
-//                    .scaleEffect(isContinuePromptPulsing ? 1.5 : 1)
-                    .animation(
-                        .easeInOut(duration: 1.0).repeatForever(autoreverses: true),
-                        value: isContinuePromptPulsing
-                    )
-                    .onAppear {
-                        isContinuePromptPulsing = true
-                    }
-                    .transition(.opacity)
-                    .accessibilityLabel("Tap to continue")
-                    .accessibilityHint("Double tap anywhere on the screen to continue.")
-            }
-            Spacer()
-            
         }
         .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
