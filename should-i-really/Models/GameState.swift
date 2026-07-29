@@ -17,14 +17,16 @@ public struct GameState: Codable, Equatable {
     public var publishedPosts: [UserPost]
     public var ornamentsOrder: [String]?
     public var lastEndingId: String?
+    public var currentTimeline: TimelineData?
     
     // MARK: - Initializer
-    public init(username: String, currentRound: Int = 1, currentNodeId: String = "1A", publishedPosts: [UserPost] = [], ornamentsOrder: [String]?, lastEndingId: String?){
+    public init(username: String, currentRound: Int = 1, currentNodeId: String = "1A", publishedPosts: [UserPost] = [], ornamentsOrder: [String]?, lastEndingId: String?, currentTimeline: TimelineData? = nil){
         self.username = username
         self.currentRound = currentRound
         self.currentNodeId = currentNodeId
         self.publishedPosts = publishedPosts
         self.ornamentsOrder = ornamentsOrder
         self.lastEndingId = lastEndingId
+        self.currentTimeline = currentTimeline ?? TimelineData(year: 1, semester: 1, month: 1)
     }
 }

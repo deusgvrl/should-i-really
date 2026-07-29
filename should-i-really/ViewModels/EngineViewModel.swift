@@ -72,6 +72,7 @@ extension GameViewModel {
             
             if var state = self.gameState {
                 state.publishedPosts.append(newPost)
+                state.currentTimeline = node.timeline
                 self.gameState = state
             }
         }
