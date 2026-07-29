@@ -37,30 +37,62 @@ class HapticsController {
             print("Failed to create haptic engine: \(error.localizedDescription)")
         }
     }
-
-    func playContinuousHaptic(duration: TimeInterval = 1.0) {
+    
+    func playDynamicHaptic() {
         guard isHapticsOn, CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         
         do {
             try engine?.start()
             
-            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.8)
-            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
-
-            let continuousEvent = CHHapticEvent(
+            let intensity1 = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.75)
+            let sharpness1 = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
+            let step1 = CHHapticEvent(
                 eventType: .hapticContinuous,
-                parameters: [intensity, sharpness],
-                relativeTime: 0,
-                duration: duration
+                parameters: [intensity1, sharpness1],
+                relativeTime: 0.0,
+                duration: 0.25
             )
 
-            let pattern = try CHHapticPattern(events: [continuousEvent], parameters: [])
+            let intensity2 = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.25)
+            let sharpness2 = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
+            let step2 = CHHapticEvent(
+                eventType: .hapticContinuous,
+                parameters: [intensity2, sharpness2],
+                relativeTime: 0.25,
+                duration: 0.25
+            )
+
+            let pattern = try CHHapticPattern(events: [step1, step2], parameters: [])
             let player = try engine?.makePlayer(with: pattern)
             try player?.start(atTime: 0)
         } catch {
-            print("Failed to play continuous haptic: \(error.localizedDescription)")
+            print("Failed to play dynamic haptic: \(error.localizedDescription)")
         }
     }
+
+//    func playContinuousHaptic(duration: TimeInterval = 1.0) {
+//        guard isHapticsOn, CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+//        
+//        do {
+//            try engine?.start()
+//            
+//            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.8)
+//            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
+//
+//            let continuousEvent = CHHapticEvent(
+//                eventType: .hapticContinuous,
+//                parameters: [intensity, sharpness],
+//                relativeTime: 0,
+//                duration: duration
+//            )
+//
+//            let pattern = try CHHapticPattern(events: [continuousEvent], parameters: [])
+//            let player = try engine?.makePlayer(with: pattern)
+//            try player?.start(atTime: 0)
+//        } catch {
+//            print("Failed to play continuous haptic: \(error.localizedDescription)")
+//        }
+//    }
     
     func triggerImpact(style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
         guard isHapticsOn else { return }
