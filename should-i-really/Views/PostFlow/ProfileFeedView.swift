@@ -74,7 +74,7 @@ struct ProfileFeedView: View {
         }
         .sheet(item: $selectedPostForInsights) { post in
             InsightsOverlayView(framingType: post.photoGuardResult, captionType: post.vibeCheckResult)
-                .presentationDetents([.fraction(0.45)])
+                .presentationDetents([.fraction(0.50)])
                 .presentationDragIndicator(.visible)
                 .accessibilityInputLabels(["Close"])
         }
