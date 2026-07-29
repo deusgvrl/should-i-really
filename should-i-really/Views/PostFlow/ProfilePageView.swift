@@ -159,8 +159,7 @@ struct ProfilePageView: View {
                             }
                         }
                         AudioController.shared.playSFX(filename: "congrats")
-                        HapticsController.shared
-                            .playContinuousHaptic(duration: 1.0)
+                        HapticsController.shared.playDynamicHaptic()
                     
                     } else {
                         gameViewModel.isPresentingPostCreation = true
