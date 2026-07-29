@@ -106,6 +106,7 @@ struct EndingSummaryView: View {
                         Spacer(minLength: 32)
                         
                         Button {
+                            AudioController.shared.playSFX(filename: "tap")
                             if isArchivePreview {
                                 dismiss()
                             } else {

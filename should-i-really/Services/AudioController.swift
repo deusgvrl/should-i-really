@@ -48,7 +48,7 @@ class AudioController {
         guard isSoundOn else { return }
         
         let dataAsset = NSDataAsset(name: filename)
-        let bundleURL = Bundle.main.url(forResource: filename, withExtension: "mp3")
+        let bundleURL = Bundle.main.url(forResource: filename, withExtension: "wav")
         
         do {
             if let url = bundleURL {
@@ -57,7 +57,7 @@ class AudioController {
                 sfxPlayer = try AVAudioPlayer(data: asset.data)
             }
             
-            sfxPlayer?.volume = 1.0
+            sfxPlayer?.volume = 0.5
             sfxPlayer?.play()
         } catch {
             print("Failed to play SFX: \(error.localizedDescription)")

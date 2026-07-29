@@ -50,6 +50,7 @@ struct CustomAlertModifier: ViewModifier {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                                 isPresented = false
                             }
+                            AudioController.shared.playSFX(filename: "tap")
                         }) {
                             Text(cancelTitle)
                                 .font(.system(size: 18, design: .rounded))
@@ -68,6 +69,7 @@ struct CustomAlertModifier: ViewModifier {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                                 isPresented = false
                             }
+                            AudioController.shared.playSFX(filename: "tap")
                             onConfirm()
                         }) {
                             Text(confirmTitle)
