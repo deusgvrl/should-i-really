@@ -11,35 +11,49 @@ struct InsightsOverlayView: View {
 
     let framingType: CropType
     let captionType: CropType
+    
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    
+    private var useVerticalLayout: Bool {
+        dynamicTypeSize.isAccessibilitySize || dynamicTypeSize > .xLarge
+    }
 
     var body: some View {
-        VStack(spacing: 23) {
-
-            // MARK: Header Title
-            Text("Post Insights")
-                .font(.system(.title2, design: .rounded))
-                .fontWeight(.semibold)
-                .foregroundStyle(.textBrown)
-                .padding(.top, 23)
-
-            // MARK: Metric Cards
-            HStack(spacing: 16) {
-                metricCard(
-                    title: "Framing",
-                    description:
-                        "Framing means selecting what to show and what to hide to shape how people understand a message.",
-                    type: framingType
-                )
-                metricCard(
-                    title: "Caption",
-                    description:
-                        "Captions can change how people interpret a photo by influencing its meaning and emotional impact.",
-                    type: captionType
-                )
+        GeometryReader { geo in
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 23) {
+                    
+                    // MARK: Header Title
+                    Text("Post Insights")
+                        .font(.system(.title2, design: .rounded))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.textBrown)
+                        .padding(.top, 23)
+                    
+                    let layout = useVerticalLayout
+                        ? AnyLayout(VStackLayout(spacing: 16))
+                        : AnyLayout(HStackLayout(spacing: 16))
+                    
+                    // MARK: Metric Cards
+                    layout {
+                        metricCard(
+                            title: "Framing",
+                            description:
+                                "Framing means selecting what to show and what to hide to shape how people understand a message.",
+                            type: framingType
+                        )
+                        metricCard(
+                            title: "Caption",
+                            description:
+                                "Captions can change how people interpret a photo by influencing its meaning and emotional impact.",
+                            type: captionType
+                        )
+                    }
+                    .padding(.horizontal, 20)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .padding(.horizontal, 20)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.background.ignoresSafeArea())
     }
 
@@ -50,7 +64,7 @@ struct InsightsOverlayView: View {
     {
         let isGood: Bool = (type == .positive)
 
-        VStack(spacing: 0) {
+        VStack(spacing: 24) {
             // MARK: Title & Description Group
             VStack(spacing: 8) {
                 Text(title)
