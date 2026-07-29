@@ -6,18 +6,17 @@
 //
 
 import SwiftUI
-                                                                                                                       
+
 struct QuickSettingsMenuView: View {
     @Environment(GameViewModel.self) private var gameViewModel
-                                                                                                                       
+    
     @AppStorage("isSoundOn") private var isSoundOn: Bool = true
     @State private var isHapticsOn: Bool = true
-    @State private var shouldOpenTutorial: Bool = false
     
     var iconName: String = "ellipsis"
     var iconColor: Color = .textBrown
     var isProminent: Bool = false
-                                                                                                                       
+    
     var body: some View {
         Menu {
             ControlGroup {
@@ -51,7 +50,6 @@ struct QuickSettingsMenuView: View {
             // MARK: - Tutorial
             Button {
                 AudioController.shared.playSFX(filename: "tap")
-                shouldOpenTutorial = true
                 gameViewModel.openTutorial()
             } label: {
                 Image(systemName: "questionmark")
@@ -76,7 +74,7 @@ struct QuickSettingsMenuView: View {
         .menuActionDismissBehavior(.disabled)
     }
 }
-  
+
 #Preview {
     QuickSettingsMenuView(iconName: "ellipsis.circle.fill")
         .environment(GameViewModel())
