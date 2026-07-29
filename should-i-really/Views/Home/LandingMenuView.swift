@@ -84,6 +84,7 @@ struct LandingMenuView: View {
             // MARK: - Collections Button (Text-Only)
             Button(action: {
                 viewModel.openArchive()
+                AudioController.shared.playSFX(filename: "tap")
             }) {
                 Text("My Endings")
                     .font(.system(size: 17, design: .rounded))

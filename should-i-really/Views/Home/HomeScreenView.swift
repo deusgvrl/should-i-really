@@ -60,7 +60,7 @@ struct HomeScreenView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        
+                        AudioController.shared.playSFX(filename: "tap")
                     }) {
                         Image(systemName: "gearshape.fill")
                             .font(.system(size: 15, weight: .bold))

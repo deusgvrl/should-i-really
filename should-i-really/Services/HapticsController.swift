@@ -11,6 +11,11 @@ import UIKit
 class HapticsController {
     static let shared = HapticsController()
     private var engine: CHHapticEngine?
+    
+    var isHapticsOn: Bool {
+        get { UserDefaults.standard.object(forKey: "isHapticsOn") as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: "isHapticsOn") }
+    }
 
     private init() {
         prepareHaptics()
@@ -34,7 +39,7 @@ class HapticsController {
     }
 
     func playContinuousHaptic(duration: TimeInterval = 1.0) {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        guard isHapticsOn, CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         
         do {
             try engine?.start()
@@ -55,5 +60,11 @@ class HapticsController {
         } catch {
             print("Failed to play continuous haptic: \(error.localizedDescription)")
         }
+    }
+    
+    func triggerImpact(style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
+        guard isHapticsOn else { return }
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.impactOccurred()
     }
 }

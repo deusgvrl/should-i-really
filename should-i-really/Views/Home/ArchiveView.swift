@@ -52,6 +52,9 @@ struct ArchiveView: View {
                                 ending: endingDetail
                             )
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AudioController.shared.playSFX(filename: "tap")
+                        })
                     } else {
                         EndingCardView(
                             index: index,

@@ -11,8 +11,8 @@ struct PauseMenuOverlayView: View {
     @Binding var isPresented: Bool
     @Environment(GameViewModel.self) private var gameViewModel
                                       
-    @State private var isHapticsOn: Bool = true
     @AppStorage("isSoundOn") private var isSoundOn: Bool = true
+    @AppStorage("isHapticsOn") private var isHapticsOn: Bool = true
     
     var body: some View {
         if isPresented {
@@ -25,6 +25,7 @@ struct PauseMenuOverlayView: View {
                         withAnimation(.easeInOut(duration: 0.2)) {
                             isPresented = false
                         }
+                        AudioController.shared.playSFX(filename: "tap")
                     } label: {
                         Text("Continue")
                             .font(.body)
@@ -68,6 +69,11 @@ struct PauseMenuOverlayView: View {
                         // MARK: Haptics
                         Button {
                             isHapticsOn.toggle()
+                            
+                            if isHapticsOn {
+                                HapticsController.shared.triggerImpact(style: .medium)
+                            }
+                            AudioController.shared.playSFX(filename: "tap")
                         } label: {
                             HStack(spacing: 6) {
                                 Image(
@@ -89,6 +95,7 @@ struct PauseMenuOverlayView: View {
                     // MARK: Tutorial
                     Button {
                         // action
+                        AudioController.shared.playSFX(filename: "tap")
                     } label: {
                         HStack(spacing: 6) {
                             Image(systemName: "book.fill")
@@ -112,6 +119,7 @@ struct PauseMenuOverlayView: View {
                     Button {
                         isPresented = false
                         gameViewModel.navigationPath.removeAll()
+                        AudioController.shared.playSFX(filename: "tap")
                     } label: {
                         Text("Return to menu")
                             .font(.body)

@@ -1,9 +1,9 @@
 {
   "data" : [
     {
-      "filename" : "tap.mp3",
+      "filename" : "tap.wav",
       "idiom" : "universal",
-      "universal-type-identifier" : "public.mp3"
+      "universal-type-identifier" : "com.microsoft.waveform-audio"
     }
   ],
   "info" : {

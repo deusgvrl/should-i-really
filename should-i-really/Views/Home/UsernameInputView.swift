@@ -99,8 +99,8 @@ struct UsernameInputView: View {
                 
                 // MARK: - Start Button
                 Button(action: {
-                    viewModel.enterUsername(trimmedUsername)
                     AudioController.shared.playSFX(filename: "tap")
+                    viewModel.enterUsername(trimmedUsername)
                 }) {
                     Text("Start")
                         .font(.headline)

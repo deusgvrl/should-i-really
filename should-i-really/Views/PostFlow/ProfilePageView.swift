@@ -32,6 +32,7 @@ struct ProfilePageView: View {
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 isShowingPauseMenu = true
                             }
+                            AudioController.shared.playSFX(filename: "tap")
                         } label: {
                             Image(systemName: "house")
                                 .resizable()
