@@ -103,7 +103,7 @@ extension GameViewModel {
         
         let shuffledOrnaments = ["icon_star", "icon_pin", "icon_pushPin"].shuffled()
         
-        var newState = GameState(username: trimmedName, ornamentsOrder: shuffledOrnaments, lastEndingId: nil)
+        var newState = GameState(username: trimmedName, ornamentsOrder: shuffledOrnaments, lastEndingId: nil, currentTimeline: TimelineData(year: 1, semester: 1, month: 1))
         newState.publishedPosts.append(UserPost.openingPost)
         storageController.saveGame(newState)
         self.gameState = newState
