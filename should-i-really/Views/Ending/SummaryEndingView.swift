@@ -113,7 +113,7 @@ struct EndingSummaryView: View {
                                 isShowingAlert = true
                             }
                         } label: {
-                            Text(isArchivePreview ? "Back to Archive" : "Return to Menu")
+                            Text(isArchivePreview ? "Back to My Endings" : "Return to Menu")
                                 .font(.headline)
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity)
@@ -158,7 +158,7 @@ struct EndingSummaryView: View {
                 .accessibilityInputLabels(["Stay"])
             }
         } message: {
-            Text("You won't be able to view your profile feed after leaving this page, but you can always access this summary later in the Archive menu.")
+            Text("You won't be able to view your profile feed after leaving this page, but you can always access this summary later in the Endings menu.")
         }
         .onAppear {
             guard !isArchivePreview else { return }
