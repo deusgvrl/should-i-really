@@ -36,8 +36,8 @@ struct ArchiveTests {
         let ending13 = endingVM.getEnding(by: "ENDING_13")
         
         #expect(ending13 != nil)
-        #expect(ending13?.title == "The Validation Seeker")
-        #expect(ending13?.imageName == "SampleImage3")
+        #expect(ending13?.title == "The Paparazzi")
+        #expect(ending13?.imageName == "ending_img_13")
     }
     
     @Test("getEnding with invalid ID returns nil")
