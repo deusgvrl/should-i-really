@@ -23,6 +23,15 @@ struct HomeScreenView: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
+                    HStack {
+                        Spacer()
+                        QuickSettingsMenuView(
+                            iconName: "ellipsis",
+                            isProminent: true 
+                        )
+                    }
+                    .padding(.top, 12)
+                    
                     Spacer()
                         .frame(maxHeight: 120)
                     
@@ -34,46 +43,15 @@ struct HomeScreenView: View {
                         .padding(.bottom, 32)
                     
                     // MARK: - Landing Menu Buttons Hierarchy
-                    LandingMenuView(viewModel: viewModel, showOverwriteAlert: $showOverwriteAlert)
+                    LandingMenuView(
+                        viewModel: viewModel,
+                        showOverwriteAlert: $showOverwriteAlert
+                    )
                     
                     Spacer()
                 }
                 .padding(.horizontal, 28)
             }
-            
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        AudioController.shared.playSFX(filename: "tap")
-                        viewModel.openTutorial()
-                    }) {
-                        Image(systemName: "book.fill")
-                            .font(.system(size: 15, weight: .bold))
-                            .foregroundStyle(.white)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.circle)
-                    .tint(.buttonBrown)
-                    .accessibilityLabel("Tutorial")
-                    .accessibilityInputLabels(["Tutorial", "How to Play"])
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        AudioController.shared.playSFX(filename: "tap")
-                    }) {
-                        Image(systemName: "gearshape.fill")
-                            .font(.system(size: 15, weight: .bold))
-                            .foregroundStyle(.white)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.circle)
-                    .tint(.buttonBrown)
-                    .accessibilityLabel("Settings")
-                    .accessibilityInputLabels(["Settings"])
-                }
-            }
-            
             .customAlert(
                 isPresented: $showOverwriteAlert,
                 title: "Start a New Game?",
@@ -108,7 +86,10 @@ struct HomeScreenView: View {
                             EndingSummaryView(endingId: "ENDING_1")
                         }
                     case .archivedEnding(let endingId):
-                        EndingSummaryView(endingId: endingId, isArchivePreview: true)
+                        EndingSummaryView(
+                            endingId: endingId,
+                            isArchivePreview: true
+                        )
                     default:
                         EmptyView()
                     }

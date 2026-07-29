@@ -12,8 +12,10 @@ struct ProfilePageView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var isShowingPauseMenu = false
-    
     @State private var displayedTimeline: TimelineData? = nil
+    
+    @State private var isHapticsOn: Bool = true
+    @AppStorage("isSoundOn") private var isSoundOn: Bool = true
 
     private let gridColumns = Array(
         repeating: GridItem(.flexible(), spacing: 12),
@@ -30,7 +32,7 @@ struct ProfilePageView: View {
                     HStack {
                         Button {
                             withAnimation(.easeInOut(duration: 0.2)) {
-                                isShowingPauseMenu = true
+                                gameViewModel.navigationPath.removeAll()
                             }
                             AudioController.shared.playSFX(filename: "tap")
                         } label: {
@@ -42,6 +44,10 @@ struct ProfilePageView: View {
                         }
 
                         Spacer()
+                        
+                        // MARK: Menu Component
+                        QuickSettingsMenuView()
+                            .padding(.trailing, 12)
                     }
                     HStack() {
                         Spacer()

@@ -65,8 +65,8 @@ struct SingleChevronSegment: View {
     var body: some View {
         VStack(spacing: 6) {
             Text(yearTitle)
-                .font(.title3)
-                .fontWeight(.bold)
+                .font(.headline)
+                .fontWeight(.semibold)
                 .foregroundStyle(.textBrown)
                 .scaleEffect(isPulsing ? 1.15 : 1.0)
             
