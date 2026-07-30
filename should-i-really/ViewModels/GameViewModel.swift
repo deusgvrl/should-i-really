@@ -24,7 +24,7 @@ import SwiftUI
         case timeline
         case feedView(postID: String)
         case archive
-        case ending
+        case ending(endingId: String)
         case archivedEnding(endingId: String)
     }
     

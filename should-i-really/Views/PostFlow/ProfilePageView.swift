@@ -146,12 +146,15 @@ struct ProfilePageView: View {
                 
                 let isGameFinished = gameViewModel.lastEndingId != nil
                 let hasInjectedGameEnding = gameViewModel.feedPosts.contains(
-                    where: { $0.nodeId == "last_post"
-                    })
+                    where: { $0.nodeId == "last_post" }
+                )
                 
                 Button {
                     if isGameFinished && hasInjectedGameEnding {
-                        gameViewModel.navigationPath.append(.ending)
+                        
+                        if let lastEndingId = gameViewModel.lastEndingId {
+                            gameViewModel.navigationPath.append(.ending(endingId: lastEndingId))
+                        }
                         AudioController.shared.playSFX(filename: "tap")
                         
                     } else if isGameFinished && !hasInjectedGameEnding {
