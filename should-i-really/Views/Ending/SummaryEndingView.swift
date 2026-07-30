@@ -40,7 +40,7 @@ struct EndingSummaryView: View {
                 ScrollView {
                     VStack(spacing: 24) {
                         
-                        Text("Ending")
+                        Text("Ending Summary")
                             .font(.headline)
                             .foregroundStyle(themeText)
                             .padding(.top, 16)
