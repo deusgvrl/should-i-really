@@ -25,7 +25,7 @@ struct LandingMenuView: View {
                     AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text("Continue")
-                        .font(.system(size: 20, design: .rounded))
+                        .font(.subheadline)
                         .fontWeight(.medium)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -50,7 +50,7 @@ struct LandingMenuView: View {
                     AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text("New Game")
-                        .font(.system(size: 17, design: .rounded))
+                        .font(.body)
                         .fontWeight(.medium)
                         .foregroundStyle(Color.buttonBrown)
                         .frame(maxWidth: .infinity)
@@ -104,7 +104,7 @@ struct LandingMenuView: View {
                 AudioController.shared.playSFX(filename: "tap")
             }) {
                 Text("My Endings")
-                    .font(.system(size: 17, design: .rounded))
+                    .font(.body)
                     .fontWeight(.medium)
                     .foregroundStyle(Color.buttonBrown)
                     .frame(maxWidth: .infinity)

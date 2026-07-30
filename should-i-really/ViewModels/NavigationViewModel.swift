@@ -121,7 +121,7 @@ extension GameViewModel {
     
     // Opens tutorial menu
     public func openTutorial() {
-        navigationPath = [.tutorial]
+        navigationPath.append(.tutorial)
         currentRoute = .tutorial
     }
     
