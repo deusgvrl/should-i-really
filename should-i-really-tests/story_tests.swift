@@ -26,7 +26,7 @@ struct Story_tests {
         
         gameViewModel.advanceStory(nextNodeId: "ENDING_A", chosenQuadrant: .bottomLeft, chosenCaption: captionOption)
         
-        #expect(gameViewModel.currentRoute == .ending)
+        #expect(gameViewModel.currentRoute == .ending(endingId: "ENDING_A"))
     }
     
     @Test("User can view their post insights based on the cropped picture and caption they choose")
