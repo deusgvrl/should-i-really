@@ -16,12 +16,12 @@ struct ProfilePageView: View {
     
     @State private var isHapticsOn: Bool = true
     @AppStorage("isSoundOn") private var isSoundOn: Bool = true
-
+    
     private let gridColumns = Array(
         repeating: GridItem(.flexible(), spacing: 12),
         count: 2
     )
-        
+    
     var body: some View {
         @Bindable var gameViewModel = gameViewModel
         
@@ -42,7 +42,7 @@ struct ProfilePageView: View {
                                 .foregroundStyle(.textBrown)
                                 .accessibilityLabel("Home")
                         }
-
+                        
                         Spacer()
                         
                         // MARK: Menu Component
@@ -60,14 +60,18 @@ struct ProfilePageView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
-                    
+                
                 // MARK: - Profile Picture + Timeline
                 ScrollView {
                     HStack(alignment:.center, spacing: 16) {
-                        Image("icon_profilePicture")
+                        Image("icon_miniProfilePicture")
                             .resizable()
                             .frame(width: 80, height: 80)
                             .clipShape(Circle())
+                            .overlay(
+                                Circle()
+                                    .stroke(.borderBrown, lineWidth: 1)
+                            )
                             .accessibilityLabel("My Profile Picture")
                         Spacer()
                         // MARK: - Progress Bar Timeline
@@ -77,11 +81,11 @@ struct ProfilePageView: View {
                     }
                     .padding(.horizontal, 24)
                     .padding(.top, 32)
-                        
+                    
                     Divider()
                         .padding(.horizontal, 16)
                         .padding(.vertical, 16)
-                        
+                    
                     
                     //MARK: - Posts Feed Preview
                     let totalPosts = gameViewModel.feedPosts.count
@@ -144,12 +148,12 @@ struct ProfilePageView: View {
                 let hasInjectedGameEnding = gameViewModel.feedPosts.contains(
                     where: { $0.nodeId == "last_post"
                     })
-                  
+                
                 Button {
                     if isGameFinished && hasInjectedGameEnding {
                         gameViewModel.navigationPath.append(.ending)
                         AudioController.shared.playSFX(filename: "tap")
-                    
+                        
                     } else if isGameFinished && !hasInjectedGameEnding {
                         withAnimation(
                             .spring(response: 0.5, dampingFraction: 0.75)
@@ -166,7 +170,7 @@ struct ProfilePageView: View {
                         }
                         AudioController.shared.playSFX(filename: "congrats")
                         HapticsController.shared.playDynamicHaptic()
-                    
+                        
                     } else {
                         gameViewModel.isPresentingPostCreation = true
                         AudioController.shared.playSFX(filename: "tap")
@@ -209,7 +213,7 @@ struct ProfilePageView: View {
             oldPath,
             newPath in
             let latestTimeline = gameViewModel.feedPosts.first?.timeline
-                        
+            
             let wasOnFeed = oldPath.contains(where: {
                 if case .feedView = $0 { return true }
                 return false
@@ -218,7 +222,7 @@ struct ProfilePageView: View {
                 if case .feedView = $0 { return true }
                 return false
             })
-                        
+            
             if wasOnFeed && isNowOnProfile && displayedTimeline != latestTimeline {
                 print(
                     "🎯 [ANIMATION] Popped back from FeedView! Animating timeline..."
