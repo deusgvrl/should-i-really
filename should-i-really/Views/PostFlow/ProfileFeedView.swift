@@ -1,0 +1,112 @@
+//
+//  ProfileFeedView.swift
+//  should-i-really
+//
+//  Created by Amadeus Gavriel on 13/07/26.
+//
+
+import SwiftUI
+
+struct ProfileFeedView: View {
+    @Environment(GameViewModel.self) private var viewModel
+    
+    @State private var selectedPostForInsights: UserPost? = nil
+    
+    let initialPostID: String?
+    
+    @State private var scrollPosition: String? = nil
+    
+    init(initialPostID: String? = nil) {
+        self.initialPostID = initialPostID
+    }
+    
+    var body: some View {
+        //MARK: Timeline Feed View
+        ScrollView {
+            LazyVStack(spacing: 24) {
+                ForEach(viewModel.feedPosts) { post in
+                    buildPostView(for: post)
+                        .id(post.id)
+                }
+            }
+            .scrollTargetLayout()
+        }
+        .scrollPosition(id: $scrollPosition, anchor: .top)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack(spacing: 0) {
+                    Text("Posts")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                    Text(viewModel.gameState?.username ?? "johndoe")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                }
+            }
+        }
+        .task {
+            if let targetID = initialPostID {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    scrollPosition = targetID
+                }
+            }
+            
+            if let newestPost = viewModel.feedPosts.first, !(newestPost.isCommentRevealed ?? false) {
+                
+                await NotificationManager.shared.requestPermissionAndSchedule(for: newestPost.id)
+                
+                try? await Task.sleep(for: .seconds(5))
+                
+                withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
+                    viewModel.markCommentAsRevealed(for: newestPost.id)
+                }
+            }
+        }
+        .onChange(of: viewModel.scrollToPostID) { _, targetID in
+            if let targetID = targetID {
+                selectedPostForInsights = nil
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    scrollPosition = targetID
+                }
+                viewModel.scrollToPostID = nil
+            }
+        }
+        .sheet(item: $selectedPostForInsights) { post in
+            InsightsOverlayView(framingType: post.photoGuardResult, captionType: post.vibeCheckResult)
+                .presentationDetents([.fraction(0.50)])
+                .presentationDragIndicator(.visible)
+                .accessibilityInputLabels(["Close"])
+        }
+            
+    }
+    //
+    // MARK: - Subview Builder
+    @ViewBuilder
+    private func buildPostView(for post: UserPost) -> some View {
+        let isNewestPost = (post.id == viewModel.feedPosts.first?.id)
+        
+        SinglePostView(
+            imageName: post.imageName,
+            quadrant: post.selectedQuadrant,
+            username: viewModel.gameState?.username ?? "johndoe",
+            caption: post.selectedCaptionText,
+            commentUsername: post.comment?.username ?? "",
+            comment: post.comment?.text ?? "",
+            date: post.displayDate,
+            nodeId: post.nodeId,
+            photoGuardType: post.photoGuardResult,
+            vibeCheckType: post.vibeCheckResult,
+            showComment: !isNewestPost ? true : (post.isCommentRevealed ?? false),
+            onInsightsTapped: {
+                print("🎯 DEBUG: Button tapped for node: \(post.nodeId)")
+                self.selectedPostForInsights = post
+            }
+        )
+    }
+}
+
+#Preview {
+    ProfileFeedView(initialPostID: "5")
+        .environment(GameViewModel())
+}

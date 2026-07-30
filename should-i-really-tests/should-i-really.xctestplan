@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "02F3A14E-D3FE-43ED-9F67-6BA461C0C743",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:should-i-really.xcodeproj",
+        "identifier" : "1F07470A300A356A00D1D2D3",
+        "name" : "should-i-really-tests"
+      }
+    }
+  ],
+  "version" : 1
+}

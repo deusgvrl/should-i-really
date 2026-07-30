@@ -1,0 +1,162 @@
+[
+  {
+    "id": "ENDING_1",
+    "title": "The Role Model",
+    "image_name": "ending_img_1",
+    "main_description": "You always think before you post. By respecting privacy, context, and people's feelings, you've become someone others can trust both online and offline.",
+    "photo_trait_title": "The Context Protector",
+    "photo_trait_desc": "You consistently choose frames that respect privacy and show the full story behind every moment.",
+    "caption_trait_title": "The Thoughtful Voice",
+    "caption_trait_desc": "Your captions are kind, accurate, and never sacrifice someone's dignity for attention."
+  },
+  {
+    "id": "ENDING_2",
+    "title": "The Trusted Friend",
+    "image_name": "ending_img_2",
+    "main_description": "People feel comfortable around your camera because they know you'll always treat them with respect and care.",
+    "photo_trait_title": "The Respectful Framer",
+    "photo_trait_desc": "You naturally avoid exposing private or embarrassing moments.",
+    "caption_trait_title": "The Kind Narrator",
+    "caption_trait_desc": "Your captions make people feel included instead of judged."
+  },
+  {
+    "id": "ENDING_3",
+    "title": "The Storyteller",
+    "image_name": "ending_img_3",
+    "main_description": "You know how to turn everyday moments into meaningful stories without hurting anyone along the way.",
+    "photo_trait_title": "The Moment Finder",
+    "photo_trait_desc": "You focus on what truly matters instead of distractions.",
+    "caption_trait_title": "The Honest Captioner",
+    "caption_trait_desc": "Your words help others understand the moment without twisting its meaning."
+  },
+  {
+    "id": "ENDING_4",
+    "title": "The Thoughtful Student",
+    "image_name": "ending_img_4",
+    "main_description": "You usually pause before posting and consider how your content might affect others.",
+    "photo_trait_title": "The Careful Framer",
+    "photo_trait_desc": "Most of your photos protect context and privacy.",
+    "caption_trait_title": "The Mindful Writer",
+    "caption_trait_desc": "Your captions are usually thoughtful and respectful."
+  },
+  {
+    "id": "ENDING_5",
+    "title": "The Supporter",
+    "image_name": "ending_img_5",
+    "main_description": "Your posts lift people up more often than they bring them down, making your feed a positive place to be.",
+    "photo_trait_title": "The Positive Lens",
+    "photo_trait_desc": "You capture moments worth celebrating.",
+    "caption_trait_title": "The Encouraging Voice",
+    "caption_trait_desc": "Your captions focus on appreciation rather than criticism."
+  },
+  {
+    "id": "ENDING_6",
+    "title": "The Observer",
+    "image_name": "ending_img_6",
+    "main_description": "You rarely cause problems online, but sometimes you're so cautious that you miss opportunities to tell meaningful stories.",
+    "photo_trait_title": "The Quiet Eye",
+    "photo_trait_desc": "You avoid risky photos and respect boundaries.",
+    "caption_trait_title": "The Reserved Writer",
+    "caption_trait_desc": "Your captions stay safe, even if they aren't always memorable."
+  },
+  {
+    "id": "ENDING_7",
+    "title": "The Photographer",
+    "image_name": "ending_img_7",
+    "main_description": "You're great at capturing beautiful photos, but sometimes aesthetics matter more than the people in them. Try to make the people feel like the heart of the story!",
+    "photo_trait_title": "The Visual Hunter",
+    "photo_trait_desc": "You naturally look for eye-catching shots.",
+    "caption_trait_title": "The Style Writer",
+    "caption_trait_desc": "Your captions fit the photo, but don't always consider their impact."
+  },
+  {
+    "id": "ENDING_8",
+    "title": "The Trend Chaser",
+    "image_name": "ending_img_8",
+    "main_description": "You love following what’s popular and keeping your content up to date, but sometimes you get caught up in trends without thinking about the impact of your posts.",
+    "photo_trait_title": "The Frame Follower",
+    "photo_trait_desc": "You consistently choose the most eye-catching parts of a photo to stay relevant, but sometimes you overlook the context behind what you share.",
+    "caption_trait_title": "The Caption Chaser",
+    "caption_trait_desc": "You consistently use trendy and attention-grabbing captions, but sometimes prioritize engagement over the meaning and impact of your words."
+  },
+  {
+    "id": "ENDING_9",
+    "title": "The Attention Seeker",
+    "image_name": "ending_img_9",
+    "main_description": "Likes and reactions have started to matter more than the people in your photos.",
+    "photo_trait_title": "The Spotlight Finder",
+    "photo_trait_desc": "You often frame moments to grab attention instead of showing the whole picture.",
+    "caption_trait_title": "The Engagement Hunter",
+    "caption_trait_desc": "Your captions are written to get reactions, even if they're unfair."
+  },
+  {
+    "id": "ENDING_10",
+    "title": "The Clickbaiter",
+    "image_name": "ending_img_10",
+    "main_description": "You know exactly how to make people stop scrolling, but not always for the right reasons.",
+    "photo_trait_title": "The Misleading Framer",
+    "photo_trait_desc": "You focus on details that can easily be misunderstood.",
+    "caption_trait_title": "The Clickbait Writer",
+    "caption_trait_desc": "Your captions exaggerate or distort the real story to attract attention."
+  },
+  {
+    "id": "ENDING_11",
+    "title": "The Gossiper",
+    "image_name": "ending_img_11",
+    "main_description": "Without realizing it, your posts often spread assumptions instead of facts.",
+    "photo_trait_title": "The Out-of-Context Shooter",
+    "photo_trait_desc": "You capture moments that are easy to misinterpret.",
+    "caption_trait_title": "The Assumption Maker",
+    "caption_trait_desc": "Your captions often jump to conclusions without knowing the full story."
+  },
+  {
+    "id": "ENDING_12",
+    "title": "The Oversharer",
+    "image_name": "ending_img_12",
+    "main_description": "You share almost everything, forgetting that not every moment or piece of information belongs online.",
+    "photo_trait_title": "The Privacy Leaker",
+    "photo_trait_desc": "You often include personal details that should stay private.",
+    "caption_trait_title": "The Open Book",
+    "caption_trait_desc": "Your captions reveal more than they should."
+  },
+  {
+    "id": "ENDING_13",
+    "title": "The Paparazzi",
+    "image_name": "ending_img_13",
+    "main_description": "No moment seems off-limits to you, even when others clearly don't want to be photographed.",
+    "photo_trait_title": "The Boundary Crosser",
+    "photo_trait_desc": "You prioritize getting the shot over respecting people's comfort.",
+    "caption_trait_title": "The Public Broadcaster",
+    "caption_trait_desc": "Your captions make private moments even more public."
+  },
+  {
+    "id": "ENDING_14",
+    "title": "The Drama Queen",
+    "image_name": "ending_img_14",
+    "main_description": "Your feed is filled with conflict, embarrassment, and controversy because those moments get the most attention.",
+    "photo_trait_title": "The Drama Finder",
+    "photo_trait_desc": "You naturally focus on conflict instead of the bigger picture.",
+    "caption_trait_title": "The Fire Starter",
+    "caption_trait_desc": "Your captions add fuel to situations that don't need it."
+  },
+  {
+    "id": "ENDING_15",
+    "title": "The Chaos",
+    "image_name": "ending_img_15",
+    "main_description": "Your posts frequently hurt people, spread negativity, or create unnecessary problems. Going viral has become more important than doing what's right.",
+    "photo_trait_title": "The Harmful Framer",
+    "photo_trait_desc": "You intentionally highlight moments that embarrass or expose others.",
+    "caption_trait_title": "The Damage Dealer",
+    "caption_trait_desc": "Your captions encourage ridicule, conflict, or misinformation."
+  },
+  {
+    "id": "ENDING_16",
+    "title": "The Fool",
+    "image_name": "ending_img_16",
+    "main_description": "You chase attention without thinking about the consequences. By ignoring privacy, context, and respect, you've lost the trust of the people around you.",
+    "photo_trait_title": "The Context Ignorer",
+    "photo_trait_desc": "You consistently frame moments in misleading or harmful ways, ignoring how they affect others.",
+    "caption_trait_title": "The Careless Poster",
+    "caption_trait_desc": "Your captions mock, assume, or expose people for attention, no matter the consequences."
+  }
+]
