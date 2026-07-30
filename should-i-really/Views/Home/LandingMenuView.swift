@@ -14,7 +14,7 @@ struct LandingMenuView: View {
     @Binding var showOverwriteAlert: Bool
 
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 16) {
 
             // MARK: - Conditional Top Buttons
             if viewModel.gameState != nil {
@@ -25,11 +25,11 @@ struct LandingMenuView: View {
                     AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text("Continue")
-                        .font(.subheadline)
+                        .font(.title2)
                         .fontWeight(.medium)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 18)
+                        .padding(.vertical, 20)
                         .background(Color.buttonBrown)
                         .clipShape(Capsule())
                         .shadow(
@@ -50,7 +50,7 @@ struct LandingMenuView: View {
                     AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text("New Game")
-                        .font(.body)
+                        .font(.headline)
                         .fontWeight(.medium)
                         .foregroundStyle(Color.buttonBrown)
                         .frame(maxWidth: .infinity)
@@ -70,7 +70,7 @@ struct LandingMenuView: View {
                                 .stroke(Color.buttonBrown, lineWidth: 2)
                         )
                 }
-                .padding(.horizontal, 23)
+                .padding(.horizontal, 32)
                 .accessibilityLabel("New Game")
 
             } else {
@@ -81,11 +81,11 @@ struct LandingMenuView: View {
                     AudioController.shared.playSFX(filename: "tap")
                 }) {
                     Text("New Game")
-                        .font(.system(size: 20, design: .rounded))
+                        .font(.title2)
                         .fontWeight(.medium)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
+                        .padding(.vertical, 20)
                         .background(Color.buttonBrown)
                         .clipShape(Capsule())
                         .shadow(
@@ -104,7 +104,7 @@ struct LandingMenuView: View {
                 AudioController.shared.playSFX(filename: "tap")
             }) {
                 Text("My Endings")
-                    .font(.body)
+                    .font(.headline)
                     .fontWeight(.medium)
                     .foregroundStyle(Color.buttonBrown)
                     .frame(maxWidth: .infinity)
@@ -124,7 +124,7 @@ struct LandingMenuView: View {
                             .stroke(Color.buttonBrown, lineWidth: 2)
                     )
             }
-            .padding(.horizontal, 23)
+            .padding(.horizontal, 32)
             .accessibilityLabel("My Endings")
         }
     }
