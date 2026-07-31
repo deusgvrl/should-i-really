@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuickSettingsMenuView: View {
     @Environment(GameViewModel.self) private var gameViewModel
+    @Environment(\.dynamicTypeSize) private var typeSize
     
     @AppStorage("isSoundOn") private var isSoundOn: Bool = true
     @State private var isHapticsOn: Bool = true
@@ -16,6 +17,10 @@ struct QuickSettingsMenuView: View {
     var iconName: String = "ellipsis"
     var iconColor: Color = .textBrown
     var isProminent: Bool = false
+    
+    private var isTextLarge: Bool {
+        typeSize > .xLarge
+    }
     
     var body: some View {
         Menu {
@@ -31,7 +36,9 @@ struct QuickSettingsMenuView: View {
                     Image(
                         systemName: isSoundOn ? "speaker.wave.2.fill" : "speaker.slash.fill"
                     )
-                    Text("Sound")
+                    if !isTextLarge {
+                        Text("Sound")
+                    }
                 }
     
                 // MARK: - Haptics Toggle
@@ -41,7 +48,9 @@ struct QuickSettingsMenuView: View {
                     Image(
                         systemName: isHapticsOn ? "iphone.radiowaves.left.and.right" : "iphone.gen2.slash"
                     )
-                    Text("Haptics")
+                    if !isTextLarge {
+                        Text("Haptics")
+                    }
                 }
             }
                 
