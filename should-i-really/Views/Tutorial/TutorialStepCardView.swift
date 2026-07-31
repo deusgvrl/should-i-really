@@ -33,20 +33,23 @@ struct TutorialStepCardView: View {
             // MARK: - Text Description
             VStack(alignment: .leading, spacing: 4) {
                 Text(step.title)
-                    .font(.system(size: 20, design: .rounded))
+                    .font(.system(.title3, design: .rounded))
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.borderBrown)
+                    .fixedSize(horizontal: false, vertical: true)
                 
                 Text(step.description)
-                    .font(.system(size: 17, design: .rounded))
+                    .font(.system(.body, design: .rounded))
                     .fontWeight(.regular)
                     .foregroundStyle(Color.borderBrown.opacity(0.8))
-                    .lineLimit(2)
+//                    .lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
             }
             .padding(.horizontal, 2)
         }
-        .padding(13)        .frame(width: 322, height: 397, alignment: .topLeading)
+        .padding(13)
+        .frame(width: 322, alignment: .topLeading)
+        .frame(minHeight: 397)
         .background(Color(red: 252/255, green: 249/255, blue: 243/255))
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .overlay(

@@ -83,7 +83,7 @@ extension GameViewModel {
             if let state = self.gameState {
                 storageController.saveGame(state)
             }
-            self.currentRoute = .ending
+            self.currentRoute = .ending(endingId: nextNodeId)
             print("Scenario complete, ending is: ending \(nextNodeId)")
         } else {
             if let nextNode = currentRoundDatabase[nextNodeId] {

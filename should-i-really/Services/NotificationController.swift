@@ -33,7 +33,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     private func scheduleLocalNotification(for postID: String) {
         let content = UNMutableNotificationContent()
-        content.title = "Wizegram"
+        content.title = "Should I Really?"
         content.body = "doejane commented on your post!"
         content.sound = .default
         
@@ -41,7 +41,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
         let request = UNNotificationRequest(
-            identifier: "WizegramCommentNotification_\(postID)",
+            identifier: "ShouldIReallyCommentNotification_\(postID)",
             content: content,
             trigger: trigger
         )
