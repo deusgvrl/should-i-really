@@ -79,12 +79,8 @@ struct HomeScreenView: View {
                         ProfilePageView()
                     case .feedView(let postID):
                         ProfileFeedView(initialPostID: postID)
-                    case .ending:
-                        if let endingId = viewModel.lastEndingId {
-                            EndingSummaryView(endingId: endingId)
-                        } else {
-                            EndingSummaryView(endingId: "ENDING_1")
-                        }
+                    case .ending(let endingId):
+                        EndingSummaryView(endingId: endingId)
                     case .archivedEnding(let endingId):
                         EndingSummaryView(
                             endingId: endingId,
